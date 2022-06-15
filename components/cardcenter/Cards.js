@@ -131,7 +131,7 @@ c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
               </p>
               <p className="flex flex-col">
                 <span className="text-gray-200 text-sm">VALID THRU</span>
-                <span className="text-sm">12/20</span>
+                <span className="text-sm">12/2021</span>
               </p>
             </div>
           </div>
