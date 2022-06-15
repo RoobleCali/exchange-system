@@ -14,7 +14,7 @@ export default () => {
     })();
   }, []);
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loadings...</div>;
   }
 
   // colums for the transactions table (id, date, amount, description, category, actions)  with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row
