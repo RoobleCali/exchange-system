@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import HomeImage from "../pages/assets/homeImage.png";
 import LoginNavbar from "./login/LoginNavbar";
-import { useEffect } from "react";
+
 export default function Home() {
   const router = useRouter();
 

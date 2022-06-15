@@ -288,7 +288,7 @@ function Table({ columns, data }) {
                       return (
                         <td
                           {...cell.getCellProps()}
-                          className="px-5 text-gray-50 dark:text-gray-300 py-4 w-max whitespace-nowrap"
+                          className="px-5 text-gray-500 dark:text-gray-300 py-4 w-max whitespace-nowrap"
                           role="cell"
                         >
                           {cell.column.Cell.name === "defaultRenderer" ? (

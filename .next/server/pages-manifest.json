@@ -1,5 +1,22 @@
 {
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/_error": "pages/_error.js"
+  "/api/Data": "pages/api/Data.js",
+  "/api/invoices": "pages/api/invoices.js",
+  "/api/transactions": "pages/api/transactions.js",
+  "/cardcenter": "pages/cardcenter.html",
+  "/dashboard": "pages/dashboard.html",
+  "/": "pages/index.html",
+  "/invoices/[id]": "pages/invoices/[id].html",
+  "/invoices": "pages/invoices.html",
+  "/layout": "pages/layout.html",
+  "/login/LoginNavbar": "pages/login/LoginNavbar.html",
+  "/login": "pages/login.html",
+  "/remittance": "pages/remittance.html",
+  "/remittance/send": "pages/remittance/send.html",
+  "/transactions/[id]": "pages/transactions/[id].html",
+  "/wallet": "pages/wallet.html",
+  "/_error": "pages/_error.js",
+  "/transactions": "pages/transactions.js",
+  "/404": "pages/404.html"
 }
