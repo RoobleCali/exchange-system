@@ -16,7 +16,7 @@ function index({ children }) {
   } else {
     return (
       <>
-        <div className="flex h-screen bg-gray-50 overflow-hidden font-popins  dark:bg-[#161717] transition-all duration-500">
+        <div className="flex h-screen bg-gray-50 overflow-hidden font-popins  dark:bg-gray-800 transition-all duration-500">
           <SampleSidebar
             sidebarOpen={sidebarOpen}
             setSidebarOpen={setSidebarOpen}

@@ -4,7 +4,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import { PlusIcon } from "@heroicons/react/outline";
 export default function Model({ open, setOpen }) {
   const cancelButtonRef = useRef(null);
-  const [addNewTransaction, setAddNewTransaction] = useState(false);
   const [formFields, setFormFields] = useState([
     { name: "", Phone: "", Branch: "" },
   ]);
