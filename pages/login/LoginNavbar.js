@@ -12,7 +12,7 @@ export default () => {
           <Image
             src={logo}
             alt="logo"
-            width={140}
+            width={190}
             height={50}
             className="cursor-pointer"
           />

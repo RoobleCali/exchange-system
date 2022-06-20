@@ -6,8 +6,13 @@ export default () => {
     <div className="bg-gray-100 h-screen dark:bg-slate-800 transition-all duration-500 ">
       <LoginNavbar />
       <div className="max-w-3xl mx-auto mt-20 transition-all duration-500 shadow-sm h-screen md:h-auto p-10">
-        <p className="text-xl text-center text-gray-600 dark:text-gray-200">
-          Welcome back!/blog/git/
+        <p
+          className="text-xl text-center text-gray-600 dark:text-gray-200"
+          onClick={() => {
+            cookies.remove("token");
+          }}
+        >
+          Welcome back!
         </p>
         <Formik
           initialValues={{ userName: "", password: "" }}

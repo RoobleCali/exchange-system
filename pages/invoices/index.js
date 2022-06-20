@@ -1,22 +1,8 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
 import Actions from "../../components/models/Actions";
 import Table, { StatusPill } from "../../components/Table";
 
-export default () => {
-  const [Data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    (async () => {
-      const result = await axios("http://localhost:3000/api/transactions");
-      setData(result.data);
-      setLoading(false);
-    })();
-  }, []);
-  if (loading) {
-    return <div>Loadings...</div>;
-  }
-
+export default ({ data }) => {
   // colums for the transactions table (id, date, amount, description, category, actions)  with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row
   const columns = [
     {
@@ -54,7 +40,13 @@ export default () => {
   ];
   return (
     <div>
-      <Table data={Data} columns={columns} />
+      <Table data={data} columns={columns} />
     </div>
   );
+};
+export const getStaticProps = async ({ req, res }) => {
+  // res.setHeader("token", "kopcd--33-s-[a[aa'");
+  const resp = await axios.get(`http://localhost:3000/api/transactions`);
+
+  return { props: { data: resp.data } };
 };
