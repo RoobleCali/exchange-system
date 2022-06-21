@@ -57,11 +57,8 @@ export default function Avatar() {
               </a>
             </Menu.Item>
             <Menu.Item v-slot="{active}">
-              <Link
-                href="/login"
-                className="block px-4 py-2 text-sm text-gray-700"
-              >
-                Log out
+              <Link href="/login">
+                <a className="block px-4 py-2 text-sm text-gray-700">Log out</a>
               </Link>
             </Menu.Item>
           </Menu.Items>

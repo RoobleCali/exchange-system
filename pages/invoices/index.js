@@ -1,6 +1,7 @@
 import axios from "axios";
 import Actions from "../../components/models/Actions";
 import Table, { StatusPill } from "../../components/Table";
+import regeneratorRuntime from "regenerator-runtime";
 
 export default ({ data }) => {
   // colums for the transactions table (id, date, amount, description, category, actions)  with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row

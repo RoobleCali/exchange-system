@@ -10,12 +10,12 @@ export default function Home() {
   return (
     <div className=" bg-gray-100 dark:bg-slate-800 transition-all duration-500 h-screen ">
       <LoginNavbar />
-      <div className="flex items-center justify-between  flex-col-reverse px-3 md:flex-row py-10 sm:px-24">
+      <div className="flex items-center justify-between  flex-col-reverse px-3 md:flex-row py-14 md:py-24 sm:px-24">
         <div className="flex-2  mt-9 w-full space-y-3 md:max-w-md">
           <h1 className="text-4xl md:text-4xl pb-3">
-            you can make your Business More Profitable....
+            you can make your Business More Profitable but How .. !
           </h1>
-          <p className="text-xl">
+          <p className="text-lg text-gray-600">
             Just as peaple cannot live without eating, so abusiness cannot live
             without profit. Profit is not something to add on at the end, it is
             something to plane for in the beginning. To make good plane you need
@@ -27,7 +27,7 @@ export default function Home() {
               type="button"
               className="text-white hover:text-gray-700 hover:bg-white bg-blue-700 transition-all duration-200   focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-9 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
-              get started
+              Get started
             </button>
           </Link>
         </div>
