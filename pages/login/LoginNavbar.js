@@ -13,7 +13,7 @@ export default () => {
             src={logo}
             alt="logo"
             width={190}
-            height={38}
+            height={36}
             className="cursor-pointer"
           />
         </Link>

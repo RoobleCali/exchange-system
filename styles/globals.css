@@ -8,7 +8,7 @@
 }
 
 :root {
-  --heights: 50vh;
+  --heights: 60vh;
   --widths: 100%;
 }
 
@@ -18,6 +18,7 @@
   position: relative;
   margin: auto;
   overflow: hidden;
+  border-radius: 20px;
 }
 
 .active {
