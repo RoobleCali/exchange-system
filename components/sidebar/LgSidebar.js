@@ -23,7 +23,7 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
           }`}
       >
         {/* Logo */}
-        <div className="  w-48 md:ml-10 ">
+        <div className="  w-48 md:ml-10 overflow-hidden z-96">
           <Image src={logo} alt="logo" />
           <hr className="border-bn mt-3   border-gray-200 dark:border-gray-600" />
         </div>

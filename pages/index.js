@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import HomeImage from "../pages/assets/homeImage.png";
 import LoginNavbar from "./login/LoginNavbar";
+import Link from "next/link";
 
 export default function Home() {
   const router = useRouter();
@@ -9,8 +10,8 @@ export default function Home() {
   return (
     <div className=" bg-gray-100 dark:bg-slate-800 transition-all duration-500 h-screen ">
       <LoginNavbar />
-      <div className="flex items-center justify-between flex-col px-3 md:flex-row py-10 sm:px-24">
-        <div className="flex-2  mt-9 w-full md:max-w-md">
+      <div className="flex items-center justify-between  flex-col-reverse px-3 md:flex-row py-10 sm:px-24">
+        <div className="flex-2  mt-9 w-full space-y-3 md:max-w-md">
           <h1 className="text-4xl md:text-4xl pb-3">
             you can make your Business More Profitable....
           </h1>
@@ -21,6 +22,14 @@ export default function Home() {
             profitional accountant and this system is the next level of human
             accountant.
           </p>
+          <Link href="/login">
+            <button
+              type="button"
+              className="text-white hover:text-gray-700 hover:bg-white bg-blue-700 transition-all duration-200   focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-9 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              get started
+            </button>
+          </Link>
         </div>
         <div className="">
           <Image src={HomeImage} alt="image" />

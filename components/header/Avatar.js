@@ -1,5 +1,6 @@
 import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
+import Link from "next/link";
 import abdishakuur from "../../pages/assets/abdishakuur.jpg";
 
 export default function Avatar() {
@@ -56,9 +57,12 @@ export default function Avatar() {
               </a>
             </Menu.Item>
             <Menu.Item v-slot="{active}">
-              <a href="#" className="block px-4 py-2 text-sm text-gray-700">
+              <Link
+                href="/login"
+                className="block px-4 py-2 text-sm text-gray-700"
+              >
                 Log out
-              </a>
+              </Link>
             </Menu.Item>
           </Menu.Items>
         </Transition>

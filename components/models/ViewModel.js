@@ -1,75 +1,48 @@
-/* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { PlusIcon } from "@heroicons/react/outline";
+import { Fragment, useState } from "react";
+
 export default function ViewModel({ open, setOpen }) {
-  const cancelButtonRef = useRef(null);
-  const [addNewTransaction, setAddNewTransaction] = useState(false);
-  const [formFields, setFormFields] = useState([
-    { name: "", Phone: "", Branch: "" },
-  ]);
-  const addFields = () => {
-    let object = {
-      name: "",
-      Phone: "",
-      Branch: "",
-    };
-
-    setFormFields([...formFields, object]);
-  };
-
   return (
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog
-        as="div"
-        className="fixed z-10 inset-0  overflow-y-auto"
-        initialFocus={cancelButtonRef}
-        onClose={setOpen}
-      >
-        <div
-          className="flex items-end justify-center overflow-y-scroll h-full 
-         text-center sm:block
-         sm:p-0"
+    <>
+      <Transition appear show={open} as={Fragment}>
+        <Dialog
+          as="div"
+          className="fixed inset-0 z-10 overflow-y-auto"
+          onClose={setOpen}
         >
-          <span
-            className="hidden sm:inline-block sm:align-middle sm:h-screen"
-            aria-hidden="true"
-          >
-            &#8203;
-          </span>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            enterTo="opacity-100 translate-y-0 sm:scale-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-          >
-            <div
-              className="inline-block  sm:mt-16  overflow-y-scroll overflow-hidden  bg-white dark:bg-gray-700 rounded-lg text-left shadow-xl transform 
-            transition-all my-8 sm:align-middle -mt-40  w-full h-full   p-4  "
+          <div className="min-h-screen px-4 text-center">
+            {/* This element is to trick the browser into centering the modal contents. */}
+
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
             >
-              {/* sender inputs */}{" "}
-              <div>
-                <div
-                  as={Fragment}
-                  enter="ease-out duration-300"
-                  enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                  enterTo="opacity-100 translate-y-0 sm:scale-100"
-                  leave="ease-in duration-200"
-                  leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                  leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              <div
+                className="inline-block w-full h-screen mt-14 p-6   overflow-hidden text-left
+               align-middle transition-all transform bg-white dark:bg-gray-800 dark:text-white shadow-xl dark:shadow-gray-600"
+              >
+                <Dialog.Title
+                  as="h3"
+                  className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-200"
                 >
-                  <div className="flex items-center text-center justify-center">
-                    some contents
-                  </div>
+                  Payment successful
+                </Dialog.Title>
+                <div className="mt-2">
+                  <p className="text-sm text-gray-500">
+                    Your payment has been successfully submitted. We’ve sent you
+                    an email with all of the details of your order.
+                  </p>
                 </div>
               </div>
-            </div>
-          </Transition.Child>
-        </div>
-      </Dialog>
-    </Transition.Root>
+            </Transition.Child>
+          </div>
+        </Dialog>
+      </Transition>
+    </>
   );
 }

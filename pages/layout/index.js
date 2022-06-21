@@ -10,8 +10,11 @@ function index({ children }) {
   const [Mobilesidebar, setMobileSidebar] = useState(false);
 
   const router = useRouter();
-
-  if (router.pathname === "/" || router.pathname === "/login") {
+  if (
+    router.pathname === "/" ||
+    router.pathname === "/login" ||
+    router.pathname === "/404"
+  ) {
     return <div>{children}</div>;
   } else {
     return (
