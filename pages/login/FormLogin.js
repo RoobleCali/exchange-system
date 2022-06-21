@@ -11,7 +11,6 @@ function FormLogin() {
     console.log(data);
   }; // your form submit function which will invoke after successful validation
 
-  console.log(watch("example"));
   return (
     <>
       <div
@@ -35,11 +34,26 @@ function FormLogin() {
             </label>
 
             <input
-              {...register("exampleRequired", { required: true })}
+              {...register("userName", { required: true })}
               className=" px-10 py-2 rounded-md border border-slate-400"
             />
 
-            {errors.exampleRequired && (
+            {errors.userName && (
+              <p className="text-red-400 text-sm">This field is required</p>
+            )}
+          </div>
+          <div className="flex flex-col space-y-4">
+            <label className="text-md font-light" for="userName">
+              UserName
+            </label>
+
+            <input
+              type="password"
+              {...register("firstName", { required: true, maxLength: 20 })}
+              className=" px-10 py-2 rounded-md border border-slate-400"
+            />
+
+            {errors.firstName && (
               <p className="text-red-400 text-sm">This field is required</p>
             )}
           </div>
