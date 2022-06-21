@@ -1,16 +1,17 @@
-import React from "react";
-import { Field, Formik, ErrorMessage, useFormik } from "formik";
+import { useForm } from "react-hook-form";
 
 function FormLogin() {
-  const formik = useFormik({
-    initialValues: {
-      userName: "",
-      password: "",
-    },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  }; // your form submit function which will invoke after successful validation
+
+  console.log(watch("example"));
   return (
     <>
       <div
@@ -23,56 +24,34 @@ function FormLogin() {
         <p className="text-center text-xl mt-2 text-gray-400 ">
           please sign in your credentials to continue
         </p>
-        <Formik>
-          {/* // onSubmit={SubmitHandler} */}
-          <form
-            className="w-full space-y-7 mt-5 "
-            onSubmit={formik.handleSubmit}
-          >
-            <div className="flex flex-col space-y-4">
-              <label className="text-md font-light" for="userName">
-                UserName
-              </label>
-              <Field
-                className=" px-10 py-2 rounded-md border border-slate-400"
-                type="userName"
-                name="userName"
-                placeholder="Your Email"
-                onChange={formik.handleChange}
-                value={formik.values.email}
-              />
-              <ErrorMessage
-                name="userName"
-                className="text-red-400 transition-all duration-500 animate-pulse -mt-24"
-                component="div"
-              />
-            </div>
-            <div className="flex flex-col space-y-4">
-              <label className="text-md font-light" for="password">
-                Password
-              </label>
-              <Field
-                className="  px-10 w-full py-2 rounded-md border border-slate-400"
-                type="password"
-                name="password"
-                placeholder="Your Password"
-              />
-              <ErrorMessage
-                className="text-red-600 animate-pulse "
-                name="password"
-                component="div"
-              />
-            </div>
+        {/* // onSubmit={SubmitHandler} */}
+        <form
+          className="w-full space-y-7 mt-5 "
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className="flex flex-col space-y-4">
+            <label className="text-md font-light" for="userName">
+              UserName
+            </label>
 
-            <button
-              className="w-full px-10 py-2 bg-blue-600 text-white rounded-md
+            <input
+              {...register("exampleRequired", { required: true })}
+              className=" px-10 py-2 rounded-md border border-slate-400"
+            />
+
+            {errors.exampleRequired && (
+              <p className="text-red-400 text-sm">This field is required</p>
+            )}
+          </div>
+
+          <button
+            className="w-full px-10 py-2 bg-blue-600 text-white rounded-md
       hover:bg-blue-500 hover:drop-shadow-md duration-300 ease-in"
-              type="submit"
-            >
-              Sign In
-            </button>
-          </form>
-        </Formik>
+            type="submit"
+          >
+            Sign In
+          </button>
+        </form>
       </div>
     </>
   );
