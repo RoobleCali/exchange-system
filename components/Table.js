@@ -118,7 +118,6 @@ function Table({ columns, data }) {
     setPageSize,
     state,
     preGlobalFilteredRows,
-    visibleColumns,
     setGlobalFilter,
   } = useTable(
     {
@@ -130,7 +129,6 @@ function Table({ columns, data }) {
     useSortBy,
     usePagination // new
   );
-  console.log(page);
 
   // Render the UI for your table
   return (

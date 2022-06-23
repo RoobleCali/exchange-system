@@ -8,14 +8,14 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className=" bg-gray-100 dark:bg-slate-800 transition-all duration-500 h-screen ">
+    <div className=" bg-gray-100 dark:bg-slate-800  h-max ">
       <LoginNavbar />
       <div className="flex items-center justify-between  flex-col-reverse px-3 md:flex-row py-14 md:py-24 sm:px-24">
         <div className="flex-2  mt-9 w-full space-y-3 md:max-w-md">
           <h1 className="text-4xl md:text-4xl pb-3">
             you can make your Business More Profitable but How .. !
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-600 dark:text-gray-400">
             Just as peaple cannot live without eating, so abusiness cannot live
             without profit. Profit is not something to add on at the end, it is
             something to plane for in the beginning. To make good plane you need

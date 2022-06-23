@@ -27,7 +27,7 @@ function Header({
           <div className="flex space-x-2  items-center">
             {/* Hamburgers button */}
             <button
-              className="text-slate-500 lg:hidden  hover:text-slate-600 "
+              className="text-slate-500 dark:text-gray-200 lg:hidden  hover:text-slate-600 "
               onClick={() => setSidebarOpen(!sidebarOpen)}
             >
               <MenuAlt2Icon className="w-6 h-6" />
@@ -40,7 +40,7 @@ function Header({
             </button>
             <p className="font-medium  text-sm  capitalize">
               {/* router pathname remove / */}
-              {router.pathname.replace("/", "")}
+              {router.asPath.replace("/", "")}
             </p>
           </div>
 

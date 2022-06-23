@@ -19,7 +19,7 @@ function index({ children }) {
   } else {
     return (
       <>
-        <div className="flex h-screen bg-gray-50 overflow-hidden font-popins  dark:bg-gray-800 transition-all duration-500">
+        <div className="flex h-screen bg-gray-50 overflow-hidden font-popins  dark:bg-gray-800 ">
           <SampleSidebar
             sidebarOpen={sidebarOpen}
             setSidebarOpen={setSidebarOpen}
@@ -36,7 +36,7 @@ function index({ children }) {
             />
             <main>
               <div className=" p-1 mt-3 mx-3 px-3 sm:px-4 lg:px-8">
-                <div className="h-max  ">{children}</div>
+                <div className="h-max">{children}</div>
               </div>
             </main>
           </div>
@@ -47,3 +47,15 @@ function index({ children }) {
 }
 
 export default index;
+export const getServerSideProps = async ({ req }) => {
+  const token = req.cookies.get("token");
+  if (!token) {
+    req.writeHead("/login");
+  }
+
+  return {
+    props: {
+      data: null,
+    },
+  };
+};

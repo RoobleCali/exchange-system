@@ -1,11 +1,8 @@
 import Table, { StatusPill } from "../../components/Table";
-import { useEffect, useState } from "react";
 import axios from "axios";
 import Actions from "../../components/models/Actions";
 import regeneratorRuntime from "regenerator-runtime";
-export default ({ daata }) => {
-  const [Data, setData] = useState(daata);
-
+export default ({ Data }) => {
   // fetch data from api and set it to Data state and set loading to false to stop loading spinner and show table using swr library to fetch data from api and set it to Data state and mutate it to Data state
 
   // colums for the transactions table (id, date, amount, description, category, actions)  with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row
@@ -47,13 +44,13 @@ export default ({ daata }) => {
 
   return (
     <div className="w-full">
-      <Table columns={columns} data={daata} />
+      <Table columns={columns} data={Data} />
     </div>
   );
 };
 
 // get sercver side props in nextjs with token to fetch table data
-export const getStaticProps = async (ctx) => {
+export const getStaticProps = async ({ req }) => {
   const res = await axios.get(`http://localhost:3000/api/transactions`);
-  return { props: { daata: res.data } };
+  return { props: { Data: res.data } };
 };

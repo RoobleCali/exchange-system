@@ -34,13 +34,17 @@ function FormLogin() {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex flex-col mx-2 space-y-3">
-            <label className="text-md font-light" for="userName">
+            <label
+              className="text-md font-medium text-gray-500"
+              htmlFor="userName"
+            >
               UserName
             </label>
 
             <input
-              {...register("userName", { required: true })}
               className=" px-10 py-2 rounded-md border border-slate-300"
+              placeholder="userName"
+              {...register("userName", { required: true })}
             />
 
             {errors.userName && (
@@ -48,13 +52,17 @@ function FormLogin() {
             )}
           </div>
           <div className="flex flex-col mx-2 space-y-3">
-            <label className="text-md font-light" for="userName">
-              UserName
+            <label
+              className="text-md font-medium text-gray-500"
+              htmlFor="userName"
+            >
+              Password
             </label>
             <input
               type="password"
               {...register("firstName", { required: true })}
-              className=" px-10 py-2 rounded-md border border-slate-300"
+              className=" px-10 text-left py-2 rounded-md border border-slate-300"
+              placeholder="password"
             />
 
             {errors.firstName && (

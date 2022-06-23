@@ -4,9 +4,9 @@ import React from "react";
 
 function InvoicesSentCard() {
   return (
-    <div className="w-full overflow-hidden overflow-x-scroll h-max">
+    <div className="w-full">
       {/* top bar invoices */}
-      <div className="flex items-center justify-between">
+      <div className="flex sticky top-0 items-center justify-between">
         <div>
           <p>Invoices sent</p>
           <span className="text-xs  hidden sm:inline-flex text-gray-500 truncate">
@@ -27,7 +27,7 @@ function InvoicesSentCard() {
         </div>
       </div>
       {/* transactions */}
-      <div className=" ">
+      <div className="  overflow-hidden overflow-x-scroll h-max">
         {/* transaction 1 */}
         <div className="flex items-center justify-between  space-x-10  mt-4">
           <div className="flex items-center space-x-2">

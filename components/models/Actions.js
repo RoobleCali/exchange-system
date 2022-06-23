@@ -2,7 +2,6 @@
 import { Fragment, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import {
-  ChevronDownIcon,
   DotsVerticalIcon,
   InformationCircleIcon,
   XCircleIcon,
@@ -13,6 +12,7 @@ import ViewModel from "./ViewModel";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
+
 
 export default function Actions({ link }) {
   const [open, setOpen] = useState(false);
