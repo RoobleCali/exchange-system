@@ -7,7 +7,9 @@ export default () => {
     <div className="dark:bg-gray-800">
       <LoginNavbar />
       <div
-        className="flex  md:p-1     md:px-7  items-center mt-14 md:mt-20 justify-between  w-full bg-white dark:bg-gray-800 rounded-xl 
+        className="flex  md:p-1     md:px-7  items-center mt-14 
+        md:mt-20 justify-between  w-full bg-white
+         dark:bg-gray-800 rounded-xl 
         md:h-auto md:drop-shadow-xl md:space-x-14   max-w-5xl mx-auto"
       >
         {/* left carousel */}

@@ -2,6 +2,7 @@ import axios from "axios";
 import Actions from "../../components/models/Actions";
 import Table, { StatusPill } from "../../components/Table";
 import regeneratorRuntime from "regenerator-runtime";
+import { useState } from "react";
 
 export default ({ data }) => {
   // colums for the transactions table (id, date, amount, description, category, actions)  with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row
@@ -45,8 +46,8 @@ export default ({ data }) => {
     </div>
   );
 };
-export const getStaticProps = async ({ req, res }) => {
-  // res.setHeader("token", "kopcd--33-s-[a[aa'");
+
+export const getServerSideProps = async (ctx) => {
   const resp = await axios.get(`http://localhost:3000/api/transactions`);
 
   return { props: { data: resp.data } };

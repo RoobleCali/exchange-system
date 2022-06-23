@@ -84,3 +84,17 @@ function FormLogin() {
 }
 
 export default FormLogin;
+
+export const getServerSideProps = async (ctx) => {
+  const res = await axios.get(
+    "https://tick-account.herokuapp.com/api/auth/login  ",
+    {
+      withCredentials: true,
+      headers: {
+        Cookie: req.headers.cookie,
+      },
+    }
+  );
+  const data = await res.data;
+  return { props: { data } };
+};

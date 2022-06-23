@@ -15,7 +15,7 @@ function Header({
   setMobileSidebar,
 }) {
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme("light");
   const [DropdownOpen, setDropdownOpen] = useState(false);
   return (
     <header

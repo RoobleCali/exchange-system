@@ -281,13 +281,14 @@ function Table({ columns, data }) {
                 // new
                 prepareRow(row);
                 return (
-                  <tr {...row.getRowProps()}>
-                    {row.cells.map((cell) => {
+                  <tr {...row.getRowProps()} key={i}>
+                    {row.cells.map((cell, i) => {
                       return (
                         <td
                           {...cell.getCellProps()}
                           className="px-5 text-gray-500 dark:text-gray-300 py-4 w-max whitespace-nowrap"
                           role="cell"
+                          key={i}
                         >
                           {cell.column.Cell.name === "defaultRenderer" ? (
                             <div className="text-sm  text-gray-500 dark:text-gray-300">

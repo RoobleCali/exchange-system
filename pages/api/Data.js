@@ -7,7 +7,7 @@ export const Data = [
     currency: "Kesh",
     date: "202320-01-01",
     description: "description",
-    status: "error",
+    status: "success",
   },
   {
     id: "2",

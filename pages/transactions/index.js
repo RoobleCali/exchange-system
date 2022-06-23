@@ -50,7 +50,7 @@ export default ({ Data }) => {
 };
 
 // get sercver side props in nextjs with token to fetch table data
-export const getStaticProps = async ({ req }) => {
+export const getServerSideProps = async (ctx) => {
   const res = await axios.get(`http://localhost:3000/api/transactions`);
   return { props: { Data: res.data } };
 };
