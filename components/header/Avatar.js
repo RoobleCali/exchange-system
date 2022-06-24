@@ -2,7 +2,7 @@ import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
 import abdishakuur from "../../pages/assets/abdishakuur.jpg";
-
+import { useSelector } from "react-redux";
 export default function Avatar() {
   return (
     <div className="flex justify-end py-3 px-6 ">

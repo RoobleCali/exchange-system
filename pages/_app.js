@@ -1,7 +1,7 @@
 import { ThemeProvider } from "next-themes";
 import "../styles/globals.css";
 import Layout from "./Layout/";
-
+import { wrapper } from "../redux/store";
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider enableSystem={true} attribute="class">
@@ -12,4 +12,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

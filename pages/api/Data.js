@@ -7,7 +7,7 @@ export const Data = [
     currency: "Kesh",
     date: "202320-01-01",
     description: "description",
-    status: "success",
+    status: "error",
   },
   {
     id: "2",
@@ -103,6 +103,34 @@ export const Data = [
     description: "description",
     status: "success",
   },
+  {
+    id: "11",
+    type: "in",
+    amount: "1100",
+    currency: "USD",
+    date: "2020-01-01",
+    description: "description",
+    status: "success",
+  },
+  {
+    id: "11",
+    type: "in",
+    amount: "1100",
+    currency: "USD",
+    date: "2020-01-01",
+    description: "description",
+    status: "success",
+  },
+  {
+    id: "11",
+    type: "in",
+    amount: "1100",
+    currency: "USD",
+    date: "2020-01-01",
+    description: "description",
+    status: "success",
+  },
+
   {
     id: "11",
     type: "in",

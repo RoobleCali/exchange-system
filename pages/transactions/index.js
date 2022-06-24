@@ -2,6 +2,8 @@ import Table, { StatusPill } from "../../components/Table";
 import axios from "axios";
 import Actions from "../../components/models/Actions";
 import regeneratorRuntime from "regenerator-runtime";
+import { wrapper } from "../../redux/store";
+import { addTransaction, addUser } from "../../redux/slices/transactionSlice";
 export default ({ Data }) => {
   // fetch data from api and set it to Data state and set loading to false to stop loading spinner and show table using swr library to fetch data from api and set it to Data state and mutate it to Data state
 
@@ -50,7 +52,15 @@ export default ({ Data }) => {
 };
 
 // get sercver side props in nextjs with token to fetch table data
-export const getServerSideProps = async (ctx) => {
-  const res = await axios.get(`http://localhost:3000/api/transactions`);
-  return { props: { Data: res.data } };
-};
+// export const getServerSideProps = async (ctx) => {
+//   const res = await axios.get(`http://localhost:3000/api/transactions`);
+//   return { props: { Data: res.data } };
+// };
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async () => {
+    const res = await axios.get(`http://localhost:3000/api/transactions`);
+    const data = res.data;
+    store.dispatch(addTransaction(data));
+    return { props: { Data: res.data } };
+  }
+);
