@@ -30,4 +30,4 @@ export const makeStore = () =>
     reducer: masterReducer,
   });
 
-export const wrapper = createWrapper(makeStore, { debug: true });
+export const wrapper = createWrapper(makeStore);

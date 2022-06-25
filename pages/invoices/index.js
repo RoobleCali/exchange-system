@@ -4,9 +4,10 @@ import Table, { StatusPill } from "../../components/Table";
 import regeneratorRuntime from "regenerator-runtime";
 import { useSelector } from "react-redux";
 
-export default ({ data }) => {
+export default ({ data, authenticated }) => {
   const user = useSelector((state) => state.transactions.transactions);
   console.log(user);
+  console.log(authenticated);
   // colums for the transactions table (id, date, amount, description, category, actions)  with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row
   const columns = [
     {
@@ -49,8 +50,19 @@ export default ({ data }) => {
   );
 };
 
-export const getServerSideProps = async (ctx) => {
-  const resp = await axios.get(`http://localhost:3000/api/transactions`);
+export const getServerSideProps = async ({ req, res }) => {
+  const token = req.cookies;
+  if (token) {
+    res.writeHead(302, {
+      Location: "/login",
+    });
+  } else {
+    const resp = await axios.get(`http://localhost:3000/api/transactions`);
 
-  return { props: { data: resp.data } };
+    return {
+      props: {
+        data: resp.data,
+      },
+    };
+  }
 };
