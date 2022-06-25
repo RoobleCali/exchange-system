@@ -2,14 +2,19 @@ import Link from "next/link";
 import logo from "../../pages/assets/logo.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/outline";
+
 import {
   HomeIcon,
   SortAscendingIcon,
   SwitchHorizontalIcon,
 } from "@heroicons/react/outline";
+import { useState } from "react";
 
 export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
   const router = useRouter();
+  const [Dropdown, setDropdown] = useState(false);
+
   // console.log(router.pathname.includes("/cardcenter"));
   return (
     <div className="shadow-xl">
@@ -36,7 +41,7 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
         </div>
         {/* Links */}
         <div className="w-48 mt-2   ">
-          <ul className="mt-1 text-xs dark:text-white space-y-1 ">
+          <ul className="mt-1 text-sm dark:text-white space-y-1 ">
             <li className="text-gray-500 dark:text-gray-300">
               <Link href="/dashboard">
                 <a
@@ -114,6 +119,7 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                 </a>
               </Link>
             </li>
+
             <li className="text-gray-500 dark:text-gray-300">
               <Link href="/cardcenter">
                 <a
@@ -149,6 +155,50 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                   <span className="ml-5"> Remittance</span>
                 </a>
               </Link>
+            </li>
+            {/*  dropdown*/}
+            <li
+              className="text-gray-500 dark:text-gray-300"
+              onClick={() => setDropdown(!Dropdown)}
+            >
+              <a className="flex  px-2 py-2 rounded-md hover:bg-blue-100 text-gray-500 dark:text-gray-300   transition-all duration-100 items-center dark:text-white ">
+                <div className="w-4 h-4 text-gray-200">
+                  <SortAscendingIcon className="w-4 h-4" />
+                </div>
+                <button
+                  type="button"
+                  class="flex items-center w-full  text-sm font-normal text-gray-600 transition duration-75 rounded-lg group dark:text-white dark:hover:bg-gray-700"
+                >
+                  <span
+                    class="flex-1 ml-3 text-left whitespace-nowrap"
+                    sidebar-toggle-item
+                  >
+                    E-commerce
+                  </span>
+                  {Dropdown ? (
+                    <ChevronDownIcon className="w-4 h-4" />
+                  ) : (
+                    <ChevronUpIcon className="w-4 h-4" />
+                  )}
+                </button>
+              </a>
+
+              <ul
+                class={`${
+                  Dropdown ? "innline-flex" : "hidden"
+                }  py-2 space-y-2`}
+              >
+                <li>
+                  <Link href="/ecommerce/orders">
+                    <a
+                      onClick={() => setSidebarOpen(!sidebarOpen)}
+                      class="flex items-center w-full p-2 text-[15px] font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+                    >
+                      Products
+                    </a>
+                  </Link>
+                </li>
+              </ul>
             </li>
             <hr className="border-b-1 mt-2 border-gray-200" />
           </ul>
