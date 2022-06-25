@@ -4,10 +4,5 @@
   "/_error": "pages/_error.js",
   "/transactions": "pages/transactions.js",
   "/api/transactions": "pages/api/transactions.js",
-  "/404": "pages/404.js",
-  "/dashboard": "pages/dashboard.js",
-  "/wallet": "pages/wallet.js",
-  "/invoices": "pages/invoices.js",
-  "/cardcenter": "pages/cardcenter.js",
-  "/login": "pages/login.js"
+  "/404": "pages/404.js"
 }
