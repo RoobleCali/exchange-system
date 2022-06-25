@@ -40,8 +40,8 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
           <hr className="border-bn mt-3 border-gray-200 dark:border-gray-600" />
         </div>
         {/* Links */}
-        <div className="w-48 mt-2   ">
-          <ul className="mt-1 text-[13px] dark:text-white space-y-1 ">
+        <div className="w-48 ml-4 mt-10   ">
+          <ul className="mt-1 text-[12px] dark:text-white space-y-1 ">
             <li className="text-gray-500 dark:text-gray-300">
               <Link href="/dashboard">
                 <a
@@ -158,27 +158,19 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
             </li>
             {/*  dropdown*/}
             <li
-              className="text-gray-500 dark:text-gray-300"
+              className="text-gray-500  dark:text-gray-300"
               onClick={() => setDropdown(!Dropdown)}
             >
-              <a className="flex  px-2 py-2 rounded-md hover:bg-blue-100 text-gray-500 dark:text-gray-300   transition-all duration-100 items-center dark:text-white ">
+              <a className="flex  px-2 py-2 rounded-md hover:bg-blue-100   transition-all duration-100 items-center dark:text-white ">
                 <div className="w-4 h-4 text-gray-200">
                   <SortAscendingIcon className="w-4 h-4" />
                 </div>
-                <button
-                  type="button"
-                  class="flex items-center w-full  text-sm font-normal text-gray-600 transition duration-75 rounded-lg group dark:text-white dark:hover:bg-gray-700"
-                >
-                  <span
-                    class="flex-1 ml-5 text-left whitespace-nowrap"
-                    sidebar-toggle-item
-                  >
-                    E-commerce
-                  </span>
+                <button class="flex items-center w-full   font-normal text-gray-500 transition duration-75 rounded-lg group dark:text-white dark:hover:bg-gray-700">
+                  <span class=" -ml-5 flex-1">E-commerce</span>
                   {Dropdown ? (
-                    <ChevronDownIcon className="w-4 h-4" />
-                  ) : (
                     <ChevronUpIcon className="w-4 h-4" />
+                  ) : (
+                    <ChevronDownIcon className="w-4 h-4" />
                   )}
                 </button>
               </a>
@@ -192,7 +184,7 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                   <Link href="/ecommerce/orders">
                     <a
                       onClick={() => setSidebarOpen(!sidebarOpen)}
-                      class="flex items-center w-full p-2 text-[15px] font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+                      class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
                     >
                       Products
                     </a>

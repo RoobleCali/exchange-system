@@ -26,8 +26,9 @@ export default function Model({ open, setOpen }) {
         onClose={setOpen}
       >
         <div
-          className="flex items-end justify-center overflow-y-scroll min-h-screen  pt-4 px-4 pb-32 text-center sm:block
-         sm:p-0"
+          className="flex items-end justify-center 
+          overflow-y-scroll min-h-screen pt-4 px-4
+           pb-32 text-center sm:block sm:p-0"
         >
           <Transition.Child
             as={Fragment}
@@ -38,7 +39,7 @@ export default function Model({ open, setOpen }) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            <Dialog.Overlay className="fixed inset-0 bg-gray-600 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}

@@ -1,16 +1,16 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
-
+import { Fragment } from "react";
+import { XIcon } from "@heroicons/react/outline";
 export default function ViewModel({ open, setOpen }) {
   return (
     <>
-      <Transition appear show={open} as={Fragment}>
+      <Transition show={open} as={Fragment}>
         <Dialog
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
           onClose={setOpen}
         >
-          <div className="min-h-screen px-4 text-center">
+          <div className="px-4 text-center">
             {/* This element is to trick the browser into centering the modal contents. */}
 
             <Transition.Child
@@ -28,11 +28,17 @@ export default function ViewModel({ open, setOpen }) {
               >
                 <Dialog.Title
                   as="h3"
-                  className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-200"
+                  className="text-lg flex items-center justify-between font-medium leading-6 text-gray-900 dark:text-gray-200"
                 >
-                  Payment successful
+                  <div>Payment successful</div>
+                  <div
+                    className=" absolute right-5 cursor-pointer  flex-1"
+                    onClick={() => setOpen(false)}
+                  >
+                    <XIcon className="w-5" />
+                  </div>
                 </Dialog.Title>
-                <div className="mt-2">
+                <div className="mt-10 flex items-center justify-between">
                   <p className="text-sm text-gray-500">
                     Your payment has been successfully submitted. We’ve sent you
                     an email with all of the details of your order.

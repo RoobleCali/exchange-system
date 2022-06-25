@@ -2,7 +2,12 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
-  "/wallet": "pages/wallet.js",
+  "/transactions": "pages/transactions.js",
+  "/api/transactions": "pages/api/transactions.js",
   "/404": "pages/404.js",
-  "/dashboard": "pages/dashboard.js"
+  "/dashboard": "pages/dashboard.js",
+  "/wallet": "pages/wallet.js",
+  "/invoices": "pages/invoices.js",
+  "/cardcenter": "pages/cardcenter.js",
+  "/login": "pages/login.js"
 }
