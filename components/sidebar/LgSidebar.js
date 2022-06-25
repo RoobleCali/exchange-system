@@ -41,7 +41,7 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
         </div>
         {/* Links */}
         <div className="w-48 mt-2   ">
-          <ul className="mt-1 text-sm dark:text-white space-y-1 ">
+          <ul className="mt-1 text-[13px] dark:text-white space-y-1 ">
             <li className="text-gray-500 dark:text-gray-300">
               <Link href="/dashboard">
                 <a
@@ -170,7 +170,7 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                   class="flex items-center w-full  text-sm font-normal text-gray-600 transition duration-75 rounded-lg group dark:text-white dark:hover:bg-gray-700"
                 >
                   <span
-                    class="flex-1 ml-3 text-left whitespace-nowrap"
+                    class="flex-1 ml-5 text-left whitespace-nowrap"
                     sidebar-toggle-item
                   >
                     E-commerce

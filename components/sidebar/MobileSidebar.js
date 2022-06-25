@@ -216,12 +216,9 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                 </div>
                 <button
                   type="button"
-                  class="flex items-center w-full  text-sm font-normal text-gray-900 transition duration-75 rounded-lg group dark:text-white dark:hover:bg-gray-700"
+                  class="flex items-center w-full  text-sm font-normal text-gray-500 transition duration-75 rounded-lg group dark:text-white dark:hover:bg-gray-700"
                 >
-                  <span
-                    class="flex-1 ml-3 text-left whitespace-nowrap"
-                    sidebar-toggle-item
-                  >
+                  <span class=" -ml-2 flex-1" sidebar-toggle-item>
                     E-commerce
                   </span>
                   {Dropdown ? (
