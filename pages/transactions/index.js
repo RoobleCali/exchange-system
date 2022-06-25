@@ -4,6 +4,7 @@ import Actions from "../../components/models/Actions";
 import regeneratorRuntime from "regenerator-runtime";
 import { wrapper } from "../../redux/store";
 import { addTransaction, addUser } from "../../redux/slices/transactionSlice";
+import Router from "next/router";
 export default ({ Data }) => {
   const columns = [
     {
@@ -50,11 +51,11 @@ export default ({ Data }) => {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
-    async ({ req, res }) => {
-      const token = req.headers.cookie;
-
-      const resp = await axios.get(`http://localhost:3000/api/transactions`);
-      const data = resp.data;
+    async ({ req }) => {
+      const response = await axios.get(
+        `http://localhost:3000/api/transactions`
+      );
+      const data = response.data;
       store.dispatch(addTransaction(data));
       return { props: { Data: data } };
     }

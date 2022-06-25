@@ -10,6 +10,7 @@ import {
 
 export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
   const router = useRouter();
+  // console.log(router.pathname.includes("/cardcenter"));
   return (
     <div className="shadow-xl">
       {/* Sidebar */}
@@ -31,20 +32,19 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
             height={38}
             className="cursor-pointer"
           />
-          <hr className="border-bn mt-3   border-gray-200 dark:border-gray-600" />
+          <hr className="border-bn mt-3 border-gray-200 dark:border-gray-600" />
         </div>
         {/* Links */}
         <div className="w-48 mt-2   ">
-          <ul className="mt-1 dark:text-white space-y-1 ">
+          <ul className="mt-1 text-xs dark:text-white space-y-1 ">
             <li className="text-gray-500 dark:text-gray-300">
               <Link href="/dashboard">
                 <a
                   className={` flex  px-2 py-3 rounded-md   transition-all duration-100 items-center mt-1 dark:text-white space-y-13
               
                       ${
-                        router.pathname === "/dashboard"
-                          ? "bg-blue-700 text-white"
-                          : ""
+                        router.pathname === "/dashboard" &&
+                        "bg-blue-700 text-white"
                       }
                       `}
                 >
@@ -62,9 +62,8 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                   className={` flex  px-2 py-3 rounded-md  transition-all duration-100 items-center mt-1 dark:text-white space-y-13
               
                       ${
-                        router.pathname === "/wallet"
-                          ? "bg-blue-700 text-white"
-                          : ""
+                        router.pathname === "/wallet" &&
+                        "bg-blue-700 text-white"
                       }
                       `}
                 >
@@ -83,9 +82,8 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
               
                       ${
                         router.pathname === "/transactions" ||
-                        router.pathname === "/transactions/[id]"
-                          ? "bg-blue-700 text-white"
-                          : ""
+                        (router.pathname === "/transactions/[id]" &&
+                          "bg-blue-700 text-white")
                       }
                       `}
                 >
@@ -103,9 +101,8 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
               
                   ${
                     router.pathname === "/invoices" ||
-                    router.pathname === "/invoices/[id]"
-                      ? "bg-blue-700 text-white"
-                      : ""
+                    (router.pathname === "/invoices/[id]" &&
+                      "bg-blue-700 text-white")
                   }
                       `}
                 >
@@ -122,9 +119,8 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                   className={` flex  px-2 py-3 rounded-md  transition-all duration-100 items-center mt-1 dark:text-white space-y-13
               
                       ${
-                        router.pathname === "/cardcenter"
-                          ? "bg-blue-700 text-white"
-                          : ""
+                        router.pathname === "/cardcenter" &&
+                        "bg-blue-700 text-white"
                       }
                       `}
                 >
@@ -141,9 +137,8 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                   className={` flex  px-2 py-3 rounded-md  transition-all duration-100 items-center mt-1 dark:text-white space-y-13
               
                       ${
-                        router.pathname === "/remittance"
-                          ? "bg-blue-700 text-white"
-                          : ""
+                        router.pathname === "/remittance" &&
+                        "bg-blue-700 text-white"
                       }
                       `}
                 >

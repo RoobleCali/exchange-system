@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export default function index() {
   const handleChange = (event) => {
     if (event.target.checked) {
