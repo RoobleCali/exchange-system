@@ -1,10 +1,6 @@
 {
   "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/transactions": "pages/transactions.js",
-  "/404": "pages/404.js",
-  "/api/transactions": "pages/api/transactions.js",
-  "/cardcenter": "pages/cardcenter.js",
-  "/dashboard": "pages/dashboard.js"
+  "/_error": "pages/_error.js",
+  "/404": "pages/404.js"
 }

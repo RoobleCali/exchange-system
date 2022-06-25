@@ -7,13 +7,8 @@
   margin: 0;
 }
 
-:root {
-  --heights: 60vh;
-  --widths: 100%;
-}
-
 .slider-container {
-  height: var(--heights);
+  height: 50vh;
   width: var(--widths);
   position: relative;
   margin: auto;
@@ -30,8 +25,8 @@
 }
 
 .slides {
-  height: var(--heights);
-  width: var(--widths);
+  height: 50vh;
+  width: 100%;
   position: relative;
 }
 

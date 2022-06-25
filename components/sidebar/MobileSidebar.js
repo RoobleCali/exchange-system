@@ -51,7 +51,7 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
       {/* Sidebar */}
       <div
         className={`flex text-xs 	flex-col absolute z-40 left-0 top-0  
-        transform h-screen    w-64 lg:w-72  shrink-0  dark:bg-slate-900 bg-white p-4 transition-all duration-200 ease-in-out
+        transform h-screen    w-64 lg:w-72  shrink-0  dark:bg-slate-700 bg-white p-4 transition-all duration-200 ease-in-out
         ${sidebarOpen ? "translate-x-0" : "-translate-x-64"}`}
         ref={sidebar}
       >

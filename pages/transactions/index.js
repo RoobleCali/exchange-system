@@ -41,7 +41,10 @@ export default ({ Data }) => {
       ),
     },
   ];
-
+  // console.log(Data);
+  if (!Data) {
+    Router.replace("/login");
+  }
   return (
     <div className="w-full">
       <Table columns={columns} data={Data} />
@@ -52,11 +55,18 @@ export default ({ Data }) => {
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ req }) => {
+      const token = req.cookies;
+      // check if use has a token in the cookies and send api call
+      if (!token) {
+        return { props: { Data: null } };
+      }
+
       const response = await axios.get(
         `http://localhost:3000/api/transactions`
       );
       const data = response.data;
       store.dispatch(addTransaction(data));
+
       return { props: { Data: data } };
     }
 );

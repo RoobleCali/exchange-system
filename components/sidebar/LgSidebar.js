@@ -16,7 +16,7 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
       {/* Sidebar */}
       <div
         className={`flex text-xs	flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto 
-          lg:top-auto lg:translate-x-0 transform h-screen  w-72 -translate-x-64  shrink-0  dark:bg-slate-900 bg-white p-4 transition-all duration-200 ease-in-out
+          lg:top-auto lg:translate-x-0 transform h-screen  w-72 -translate-x-64  shrink-0  dark:bg-slate-800 bg-white p-4 transition-all duration-200 ease-in-out
           ${
             Mobilesidebar
               ? "hidden transition-all duration-500"
@@ -80,11 +80,12 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                 <a
                   className={` flex  px-2 py-3 rounded-md  transition-all duration-100 items-center mt-1 dark:text-white space-y-13
               
-                      ${
-                        router.pathname === "/transactions" ||
-                        (router.pathname === "/transactions/[id]" &&
-                          "bg-blue-700 text-white")
-                      }
+                  ${
+                    router.pathname === "/transactions" ||
+                    router.pathname === "/transactions/[id]"
+                      ? "bg-blue-700 text-white"
+                      : ""
+                  }
                       `}
                 >
                   <div className="w-4 h-4 text-gray-200">
