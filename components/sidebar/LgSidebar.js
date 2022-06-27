@@ -15,6 +15,8 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
   const router = useRouter();
   const [Dropdown, setDropdown] = useState(false);
   const [Button, setButton] = useState(false);
+  const [Report, setReport] = useState(false);
+  const [ReportDropdown, setReportDropdown] = useState(false);
 
   // console.log(router.pathname.includes("/cardcenter"));
   return (
@@ -159,15 +161,15 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
             </li>
             {/*  dropdown*/}
             <li
-              className="text-gray-500  dark:text-gray-300"
+              className={`  ${!Button || (Button && "text-gray-500")}`}
               onClick={() => setDropdown(!Dropdown)}
             >
               <div onClick={() => setButton(!Button)}>
                 <a
                   className={`flex  px-2 py-2 rounded-md 
                    transition-all duration-100 items-center
-                    dark:text-white  ${
-                      Button || router.pathname === "/users"
+                    dark:text-white hover:bg-blue-600  ${
+                      router.pathname === "/users"
                         ? "bg-blue-600 text-white"
                         : ""
                     }`}
@@ -178,12 +180,10 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                   <button
                     class={`flex items-center justify-between px-5  py-1 font-normal
                     transition duration-75 rounded-lg
-                    group dark:text-white dark:hover:bg-gray-700
-                    ${
-                      Button && Dropdown ? " text-gray-200" : "text-gray-500"
-                    } `}
+                    group dark:text-white 
+                    ${Button && Dropdown && "text-gray-200"} `}
                   >
-                    <span class="  flex-1">Users</span>
+                    <span class=" -ml-3 w-14">Users</span>
                     {Dropdown ? (
                       <ChevronUpIcon className="w-4 h-4 ml-14" />
                     ) : (
@@ -208,6 +208,60 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                   <Link href="/ecommerce/orders">
                     <a class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
                       Roles
+                    </a>
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            {/* reports */}
+            <li
+              className={`  ${!Report || (Report && "text-gray-500")}`}
+              onClick={() => setReportDropdown(!ReportDropdown)}
+            >
+              <div onClick={() => setReportDropdown(!ReportDropdown)}>
+                <a
+                  className={`flex  px-2 py-2 rounded-md 
+                   transition-all duration-100 items-center
+                    dark:text-white hover:bg-blue-600  ${
+                      router.pathname === "/users"
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                >
+                  <div className="w-4 h-4 text-gray-200">
+                    <SortAscendingIcon className="w-4 h-4" />
+                  </div>
+                  <button
+                    class={`flex items-center justify-between px-5  py-1 font-normal
+                    transition duration-75 rounded-lg
+                    group dark:text-white 
+                    ${Report && ReportDropdown && "text-gray-200"} `}
+                  >
+                    <span class=" -ml-3 w-14">Reports</span>
+                    {ReportDropdown ? (
+                      <ChevronUpIcon className="w-4 h-4 ml-14" />
+                    ) : (
+                      <ChevronDownIcon className="w-4 h-4 ml-14" />
+                    )}
+                  </button>
+                </a>
+              </div>
+              <ul
+                class={`${
+                  ReportDropdown ? "innline-flex" : "hidden"
+                }  py-2 space-y-2`}
+              >
+                <li>
+                  <Link href="/users">
+                    <a class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
+                      Transactions
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/ecommerce/orders">
+                    <a class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
+                      Common Report
                     </a>
                   </Link>
                 </li>

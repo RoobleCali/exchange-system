@@ -3,6 +3,5 @@
   "/_document": "pages/_document.js",
   "/_app": "pages/_app.js",
   "/dashboard": "pages/dashboard.js",
-  "/wallet": "pages/wallet.js",
-  "/users": "pages/users.js"
+  "/404": "pages/404.js"
 }
