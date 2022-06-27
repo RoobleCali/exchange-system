@@ -41,10 +41,7 @@ export default ({ Data }) => {
       ),
     },
   ];
-  // console.log(Data);
-  if (!Data) {
-    Router.replace("/login");
-  }
+
   return (
     <div className="w-full">
       <Table columns={columns} data={Data} />
