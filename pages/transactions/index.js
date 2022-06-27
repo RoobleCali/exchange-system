@@ -51,13 +51,16 @@ export default ({ Data }) => {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
-    async ({ req }) => {
-      const token = req.cookies;
-      // check if use has a token in the cookies and send api call
+    async ({ req, res }) => {
+      // get the token in the cookie
+      const token = req.headers.cookie.split("token")[0];
+      console.log(token);
       if (!token) {
-        return { props: { Data: null } };
+        res.writeHead(302, {
+          Location: "/login",
+        });
+        res.end();
       }
-
       const response = await axios.get(
         `http://localhost:3000/api/transactions`
       );

@@ -55,6 +55,7 @@ export const getServerSideProps = async ({ req, res }) => {
     res.writeHead(302, {
       Location: "/login",
     });
+    res.end();
   } else {
     const resp = await axios.get(`http://localhost:3000/api/transactions`);
 
