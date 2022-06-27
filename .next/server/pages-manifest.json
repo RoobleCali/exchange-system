@@ -2,5 +2,11 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/404": "pages/404.js"
+  "/404": "pages/404.js",
+  "/login": "pages/login.js",
+  "/": "pages/index.js",
+  "/users": "pages/users.js",
+  "/api/transactions": "pages/api/transactions.js",
+  "/dashboard": "pages/dashboard.js",
+  "/wallet": "pages/wallet.js"
 }
