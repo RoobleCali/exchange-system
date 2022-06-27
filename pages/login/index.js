@@ -1,6 +1,5 @@
 import LoginNavbar from "./LoginNavbar";
 
-import Slider from "../../components/slider/Slider";
 import FormLogin from "./FormLogin";
 export default () => {
   return (
@@ -13,10 +12,9 @@ export default () => {
         md:h-auto md:drop-shadow-xl md:space-x-14   max-w-5xl mx-auto"
       >
         {/* left carousel */}
-        <div className="bg-gray-500 hidden md:inline-block w-1/2">
-          <Slider />
-        </div>
+        <div className="bg-gray-500 hidden md:inline-block w-1/2 h-[80vh]"></div>
         {/* right form login */}
+
         <FormLogin />
       </div>
     </div>

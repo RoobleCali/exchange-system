@@ -53,20 +53,21 @@ export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ req, res }) => {
       // get the token in the cookie
-      const token = req.headers.cookie.split("token")[0];
+      const token = req.headers.cookie;
       console.log(token);
       if (!token) {
         res.writeHead(302, {
           Location: "/login",
         });
         res.end();
-      }
-      const response = await axios.get(
-        `http://localhost:3000/api/transactions`
-      );
-      const data = response.data;
-      store.dispatch(addTransaction(data));
+      } else {
+        const response = await axios.get(
+          `http://localhost:3000/api/transactions`
+        );
+        const data = response.data;
+        store.dispatch(addTransaction(data));
 
-      return { props: { Data: data } };
+        return { props: { Data: data } };
+      }
     }
 );

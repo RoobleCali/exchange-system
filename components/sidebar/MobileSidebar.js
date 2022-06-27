@@ -207,24 +207,19 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
             </li>
             {/*  dropdown*/}
             <li
-              className="text-gray-500 mt-2 dark:text-gray-300"
+              className="text-gray-500  dark:text-gray-300"
               onClick={() => setDropdown(!Dropdown)}
             >
-              <a className="flex  px-2 py-2 mt-2 rounded-md hover:bg-blue-100   transition-all duration-100 items-center dark:text-white ">
+              <a className="flex  px-2 py-2 rounded-md hover:bg-blue-100   transition-all duration-100 items-center dark:text-white ">
                 <div className="w-4 h-4 text-gray-200">
                   <SortAscendingIcon className="w-4 h-4" />
                 </div>
-                <button
-                  type="button"
-                  class="flex items-center w-full   font-normal text-gray-500 transition duration-75 rounded-lg group dark:text-white dark:hover:bg-gray-700"
-                >
-                  <span class=" -ml-4 flex-1" sidebar-toggle-item>
-                    E-commerce
-                  </span>
+                <button class="flex items-center px-5   font-normal text-gray-500 transition duration-75 rounded-lg group dark:text-white dark:hover:bg-gray-700">
+                  <span class="  flex-1">Users</span>
                   {Dropdown ? (
-                    <ChevronUpIcon className="w-4 h-4" />
+                    <ChevronUpIcon className="w-4 h-4 ml-7" />
                   ) : (
-                    <ChevronDownIcon className="w-4 h-4" />
+                    <ChevronDownIcon className="w-4 h-4 ml-7" />
                   )}
                 </button>
               </a>
@@ -240,7 +235,17 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                       onClick={() => setSidebarOpen(!sidebarOpen)}
                       class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
                     >
-                      Products
+                      Roles
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/ecommerce/orders">
+                    <a
+                      onClick={() => setSidebarOpen(!sidebarOpen)}
+                      class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+                    >
+                      users
                     </a>
                   </Link>
                 </li>

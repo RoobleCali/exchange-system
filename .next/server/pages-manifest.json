@@ -2,8 +2,10 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/_app": "pages/_app.js",
-  "/404": "pages/404.js",
-  "/wallet": "pages/wallet.js",
   "/transactions": "pages/transactions.js",
-  "/api/transactions": "pages/api/transactions.js"
+  "/login": "pages/login.js",
+  "/404": "pages/404.js",
+  "/": "pages/index.js",
+  "/dashboard": "pages/dashboard.js",
+  "/wallet": "pages/wallet.js"
 }

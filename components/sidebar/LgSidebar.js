@@ -165,12 +165,12 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                 <div className="w-4 h-4 text-gray-200">
                   <SortAscendingIcon className="w-4 h-4" />
                 </div>
-                <button class="flex items-center w-full   font-normal text-gray-500 transition duration-75 rounded-lg group dark:text-white dark:hover:bg-gray-700">
-                  <span class=" -ml-5 flex-1">E-commerce</span>
+                <button class="flex items-center px-5   font-normal text-gray-500 transition duration-75 rounded-lg group dark:text-white dark:hover:bg-gray-700">
+                  <span class="  flex-1">Users</span>
                   {Dropdown ? (
-                    <ChevronUpIcon className="w-4 h-4" />
+                    <ChevronUpIcon className="w-4 h-4 ml-7" />
                   ) : (
-                    <ChevronDownIcon className="w-4 h-4" />
+                    <ChevronDownIcon className="w-4 h-4 ml-7" />
                   )}
                 </button>
               </a>
@@ -186,7 +186,17 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                       onClick={() => setSidebarOpen(!sidebarOpen)}
                       class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
                     >
-                      Products
+                      Roles
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/ecommerce/orders">
+                    <a
+                      onClick={() => setSidebarOpen(!sidebarOpen)}
+                      class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+                    >
+                      users
                     </a>
                   </Link>
                 </li>
