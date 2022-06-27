@@ -1,6 +1,44 @@
+import axios from "axios";
 import React from "react";
+import Actions from "../../components/models/Actions";
+import Table, { StatusPill } from "../../components/table/Table";
 
-function index() {
+function index({ data }) {
+  const columns = [
+    {
+      Header: "ID",
+      accessor: "id",
+    },
+    {
+      Header: "Date",
+      accessor: "date",
+    },
+    {
+      Header: "Amount",
+      accessor: "amount",
+    },
+    {
+      Header: "Description",
+      accessor: "description",
+    },
+    {
+      Header: "Currency",
+      accessor: "currency",
+    },
+    {
+      Header: "Status",
+      accessor: "status",
+      Cell: StatusPill,
+    },
+    // actions column with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row
+    {
+      Header: "Actions",
+      accessor: "_id",
+      Cell: ({ row }) => (
+        <Actions link={`transactions/${row.id}`} StatusPill={StatusPill} />
+      ),
+    },
+  ];
   return (
     <div>
       <div class="sm:px-6 w-full">
@@ -13,54 +51,7 @@ function index() {
               </p>
             </button>
           </div>
-          <div className="w-full mt-10  divide-y divide-gray-200    border-b">
-            <table className="  dark:bg-gray-800 w-full pb-16 overflow-x-scroll overflow-hidden   inline-block border-gray-200 sm:rounded-lg dark:text-gray-300 ">
-              <thead className="">
-                <tr>
-                  <th className="group px-5 w-full m-auto bg-gray-200 dark:bg-gray-600  text-gray-500 p-auto  py-3 text-left text-xs font-medium   dark:text-gray-600 uppercase tracking-wider">
-                    Id
-                  </th>
-                  <th className="group px-5 w-full m-auto bg-gray-200 dark:bg-gray-600  text-gray-500 p-auto  py-3 text-left text-xs font-medium   dark:text-gray-600 uppercase tracking-wider">
-                    Name
-                  </th>
-                  <th className="group px-5 w-full m-auto bg-gray-200 dark:bg-gray-600  text-gray-500 p-auto  py-3 text-left text-xs font-medium   dark:text-gray-600 uppercase tracking-wider">
-                    Role
-                  </th>
-                  <th className="group px-5 w-full m-auto bg-gray-200 dark:bg-gray-600  text-gray-500 p-auto  py-3 text-left text-xs font-medium   dark:text-gray-600 uppercase tracking-wider">
-                    Number
-                  </th>
-                </tr>
-              </thead>
-              <tbody className=" divide-y divide-gray-500 w-full">
-                <tr>
-                  <td
-                    className="px-5 text-gray-500 dark:text-gray-300 py-4 w-max whitespace-nowrap"
-                    role="cell"
-                  >
-                    abdishakuuur ally
-                  </td>
-                  <td
-                    className="px-5 text-gray-500 dark:text-gray-300 py-4 w-max whitespace-nowrap"
-                    role="cell"
-                  >
-                    abdishakuuurally@gmail.com
-                  </td>
-                  <td
-                    className="px-5 text-gray-500 dark:text-gray-300 py-4 w-max whitespace-nowrap"
-                    role="cell"
-                  >
-                    abdishakuuur ally abdishakuuur ally
-                  </td>
-                  <td
-                    className="px-5 text-gray-500 dark:text-gray-300 py-4 w-max whitespace-nowrap"
-                    role="cell"
-                  >
-                    abdishakuuurally@gmail.com
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <Table data={data} columns={columns} />
         </div>
       </div>
     </div>
@@ -68,3 +59,21 @@ function index() {
 }
 
 export default index;
+
+export const getServerSideProps = async ({ req, res }) => {
+  const token = req.cookies;
+  if (!token) {
+    res.writeHead(302, {
+      Location: "/login",
+    });
+    res.end();
+  } else {
+    const resp = await axios.get(`http://localhost:3000/api/transactions`);
+
+    return {
+      props: {
+        data: resp.data,
+      },
+    };
+  }
+};

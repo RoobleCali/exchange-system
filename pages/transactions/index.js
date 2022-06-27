@@ -1,4 +1,4 @@
-import Table, { StatusPill } from "../../components/Table";
+import Table, { StatusPill } from "../../components/table/Table";
 import axios from "axios";
 import Actions from "../../components/models/Actions";
 import regeneratorRuntime from "regenerator-runtime";
@@ -55,7 +55,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
       // get the token in the cookie
       const token = req.headers.cookie;
       console.log(token);
-      if (!token) {
+      if (token) {
         res.writeHead(302, {
           Location: "/login",
         });

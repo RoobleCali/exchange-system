@@ -16,14 +16,14 @@ import {
   å,
 } from "@heroicons/react/solid";
 //table component
-import { Button, PageButton } from "./shared/Button";
-import { SortIcon, SortUpIcon, SortDownIcon } from "./shared/Icons";
+import { Button, PageButton } from "../shared/Button";
+import { SortIcon, SortUpIcon, SortDownIcon } from "../shared/Icons";
 import {
   AdjustmentsIcon,
   CloudDownloadIcon,
   SearchIcon,
 } from "@heroicons/react/outline";
-import DataPicker from "./models/DataPicker";
+import DataPicker from "../models/DataPicker";
 import { useRouter } from "next/router";
 import ReactToPrint from "react-to-print";
 

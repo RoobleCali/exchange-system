@@ -2,7 +2,6 @@ import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
 import abdishakuur from "../../pages/assets/abdishakuur.jpg";
-import { useSelector } from "react-redux";
 export default function Avatar() {
   return (
     <div className="flex justify-end py-3 px-6 ">
@@ -40,25 +39,25 @@ export default function Avatar() {
           leave-from-classname="opacity-100 scale-100"
           leave-to-classname="opacity-0 scale-90"
         >
-          <Menu.Items className="origin-top-right mt-2 focus:outline-none absolute right-0 bg-white overflow-hidden rounded-md shadow-lg border w-48">
+          <Menu.Items className="origin-top-right mt-2 focus:outline-none absolute text-gray-700 right-0 bg-white dark:bg-gray-800 dark:text-gray-200  overflow-hidden rounded-md shadow-lg border w-48">
             <Menu.Item v-slot="{active}">
-              <a href="#" className="block px-4 py-2 text-sm text-gray-700">
+              <a href="#" className="block px-4 py-2 text-sm ">
                 My Profile
               </a>
             </Menu.Item>
             <Menu.Item v-slot="{active, disabled}" disabled>
-              <a href="#" className="block px-4 py-2 text-sm text-gray-700">
+              <a href="#" className="block px-4 py-2 text-sm ">
                 Settings
               </a>
             </Menu.Item>
             <Menu.Item v-slot="{active}">
-              <a href="#" className="block px-4 py-2 text-sm text-gray-700">
+              <a href="#" className="block px-4 py-2 text-sm ">
                 Help
               </a>
             </Menu.Item>
             <Menu.Item v-slot="{active}">
               <Link href="/login">
-                <a className="block px-4 py-2 text-sm text-gray-700">Log out</a>
+                <a className="block px-4 py-2 text-sm ">Log out</a>
               </Link>
             </Menu.Item>
           </Menu.Items>

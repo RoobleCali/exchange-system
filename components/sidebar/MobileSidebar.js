@@ -66,14 +66,14 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
         </div>
         {/* Links */}
         <div className="w-48 mt-5   ">
-          <ul className="mt-1 text-[13px] dark:text-white space-y-1 ">
+          <ul className="mt-1 text-[13px] dark:text-white space-y-1.5 ">
             <li
               className="text-gray-500 dark:text-gray-300"
               onClick={() => setSidebarOpen(!sidebarOpen)}
             >
               <Link href="/dashboard">
                 <a
-                  className={` flex  px-2 py-3 rounded-md ${
+                  className={` flex  px-2 py-3 rounded-md hover:bg-blue-700 hover:text-white  ${
                     !sidebarOpen && "ml-0"
                   } transition-all duration-100 items-center mt-1 dark:text-white space-y-13
               
@@ -98,7 +98,7 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
             >
               <Link href="/wallet">
                 <a
-                  className={` flex  px-2 py-3 rounded-md  transition-all duration-100 items-center mt-1 dark:text-white space-y-13
+                  className={` flex  px-2 py-3 rounded-md hover:bg-blue-700 hover:text-white   transition-all duration-100 items-center mt-1 dark:text-white space-y-13
               
                       ${
                         router.pathname === "/wallet"
@@ -118,9 +118,31 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
               className="text-gray-500 dark:text-gray-300"
               onClick={() => setSidebarOpen(!sidebarOpen)}
             >
+              <Link href="/clients">
+                <a
+                  className={` flex  px-2 py-3 rounded-md hover:bg-blue-700 hover:text-white   transition-all duration-100 items-center mt-1 dark:text-white space-y-13
+              
+                      ${
+                        router.pathname === "/clients"
+                          ? "bg-blue-700 text-white"
+                          : ""
+                      }
+                      `}
+                >
+                  <div className="w-4 h-4 text-gray-200">
+                    <HomeIcon className="w-4 h-4" />
+                  </div>
+                  <span className="ml-5">Clients</span>
+                </a>
+              </Link>
+            </li>
+            <li
+              className="text-gray-500 dark:text-gray-300"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+            >
               <Link href="/transactions">
                 <a
-                  className={` flex  px-2 py-3 rounded-md  transition-all duration-100 items-center mt-1 dark:text-white space-y-13
+                  className={` flex  px-2 py-3 rounded-md hover:bg-blue-700 hover:text-white   transition-all duration-100 items-center mt-1 dark:text-white space-y-13
               
                       ${
                         router.pathname === "/transactions" ||
@@ -144,7 +166,7 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
             >
               <Link href="/invoices">
                 <a
-                  className={` flex  px-2 py-3 rounded-md  transition-all duration-100 items-center mt-1 dark:text-white space-y-13
+                  className={` flex  px-2 py-3 rounded-md hover:bg-blue-700 hover:text-white   transition-all duration-100 items-center mt-1 dark:text-white space-y-13
               
                   ${
                     router.pathname === "/invoices" ||
@@ -168,7 +190,7 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
             >
               <Link href="/cardcenter">
                 <a
-                  className={` flex  px-2 py-3 rounded-md  transition-all duration-100 items-center mt-1 dark:text-white space-y-13
+                  className={` flex  px-2 py-3 rounded-md hover:bg-blue-700 hover:text-white   transition-all duration-100 items-center mt-1 dark:text-white space-y-13
               
                       ${
                         router.pathname === "/cardcenter"
@@ -191,7 +213,7 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
             >
               <Link href="/remittance">
                 <a
-                  className={` flex  px-2 py-3 rounded-md  transition-all duration-100 items-center mt-1 dark:text-white space-y-13
+                  className={` flex  px-2 py-3 rounded-md hover:bg-blue-700 hover:text-white   transition-all duration-100 items-center mt-1 dark:text-white space-y-13
               
                       ${
                         router.pathname === "/remittance"
@@ -217,11 +239,13 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                 <a
                   className={`flex  px-2 py-2 rounded-md 
                    transition-all duration-100 items-center
-                    dark:text-white hover:bg-blue-600  ${
-                      router.pathname === "/users"
-                        ? "bg-blue-600 text-white"
-                        : ""
-                    }`}
+                    dark:text-white hover:bg-blue-600 hover:text-gray-100
+                      ${
+                        router.pathname === "/users" ||
+                        router.pathname === "/roles"
+                          ? "bg-blue-600 text-white"
+                          : ""
+                      }`}
                 >
                   <div className="w-4 h-4 text-gray-200">
                     <SortAscendingIcon className="w-4 h-4" />
@@ -229,14 +253,22 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                   <button
                     class={`flex items-center justify-between px-5  py-1 font-normal
                     transition duration-75 rounded-lg
-                    group dark:text-white 
-                    ${Button && Dropdown && "text-gray-200"} `}
+                    hover:text-gray-200
+                    group dark:text-white text-gray-500
+
+                    ${
+                      router.pathname === "/users" ||
+                      router.pathname === "/roles"
+                        ? "text-white"
+                        : ""
+                    }
+                    `}
                   >
-                    <span class="w-14">Users</span>
+                    <span class="-ml-2 w-14">Users</span>
                     {Dropdown ? (
-                      <ChevronUpIcon className="w-4 h-4 ml-14" />
+                      <ChevronUpIcon className="w-4 h-4 ml-16" />
                     ) : (
-                      <ChevronDownIcon className="w-4 h-4 ml-14" />
+                      <ChevronDownIcon className="w-4 h-4 ml-16" />
                     )}
                   </button>
                 </a>
@@ -260,7 +292,7 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/ecommerce/orders">
+                  <Link href="/roles">
                     <a
                       class="flex items-center w-full p-2 text-xs
                      font-normal text-gray-500 transition 
@@ -277,15 +309,16 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
             </li>
             {/* reports */}
             <li
-              className={`  ${!Report || (Report && "text-gray-500")}`}
+              className={`  ${!Report || (Report && "text-gray-400")}`}
               onClick={() => setReportDropdown(!ReportDropdown)}
             >
               <div onClick={() => setReportDropdown(!ReportDropdown)}>
                 <a
                   className={`flex  px-2 py-2 rounded-md 
                    transition-all duration-100 items-center
-                    dark:text-white hover:bg-blue-600  ${
-                      router.pathname === "/users"
+                   text-gray-400
+                    dark:text-white hover:text-gray-200 hover:bg-blue-600  ${
+                      router.pathname === "/Report"
                         ? "bg-blue-600 text-white"
                         : ""
                     }`}
@@ -297,7 +330,7 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                     class={`flex items-center justify-between px-5  py-1 font-normal
                     transition duration-75 rounded-lg
                     group dark:text-white 
-                    ${Report && ReportDropdown && "text-gray-200"} `}
+                    ${Report && "text-gray-400"} `}
                   >
                     <span class="  w-14">Reports</span>
                     {ReportDropdown ? (
@@ -314,14 +347,14 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                 }  py-2 space-y-2`}
               >
                 <li>
-                  <Link href="/users">
+                  <Link href="/">
                     <a class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
                       Transactions
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/ecommerce/orders">
+                  <Link href="/">
                     <a class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
                       Common Report
                     </a>

@@ -25,7 +25,7 @@ export default function Home() {
           <Link href="/login">
             <button
               type="button"
-              className="text-white  hover:bg-white bg-blue-700 transition-all duration-200   focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-9 py-2 dark:bg-blue-600 hover:text-gray-200 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="text-white  hover:bg-white bg-blue-700 transition-all duration-200   focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-9 py-2 dark:bg-blue-600 hover:text-gray-500 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               Get started
             </button>
