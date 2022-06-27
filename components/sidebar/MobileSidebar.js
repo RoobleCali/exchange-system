@@ -13,6 +13,7 @@ import {
 export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
   const router = useRouter();
   const [Dropdown, setDropdown] = useState(false);
+  const [Button, setButton] = useState(false);
 
   const sidebar = useRef(null);
   // close if the esc key is pressed
@@ -210,32 +211,44 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
               className="text-gray-500  dark:text-gray-300"
               onClick={() => setDropdown(!Dropdown)}
             >
-              <a className="flex  px-2 py-2 rounded-md hover:bg-blue-100   transition-all duration-100 items-center dark:text-white ">
-                <div className="w-4 h-4 text-gray-200">
-                  <SortAscendingIcon className="w-4 h-4" />
-                </div>
-                <button class="flex items-center px-5   font-normal text-gray-500 transition duration-75 rounded-lg group dark:text-white dark:hover:bg-gray-700">
-                  <span class="  flex-1">Users</span>
-                  {Dropdown ? (
-                    <ChevronUpIcon className="w-4 h-4 ml-7" />
-                  ) : (
-                    <ChevronDownIcon className="w-4 h-4 ml-7" />
-                  )}
-                </button>
-              </a>
-
+              <div onClick={() => setButton(!Button)}>
+                <a
+                  className={`flex  px-2 py-2 rounded-md 
+                   transition-all duration-100 items-center
+                    dark:text-white  ${Button ? "bg-blue-600" : ""}`}
+                >
+                  <div className="w-4 h-4 text-gray-200">
+                    <SortAscendingIcon className="w-4 h-4" />
+                  </div>
+                  <button
+                    class={`flex items-center justify-between px-5  py-1 font-normal
+                    transition duration-75 rounded-lg
+                    group dark:text-white dark:hover:bg-gray-700
+                    ${
+                      Button || Dropdown ? " text-gray-200" : "text-gray-500"
+                    } `}
+                  >
+                    <span class="  flex-1">Users</span>
+                    {Dropdown ? (
+                      <ChevronUpIcon className="w-4 h-4 ml-14" />
+                    ) : (
+                      <ChevronDownIcon className="w-4 h-4 ml-14" />
+                    )}
+                  </button>
+                </a>
+              </div>
               <ul
                 class={`${
                   Dropdown ? "innline-flex" : "hidden"
                 }  py-2 space-y-2`}
               >
                 <li>
-                  <Link href="/ecommerce/orders">
+                  <Link href="/users">
                     <a
                       onClick={() => setSidebarOpen(!sidebarOpen)}
                       class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
                     >
-                      Roles
+                      users
                     </a>
                   </Link>
                 </li>
@@ -245,7 +258,7 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                       onClick={() => setSidebarOpen(!sidebarOpen)}
                       class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
                     >
-                      users
+                      Roles
                     </a>
                   </Link>
                 </li>
