@@ -114,13 +114,18 @@ function SendMoney({ open, setOpen }) {
                 <button
                   class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 
                   focus:outline-none px-6 py-3 bg-indigo-700 hover:bg-opacity-80 shadow 
-                  rounded text-sm text-white"
+                  rounded text-sm text-white flex "
                   onClick={addFields}
                 >
-                  Send <span className="hidden md:flex">new</span>
+                  Send
+                  <span className="hidden ml-1 md:flex">New</span>
                 </button>
-                <button class="focus:ring-2 focus:ring-offset-2 focus:ring-blue-800 focus:outline-none px-6 py-3 bg-blue-700 hover:bg-opacity-80 shadow rounded text-sm text-white">
-                  Add <span className="hidden md:flex">User</span>
+                <button
+                  class="focus:ring-2 focus:ring-offset-2 focus:ring-blue-800
+                 focus:outline-none px-6 py-3 bg-blue-700 hover:bg-opacity-80 
+                 shadow rounded text-sm text-white flex"
+                >
+                  Add <span className="hidden ml-1 md:flex">User</span>
                 </button>
               </div>
             </div>
