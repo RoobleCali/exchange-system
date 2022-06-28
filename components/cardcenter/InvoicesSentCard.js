@@ -1,7 +1,3 @@
-import { ChevronDownIcon } from "@heroicons/react/solid";
-import Actions from "../models/Actions";
-import React from "react";
-
 function InvoicesSentCard() {
   return (
     <div className="w-full">

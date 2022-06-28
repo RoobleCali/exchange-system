@@ -178,6 +178,7 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
               </Link>
             </li>
             {/*  dropdown*/}
+            {/*  dropdown*/}
             <li
               className={`  ${!Button || (Button && "text-gray-500")}`}
               onClick={() => setDropdown(!Dropdown)}
@@ -188,7 +189,8 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                    transition-all duration-100 items-center
                     dark:text-white hover:bg-blue-600 hover:text-gray-100
                       ${
-                        router.pathname === "/users"
+                        router.pathname === "/users" ||
+                        router.pathname === "/roles"
                           ? "bg-blue-600 text-white"
                           : ""
                       }`}
@@ -202,14 +204,19 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                     hover:text-gray-200
                     group dark:text-white text-gray-500
 
-                    ${router.pathname === "/users" ? "text-white" : ""}
+                    ${
+                      router.pathname === "/users" ||
+                      router.pathname === "/roles"
+                        ? "text-white"
+                        : ""
+                    }
                     `}
                   >
-                    <span class="-ml-2 w-14">Users</span>
+                    <span class="-ml-2 w-24">Roles & Users</span>
                     {Dropdown ? (
-                      <ChevronUpIcon className="w-4 h-4 ml-16" />
+                      <ChevronUpIcon className="w-4 h-4 ml-10" />
                     ) : (
-                      <ChevronDownIcon className="w-4 h-4 ml-16" />
+                      <ChevronDownIcon className="w-4 h-4 ml-10" />
                     )}
                   </button>
                 </a>
@@ -232,7 +239,7 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/ecommerce/orders">
+                  <Link href="/roles">
                     <a
                       class="flex items-center w-full p-2 text-xs
                      font-normal text-gray-500 transition 

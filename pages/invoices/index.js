@@ -1,5 +1,5 @@
 import axios from "axios";
-import Actions from "../../components/models/Actions";
+import Actions from "../../components/table/Actions";
 import Table, { StatusPill } from "../../components/table/Table";
 import regeneratorRuntime from "regenerator-runtime";
 import { useSelector } from "react-redux";

@@ -1,6 +1,6 @@
 import Table, { StatusPill } from "../../components/table/Table";
 import axios from "axios";
-import Actions from "../../components/models/Actions";
+import Actions from "../../components/table/Actions";
 import regeneratorRuntime from "regenerator-runtime";
 import { wrapper } from "../../redux/store";
 import { addTransaction, addUser } from "../../redux/slices/transactionSlice";

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Transactions from "../../components/cards/Transactions";
-import Model from "../../components/models/Model";
+import SendMoney from "../../components/remittence/SendMoney";
 
 export default () => {
   const [open, setOpen] = useState(false);
@@ -20,7 +20,7 @@ export default () => {
         </div>
         <hr className="border-b-1 mt-5 border-gray-100" />
         <div>
-          <Model open={open} setOpen={setOpen} />
+          <SendMoney open={open} setOpen={setOpen} />
         </div>
       </div>
       <div>
