@@ -1,6 +1,6 @@
 import Image from "next/image";
 import avatar from "../../pages/assets/avatar.png";
-import { XIcon } from "@heroicons/react/solid";
+import { XIcon, PencilAltIcon } from "@heroicons/react/solid";
 
 function AddBranch({ open, setOpen }) {
   return (

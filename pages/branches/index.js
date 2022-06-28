@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import AddBranch from "../../components/branches/AddBranch";
+import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
+
 function index() {
   const [open, setOpen] = useState(false);
 
@@ -50,55 +52,9 @@ function index() {
               <td class="px-6 py-4">Nairobi</td>
               <td class="px-6 py-4">$27,202,920</td>
 
-              <td class="px-6 py-4 space-x-5 ">
-                <a class="font-medium text-blue-600 dark:text-blue-500 cursor-pointer">
-                  Edit
-                </a>
-                <a class="font-medium text-blue-600 dark:text-blue-500 cursor-pointer">
-                  Delete
-                </a>
-              </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-              >
-                Nairobi kenya
-              </th>
-              <td class="px-6 py-4">+252618995283</td>
-              <td class="px-6 py-4">Kenya</td>
-              <td class="px-6 py-4">Nairobi</td>
-              <td class="px-6 py-4">$27,202,920</td>
-
-              <td class="px-6 py-4 space-x-5 ">
-                <a class="font-medium text-blue-600 dark:text-blue-500 cursor-pointer">
-                  Edit
-                </a>
-                <a class="font-medium text-blue-600 dark:text-blue-500 cursor-pointer">
-                  Delete
-                </a>
-              </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-              >
-                Nairobi kenya
-              </th>
-              <td class="px-6 py-4">+252618995283</td>
-              <td class="px-6 py-4">Kenya</td>
-              <td class="px-6 py-4">Nairobi</td>
-              <td class="px-6 py-4">$27,202,920</td>
-
-              <td class="px-6 py-4 space-x-5 ">
-                <a class="font-medium text-blue-600 dark:text-blue-500 cursor-pointer">
-                  Edit
-                </a>
-                <a class="font-medium text-blue-600 dark:text-blue-500 cursor-pointer">
-                  Delete
-                </a>
+              <td class="px-6 py-4 space-x-5 flex items-center ">
+                <PencilAltIcon className="w-7 font-medium text-blue-600 dark:text-blue-500 cursor-pointer" />
+                <TrashIcon class="w-7 font-medium text-red-600 dark:text-red-500 cursor-pointer" />
               </td>
             </tr>
           </tbody>
