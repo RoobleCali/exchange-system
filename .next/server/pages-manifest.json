@@ -2,14 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/login": "pages/login.js",
-  "/wallet": "pages/wallet.js",
-  "/clients": "pages/clients.js",
-  "/transactions": "pages/transactions.js",
-  "/dashboard": "pages/dashboard.js",
-  "/invoices": "pages/invoices.js",
-  "/api/transactions": "pages/api/transactions.js",
+  "/remittance": "pages/remittance.js",
   "/404": "pages/404.js",
-  "/users": "pages/users.js",
-  "/roles": "pages/roles.js"
+  "/wallet": "pages/wallet.js"
 }

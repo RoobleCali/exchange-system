@@ -188,6 +188,29 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
               className="text-gray-500 dark:text-gray-300"
               onClick={() => setSidebarOpen(!sidebarOpen)}
             >
+              <Link href="/branches">
+                <a
+                  className={` flex  px-2 py-3 rounded-md hover:bg-blue-700 hover:text-white   transition-all duration-100 items-center mt-1 dark:text-white space-y-13
+              
+                      ${
+                        router.pathname === "/branches"
+                          ? "bg-blue-700 text-white"
+                          : ""
+                      }
+                      `}
+                  onClick={() => setSidebarOpen(!sidebarOpen)}
+                >
+                  <div className="w-4 h-4 text-gray-200">
+                    <SwitchHorizontalIcon className="w-4 h-4" />
+                  </div>
+                  <span className="ml-5">Branches</span>
+                </a>
+              </Link>
+            </li>
+            <li
+              className="text-gray-500 dark:text-gray-300"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+            >
               <Link href="/cardcenter">
                 <a
                   className={` flex  px-2 py-3 rounded-md hover:bg-blue-700 hover:text-white   transition-all duration-100 items-center mt-1 dark:text-white space-y-13

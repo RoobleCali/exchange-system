@@ -3,8 +3,7 @@ import axios from "axios";
 import Actions from "../../components/table/Actions";
 import regeneratorRuntime from "regenerator-runtime";
 import { wrapper } from "../../redux/store";
-import { addTransaction, addUser } from "../../redux/slices/transactionSlice";
-import Router from "next/router";
+import { addTransaction } from "../../redux/slices/transactionSlice";
 export default ({ Data }) => {
   const columns = [
     {

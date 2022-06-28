@@ -13,7 +13,6 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   ChevronDoubleRightIcon,
-  å,
 } from "@heroicons/react/solid";
 //table component
 import { Button, PageButton } from "../shared/Button";

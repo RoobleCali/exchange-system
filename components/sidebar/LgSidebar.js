@@ -140,7 +140,24 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                 </a>
               </Link>
             </li>
-
+            <li className="text-gray-500 dark:text-gray-300">
+              <Link href="/branches">
+                <a
+                  className={` flex  px-2 py-3 rounded-md  transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
+              
+                      ${
+                        router.pathname === "/branches" &&
+                        "bg-blue-700 text-white"
+                      }
+                      `}
+                >
+                  <div className="w-4 h-4 text-gray-200">
+                    <SwitchHorizontalIcon className="w-4 h-4" />
+                  </div>
+                  <span className="ml-5">Branches</span>
+                </a>
+              </Link>
+            </li>
             <li className="text-gray-500 dark:text-gray-300">
               <Link href="/cardcenter">
                 <a
@@ -214,9 +231,9 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                   >
                     <span class="-ml-2 w-24">Roles & Users</span>
                     {Dropdown ? (
-                      <ChevronUpIcon className="w-4 h-4 ml-10" />
+                      <ChevronUpIcon className="w-4 h-4 ml-9" />
                     ) : (
-                      <ChevronDownIcon className="w-4 h-4 ml-10" />
+                      <ChevronDownIcon className="w-4 h-4 ml-9" />
                     )}
                   </button>
                 </a>
@@ -280,9 +297,9 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                   >
                     <span class="  w-14">Reports</span>
                     {ReportDropdown ? (
-                      <ChevronUpIcon className="w-4 h-4 ml-14" />
+                      <ChevronUpIcon className="w-4 h-4 ml-16" />
                     ) : (
-                      <ChevronDownIcon className="w-4 h-4 ml-14" />
+                      <ChevronDownIcon className="w-4 h-4 ml-16" />
                     )}
                   </button>
                 </a>
