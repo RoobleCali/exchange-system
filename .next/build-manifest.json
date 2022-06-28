@@ -35,10 +35,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/branches.js"
     ],
-    "/remittance": [
+    "/cardcenter": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/remittance.js"
+      "static/chunks/pages/cardcenter.js"
     ],
     "/wallet": [
       "static/chunks/webpack.js",

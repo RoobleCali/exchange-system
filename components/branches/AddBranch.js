@@ -34,7 +34,7 @@ function AddBranch({ open, setOpen }) {
                 </button>
               </div>
               <div class="px-4 md:px-10 pt-6 md:pt-12 md:pb-4 pb-7">
-                <div class="flex items-center justify-center">
+                <div class=" items-center justify-center hidden md:flex">
                   <div class="focus:outline-none p-16 bg-gray-100  rounded-md flex items-center justify-center">
                     <Image src={avatar} alt="icon" />
                   </div>
@@ -42,11 +42,11 @@ function AddBranch({ open, setOpen }) {
                 <form class="mt-11">
                   <div class="flex items-center space-x-9">
                     <input
-                      placeholder="Full Name"
+                      placeholder="Branch Name"
                       class="focus:ring-2 focus:ring-gray-400 w-1/2 focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
                     />
                     <input
-                      placeholder="Phone"
+                      placeholder="Branch Phone"
                       type="tell"
                       min="0"
                       class="focus:ring-2 focus:ring-gray-400 w-1/2 focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
@@ -54,37 +54,20 @@ function AddBranch({ open, setOpen }) {
                   </div>
                   <div class="flex items-center space-x-9 mt-8">
                     <input
-                      placeholder="Branchname"
-                      type="Branchname"
+                      placeholder="Country"
+                      type="Country"
                       class="focus:ring-2 focus:ring-gray-400 w-1/2 focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
                     />
-                    <div
-                      tabindex="0"
-                      class="focus:outline-none focus:ring-2 focus:ring-gray-400 w-1/2 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700  py-2.5 px-3"
-                    >
-                      <select
-                        aria-label="select an option"
-                        class="text-sm text-gray-500 dark:bg-gray-900 w-full focus:outline-none"
-                      >
-                        <option selected="" disabled="" value="">
-                          Role
-                        </option>
-                        <option>Cashier</option>
-                        <option>Admin</option>
-                        <option>No Role</option>
-                      </select>
-                    </div>
+                    <input
+                      placeholder="City"
+                      type="city"
+                      class="focus:ring-2 focus:ring-gray-400 w-1/2 focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
+                    />
                   </div>
                   <div class="flex items-center space-x-9 mt-11">
                     <input
-                      placeholder="Full Name"
-                      class="focus:ring-2 focus:ring-gray-400 w-1/2 focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
-                    />
-                    <input
-                      placeholder="Phone"
-                      type="tell"
-                      min="0"
-                      class="focus:ring-2 focus:ring-gray-400 w-1/2 focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
+                      placeholder="Commiton"
+                      class="focus:ring-2 focus:ring-gray-400 w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
                     />
                   </div>
                 </form>
