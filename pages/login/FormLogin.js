@@ -42,7 +42,7 @@ function FormLogin() {
             </label>
 
             <input
-              className=" px-10 py-2 rounded-md border border-slate-300"
+              class="focus:ring-2 focus:ring-gray-400 w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
               placeholder="userName"
               {...register("userName", { required: true })}
             />
@@ -61,7 +61,7 @@ function FormLogin() {
             <input
               type="password"
               {...register("firstName", { required: true })}
-              className=" px-10 text-left py-2 rounded-md border border-slate-300"
+              class="focus:ring-2 focus:ring-gray-400 w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
               placeholder="password"
             />
 

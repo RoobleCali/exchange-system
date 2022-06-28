@@ -36,11 +36,11 @@ function index() {
               <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
-                    <th class="px-6 py-3">Branch name</th>
-                    <th class="px-6 py-3">Branch Phone</th>
-                    <th class="px-6 py-3">Country</th>
-                    <th class="px-6 py-3">City</th>
-                    <th class="px-6 py-3">Commision</th>
+                    <th class="px-6 py-3">Full name</th>
+                    <th class="px-6 py-3">Phone</th>
+                    <th class="px-6 py-3">Username</th>
+                    <th class="px-6 py-3">Branch</th>
+                    <th class="px-6 py-3">Role</th>
                     <th class="px-6 py-3">Actions</th>
                   </tr>
                 </thead>

@@ -50,7 +50,6 @@ function AddUser({ open, setOpen }) {
                     <input
                       placeholder="Phone"
                       type="tell"
-                      min="0"
                       class="focus:ring-2 focus:ring-gray-400 w-1/2 focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
                     />
                   </div>
