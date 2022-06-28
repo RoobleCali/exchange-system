@@ -35,25 +35,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/clients.js"
     ],
-    "/dashboard": [
+    "/invoices": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/dashboard.js"
-    ],
-    "/login": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/login.js"
+      "static/chunks/pages/invoices.js"
     ],
     "/transactions": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/transactions.js"
-    ],
-    "/wallet": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/wallet.js"
     ]
   },
   "ampFirstPages": []

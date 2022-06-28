@@ -28,7 +28,7 @@ function SendMoney({ open, setOpen }) {
           }`}
         ></div>
         <div class="flex items-center justify-center overflow-scroll h-full w-full">
-          <div class="bg-white  max-h-full  dark:bg-gray-800 justify-center  rounded-md shadow fixed overflow-y-auto sm:h-auto w-full md:w-[44%] ">
+          <div class="bg-white  max-h-full  dark:bg-gray-800 justify-center  rounded-md shadow fixed overflow-y-auto sm:h-auto w-[96%] lg:w-[44%] ">
             <div
               class="bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md px-2 md:px-4
                md:py-4 py-7 flex items-center justify-between sticky top-0"
@@ -51,7 +51,7 @@ function SendMoney({ open, setOpen }) {
               {/* sender info */}{" "}
               <form class="mt-2 space-y-10">
                 <div>
-                  <h1 className="text-gray-600 pb-3 dark:text-gray-300 font-medium text-lg">
+                  <h1 className="pb-3 text-lg font-medium text-gray-600 dark:text-gray-300">
                     Sender Information
                   </h1>
                   <div class="flex items-center space-x-9">
@@ -77,7 +77,7 @@ function SendMoney({ open, setOpen }) {
                 return (
                   <div key={index}>
                     <form key={index}>
-                      <h1 className="text-gray-600 pb-3 dark:text-gray-300 mt-6 font-medium text-lg">
+                      <h1 className="pb-3 mt-6 text-lg font-medium text-gray-600 dark:text-gray-300">
                         Reciever Information
                       </h1>
                       <div class="flex items-center space-x-9 ">
@@ -95,7 +95,7 @@ function SendMoney({ open, setOpen }) {
                           bg-white dark:bg-gray-900  border rounded
                            border-gray-200 dark:border-gray-700 "
                         />
-                      </div>{" "}
+                      </div>
                       <div class="mt-6">
                         <textarea
                           placeholder="Description"
@@ -117,10 +117,10 @@ function SendMoney({ open, setOpen }) {
                   rounded text-sm text-white"
                   onClick={addFields}
                 >
-                  Send new
+                  Send <span className="hidden md:flex">new</span>
                 </button>
                 <button class="focus:ring-2 focus:ring-offset-2 focus:ring-blue-800 focus:outline-none px-6 py-3 bg-blue-700 hover:bg-opacity-80 shadow rounded text-sm text-white">
-                  Add User
+                  Add <span className="hidden md:flex">User</span>
                 </button>
               </div>
             </div>
