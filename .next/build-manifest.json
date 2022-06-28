@@ -30,6 +30,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/branches": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/branches.js"
+    ],
     "/clients": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
