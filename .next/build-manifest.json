@@ -35,10 +35,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/clients.js"
     ],
-    "/transactions": [
+    "/wallet": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/transactions.js"
+      "static/chunks/pages/wallet.js"
     ]
   },
   "ampFirstPages": []
