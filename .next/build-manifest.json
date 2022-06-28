@@ -35,15 +35,25 @@
       "static/chunks/main.js",
       "static/chunks/pages/branches.js"
     ],
+    "/clients": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/clients.js"
+    ],
     "/dashboard": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/dashboard.js"
     ],
-    "/remittance": [
+    "/login": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/remittance.js"
+      "static/chunks/pages/login.js"
+    ],
+    "/transactions/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/transactions/[id].js"
     ]
   },
   "ampFirstPages": []
