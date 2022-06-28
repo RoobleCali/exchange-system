@@ -1,8 +1,9 @@
 import axios from "axios";
 import Actions from "../../components/table/Actions";
-import Table, { StatusPill } from "../../components/table/Table";
+import Table from "../../components/table/Table";
 import regeneratorRuntime from "regenerator-runtime";
 import { useSelector } from "react-redux";
+import { StatusPill } from "../../components/table/StatusBill";
 
 export default ({ data }) => {
   const user = useSelector((state) => state.transactions.transactions);
@@ -51,7 +52,7 @@ export default ({ data }) => {
 
 export const getServerSideProps = async ({ req, res }) => {
   const token = req.cookies;
-  if (token) {
+  if (!token) {
     res.writeHead(302, {
       Location: "/login",
     });

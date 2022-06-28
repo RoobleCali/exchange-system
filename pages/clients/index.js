@@ -1,9 +1,10 @@
-import Table, { StatusPill } from "../../components/table/Table";
+import Table from "../../components/table/Table";
 import axios from "axios";
 import Actions from "../../components/table/Actions";
 import regeneratorRuntime from "regenerator-runtime";
 import { wrapper } from "../../redux/store";
 import { addTransaction } from "../../redux/slices/transactionSlice";
+import { StatusPill } from "../../components/table/StatusBill";
 export default ({ Data }) => {
   const columns = [
     {
@@ -14,10 +15,7 @@ export default ({ Data }) => {
       Header: "name",
       accessor: "name",
     },
-    {
-      Header: "Bret",
-      accessor: "Bret",
-    },
+
     {
       Header: "email",
       accessor: "email",

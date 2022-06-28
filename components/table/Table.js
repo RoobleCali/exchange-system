@@ -27,34 +27,7 @@ import { useRouter } from "next/router";
 import ReactToPrint from "react-to-print";
 
 // access status row data and return the status icon and color based on the status
-export function StatusPill({ value }) {
-  const status = value ? value.toLowerCase() : "unknown";
 
-  return (
-    <span
-      className={`  
-       ${
-         status.startsWith("success")
-           ? "bg-green-100 text-green-500 px-4 py-1 text-sm  w-max truncate rounded-md"
-           : null
-       }
-        ${
-          status.startsWith("pending")
-            ? "bg-orange-100 text-orange-500 px-4 py-1 text-sm  rounded-md truncate"
-            : null
-        }
-        ${
-          status.startsWith("error")
-            ? "   text-red-700 bg-red-100  px-7 py-1 text-sm w-32  truncate rounded-md"
-            : null
-        } 
-    
- `}
-    >
-      {status}
-    </span>
-  );
-}
 // global filter component for the table header if no data found in the table then show no data found
 
 // Define a default UI for filtering
@@ -135,49 +108,6 @@ function Table({ columns, data }) {
       {/* top bar */}
 
       <div>
-        {route === "/invoices" && (
-          <div className="flex items-center justify-between w-full">
-            {/* left */}
-            <div className="flex items-center max-w-md py-2 space-x-2 text-xs text-white bg-blue-700 rounded-md  w-max innline-flex md:px-2">
-              <CloudDownloadIcon className="w-4 h-4" />
-              <button className="truncate w-14 sm:w-max">download PDF </button>
-            </div>
-            {/* right */}
-            <div className="flex items-center space-x-1 sm:space-x-3">
-              {/* filter  */}
-              <GlobalFilter
-                preGlobalFilteredRows={preGlobalFilteredRows}
-                globalFilter={state.globalFilter}
-                setGlobalFilter={setGlobalFilter}
-              />
-              {headerGroups.map((headerGroup) =>
-                headerGroup.headers.map((column) =>
-                  column.Filter ? (
-                    <div key={column.id}>
-                      <label htmlFor={column.id}>
-                        {column.render("Header")}:{" "}
-                      </label>
-                      {column.render("Filter")}
-                    </div>
-                  ) : null
-                )
-              )}
-              <div
-                className="items-center px-2 py-1 space-x-2 bg-white cursor-pointer  dark:text-gray-700 dark:bg-gray-800 sm:flex innline-flex"
-                onClick={() => setOpen(!open)}
-              >
-                <AdjustmentsIcon className="w-5 h-6 text-gray-500 rotate-90 dark:text-gray-200" />
-              </div>
-              {/* filter  */}
-              <select className="items-center hidden py-2 space-x-2 text-xs bg-white border-none rounded-sm outline-none cursor-pointer sm:inline-block focus:border-none dark:bg-gray-800 md:px-2 innline-flex">
-                <option value="">Pending</option>
-                <option value="">All</option>
-                <option value="">Completed</option>
-                <option value="">Cancelled</option>
-              </select>
-            </div>
-          </div>
-        )}
         {route === "/transactions" && (
           <div className="flex items-center justify-between w-full space-x-10">
             <div className="flex items-center justify-center space-x-5 sm:justify-between sm:space-x-3">
@@ -200,7 +130,7 @@ function Table({ columns, data }) {
                 )
               )}
               <div
-                className="items-center px-2 py-1 space-x-2 bg-white cursor-pointer  dark:bg-slate-600 sm:flex innline-flex"
+                className="items-center px-2 py-1 space-x-2 bg-white cursor-pointer dark:bg-slate-600 sm:flex innline-flex"
                 onClick={() => setOpen(!open)}
               >
                 <AdjustmentsIcon className="w-5 h-6 text-gray-500 rotate-90 bg-white dark:text-gray-200 dark:bg-slate-600" />
@@ -229,6 +159,49 @@ function Table({ columns, data }) {
             {/* download report and print */}
           </div>
         )}
+        {route === "/invoices" && (
+          <div className="flex items-center justify-between w-full">
+            {/* left */}
+            <div className="flex items-center max-w-md py-2 space-x-2 text-xs text-white bg-blue-700 rounded-md w-max innline-flex md:px-2">
+              <CloudDownloadIcon className="w-4 h-4" />
+              <button className="truncate w-14 sm:w-max">download PDF </button>
+            </div>
+            {/* right */}
+            <div className="flex items-center space-x-1 sm:space-x-3">
+              {/* filter  */}
+              <GlobalFilter
+                preGlobalFilteredRows={preGlobalFilteredRows}
+                globalFilter={state.globalFilter}
+                setGlobalFilter={setGlobalFilter}
+              />
+              {headerGroups.map((headerGroup) =>
+                headerGroup.headers.map((column) =>
+                  column.Filter ? (
+                    <div key={column.id}>
+                      <label htmlFor={column.id}>
+                        {column.render("Header")}:{" "}
+                      </label>
+                      {column.render("Filter")}
+                    </div>
+                  ) : null
+                )
+              )}
+              <div
+                className="items-center px-2 py-1 space-x-2 bg-white cursor-pointer dark:text-gray-700 dark:bg-gray-800 sm:flex innline-flex"
+                onClick={() => setOpen(!open)}
+              >
+                <AdjustmentsIcon className="w-5 h-6 text-gray-500 rotate-90 dark:text-gray-200" />
+              </div>
+              {/* filter  */}
+              <select className="items-center hidden py-2 space-x-2 text-xs bg-white border-none rounded-sm outline-none cursor-pointer sm:inline-block focus:border-none dark:bg-gray-800 md:px-2 innline-flex">
+                <option value="">Pending</option>
+                <option value="">All</option>
+                <option value="">Completed</option>
+                <option value="">Cancelled</option>
+              </select>
+            </div>
+          </div>
+        )}
       </div>
       {/* model filter data */}
       <DataPicker open={open} setOpen={setOpen} data={data} />
@@ -236,7 +209,7 @@ function Table({ columns, data }) {
       <div className="w-full border-b divide-y divide-gray-200">
         <table
           {...getTableProps()}
-          className="inline-block w-full pb-16 overflow-hidden overflow-x-scroll border-gray-200  dark:bg-gray-800 sm:rounded-lg dark:text-gray-300"
+          className="inline-block w-full pb-16 overflow-hidden overflow-x-scroll border-gray-200 dark:bg-gray-800 sm:rounded-lg dark:text-gray-300"
           ref={(el) => (componentRef = el)}
         >
           <thead className="">
@@ -318,12 +291,12 @@ function Table({ columns, data }) {
       <div className="flex items-center justify-center w-full">
         {/* mobile pagination */}
         <div className="flex justify-between flex-1 p-2 sm:hidden">
-          <Button onClick={() => previousPage()} disabled={!canPreviousPage}>
+          <button onClick={() => previousPage()} disabled={!canPreviousPage}>
             Previous
-          </Button>
-          <Button onClick={() => nextPage()} disabled={!canNextPage}>
+          </button>
+          <button onClick={() => nextPage()} disabled={!canNextPage}>
             Next
-          </Button>
+          </button>
         </div>
         {/* large screen pagination */}
         <div className="justify-between flex-1 hidden px-2 sm:flex sm:items-center">
