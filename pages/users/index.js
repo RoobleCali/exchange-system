@@ -1,3 +1,4 @@
+import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import React, { useState } from "react";
 import AddUser from "../../components/users/addUser";
@@ -30,8 +31,56 @@ function index() {
             </div>
             <AddUser open={open} setOpen={setOpen} />
 
-            <div class="bg-white dark:bg-gray-800  shadow px-4 md:px-10 pt-7 pb-5 overflow-y-auto text-center">
-              No user
+            {/* table */}
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+              <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                    <th class="px-6 py-3">Branch name</th>
+                    <th class="px-6 py-3">Branch Phone</th>
+                    <th class="px-6 py-3">Country</th>
+                    <th class="px-6 py-3">City</th>
+                    <th class="px-6 py-3">Commision</th>
+                    <th class="px-6 py-3">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="space-y-5">
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                    >
+                      Nairobi kenya
+                    </th>
+                    <td class="px-6 py-4">+252618995283</td>
+                    <td class="px-6 py-4">Kenya</td>
+                    <td class="px-6 py-4">Nairobi</td>
+                    <td class="px-6 py-4">$27,202,920</td>
+
+                    <td class="px-6 py-4 space-x-5 flex items-center ">
+                      <PencilAltIcon className="w-7 font-medium text-blue-600 dark:text-blue-500 cursor-pointer" />
+                      <TrashIcon class="w-7 font-medium text-red-600 dark:text-red-500 cursor-pointer" />
+                    </td>
+                  </tr>
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                    >
+                      Nairobi kenya
+                    </th>
+                    <td class="px-6 py-4">+252618995283</td>
+                    <td class="px-6 py-4">Kenya</td>
+                    <td class="px-6 py-4">Nairobi</td>
+                    <td class="px-6 py-4">$27,202,920</td>
+
+                    <td class="px-6 py-4 space-x-5 flex items-center ">
+                      <PencilAltIcon className="w-7 font-medium text-blue-600 dark:text-blue-500 cursor-pointer" />
+                      <TrashIcon class="w-7 font-medium text-red-600 dark:text-red-500 cursor-pointer" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

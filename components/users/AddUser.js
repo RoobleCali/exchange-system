@@ -37,12 +37,7 @@ function AddUser({ open, setOpen }) {
               </div>
               <div class="px-4 md:px-10 pt-6 md:pt-12 md:pb-4 pb-7">
                 <div class="flex items-center justify-center">
-                  <div
-                    tabindex="0"
-                    aria-label="img"
-                    role="img"
-                    class="focus:outline-none p-16 bg-gray-100  rounded-md flex items-center justify-center"
-                  >
+                  <div class="focus:outline-none p-16 bg-gray-100  rounded-md flex items-center justify-center">
                     <Image src={avatar} alt="icon" />
                   </div>
                 </div>
@@ -82,23 +77,9 @@ function AddUser({ open, setOpen }) {
                       </select>
                     </div>
                   </div>
-                  <div class="flex items-center space-x-9 mt-11">
-                    <input
-                      placeholder="Full Name"
-                      class="focus:ring-2 focus:ring-gray-400 w-1/2 focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
-                    />
-                    <input
-                      placeholder="Phone"
-                      type="tell"
-                      min="0"
-                      class="focus:ring-2 focus:ring-gray-400 w-1/2 focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
-                    />
-                  </div>
                 </form>
                 <div class="flex items-center justify-between mt-9">
                   <button
-                    role="button"
-                    aria-label="close button"
                     onclick="popuphandler(false)"
                     class="focus:ring-2 focus:ring-offset-2 focus:bg-gray-600 focus:ring-gray-600 focus:outline-none px-6 py-3 bg-gray-600 hover:bg-gray-500 shadow rounded text-sm text-white"
                   >

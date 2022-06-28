@@ -3,5 +3,9 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/404": "pages/404.js",
-  "/users": "pages/users.js"
+  "/users": "pages/users.js",
+  "/clients": "pages/clients.js",
+  "/login": "pages/login.js",
+  "/wallet": "pages/wallet.js",
+  "/dashboard": "pages/dashboard.js"
 }
