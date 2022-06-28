@@ -72,8 +72,8 @@ function GlobalFilter({
   const route = router.pathname;
   return (
     <div className="relative">
-      <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-        <SearchIcon className="w-4  text-gray-600" />
+      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+        <SearchIcon className="w-4 text-gray-600" />
       </div>
       <input
         type="search"
@@ -131,16 +131,16 @@ function Table({ columns, data }) {
 
   // Render the UI for your table
   return (
-    <div className="space-y-10 max-w-7xl mx-auto shadow-xl p-2 md:p-4">
+    <div className="p-2 mx-auto space-y-10 shadow-xl max-w-7xl md:p-4">
       {/* top bar */}
 
       <div>
         {route === "/invoices" && (
-          <div className="w-full flex items-center justify-between">
+          <div className="flex items-center justify-between w-full">
             {/* left */}
-            <div className="  w-max flex space-x-2 innline-flex items-center bg-blue-700 md:px-2 max-w-md text-xs py-2 rounded-md text-white">
+            <div className="flex items-center max-w-md py-2 space-x-2 text-xs text-white bg-blue-700 rounded-md  w-max innline-flex md:px-2">
               <CloudDownloadIcon className="w-4 h-4" />
-              <button className="w-14 sm:w-max truncate">download PDF </button>
+              <button className="truncate w-14 sm:w-max">download PDF </button>
             </div>
             {/* right */}
             <div className="flex items-center space-x-1 sm:space-x-3">
@@ -163,13 +163,13 @@ function Table({ columns, data }) {
                 )
               )}
               <div
-                className="  cursor-pointer  bg-white dark:text-gray-700 dark:bg-gray-800 px-2 py-1 sm:flex space-x-2 innline-flex items-center "
+                className="items-center px-2 py-1 space-x-2 bg-white cursor-pointer  dark:text-gray-700 dark:bg-gray-800 sm:flex innline-flex"
                 onClick={() => setOpen(!open)}
               >
-                <AdjustmentsIcon className="w-5 h-6 text-gray-500     dark:text-gray-200 rotate-90" />
+                <AdjustmentsIcon className="w-5 h-6 text-gray-500 rotate-90 dark:text-gray-200" />
               </div>
               {/* filter  */}
-              <select className="cursor-pointer hidden sm:inline-block py-2 focus:border-none border-none outline-none text-xs bg-white dark:bg-gray-800 rounded-sm md:px-2     space-x-2 innline-flex items-center">
+              <select className="items-center hidden py-2 space-x-2 text-xs bg-white border-none rounded-sm outline-none cursor-pointer sm:inline-block focus:border-none dark:bg-gray-800 md:px-2 innline-flex">
                 <option value="">Pending</option>
                 <option value="">All</option>
                 <option value="">Completed</option>
@@ -179,8 +179,8 @@ function Table({ columns, data }) {
           </div>
         )}
         {route === "/transactions" && (
-          <div className="w-full space-x-10 flex items-center justify-between">
-            <div className="flex items-center justify-center sm:justify-between sm:space-x-3 space-x-5">
+          <div className="flex items-center justify-between w-full space-x-10">
+            <div className="flex items-center justify-center space-x-5 sm:justify-between sm:space-x-3">
               {/* filter  */}
               <GlobalFilter
                 preGlobalFilteredRows={preGlobalFilteredRows}
@@ -200,15 +200,15 @@ function Table({ columns, data }) {
                 )
               )}
               <div
-                className=" cursor-pointer  bg-white dark:bg-slate-600   px-2 py-1 sm:flex space-x-2 innline-flex items-center "
+                className="items-center px-2 py-1 space-x-2 bg-white cursor-pointer  dark:bg-slate-600 sm:flex innline-flex"
                 onClick={() => setOpen(!open)}
               >
-                <AdjustmentsIcon className="w-5 h-6 text-gray-500 dark:text-gray-200  bg-white dark:bg-slate-600  rotate-90" />
+                <AdjustmentsIcon className="w-5 h-6 text-gray-500 rotate-90 bg-white dark:text-gray-200 dark:bg-slate-600" />
               </div>
             </div>
             {/* filter  */}
             <div className="flex items-center justify-center space-x-3">
-              <select className="cursor-pointer hidden  py-2  sm:inline-block focus:border-none border-none outline-none text-xs bg-white dark:bg-gray-800 rounded-sm px-0    space-x-2 innline-flex items-center">
+              <select className="items-center hidden px-0 py-2 space-x-2 text-xs bg-white border-none rounded-sm outline-none cursor-pointer sm:inline-block focus:border-none dark:bg-gray-800 innline-flex">
                 <option value="">Pending</option>
                 <option value="">All</option>
                 <option value="">Completed</option>
@@ -216,9 +216,9 @@ function Table({ columns, data }) {
               </select>
               <ReactToPrint
                 trigger={() => (
-                  <div className="cursor-pointer text-center w-max flex space-x-2 innline-flex items-center bg-blue-700 px-2 max-w-md text-xs py-2 rounded-md text-white">
+                  <div className="flex items-center max-w-md px-2 py-2 space-x-2 text-xs text-center text-white bg-blue-700 rounded-md cursor-pointer w-max innline-flex">
                     <CloudDownloadIcon className="w-4 h-4" />
-                    <button className=" truncate">Print </button>
+                    <button className="truncate ">Print </button>
                   </div>
                 )}
                 content={() => componentRef}
@@ -233,10 +233,10 @@ function Table({ columns, data }) {
       {/* model filter data */}
       <DataPicker open={open} setOpen={setOpen} data={data} />
       {/* table */}
-      <div className="w-full   divide-y divide-gray-200    border-b">
+      <div className="w-full border-b divide-y divide-gray-200">
         <table
           {...getTableProps()}
-          className="  dark:bg-gray-800 w-full pb-16 overflow-x-scroll overflow-hidden   inline-block border-gray-200 sm:rounded-lg dark:text-gray-300 "
+          className="inline-block w-full pb-16 overflow-hidden overflow-x-scroll border-gray-200  dark:bg-gray-800 sm:rounded-lg dark:text-gray-300"
           ref={(el) => (componentRef = el)}
         >
           <thead className="">
@@ -247,10 +247,10 @@ function Table({ columns, data }) {
                   // we can add them into the header props
 
                   <th
-                    className="group px-5 w-full m-auto bg-gray-200 dark:bg-gray-600  text-gray-500 p-auto  py-3 text-left text-xs font-medium   dark:text-gray-600 uppercase tracking-wider"
+                    className="w-full px-5 py-3 m-auto text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-200 group dark:bg-gray-600 p-auto dark:text-gray-600"
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                   >
-                    <div className="flex items-cente  dark:text-gray-300 w-full justify-between">
+                    <div className="flex justify-between w-full items-cente dark:text-gray-300">
                       {column.render("Header")}
                       {/* Add a sort direction indicator */}
                       <span>
@@ -272,7 +272,7 @@ function Table({ columns, data }) {
           </thead>
           <tbody
             {...getTableBodyProps()}
-            className=" divide-y divide-gray-200 w-full"
+            className="w-full divide-y divide-gray-200 "
           >
             {/* if page lenght is less than zero show no data else show the data */}
             {page.length > 0 ? (
@@ -285,12 +285,12 @@ function Table({ columns, data }) {
                       return (
                         <td
                           {...cell.getCellProps()}
-                          className="px-5 text-gray-500 dark:text-gray-300 py-4 w-max whitespace-nowrap"
+                          className="px-5 py-4 text-gray-500 dark:text-gray-300 w-max whitespace-nowrap"
                           role="cell"
                           key={i}
                         >
                           {cell.column.Cell.name === "defaultRenderer" ? (
-                            <div className="text-sm  text-gray-500 dark:text-gray-300">
+                            <div className="text-sm text-gray-500 dark:text-gray-300">
                               {cell.render("Cell")}
                             </div>
                           ) : (
@@ -304,8 +304,8 @@ function Table({ columns, data }) {
               })
             ) : (
               <tr className="mt-24">
-                <td colSpan={columns.length} className="text-center mt-24">
-                  <div className="text-xl font-medium mt-24 text-gray-500 dark:text-gray-300">
+                <td colSpan={columns.length} className="mt-24 text-center">
+                  <div className="mt-24 text-xl font-medium text-gray-500 dark:text-gray-300">
                     No Data Found
                   </div>
                 </td>
@@ -315,9 +315,9 @@ function Table({ columns, data }) {
         </table>
       </div>
       {/* Pagination */}
-      <div className="w-full flex items-center justify-center">
+      <div className="flex items-center justify-center w-full">
         {/* mobile pagination */}
-        <div className="flex-1 p-2 flex justify-between  sm:hidden">
+        <div className="flex justify-between flex-1 p-2 sm:hidden">
           <Button onClick={() => previousPage()} disabled={!canPreviousPage}>
             Previous
           </Button>
@@ -326,17 +326,15 @@ function Table({ columns, data }) {
           </Button>
         </div>
         {/* large screen pagination */}
-        <div className="hidden flex-1 sm:flex sm:items-center px-2 justify-between">
-          <div className="flex gap-x-2 items-baseline">
+        <div className="justify-between flex-1 hidden px-2 sm:flex sm:items-center">
+          <div className="flex items-baseline gap-x-2">
             <span className="text-sm text-gray-700">
               Page <span className="font-medium">{state.pageIndex + 1}</span> of{" "}
               <span className="font-medium">{pageOptions.length}</span>
             </span>
             <label>
               <select
-                className="cursor-pointer py-2 focus:border-none border-none outline-none
-               text-sm bg-white dark:bg-gray-800 rounded-sm px-2   
-               flex space-x-2 innline-flex items-center"
+                className="flex items-center px-2 py-2 space-x-2 text-sm bg-white border-none rounded-sm outline-none cursor-pointer focus:border-none dark:bg-gray-800 innline-flex"
                 value={state.pageSize}
                 onChange={(e) => {
                   setPageSize(Number(e.target.value));
@@ -352,7 +350,7 @@ function Table({ columns, data }) {
           </div>
           <div>
             <nav
-              className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+              className="relative z-0 inline-flex -space-x-px rounded-md shadow-sm"
               aria-label="Pagination"
             >
               <PageButton
@@ -362,7 +360,7 @@ function Table({ columns, data }) {
               >
                 <span className="sr-only">First</span>
                 <ChevronDoubleLeftIcon
-                  className="h-5 w-5 text-gray-400"
+                  className="w-5 h-5 text-gray-400"
                   aria-hidden="true"
                 />
               </PageButton>
@@ -372,14 +370,14 @@ function Table({ columns, data }) {
               >
                 <span className="sr-only">Previous</span>
                 <ChevronLeftIcon
-                  className="h-5 w-5 text-gray-400"
+                  className="w-5 h-5 text-gray-400"
                   aria-hidden="true"
                 />
               </PageButton>
               <PageButton onClick={() => nextPage()} disabled={!canNextPage}>
                 <span className="sr-only">Next</span>
                 <ChevronRightIcon
-                  className="h-5 w-5 text-gray-400"
+                  className="w-5 h-5 text-gray-400"
                   aria-hidden="true"
                 />
               </PageButton>
@@ -390,7 +388,7 @@ function Table({ columns, data }) {
               >
                 <span className="sr-only">Last</span>
                 <ChevronDoubleRightIcon
-                  className="h-5 w-5 text-gray-400"
+                  className="w-5 h-5 text-gray-400"
                   aria-hidden="true"
                 />
               </PageButton>
