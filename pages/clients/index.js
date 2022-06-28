@@ -12,21 +12,25 @@ export default ({ Data }) => {
       accessor: "id",
     },
     {
-      Header: "name",
-      accessor: "name",
-    },
-
-    {
-      Header: "email",
-      accessor: "email",
+      Header: "Date",
+      accessor: "date",
     },
     {
-      Header: "phone",
-      accessor: "phone",
+      Header: "Amount",
+      accessor: "amount",
     },
     {
-      Header: "website",
-      accessor: "website",
+      Header: "Description",
+      accessor: "description",
+    },
+    {
+      Header: "Currency",
+      accessor: "currency",
+    },
+    {
+      Header: "Status",
+      accessor: "status",
+      Cell: StatusPill,
     },
     // actions column with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row
     {
@@ -51,22 +55,13 @@ export const getServerSideProps = wrapper.getServerSideProps(
       // get the token in the cookie
       const token = req.headers.cookie;
       console.log(token);
-      if (token) {
-        res.writeHead(302, {
-          Location: "/login",
-        });
-        res.end();
-      } else {
-        // get jsonplaceholder data user
 
-        // dispatch the data to the reducer
-        const response = await axios.get(
-          `https://jsonplaceholder.typicode.com/users`
-        );
-        const data = response.data;
-        store.dispatch(addTransaction(data));
+      const response = await axios.get(
+        `http://localhost:3000/api/transactions`
+      );
+      const data = response.data;
+      store.dispatch(addTransaction(data));
 
-        return { props: { Data: data } };
-      }
+      return { props: { Data: data } };
     }
 );

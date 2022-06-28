@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/outline";
 import Link from "next/link";
 import ViewModel from "../models/ViewModel";
+import ManageAccount from "./ManageAccount";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -46,7 +47,7 @@ export default function Actions({ link }) {
                     onClick={() => setOpen(!open)}
                   >
                     <XCircleIcon className="w-5 text-red-500 opacity-60" />
-                    <span className="ml-2"> Old Transactions</span>
+                    <span className="ml-2"> Manage Account</span>
                   </a>
                 )}
               </Menu.Item>
@@ -69,7 +70,7 @@ export default function Actions({ link }) {
           </Menu.Items>
         </Transition>
       </Menu>
-      <ViewModel open={open} setOpen={setOpen} />
+      <ManageAccount open={open} setOpen={setOpen} />
     </div>
   );
 }
