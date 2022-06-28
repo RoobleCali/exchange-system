@@ -2,8 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/branches": "pages/branches.js",
-  "/clients": "pages/clients.js",
-  "/transactions/[id]": "pages/transactions/[id].js",
-  "/404": "pages/404.js"
+  "/404": "pages/404.js",
+  "/api/transactions": "pages/api/transactions.js",
+  "/transactions": "pages/transactions.js"
 }

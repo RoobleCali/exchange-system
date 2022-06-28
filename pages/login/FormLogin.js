@@ -19,23 +19,23 @@ function FormLogin() {
         className=" w-full md:ml-5 dark:bg-gray-800 rounded-xl h-[80vh]
   md:h-auto  px-2 md:px-0  md:w-1/2"
       >
-        <div className="flex items-container justify-center">
+        <div className="flex justify-center items-container">
           <Image src={onlyLogo} alt="" />
         </div>
-        <p className="text-center text-2xl text-gray-600 dark:text-white mt-10">
+        <p className="mt-10 text-2xl text-center text-gray-600 dark:text-white">
           WELCOME BACK !
         </p>
-        <p className="text-center text-xl mt-2 text-gray-400 ">
+        <p className="mt-2 text-xl text-center text-gray-400 ">
           please sign in your credentials to continue
         </p>
         {/* form submit login */}
         <form
-          className="w-full space-y-7 mt-5 "
+          className="w-full mt-5 space-y-7 "
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex flex-col mx-2 space-y-3">
             <label
-              className="text-md font-medium text-gray-500"
+              className="font-medium text-gray-500 text-md"
               htmlFor="userName"
             >
               UserName
@@ -48,12 +48,12 @@ function FormLogin() {
             />
 
             {errors.userName && (
-              <p className="text-red-400 text-sm">This field is required</p>
+              <p className="text-sm text-red-400">This field is required</p>
             )}
           </div>
           <div className="flex flex-col mx-2 space-y-3">
             <label
-              className="text-md font-medium text-gray-500"
+              className="font-medium text-gray-500 text-md"
               htmlFor="userName"
             >
               Password
@@ -66,13 +66,12 @@ function FormLogin() {
             />
 
             {errors.firstName && (
-              <p className="text-red-400 text-sm">This field is required</p>
+              <p className="text-sm text-red-400">This field is required</p>
             )}
           </div>
 
           <button
-            className="w-full px-10 py-2 bg-blue-600 text-white rounded-md
-      hover:bg-blue-500 text-2xl hover:drop-shadow-md duration-300 ease-in"
+            className="w-full px-10 py-2 text-2xl text-white duration-300 ease-in bg-blue-600 rounded-md hover:bg-blue-500 hover:drop-shadow-md"
             type="submit"
           >
             Sign In

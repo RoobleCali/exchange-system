@@ -6,8 +6,8 @@ import Image from "next/image";
 export default () => {
   const { theme, setTheme } = useTheme();
   return (
-    <div className=" sticky top-0 z-30  overflow-hidden shadow-md ">
-      <div className="flex items-center flex-wrap  text-center justify-between shadow-lg p-2 px-2 md:p-4 md:px-24 ">
+    <div className="sticky top-0 z-30 overflow-hidden shadow-md ">
+      <div className="flex flex-wrap items-center justify-between p-2 px-2 text-center shadow-lg md:p-4 md:px-24 ">
         <Link href="/">
           <Image
             src={logo}
@@ -18,22 +18,22 @@ export default () => {
           />
         </Link>
 
-        <div className="flex items-center  space-x-3">
+        <div className="flex items-center space-x-3">
           {theme === "dark" ? (
             <MoonIcon
               onClick={() => setTheme("light")}
-              className="w-7 cursor-pointer"
+              className="cursor-pointer w-7"
             />
           ) : (
             <SunIcon
               onClick={() => setTheme("dark")}
-              className="w-7 cursor-pointer"
+              className="cursor-pointer w-7"
             />
           )}
           <Link href="/login">
             <button
               type="button"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="px-5 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               login
             </button>
