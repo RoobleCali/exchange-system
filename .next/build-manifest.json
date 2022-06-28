@@ -35,6 +35,16 @@
       "static/chunks/main.js",
       "static/chunks/pages/clients.js"
     ],
+    "/invoices": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/invoices.js"
+    ],
+    "/login": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/login.js"
+    ],
     "/wallet": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

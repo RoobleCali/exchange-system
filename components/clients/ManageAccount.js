@@ -1,9 +1,11 @@
-import { PrinterIcon } from "@heroicons/react/solid";
 import avatar from "../../pages/assets/avatar.png";
-import ReactToPrint from "react-to-print";
 import Image from "next/image";
 import { PencilAltIcon } from "@heroicons/react/outline";
+import { useState } from "react";
+import DepositModel from "./Deposit";
 function ManageAccount({ open, setOpen }) {
+  const [Deposit, setDeposit] = useState(false);
+
   return (
     <div>
       <div
@@ -13,12 +15,16 @@ function ManageAccount({ open, setOpen }) {
         }`}
       >
         <div
-          className={`absolute inset-0 bg-gray-400 text-white bg-opacity-100 z-0  transition-opacity duration-200 ${
-            open ? " opacity-90" : "opacity-0 pointer-events-none"
-          }`}
+          className={`absolute inset-0 bg-gray-400 text-white bg-opacity-100 z-0
+            transition-opacity duration-200 ${
+              open ? " opacity-90" : "opacity-0 pointer-events-none"
+            }`}
         ></div>
         <div class="flex items-center justify-center overflow-scroll h-full w-full">
-          <div class="bg-white  max-h-full  dark:bg-gray-800 justify-center  rounded-md shadow fixed overflow-y-auto sm:h-[45%] w-[90%] lg:w-[35%] ">
+          <div
+            class="bg-white  max-h-full  dark:bg-gray-800 justify-center  
+          rounded-md shadow fixed overflow-y-auto sm:h-[50%] w-[90%] lg:w-[40%] "
+          >
             <div
               class="bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md px-2 md:px-4
                md:py-4 py-7 flex items-center justify-between sticky top-0"
@@ -35,7 +41,7 @@ function ManageAccount({ open, setOpen }) {
                 />
               </button>
             </div>
-            <div className="flex items-center justify-between px-10 py-2 space-x-5">
+            <div className="flex items-center justify-between px-10 py-2 mt-5 space-x-5">
               {/* left */}
               <div className="w-[70%] px-5 py-3 bg-white shadow dark:bg-gray-800 space-y-5">
                 <div className="flex items-center justify-between pb-5">
@@ -83,7 +89,9 @@ function ManageAccount({ open, setOpen }) {
                   class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl 
                   focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg
                    text-sm px-5 py-3 w-36 text-gray-200 text-center mr-2 mb-2"
+                  onClick={() => setDeposit(true)}
                 >
+                  {" "}
                   Deposit(IN)
                 </button>
                 <button
@@ -123,6 +131,9 @@ function ManageAccount({ open, setOpen }) {
           </div>
         </div>
       </div>
+
+      {/* deposit model */}
+      <DepositModel open={Deposit} setOpen={setDeposit} />
     </div>
   );
 }
