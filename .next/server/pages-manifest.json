@@ -2,9 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/wallet": "pages/wallet.js",
-  "/404": "pages/404.js",
   "/login": "pages/login.js",
-  "/api/transactions": "pages/api/transactions.js",
-  "/clients": "pages/clients.js"
+  "/404": "pages/404.js"
 }
