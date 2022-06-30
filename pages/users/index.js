@@ -10,7 +10,7 @@ function index() {
   return (
     <div>
       <div class="sm:px-6 w-full">
-        <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
+        <div class="bg-white dark:bg-gray-800 py-4 md:py-7 px-4 md:px-8 xl:px-10">
           <div class="w-full sm:px-6">
             <div class="px-4 md:px-10 py-4 md:py-7 bg-gray-100 dark:bg-gray-700 rounded-tl-lg rounded-tr-lg">
               <div class="flex items-center justify-between">
@@ -58,7 +58,7 @@ function index() {
                     <td class="px-6 py-4">$27,202,920</td>
 
                     <td class="px-6 py-4 space-x-5 flex items-center ">
-                      <PencilAltIcon className="w-7 font-medium text-blue-600 dark:text-blue-500 cursor-pointer" />
+                      <PencilAltIcon className="font-medium text-blue-600 cursor-pointer w-7 dark:text-blue-500" />
                       <TrashIcon class="w-7 font-medium text-red-600 dark:text-red-500 cursor-pointer" />
                     </td>
                   </tr>
@@ -75,7 +75,7 @@ function index() {
                     <td class="px-6 py-4">$27,202,920</td>
 
                     <td class="px-6 py-4 space-x-5 flex items-center ">
-                      <PencilAltIcon className="w-7 font-medium text-blue-600 dark:text-blue-500 cursor-pointer" />
+                      <PencilAltIcon className="font-medium text-blue-600 cursor-pointer w-7 dark:text-blue-500" />
                       <TrashIcon class="w-7 font-medium text-red-600 dark:text-red-500 cursor-pointer" />
                     </td>
                   </tr>

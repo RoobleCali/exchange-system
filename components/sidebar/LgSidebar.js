@@ -32,7 +32,7 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
           }`}
       >
         {/* Logo */}
-        <div className="  w-48 md:ml-10 overflow-hidden z-96">
+        <div className="w-48 overflow-hidden md:ml-10 z-96">
           <Image
             src={logo}
             alt="logo"
@@ -40,10 +40,10 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
             height={38}
             className="cursor-pointer"
           />
-          <hr className="border-bn mt-3 border-gray-200 dark:border-gray-600" />
+          <hr className="mt-3 border-gray-200 border-bn dark:border-gray-600" />
         </div>
         {/* Links */}
-        <div className="w-48 ml-4 mt-10   ">
+        <div className="w-48 mt-10 ml-4 ">
           <ul className="mt-1 text-[12px] dark:text-white space-y-1 ">
             <li className="text-gray-500 dark:text-gray-300">
               <Link href="/dashboard">
@@ -128,8 +128,9 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
               
                   ${
                     router.pathname === "/invoices" ||
-                    (router.pathname === "/invoices/[id]" &&
-                      "bg-blue-700 text-white")
+                    router.pathname === "/invoices/[id]"
+                      ? "bg-blue-700 text-white"
+                      : ""
                   }
                       `}
                 >
@@ -216,7 +217,7 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                     <SortAscendingIcon className="w-4 h-4" />
                   </div>
                   <button
-                    class={`flex items-center justify-between px-5  py-1 font-normal
+                    className={`flex items-center justify-between px-5  py-1 font-normal
                     transition duration-75 rounded-lg
                     hover:text-gray-200
                     group dark:text-white text-gray-500
@@ -229,7 +230,7 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                     }
                     `}
                   >
-                    <span class="-ml-2 w-24">Roles & Users</span>
+                    <span className="w-24 -ml-2">Roles & Users</span>
                     {Dropdown ? (
                       <ChevronUpIcon className="w-4 h-4 ml-9" />
                     ) : (
@@ -239,17 +240,14 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                 </a>
               </div>
               <ul
-                class={`${
+                className={`${
                   Dropdown ? "innline-flex" : "hidden"
                 }  py-2 space-y-2`}
               >
                 <li>
                   <Link href="/users">
                     <a
-                      class="flex items-center w-full p-2 text-xs font-normal 
-                    text-gray-500 transition duration-75 rounded-lg group
-                     hover:bg-gray-100 dark:text-white 
-                     dark:hover:bg-gray-700 pl-11"
+                      className="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
                     >
                       users
                     </a>
@@ -258,11 +256,7 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                 <li>
                   <Link href="/roles">
                     <a
-                      class="flex items-center w-full p-2 text-xs
-                     font-normal text-gray-500 transition 
-                     duration-75 rounded-lg group hover:bg-gray-100
-                      dark:text-white dark:hover:bg-gray-700 
-                      pl-11"
+                      className="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
                     >
                       Roles
                     </a>
@@ -290,12 +284,12 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                     <SortAscendingIcon className="w-4 h-4" />
                   </div>
                   <button
-                    class={`flex items-center justify-between px-5  py-1 font-normal
+                    className={`flex items-center justify-between px-5  py-1 font-normal
                     transition duration-75 rounded-lg
                     group dark:text-white 
                     ${Report && "text-gray-400"} `}
                   >
-                    <span class="  w-14">Reports</span>
+                    <span className=" w-14">Reports</span>
                     {ReportDropdown ? (
                       <ChevronUpIcon className="w-4 h-4 ml-16" />
                     ) : (
@@ -305,27 +299,27 @@ export default function LgSidebar({ Mobilesidebar, setMobileSidebar }) {
                 </a>
               </div>
               <ul
-                class={`${
+                className={`${
                   ReportDropdown ? "innline-flex" : "hidden"
                 }  py-2 space-y-2`}
               >
                 <li>
                   <Link href="/">
-                    <a class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
+                    <a className="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
                       Transactions
                     </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/">
-                    <a class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
+                    <a className="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
                       Common Report
                     </a>
                   </Link>
                 </li>
               </ul>
             </li>
-            <hr className="border-b-1 mt-2 border-gray-200" />
+            <hr className="mt-2 border-gray-200 border-b-1" />
           </ul>
         </div>
       </div>

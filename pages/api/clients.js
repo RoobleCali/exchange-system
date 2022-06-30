@@ -1,4 +1,4 @@
-import { Data } from "./Data";
+import { Data } from "./Customer";
 export default function handler(req, res) {
   res.status(200).json(Data);
 }

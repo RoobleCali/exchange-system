@@ -15,20 +15,20 @@ export default ({ data }) => {
       accessor: "id",
     },
     {
-      Header: "Date",
-      accessor: "date",
+      Header: "name",
+      accessor: "name",
     },
     {
-      Header: "Amount",
-      accessor: "amount",
+      Header: "username",
+      accessor: "username",
     },
     {
-      Header: "Description",
-      accessor: "description",
+      Header: "email",
+      accessor: "email",
     },
     {
-      Header: "Currency",
-      accessor: "currency",
+      Header: "phone",
+      accessor: "phone",
     },
     {
       Header: "Status",
@@ -58,12 +58,18 @@ export const getServerSideProps = async ({ req, res }) => {
     });
     res.end();
   } else {
-    const resp = await axios.get(`http://localhost:3000/api/transactions`);
+    try {
+      const resp = await axios.get(
+        `https://jsonplaceholder.typicode.com/users`
+      );
 
-    return {
-      props: {
-        data: resp.data,
-      },
-    };
+      return {
+        props: {
+          data: resp.data,
+        },
+      };
+    } catch (error) {
+      console.log(error);
+    }
   }
 };

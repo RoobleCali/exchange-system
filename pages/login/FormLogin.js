@@ -1,16 +1,32 @@
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import onlyLogo from "../assets/onlyLogo.png";
+import { setCookies } from "cookies-next";
+import axios from "axios";
+import { addTransaction } from "../../redux/slices/transactionSlice";
+import { useDispatch } from "react-redux";
+import { login } from "../../components/utils/Login";
 import Router from "next/router";
+
 function FormLogin() {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
-    Router.push("/dashboard");
+    const res = axios.post("https://www.riyoclean.com/api/login", data);
+    res
+      .then((res) => {
+        setCookies("token", res.data.token);
+        dispatch(addTransaction(res.data.user));
+        Router.replace("/dashboard");
+        login(res.data.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -36,36 +52,36 @@ function FormLogin() {
           <div className="flex flex-col mx-2 space-y-3">
             <label
               className="font-medium text-gray-500 text-md"
-              htmlFor="userName"
+              htmlFor="UserName"
             >
               UserName
             </label>
 
             <input
               class="focus:ring-2 focus:ring-gray-400 w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
-              placeholder="userName"
-              {...register("userName", { required: true })}
+              placeholder="UserName"
+              {...register("UserName", { required: true })}
             />
 
-            {errors.userName && (
+            {errors.UserName && (
               <p className="text-sm text-red-400">This field is required</p>
             )}
           </div>
           <div className="flex flex-col mx-2 space-y-3">
             <label
               className="font-medium text-gray-500 text-md"
-              htmlFor="userName"
+              htmlFor="UserName"
             >
               Password
             </label>
             <input
-              type="password"
-              {...register("firstName", { required: true })}
+              type="Password"
+              {...register("Password", { required: true })}
               class="focus:ring-2 focus:ring-gray-400 w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
-              placeholder="password"
+              placeholder="Password"
             />
 
-            {errors.firstName && (
+            {errors.Password && (
               <p className="text-sm text-red-400">This field is required</p>
             )}
           </div>

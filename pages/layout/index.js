@@ -1,15 +1,16 @@
+import { getCookie } from "cookies-next";
 import { useRouter } from "next/router";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import Header from "../../components/header";
 import SampleSidebar from "../../components/sidebar";
-import React from "react";
 
 function index({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [Mobilesidebar, setMobileSidebar] = useState(false);
-
+  const token = getCookie("token");
   const router = useRouter();
+  // if window typeof window !== 'undefined' check token
+
   if (
     router.pathname === "/" ||
     router.pathname === "/login" ||
@@ -19,7 +20,7 @@ function index({ children }) {
   } else {
     return (
       <>
-        <div className="flex h-screen bg-gray-50 overflow-hidden font-popins  dark:bg-gray-800 ">
+        <div className="flex h-screen overflow-hidden bg-gray-50 font-popins dark:bg-gray-800 ">
           <SampleSidebar
             sidebarOpen={sidebarOpen}
             setSidebarOpen={setSidebarOpen}
@@ -27,7 +28,7 @@ function index({ children }) {
             setMobileSidebar={setMobileSidebar}
           />
 
-          <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+          <div className="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
             <Header
               sidebarOpen={sidebarOpen}
               setSidebarOpen={setSidebarOpen}
@@ -35,7 +36,7 @@ function index({ children }) {
               setMobileSidebar={setMobileSidebar}
             />
             <main>
-              <div className=" p-1 mt-3 mx-3 px-3 sm:px-4 lg:px-8">
+              <div className="p-1 px-3 mx-3 mt-3 sm:px-4 lg:px-8">
                 <div className="h-max">{children}</div>
               </div>
             </main>

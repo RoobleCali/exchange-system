@@ -60,12 +60,12 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
         ref={sidebar}
       >
         {/* Logo */}
-        <div className="  mb-3 pr-3 w-40 ml-10 sm:px-2  ">
+        <div className="w-40 pr-3 mb-3 ml-10  sm:px-2">
           <Image src={logo} alt="logo" />
-          <hr className="border-bn mt-3   border-gray-200 dark:border-gray-600" />
+          <hr className="mt-3 border-gray-200 border-bn dark:border-gray-600" />
         </div>
         {/* Links */}
-        <div className="w-48 mt-5   ">
+        <div className="w-48 mt-5 ">
           <ul className="mt-1 text-[13px] dark:text-white space-y-1.5 ">
             <li
               className="text-gray-500 dark:text-gray-300"
@@ -274,7 +274,7 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                     <SortAscendingIcon className="w-4 h-4" />
                   </div>
                   <button
-                    class={`flex items-center justify-between px-5  py-1 font-normal
+                    className={`flex items-center justify-between px-5  py-1 font-normal
                     transition duration-75 rounded-lg
                     hover:text-gray-200
                     group dark:text-white text-gray-500
@@ -287,7 +287,7 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                     }
                     `}
                   >
-                    <span class="-ml-2 w-14">Users</span>
+                    <span className="-ml-2 w-14">Users</span>
                     {Dropdown ? (
                       <ChevronUpIcon className="w-4 h-4 ml-16" />
                     ) : (
@@ -297,17 +297,14 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                 </a>
               </div>
               <ul
-                class={`${
+                className={`${
                   Dropdown ? "innline-flex" : "hidden"
                 }  py-2 space-y-2`}
               >
                 <li>
                   <Link href="/users">
                     <a
-                      class="flex items-center w-full p-2 text-xs font-normal 
-                    text-gray-500 transition duration-75 rounded-lg group
-                     hover:bg-gray-100 dark:text-white 
-                     dark:hover:bg-gray-700 pl-11"
+                      className="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
                       onClick={() => setSidebarOpen(!sidebarOpen)}
                     >
                       users
@@ -317,11 +314,7 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                 <li>
                   <Link href="/roles">
                     <a
-                      class="flex items-center w-full p-2 text-xs
-                     font-normal text-gray-500 transition 
-                     duration-75 rounded-lg group hover:bg-gray-100
-                      dark:text-white dark:hover:bg-gray-700 
-                      pl-11"
+                      className="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
                       onClick={() => setSidebarOpen(!sidebarOpen)}
                     >
                       Roles
@@ -350,12 +343,12 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                     <SortAscendingIcon className="w-4 h-4" />
                   </div>
                   <button
-                    class={`flex items-center justify-between px-5  py-1 font-normal
+                    className={`flex items-center justify-between px-5  py-1 font-normal
                     transition duration-75 rounded-lg
                     group dark:text-white 
                     ${Report && "text-gray-400"} `}
                   >
-                    <span class="  w-14">Reports</span>
+                    <span className=" w-14">Reports</span>
                     {ReportDropdown ? (
                       <ChevronUpIcon className="w-4 h-4 ml-14" />
                     ) : (
@@ -365,27 +358,27 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                 </a>
               </div>
               <ul
-                class={`${
+                className={`${
                   ReportDropdown ? "innline-flex" : "hidden"
                 }  py-2 space-y-2`}
               >
                 <li>
                   <Link href="/">
-                    <a class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
+                    <a className="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
                       Transactions
                     </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/">
-                    <a class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
+                    <a className="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
                       Common Report
                     </a>
                   </Link>
                 </li>
               </ul>
             </li>
-            <hr className="border-b-1 mt-2 border-gray-200" />
+            <hr className="mt-2 border-gray-200 border-b-1" />
           </ul>
         </div>
       </div>

@@ -3,14 +3,18 @@ import Image from "next/image";
 import { PencilAltIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import DepositModel from "./Deposit";
+import WithdrawModel from "./Withdraw";
+import TransferModel from "./Transfer";
 function ManageAccount({ open, setOpen }) {
   const [Deposit, setDeposit] = useState(false);
+  const [Withdraw, setWithdraw] = useState(false);
+  const [Transfer, setTransfer] = useState(false);
 
   return (
     <div>
       <div
         id="popup"
-        class={`z-50 fixed w-full flex justify-center inset-0  overflow-scroll ${
+        className={`z-50 fixed w-full flex justify-center inset-0  overflow-scroll ${
           open ? "flex" : "hidden"
         }`}
       >
@@ -20,19 +24,17 @@ function ManageAccount({ open, setOpen }) {
               open ? " opacity-90" : "opacity-0 pointer-events-none"
             }`}
         ></div>
-        <div class="flex items-center justify-center overflow-scroll h-full w-full">
+        <div className="flex items-center justify-center w-full h-full overflow-scroll">
           <div
-            class="bg-white  max-h-full  dark:bg-gray-800 justify-center  
-          rounded-md shadow fixed overflow-y-auto sm:h-[50%] w-[90%] lg:w-[40%] "
+            className="bg-white  max-h-full  dark:bg-gray-800 justify-center  
+          rounded-md shadow fixed overflow-y-auto sm:h-[50%] lg:h-[60%]  w-[90%] md:w-[90%]  xl:w-[60%] 2xl:w-[40%] "
           >
-            <div
-              class="bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md px-2 md:px-4
-               md:py-4 py-7 flex items-center justify-between sticky top-0"
-            >
-              <p class="text-base font-semibold dark:text-white">Send Money</p>
+            <div className="sticky top-0 flex items-center justify-between px-2 bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-4 md:py-4 py-7">
+              <p className="text-base font-semibold dark:text-white">
+                Manage Account
+              </p>
               <button
-                onclick="popuphandler(false)"
-                class="focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
+                className="focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
                 onClick={() => setOpen(false)}
               >
                 <img
@@ -41,9 +43,9 @@ function ManageAccount({ open, setOpen }) {
                 />
               </button>
             </div>
-            <div className="flex items-center justify-between px-10 py-2 mt-5 space-x-5">
+            <div className="flex flex-wrap items-center justify-center px-10 py-2 mt-5 space-x-5 md:justify-between">
               {/* left */}
-              <div className="w-[70%] px-5 py-3 bg-white shadow dark:bg-gray-800 space-y-5">
+              <div className="hidden px-5 py-3 space-y-5 bg-white shadow max-w- md:inline-block dark:bg-gray-800">
                 <div className="flex items-center justify-between pb-5">
                   <p className="flex items-center space-x-3">
                     <Image src={avatar} alt="" width={50} height={50} />
@@ -86,43 +88,34 @@ function ManageAccount({ open, setOpen }) {
               <div className="flex flex-col items-center justify-between space-y-4">
                 <button
                   type="button"
-                  class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl 
-                  focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg
-                   text-sm px-5 py-3 w-36 text-gray-200 text-center mr-2 mb-2"
+                  className="px-5 py-3 mb-2 mr-2 text-sm font-medium text-center text-gray-200 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-blue-300 dark:focus:ring-blue-800 w-36"
                   onClick={() => setDeposit(true)}
                 >
-                  {" "}
                   Deposit(IN)
                 </button>
                 <button
                   type="button"
-                  class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl 
-                  focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg
-                   text-sm px-5 py-3 w-36 text-gray-200 text-center mr-2 mb-2"
+                  className="px-5 py-3 mb-2 mr-2 text-sm font-medium text-center text-gray-200 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-blue-300 dark:focus:ring-blue-800 w-36"
+                  onClick={() => setWithdraw(true)}
                 >
                   Widthdraw(Out)
                 </button>
                 <button
                   type="button"
-                  class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl 
-                  focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg
-                   text-sm px-5 py-3 w-36 text-gray-200 text-center mr-2 mb-2"
+                  className="px-5 py-3 mb-2 mr-2 text-sm font-medium text-center text-gray-200 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-blue-300 dark:focus:ring-blue-800 w-36"
+                  onClick={() => setTransfer(true)}
                 >
                   Transfer (OUT)
                 </button>
                 <button
                   type="button"
-                  class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl 
-                  focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg
-                   text-sm px-5 py-3 w-36 text-gray-200 text-center mr-2 mb-2"
+                  className="px-5 py-3 mb-2 mr-2 text-sm font-medium text-center text-gray-200 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-blue-300 dark:focus:ring-blue-800 w-36"
                 >
                   Exchange
                 </button>
                 <button
                   type="button"
-                  class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl 
-                  focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg
-                   text-sm px-5 py-3 w-36 text-gray-200 text-center mr-2 mb-2"
+                  className="px-5 py-3 mb-2 mr-2 text-sm font-medium text-center text-gray-200 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-blue-300 dark:focus:ring-blue-800 w-36"
                 >
                   View History
                 </button>
@@ -134,6 +127,12 @@ function ManageAccount({ open, setOpen }) {
 
       {/* deposit model */}
       <DepositModel open={Deposit} setOpen={setDeposit} />
+
+      {/* withdraw model */}
+      <WithdrawModel open={Withdraw} setOpen={setWithdraw} />
+
+      {/* transfer model */}
+      <TransferModel open={Transfer} setOpen={setTransfer} />
     </div>
   );
 }

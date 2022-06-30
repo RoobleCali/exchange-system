@@ -4,7 +4,6 @@ import transactions from "./slices/transactionSlice";
 import counter from "./slices/counterSlice";
 
 const combinedReducer = combineReducers({
-  counter,
   transactions,
 });
 
@@ -12,12 +11,7 @@ const masterReducer = (state, action) => {
   if (action.type === HYDRATE) {
     const nextState = {
       ...state, // use previous state
-      counter: {
-        count: state.counter.count + action.payload.counter.count,
-      },
-      transactions: {
-        transactions: [...action.payload.transactions.transactions],
-      },
+      transactions: { ...action.payload.transactions.transactions },
     };
     return nextState;
   } else {

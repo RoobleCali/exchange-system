@@ -8,11 +8,11 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className=" bg-gray-100 dark:bg-slate-800  h-max ">
+    <div className="h-screen bg-gray-100 dark:bg-slate-800">
       <LoginNavbar />
-      <div className="flex items-center justify-between  flex-col-reverse px-3 md:flex-row py-14 md:py-24 sm:px-24">
-        <div className="flex-2  mt-9 w-full space-y-3 md:max-w-md">
-          <h1 className="text-4xl md:text-4xl pb-3">
+      <div className="flex flex-col-reverse items-center justify-between px-3 py-10 mt-10 md:flex-row md:py-24 sm:px-24">
+        <div className="w-full space-y-3 flex-2 mt-9 md:max-w-md">
+          <h1 className="pb-3 text-4xl md:text-4xl">
             you can make your Business More Profitable but How .. !
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400">
@@ -25,7 +25,7 @@ export default function Home() {
           <Link href="/login">
             <button
               type="button"
-              className="text-white  hover:bg-white bg-blue-700 transition-all duration-200   focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-9 py-2 dark:bg-blue-600 hover:text-gray-500 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="py-2 text-sm font-medium text-white transition-all duration-200 bg-blue-700 rounded-lg hover:bg-white focus:ring-4 focus:ring-blue-300 px-9 dark:bg-blue-600 hover:text-gray-500 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               Get started
             </button>

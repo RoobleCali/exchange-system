@@ -4,14 +4,14 @@ import Link from "next/link";
 import abdishakuur from "../../pages/assets/abdishakuur.jpg";
 export default function Avatar() {
   return (
-    <div className="flex justify-end py-3 px-6 ">
+    <div className="flex justify-end px-6 py-3 ">
       <Menu as="div" className="relative">
-        <Menu.Button className="cursor-pointer flex items-center ">
+        <Menu.Button className="flex items-center cursor-pointer ">
           <Image
             src={abdishakuur}
             width={30}
             height={30}
-            className="rounded-lg border-2 border-slate-200"
+            className="border-2 rounded-lg border-slate-200"
             alt="avatar"
           />
           <svg
@@ -32,14 +32,14 @@ export default function Avatar() {
         </Menu.Button>
 
         <Transition
-          enter-active-classname="transition transform duration-100 ease-out"
-          enter-from-classname="opacity-0 scale-90"
-          enter-to-classname="opacity-100 scale-100"
-          leave-active-classname="transition transform duration-100 ease-in"
-          leave-from-classname="opacity-100 scale-100"
-          leave-to-classname="opacity-0 scale-90"
+          enter-active-classname="transition duration-100 ease-out transform"
+          enter-from-classname="scale-90 opacity-0"
+          enter-to-classname="scale-100 opacity-100"
+          leave-active-classname="transition duration-100 ease-in transform"
+          leave-from-classname="scale-100 opacity-100"
+          leave-to-classname="scale-90 opacity-0"
         >
-          <Menu.Items className="origin-top-right mt-2 focus:outline-none absolute text-gray-700 right-0 bg-white dark:bg-gray-800 dark:text-gray-200  overflow-hidden rounded-md shadow-lg border w-48">
+          <Menu.Items className="absolute right-0 w-48 mt-2 overflow-hidden text-gray-700 origin-top-right bg-white border rounded-md shadow-lg focus:outline-none dark:bg-gray-800 dark:text-gray-200">
             <Menu.Item v-slot="{active}">
               <a href="#" className="block px-4 py-2 text-sm ">
                 My Profile
