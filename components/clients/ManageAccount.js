@@ -25,10 +25,7 @@ function ManageAccount({ open, setOpen }) {
             }`}
         ></div>
         <div className="flex items-center justify-center w-full h-full overflow-scroll">
-          <div
-            className="bg-white  max-h-full  dark:bg-gray-800 justify-center  
-          rounded-md shadow fixed overflow-y-auto sm:h-[50%] lg:h-[60%]  w-[90%] md:w-[90%]  xl:w-[60%] 2xl:w-[40%] "
-          >
+          <div className="fixed justify-center max-h-full overflow-y-auto bg-white rounded-md shadow dark:bg-gray-800 h-max w-max">
             <div className="sticky top-0 flex items-center justify-between px-2 bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-4 md:py-4 py-7">
               <p className="text-base font-semibold dark:text-white">
                 Manage Account

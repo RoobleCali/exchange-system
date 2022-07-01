@@ -104,60 +104,58 @@ function Table({ columns, data }) {
 
   // Render the UI for your table
   return (
-    <div className="p-2 mx-auto space-y-10 shadow-xl max-w-7xl md:p-4">
+    <div className="p-2 mx-auto space-y-10 shadow-xl min- max-w-7xl md:p-4">
       {/* top bar */}
       <div>
-        {route === "/transactions" && (
-          <div className="flex items-center justify-between w-full space-x-10">
-            <div className="flex items-center justify-center space-x-5 sm:justify-between sm:space-x-3">
+        {route === "/transactions" ||
+          (route === "/clients" && (
+            <div className="flex items-center justify-between w-full space-x-10">
+              <div className="flex items-center justify-center space-x-5 sm:justify-between sm:space-x-3">
+                {/* filter  */}
+                <GlobalFilter
+                  preGlobalFilteredRows={preGlobalFilteredRows}
+                  globalFilter={state.globalFilter}
+                  setGlobalFilter={setGlobalFilter}
+                />
+                {headerGroups.map((headerGroup) =>
+                  headerGroup.headers.map((column) =>
+                    column.Filter ? (
+                      <div key={column.id}>
+                        <label htmlFor={column.id}>
+                          {column.render("Header")}:{" "}
+                        </label>
+                        {column.render("Filter")}
+                      </div>
+                    ) : null
+                  )
+                )}
+                <div
+                  className="items-center px-2 py-1 space-x-2 bg-white cursor-pointer dark:bg-slate-600 sm:flex innline-flex"
+                  onClick={() => setOpen(!open)}
+                >
+                  <AdjustmentsIcon className="w-5 h-6 text-gray-500 rotate-90 bg-white dark:text-gray-200 dark:bg-slate-600" />
+                </div>
+              </div>
               {/* filter  */}
-              <GlobalFilter
-                preGlobalFilteredRows={preGlobalFilteredRows}
-                globalFilter={state.globalFilter}
-                setGlobalFilter={setGlobalFilter}
-              />
-              {headerGroups.map((headerGroup) =>
-                headerGroup.headers.map((column) =>
-                  column.Filter ? (
-                    <div key={column.id}>
-                      <label htmlFor={column.id}>
-                        {column.render("Header")}:{" "}
-                      </label>
-                      {column.render("Filter")}
+              <div className="flex items-center justify-center space-x-3">
+                <select className="items-center hidden px-0 py-2 space-x-2 text-xs bg-white border-none rounded-sm outline-none cursor-pointer sm:inline-block focus:border-none dark:bg-gray-800 innline-flex">
+                  <option value="">Pending</option>
+                  <option value="">All</option>
+                  <option value="">Completed</option>
+                  <option value="">Cancelled</option>
+                </select>
+                <ReactToPrint
+                  trigger={() => (
+                    <div className="flex items-center max-w-md px-2 py-2 space-x-2 text-xs text-center text-white bg-blue-700 rounded-md cursor-pointer w-max innline-flex">
+                      <CloudDownloadIcon className="w-4 h-4" />
+                      <button className="truncate ">Print </button>
                     </div>
-                  ) : null
-                )
-              )}
-              <div
-                className="items-center px-2 py-1 space-x-2 bg-white cursor-pointer dark:bg-slate-600 sm:flex innline-flex"
-                onClick={() => setOpen(!open)}
-              >
-                <AdjustmentsIcon className="w-5 h-6 text-gray-500 rotate-90 bg-white dark:text-gray-200 dark:bg-slate-600" />
+                  )}
+                  content={() => componentRef}
+                />
               </div>
             </div>
-            {/* filter  */}
-            <div className="flex items-center justify-center space-x-3">
-              <select className="items-center hidden px-0 py-2 space-x-2 text-xs bg-white border-none rounded-sm outline-none cursor-pointer sm:inline-block focus:border-none dark:bg-gray-800 innline-flex">
-                <option value="">Pending</option>
-                <option value="">All</option>
-                <option value="">Completed</option>
-                <option value="">Cancelled</option>
-              </select>
-              <ReactToPrint
-                trigger={() => (
-                  <div className="flex items-center max-w-md px-2 py-2 space-x-2 text-xs text-center text-white bg-blue-700 rounded-md cursor-pointer w-max innline-flex">
-                    <CloudDownloadIcon className="w-4 h-4" />
-                    <button className="truncate ">Print </button>
-                  </div>
-                )}
-                content={() => componentRef}
-              />
-            </div>
-
-            {/* download button */}
-            {/* download report and print */}
-          </div>
-        )}
+          ))}
         {route === "/invoices" && (
           <div className="flex items-center justify-between w-full">
             {/* left */}
@@ -208,16 +206,13 @@ function Table({ columns, data }) {
       <div className="w-full border-b divide-y divide-gray-200">
         <table
           {...getTableProps()}
-          className="inline-block w-full pb-16 overflow-hidden overflow-x-scroll border-gray-200 dark:bg-gray-800 sm:rounded-lg dark:text-gray-300"
+          className="inline-block w-full overflow-hidden overflow-x-scroll border-gray-200 dark:bg-gray-800 sm:rounded-lg dark:text-gray-300"
           ref={(el) => (componentRef = el)}
         >
-          <thead className="">
+          <thead>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
                 {headerGroup.headers.map((column) => (
-                  // Add the sorting props to control sorting. For this example
-                  // we can add them into the header props
-
                   <th
                     className="w-full px-5 py-3 m-auto text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-200 group dark:bg-gray-600 p-auto dark:text-gray-600"
                     {...column.getHeaderProps(column.getSortByToggleProps())}
@@ -244,7 +239,7 @@ function Table({ columns, data }) {
           </thead>
           <tbody
             {...getTableBodyProps()}
-            className="w-full divide-y divide-gray-200 "
+            className="w-full h-full divide-y divide-gray-200 "
           >
             {/* if page lenght is less than zero show no data else show the data */}
             {page.length > 0 ? (
@@ -311,7 +306,7 @@ function Table({ columns, data }) {
                 setPageSize(Number(e.target.value));
               }}
             >
-              {[30, 50, 100].map((pageSize) => (
+              {[50, 100, 200].map((pageSize) => (
                 <option key={pageSize} value={pageSize}>
                   Show {pageSize}
                 </option>

@@ -2,6 +2,7 @@ import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
 import abdishakuur from "../../pages/assets/abdishakuur.jpg";
+import { deleteCookie, removeCookies } from "cookies-next";
 export default function Avatar() {
   return (
     <div className="flex justify-end px-6 py-3 ">
@@ -55,10 +56,14 @@ export default function Avatar() {
                 Help
               </a>
             </Menu.Item>
-            <Menu.Item v-slot="{active}">
-              <Link href="/login">
-                <a className="block px-4 py-2 text-sm ">Log out</a>
-              </Link>
+            <Menu.Item
+              v-slot="{active}"
+              onClick={() => {
+                removeCookies("token");
+                window.location.href = "/login";
+              }}
+            >
+              <a className="block px-4 py-2 text-sm cursor-pointer ">Log out</a>
             </Menu.Item>
           </Menu.Items>
         </Transition>
