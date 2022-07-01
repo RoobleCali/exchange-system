@@ -8,12 +8,7 @@ import {
   usePagination,
 } from "react-table";
 //hero icons
-import {
-  ChevronDoubleLeftIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ChevronDoubleRightIcon,
-} from "@heroicons/react/solid";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 //table component
 import { Button, PageButton } from "../shared/Button";
 import { SortIcon, SortUpIcon, SortDownIcon } from "../shared/Icons";
@@ -309,10 +304,10 @@ function Table({ columns, data }) {
       </div>
       {/* large screen pagination */}
       <div className="justify-between flex-1 hidden px-2 sm:flex sm:items-center">
-        <div className="flex items-baseline gap-x-2">
-          <span className="text-sm text-gray-700">
-            Page <span className="font-medium">{state.pageIndex + 1}</span> of{" "}
-            <span className="font-medium">{pageOptions.length}</span>
+        <div className="flex items-baseline w-96 gap-x-2">
+          <span className="text-sm text-gray-700 dark:text-gray-300">
+            Page <span className="font-medium">{state.pageIndex + 1}</span> of
+            <span className="ml-2 font-medium">{pageOptions.length}</span>
           </span>
           <label>
             <select
@@ -322,7 +317,7 @@ function Table({ columns, data }) {
                 setPageSize(Number(e.target.value));
               }}
             >
-              {[50, 100, 200].map((pageSize) => (
+              {[20, 50, 100].map((pageSize) => (
                 <option key={pageSize} value={pageSize}>
                   Show {pageSize}
                 </option>
@@ -330,51 +325,47 @@ function Table({ columns, data }) {
             </select>
           </label>
         </div>
-        <div>
-          <nav
-            className="relative z-0 inline-flex -space-x-px rounded-md shadow-sm"
-            aria-label="Pagination"
-          >
-            <PageButton
-              className="rounded-l-xl"
-              onClick={() => gotoPage(0)}
-              disabled={!canPreviousPage}
-            >
-              <span className="sr-only">First</span>
-              <ChevronDoubleLeftIcon
-                className="w-5 h-5 text-gray-400"
-                aria-hidden="true"
-              />
-            </PageButton>
-            <PageButton
-              onClick={() => previousPage()}
-              disabled={!canPreviousPage}
-            >
-              <span className="sr-only">Previous</span>
-              <ChevronLeftIcon
-                className="w-5 h-5 text-gray-400"
-                aria-hidden="true"
-              />
-            </PageButton>
-            <PageButton onClick={() => nextPage()} disabled={!canNextPage}>
-              <span className="sr-only">Next</span>
-              <ChevronRightIcon
-                className="w-5 h-5 text-gray-400"
-                aria-hidden="true"
-              />
-            </PageButton>
-            <PageButton
-              className="rounded-r-md"
-              onClick={() => gotoPage(pageCount - 1)}
-              disabled={!canNextPage}
-            >
-              <span className="sr-only">Last</span>
-              <ChevronDoubleRightIcon
-                className="w-5 h-5 text-gray-400"
-                aria-hidden="true"
-              />
-            </PageButton>
-          </nav>
+        {/* pagination */}
+        <div className="flex items-center justify-center">
+          <div>
+            <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+              <ChevronLeftIcon className="text-gray-400 w-7 h-7" />
+            </button>
+          </div>
+          <div className="flex max-w-md overflow-x-hidden">
+            {pageOptions.map((page, i) => {
+              const isActive = i === state.pageIndex;
+              return (
+                <div className="max-w-2xl py-10 mx-auto">
+                  {/* preveous */}
+                  {/* show first 6 page for pagination if page greater than 6 show icon for */}
+                  <span
+                    key={page}
+                    className={`rounded-l-xl  px-3 py-2 mx-2 text-base font-bold leading-tight 
+                       transition duration-150 ease-in-out rounded 
+                       shadow cursor-pointer text-gray-200 hover:text-white hover:bg-indigo-600  sm:mx-4 focus:outline-none ${
+                         isActive
+                           ? "bg-indigo-600 text-white"
+                           : "text-indigo-700"
+                       }`}
+                    onClick={() => gotoPage(i)}
+                    disabled={i === state.pageIndex}
+                  >
+                    {/* show first 8 pages */}
+
+                    {page}
+                  </span>
+
+                  {/* next */}
+                </div>
+              );
+            })}
+          </div>
+          <div className="pl-2">
+            <button onClick={() => nextPage()} disabled={!canNextPage}>
+              <ChevronRightIcon className="text-gray-400 w-7 h-7" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
