@@ -6,6 +6,7 @@ import { getCookie } from "cookies-next";
 import Router from "next/router";
 import Actions from "../../components/clients/Actions";
 import { StatusPill } from "../../components/table/StatusBill";
+import regeneratorRuntime from "regenerator-runtime";
 
 export default ({ data }) => {
   const [Data, setData] = useState(data);
