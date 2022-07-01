@@ -18,8 +18,7 @@ function DepositModel({ open, setOpen }) {
           <div className="container mx-auto">
             <div className="flex items-center justify-center w-full h-full">
               <div
-                className="bg-white dark:bg-gray-800  rounded-md shadow
-               fixed overflow-y-auto  w-[90%] md:w-[50%] md:h-max xl:w-[22%]  "
+                className="fixed overflow-y-auto bg-white rounded-md shadow dark:bg-gray-800 w-max "
               >
                 <div className="flex items-center justify-between px-4 bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-8 md:py-4 py-7">
                   <p className="text-base font-semibold dark:text-white">
@@ -48,7 +47,7 @@ function DepositModel({ open, setOpen }) {
                       </div>
                     </div>
                   </div>
-                  <p className="mt-3">Current Money</p>{" "}
+                  <p className="mt-3">Current Money</p>
                   <div className="flex flex-col flex-wrap justify-between mt-2 space-y-3 md:items-center md:space-y-0 md:space-x-2 md:flex-row">
                     <button className="px-2 py-1.5 text-green-600 bg-green-100 rounded-md">
                       USD $9, 543, 268
