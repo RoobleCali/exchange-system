@@ -10,71 +10,127 @@ import {
 
 export const sidebarData = [
   {
-    title: "Dashboard",
-    icon: <HomeIcon />,
-    link: "/dashboard",
-  },
-  {
-    title: "my Wallet",
-    icon: <OfficeBuildingIcon />,
-    link: "/wallet",
-  },
-  {
-    title: "transactions",
-    icon: <TranslateIcon />,
-    link: "/transactions",
-  },
-  {
-    title: "Users",
-    icon: <UsersIcon />,
-    link: "/users",
-  },
-  {
-    title: "Orders",
-    icon: <ShoppingCartIcon />,
-    link: "/ecommerce/orders",
-  },
-  {
-    name: "User & Roles",
-    children: [
+    title: "General",
+    icon: "bi-gear-fill",
+    childrens: [
       {
-        name: "Roles",
-        url: "/roles",
+        title: "Home",
+        icon: "bi-house-fill",
+        path: "/",
       },
       {
-        name: "users",
-        url: "/users",
-      },
-    ],
-  },
-  {
-    name: "Reports",
-    children: [
-      {
-        name: "transactions",
-        url: "/users",
+        title: "About",
+        icon: "bi-info-circle-fill",
+        path: "/about",
       },
       {
-        name: "Common Report",
-        url: "/",
-      },
-      {
-        name: "Child43",
-        children: [
+        title: "Contact",
+        icon: "bi-phone-fill",
+        childrens: [
           {
-            name: "Child431",
-            url: "/child431",
+            title: "Facebook",
+            icon: "bi-facebook",
           },
           {
-            name: "Child432",
-            url: "/child432,",
+            title: "Twitter",
+            icon: "bi-twitter",
           },
           {
-            name: "Child433",
-            url: "/child433",
+            title: "Instagram",
+            icon: "bi-instagram",
           },
         ],
       },
+      {
+        title: "FAQ",
+        icon: "bi-question-circle-fill",
+      },
     ],
+  },
+  {
+    title: "Account",
+    icon: "bi-info-circle-fill",
+    childrens: [
+      {
+        title: "Login",
+        path: "/login",
+      },
+      {
+        title: "Register",
+        path: "/register",
+      },
+      {
+        title: "Forgot Password",
+        path: "/forgot-password",
+      },
+      {
+        title: "Reset Password",
+        path: "/reset-password",
+      },
+    ],
+  },
+  {
+    title: "Profile",
+    icon: "bi-person-fill",
+    childrens: [
+      {
+        title: "Profile",
+        path: "/profile",
+      },
+      {
+        title: "Settings",
+        childrens: [
+          {
+            title: "Account",
+            path: "/settings/account",
+          },
+          {
+            title: "Billing",
+            childrens: [
+              {
+                title: "Payment",
+                path: "/settings/billing/payment",
+              },
+              {
+                title: "Subscription",
+                path: "/settings/billing/subscription",
+              },
+            ],
+          },
+          {
+            title: "Notifications",
+            path: "/settings/notifications",
+          },
+        ],
+      },
+      {
+        title: "Logout",
+        path: "/logout",
+      },
+    ],
+  },
+  {
+    title: "Advance",
+    icon: "bi-view-list",
+    childrens: [
+      {
+        title: "Search",
+        path: "/search",
+      },
+      {
+        title: "History",
+        path: "/history",
+      },
+    ],
+  },
+  {
+    title: "Support",
+    icon: "bi-question-circle-fill",
+    path: "/support",
+  },
+  {
+    title: "Report Bug",
+    icon: "bi-bug",
+    path: "/report-bug",
   },
 ];
