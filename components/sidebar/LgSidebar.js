@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import { sidebarData } from "./SidebarData";
+import { SidebarAccess } from "../utils/Sidebar";
 
 export default function LgSidebar() {
   const router = useRouter();
@@ -29,11 +30,11 @@ export default function LgSidebar() {
           <hr className="mt-3 border-gray-200 border-bn dark:border-gray-600" />
         </div>
         {/* Links */}
-        {/* map sidebar data and nested sidebar data */}
         <div className="mt-5 text-gray-600 dark:text-white">
           {sidebarData.map((item, index) => {
             const link = item.link;
-
+            // check user role and pages that are not accessible to user role and hide them
+            SidebarAccess(item);
             if (item.children) {
               return (
                 <div key={index}>
