@@ -7,6 +7,7 @@ import {
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import Avatar from "./Avatar";
 function Header({
   sidebarOpen,
@@ -17,6 +18,10 @@ function Header({
   const router = useRouter();
   const { theme, setTheme } = useTheme("light");
   const [DropdownOpen, setDropdownOpen] = useState(false);
+  const { FullName, UserName } = useSelector(
+    (state) => state.transactions.transactions
+  );
+
   return (
     <header
       className={`sticky dark:text-white bg-white dark:bg-slate-800  top-0  border-b border-slate-200 z-30`}
@@ -24,44 +29,44 @@ function Header({
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 -mb-px">
           {/* Header: Left side */}
-          <div className="flex space-x-2  items-center">
+          <div className="flex items-center space-x-2">
             {/* Hamburgers button */}
             <button
-              className="text-slate-500 dark:text-gray-200 lg:hidden  hover:text-slate-600 "
+              className="text-slate-500 dark:text-gray-200 lg:hidden hover:text-slate-600 "
               onClick={() => setSidebarOpen(!sidebarOpen)}
             >
               <MenuAlt2Icon className="w-6 h-6" />
             </button>
             <button
-              className="text-slate-500 hidden    lg:inline-flex hover:text-slate-600 "
+              className="hidden text-slate-500 lg:inline-flex hover:text-slate-600 "
               onClick={() => setMobileSidebar(!Mobilesidebar)}
             >
               <MenuAlt2Icon className="w-6 h-6" />
             </button>
-            <p className="font-medium  text-sm  capitalize">
+            <p className="text-sm font-medium capitalize">
               {/* router pathname remove / */}
               {router.asPath.replace("/", "")}
             </p>
           </div>
 
           {/* Header: Right side */}
-          <div className="flex space-x-3 items-center">
+          <div className="flex items-center space-x-3">
             {/* dark mode toggle  */}
             <div>
               {theme === "dark" ? (
                 <MoonIcon
                   onClick={() => setTheme("light")}
-                  className="w-7 cursor-pointer"
+                  className="cursor-pointer w-7"
                 />
               ) : (
                 <SunIcon
                   onClick={() => setTheme("dark")}
-                  className="w-7 cursor-pointer"
+                  className="cursor-pointer w-7"
                 />
               )}
             </div>
             <div>
-              <BellIcon className="w-7 cursor-pointer" />
+              <BellIcon className="cursor-pointer w-7" />
             </div>
 
             {/*  Divider */}
@@ -72,9 +77,9 @@ function Header({
               onClick={() => setDropdownOpen(!DropdownOpen)}
             >
               <div className=" text-[10px] truncate hidden sm:inline-block font-medium text-gray-600 dark:text-white">
-                <div className="w-24 truncate">abdishakuur ally</div>
-                <div className=" text-gray-500 w-24 truncate dark:text-gray-400">
-                  web developer
+                <div className="w-24 truncate">{FullName}</div>
+                <div className="w-24 text-gray-500 truncate dark:text-gray-400">
+                  {UserName}
                 </div>
               </div>
               <Avatar />

@@ -17,7 +17,13 @@ function index({ children }) {
     router.pathname === "/404"
   ) {
     return <div>{children}</div>;
-  } else {
+  }
+  // if (!token) {
+  //   if (typeof window !== "undefined") {
+  //     router.push("/login");
+  //   }
+  // }
+  else {
     return (
       <>
         <div className="flex h-screen overflow-hidden bg-gray-50 font-popins dark:bg-gray-800 ">

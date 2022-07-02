@@ -7,25 +7,34 @@ import { addTransaction } from "../../redux/slices/transactionSlice";
 import { useDispatch } from "react-redux";
 import { login } from "../../components/utils/Login";
 import Router from "next/router";
+import { useState } from "react";
 
 function FormLogin() {
   const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting, isSubmitSuccessful, submitCount },
   } = useForm();
+  const [loading, setLoading] = useState(isSubmitSuccessful);
+
+  console.log("errors", isSubmitSuccessful);
   const onSubmit = (data) => {
-    const res = axios.post("https://www.riyoclean.com/api/login", data);
+    setLoading(true);
+    const res = axios.post(
+      "https://tick-account.herokuapp.com/api/auth/login",
+      data
+    );
+    setLoading(false);
     res
       .then((res) => {
-        setCookies("token", res.data.token);
+        setCookies("token", res.data.user.accessToken);
         dispatch(addTransaction(res.data.user));
-        Router.replace("/dashboard");
         login(res.data.user);
       })
       .catch((err) => {
         console.log(err);
+        isSubmitSuccessful(false);
       });
   };
 
@@ -52,36 +61,36 @@ function FormLogin() {
           <div className="flex flex-col mx-2 space-y-3">
             <label
               className="font-medium text-gray-500 text-md"
-              htmlFor="UserName"
+              htmlFor="userName"
             >
-              UserName
+              userName
             </label>
 
             <input
-              class="focus:ring-2 focus:ring-gray-400 w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
-              placeholder="UserName"
-              {...register("UserName", { required: true })}
+              className="w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+              placeholder="userName"
+              {...register("userName", { required: true })}
             />
 
-            {errors.UserName && (
+            {errors.userName && (
               <p className="text-sm text-red-400">This field is required</p>
             )}
           </div>
           <div className="flex flex-col mx-2 space-y-3">
             <label
               className="font-medium text-gray-500 text-md"
-              htmlFor="UserName"
+              htmlFor="userName"
             >
-              Password
+              password
             </label>
             <input
-              type="Password"
-              {...register("Password", { required: true })}
-              class="focus:ring-2 focus:ring-gray-400 w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700 "
-              placeholder="Password"
+              type="password"
+              {...register("password", { required: true })}
+              className="w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+              placeholder="password"
             />
 
-            {errors.Password && (
+            {errors.password && (
               <p className="text-sm text-red-400">This field is required</p>
             )}
           </div>
@@ -89,8 +98,9 @@ function FormLogin() {
           <button
             className="w-full px-10 py-2 text-2xl text-white duration-300 ease-in bg-blue-600 rounded-md hover:bg-blue-500 hover:drop-shadow-md"
             type="submit"
+            disabled={isSubmitSuccessful}
           >
-            Sign In
+            {isSubmitSuccessful ? "Loading..." : "Login"}
           </button>
         </form>
       </div>
@@ -99,17 +109,3 @@ function FormLogin() {
 }
 
 export default FormLogin;
-
-export const getServerSideProps = async (ctx) => {
-  const res = await axios.get(
-    "https://tick-account.herokuapp.com/api/auth/login  ",
-    {
-      withCredentials: true,
-      headers: {
-        Cookie: req.headers.cookie,
-      },
-    }
-  );
-  const data = await res.data;
-  return { props: { data } };
-};

@@ -6,10 +6,17 @@ export const login = (user) => {
     Router.replace("/dashboard");
   } else {
     const decoded = jwt_decode(user.accessToken);
-    console.log("token", decoded.roles);
-    //  check the user role and redicert his path decoded user
-    if (decoded.roles.includes("path")) {
-      Router.replace("/dashboard");
+    console.log("roles", decoded.roles);
+    if (decoded.roles.length === 0) {
+      return alert("You are not authorized to access this page");
     }
+    //  check user allowed pathnames and show only alowed pathnames
+    // if (decoded.roles.path.indexOf("/clients")) {
+    //   Router.replace("/clients");
+    // }
+    // find user roles and check if user have access
+
+    const route = decoded.roles[0].path.toLowerCase();
+    Router.push(route);
   }
 };

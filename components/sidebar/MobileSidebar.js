@@ -60,7 +60,7 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
         ref={sidebar}
       >
         {/* Logo */}
-        <div className="w-40 pr-3 mb-3 ml-10  sm:px-2">
+        <div className="w-40 pr-3 mb-3 ml-10 sm:px-2">
           <Image src={logo} alt="logo" />
           <hr className="mt-3 border-gray-200 border-bn dark:border-gray-600" />
         </div>
@@ -385,3 +385,5 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
     </div>
   );
 }
+
+// styles

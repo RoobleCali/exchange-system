@@ -6,6 +6,13 @@ import Form from "../../components/users/addUser";
 
 function index() {
   const [open, setOpen] = useState(false);
+  const fetcher = (url, token) => {
+    token
+      ? axios
+          .get(url, { headers: { Authorization: "Bearer " + token } })
+          .then((res) => setData(res.data))
+      : Router.push("/login");
+  };
 
   return (
     <div>

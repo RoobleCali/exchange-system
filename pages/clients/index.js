@@ -6,14 +6,13 @@ import { getCookie } from "cookies-next";
 import Router from "next/router";
 import Actions from "../../components/clients/Actions";
 import { StatusPill } from "../../components/table/StatusBill";
-import regeneratorRuntime from "regenerator-runtime";
 
 export default ({ data }) => {
   const [Data, setData] = useState(data);
   const fetcher = (url, token) => {
     token
       ? axios
-          .get(url, { headers: { athorization: token } })
+          .get(url, { headers: { Authorization: "Bearer " + token } })
           .then((res) => setData(res.data))
       : Router.push("/login");
   };
@@ -47,7 +46,7 @@ export default ({ data }) => {
   ];
   const token = getCookie("token");
   const { error } = useSWR(
-    ["https://www.riyoclean.com/api/customer", token],
+    ["https://tick-account.herokuapp.com/api/users/", token],
     fetcher
   );
   if (error) console.log(error);

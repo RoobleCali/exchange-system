@@ -49,19 +49,9 @@ export default ({ Data }) => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
-    async ({ req, res }) => {
-      // get the token in the cookie
-      const token = req.headers.cookie;
-      console.log(token);
+export const getServerSideProps = async ({ req, res }) => {
+  const response = await axios.get(`http://localhost:3000/api/transactions`);
+  const data = response.data;
 
-      const response = await axios.get(
-        `http://localhost:3000/api/transactions`
-      );
-      const data = response.data;
-      store.dispatch(addTransaction(data));
-
-      return { props: { Data: data } };
-    }
-);
+  return { props: { Data: data } };
+};

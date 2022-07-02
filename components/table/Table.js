@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import {
   useTable,
   useFilters,
@@ -7,25 +7,17 @@ import {
   useSortBy,
   usePagination,
 } from "react-table";
-//hero icons
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
-//table component
-import { Button, PageButton } from "../shared/Button";
-import { SortIcon, SortUpIcon, SortDownIcon } from "../shared/Icons";
 import {
-  AdjustmentsIcon,
-  CloudDownloadIcon,
-  SearchIcon,
-} from "@heroicons/react/outline";
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  UserAddIcon,
+} from "@heroicons/react/solid";
+import { SortIcon, SortUpIcon, SortDownIcon } from "../shared/Icons";
+import { AdjustmentsIcon, CloudDownloadIcon } from "@heroicons/react/outline";
 import DataPicker from "../models/DataPicker";
 import { useRouter } from "next/router";
 import ReactToPrint from "react-to-print";
-
-// access status row data and return the status icon and color based on the status
-
-// global filter component for the table header if no data found in the table then show no data found
-
-// Define a default UI for filtering
+import Pagination from "./Pagination";
 function GlobalFilter({
   preGlobalFilteredRows,
   globalFilter,
@@ -40,25 +32,25 @@ function GlobalFilter({
   const route = router.pathname;
   return (
     <div className="relative">
-      <div class="relative w-2xl">
-        <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+      <div className="relative w-2xl">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg
-            class="w-5 h-5 text-gray-500 dark:text-gray-400"
+            className="w-5 h-5 text-gray-500 dark:text-gray-400"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
           </svg>
         </div>
         <input
           type="text"
           id="voice-search"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
          focus:border-blue-500 block w-4xl pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
          dark:focus:ring-blue-500 dark:focus:border-blue-500"
           required
@@ -75,26 +67,74 @@ function GlobalFilter({
     </div>
   );
 }
-
+// filter date range in the table
+// function DateFilter({ preFilteredRows, setFilter, filter, column: { id } }) {
+//   const [min, setMin] = useState(filter.min);
+//   const [max, setMax] = useState(filter.max);
+//   const onMinChange = (e) => {
+//     setMin(e.target.value);
+//   };
+//   const onMaxChange = (e) => {
+//     setMax(e.target.value);
+//   };
+//   const onSubmit = () => {
+//     setFilter((rows) => {
+//       return rows.filter((row) => {
+//         const rowValue = row.values[id];
+//         return rowValue >= min && rowValue <= max;
+//       });
+//     });
+//   };
+//   return (
+//     <div className="flex items-center">
+//       <div className="flex-1">
+//         <input
+//           type="date"
+//           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+//          focus:border-blue-500 block w-4xl pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+//          dark:focus:ring-blue-500 dark:focus:border-blue-500"
+//           required
+//           value={min}
+//           onChange={onMinChange}
+//         />
+//       </div>
+//       <div className="flex-1">
+//         <input
+//           type="date"
+//           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+//           focus:border-blue-500 block w-4xl pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+//           dark:focus:ring-blue-500 dark:focus:border-blue-500"
+//           required
+//           value={max}
+//           onChange={onMaxChange}
+//         />
+//       </div>
+//       <div className="flex-1">
+//         <button
+//           className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+//           type="button"
+//           onClick={onSubmit}
+//         >
+//           Filter
+//         </button>
+//       </div>
+//     </div>
+//   );
+// }
 function Table({ columns, data }) {
   const [open, setOpen] = useState(false);
   let componentRef = useRef(null);
   const router = useRouter();
   const route = router.pathname;
-
-  // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     prepareRow,
-    page, // Instead of using 'rows', we'll use page,
-    // which has only the rows for the active page
-    // The rest of these things are super handy, too ;)
+    page,
     canPreviousPage,
     canNextPage,
     pageOptions,
-    pageCount,
     gotoPage,
     nextPage,
     previousPage,
@@ -140,6 +180,8 @@ function Table({ columns, data }) {
                     ) : null
                   )
                 )}
+                {/* DateFilter function call here nd show filtered date*/}
+                {/* <DateFilter column={{ id: "date" }} /> */}
                 <div
                   className="items-center px-2 py-1 space-x-2 bg-white cursor-pointer dark:bg-slate-600 sm:flex innline-flex"
                   onClick={() => setOpen(!open)}
@@ -149,12 +191,6 @@ function Table({ columns, data }) {
               </div>
               {/* filter  */}
               <div className="flex items-center justify-center space-x-3">
-                <select className="items-center hidden px-0 py-2 space-x-2 text-xs bg-white border-none rounded-sm outline-none cursor-pointer sm:inline-block focus:border-none dark:bg-gray-800 innline-flex">
-                  <option value="">Pending</option>
-                  <option value="">All</option>
-                  <option value="">Completed</option>
-                  <option value="">Cancelled</option>
-                </select>
                 <ReactToPrint
                   trigger={() => (
                     <div className="flex items-center max-w-md px-2 py-2 space-x-2 text-xs text-center text-white bg-blue-700 rounded-md cursor-pointer w-max innline-flex">
@@ -164,6 +200,12 @@ function Table({ columns, data }) {
                   )}
                   content={() => componentRef}
                 />
+                {/* add client button */}
+                <div className="flex items-center justify-center px-2 py-2 space-x-2 text-white bg-blue-400 cursor-pointer rounded-xl dark:bg-slate-600 sm:flex innline-flex">
+                  <UserAddIcon className="w-5 h-6 " />
+
+                  <button className="truncate ">Add Client</button>
+                </div>
               </div>
             </div>
           ))}
@@ -194,12 +236,6 @@ function Table({ columns, data }) {
                   ) : null
                 )
               )}
-              <div
-                className="items-center px-2 py-1 space-x-2 bg-white cursor-pointer dark:text-gray-700 dark:bg-gray-800 sm:flex innline-flex"
-                onClick={() => setOpen(!open)}
-              >
-                <AdjustmentsIcon className="w-5 h-6 text-gray-500 rotate-90 dark:text-gray-200" />
-              </div>
               {/* filter  */}
               <select className="items-center hidden py-2 space-x-2 text-xs bg-white border-none rounded-sm outline-none cursor-pointer sm:inline-block focus:border-none dark:bg-gray-800 md:px-2 innline-flex">
                 <option value="">Pending</option>
@@ -292,82 +328,16 @@ function Table({ columns, data }) {
           </tbody>
         </table>
       </div>
-      {/* <div className="flex items-center justify-center w-full">
-        {/* mobile pagination */}
-      <div className="flex justify-between flex-1 p-2 sm:hidden">
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-          Previous
-        </button>
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
-          Next
-        </button>
-      </div>
-      {/* large screen pagination */}
-      <div className="justify-between flex-1 hidden px-2 sm:flex sm:items-center">
-        <div className="flex items-baseline w-96 gap-x-2">
-          <span className="text-sm text-gray-700 dark:text-gray-300">
-            Page <span className="font-medium">{state.pageIndex + 1}</span> of
-            <span className="ml-2 font-medium">{pageOptions.length}</span>
-          </span>
-          <label>
-            <select
-              className="flex items-center px-2 py-2 space-x-2 text-sm bg-white border-none rounded-sm outline-none cursor-pointer focus:border-none dark:bg-gray-800 innline-flex"
-              value={state.pageSize}
-              onChange={(e) => {
-                setPageSize(Number(e.target.value));
-              }}
-            >
-              {[20, 50, 100].map((pageSize) => (
-                <option key={pageSize} value={pageSize}>
-                  Show {pageSize}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-        {/* pagination */}
-        <div className="flex items-center justify-center">
-          <div>
-            <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-              <ChevronLeftIcon className="text-gray-400 w-7 h-7" />
-            </button>
-          </div>
-          <div className="flex max-w-md overflow-x-hidden">
-            {pageOptions.map((page, i) => {
-              const isActive = i === state.pageIndex;
-              return (
-                <div className="max-w-2xl py-10 mx-auto">
-                  {/* preveous */}
-                  {/* show first 6 page for pagination if page greater than 6 show icon for */}
-                  <span
-                    key={page}
-                    className={`rounded-l-xl  px-3 py-2 mx-2 text-base font-bold leading-tight 
-                       transition duration-150 ease-in-out rounded 
-                       shadow cursor-pointer text-gray-200 hover:text-white hover:bg-indigo-600  sm:mx-4 focus:outline-none ${
-                         isActive
-                           ? "bg-indigo-600 text-white"
-                           : "text-indigo-700"
-                       }`}
-                    onClick={() => gotoPage(i)}
-                    disabled={i === state.pageIndex}
-                  >
-                    {/* show first 8 pages */}
-
-                    {page}
-                  </span>
-
-                  {/* next */}
-                </div>
-              );
-            })}
-          </div>
-          <div className="pl-2">
-            <button onClick={() => nextPage()} disabled={!canNextPage}>
-              <ChevronRightIcon className="text-gray-400 w-7 h-7" />
-            </button>
-          </div>
-        </div>
-      </div>
+      <Pagination
+        previousPage={previousPage}
+        nextPage={nextPage}
+        canPreviousPage={canPreviousPage}
+        canNextPage={canNextPage}
+        pageOptions={pageOptions}
+        state={state}
+        gotoPage={gotoPage}
+        setPageSize={setPageSize}
+      />
     </div>
   );
 }

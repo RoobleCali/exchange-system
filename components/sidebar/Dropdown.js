@@ -35,13 +35,13 @@ function Dropdown() {
               <SortAscendingIcon className="w-4 h-4" />
             </div>
             <button
-              class={`flex items-center justify-between px-5  py-1 font-normal
+              className={`flex items-center justify-between px-5  py-1 font-normal
                     transition duration-75 rounded-lg
                     group dark:text-white 
                     ${Button && !Dropdown && "text-gray-400"}
                     `}
             >
-              <span class="-ml-2 w-14">Users</span>
+              <span className="-ml-2 w-14">Users</span>
               {Dropdown ? (
                 <ChevronUpIcon className="w-4 h-4 ml-16" />
               ) : (
@@ -50,14 +50,13 @@ function Dropdown() {
             </button>
           </a>
         </div>
-        <ul class={`${Dropdown ? "innline-flex" : "hidden"}  py-2 space-y-2`}>
+        <ul
+          className={`${Dropdown ? "innline-flex" : "hidden"}  py-2 space-y-2`}
+        >
           <li>
             <Link href="/users">
               <a
-                class="flex items-center w-full p-2 text-xs font-normal 
-                    text-gray-500 transition duration-75 rounded-lg group
-                     hover:bg-gray-100 dark:text-white 
-                     dark:hover:bg-gray-700 pl-11"
+                className="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
               >
                 users
               </a>
@@ -66,11 +65,7 @@ function Dropdown() {
           <li>
             <Link href="/ecommerce/orders">
               <a
-                class="flex items-center w-full p-2 text-xs
-                     font-normal text-gray-500 transition 
-                     duration-75 rounded-lg group hover:bg-gray-100
-                      dark:text-white dark:hover:bg-gray-700 
-                      pl-11"
+                className="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
               >
                 Roles
               </a>
@@ -97,12 +92,12 @@ function Dropdown() {
               <SortAscendingIcon className="w-4 h-4" />
             </div>
             <button
-              class={`flex items-center justify-between px-5  py-1 font-normal
+              className={`flex items-center justify-between px-5  py-1 font-normal
                     transition duration-75 rounded-lg
                     group dark:text-white 
                     ${Report && "text-gray-400"} `}
             >
-              <span class="  w-14">Reports</span>
+              <span className=" w-14">Reports</span>
               {ReportDropdown ? (
                 <ChevronUpIcon className="w-4 h-4 ml-14" />
               ) : (
@@ -112,20 +107,20 @@ function Dropdown() {
           </a>
         </div>
         <ul
-          class={`${
+          className={`${
             ReportDropdown ? "innline-flex" : "hidden"
           }  py-2 space-y-2`}
         >
           <li>
             <Link href="/users">
-              <a class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
+              <a className="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
                 Transactions
               </a>
             </Link>
           </li>
           <li>
             <Link href="/ecommerce/orders">
-              <a class="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
+              <a className="flex items-center w-full p-2 text-xs font-normal text-gray-500 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">
                 Common Report
               </a>
             </Link>

@@ -18,7 +18,7 @@ function SendMoney({ open, setOpen }) {
     <div>
       <div
         id="popup"
-        class={`z-50 fixed w-full flex justify-center inset-0  overflow-scroll ${
+        className={`z-50 fixed w-full flex justify-center inset-0  overflow-scroll ${
           open ? "flex" : "hidden"
         }`}
       >
@@ -27,18 +27,19 @@ function SendMoney({ open, setOpen }) {
             open ? " opacity-90" : "opacity-0 pointer-events-none"
           }`}
         ></div>
-        <div class="flex items-center justify-center overflow-scroll h-full w-full">
-          <div class="bg-white  max-h-full  dark:bg-gray-800 justify-center  rounded-md shadow fixed overflow-y-auto sm:h-auto w-[96%] lg:w-[44%] ">
+        <div className="flex items-center justify-center w-full h-full overflow-scroll">
+          <div className="bg-white  max-h-full  dark:bg-gray-800 justify-center  rounded-md shadow fixed overflow-y-auto sm:h-auto w-[96%] lg:w-[44%] ">
             <div
-              class="bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md px-2 md:px-4
-               md:py-4 py-7 flex items-center justify-between sticky top-0"
+              className="sticky top-0 flex items-center justify-between px-2 bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-4 md:py-4 py-7"
             >
-              <p class="text-base font-semibold dark:text-white">Send Money</p>
+              <p className="text-base font-semibold dark:text-white">
+                Send Money
+              </p>
               <button
                 role="button"
                 aria-label="close label"
                 onclick="popuphandler(false)"
-                class="focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
+                className="focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
                 onClick={() => setOpen(false)}
               >
                 <img
@@ -47,27 +48,22 @@ function SendMoney({ open, setOpen }) {
                 />
               </button>
             </div>
-            <div class="px-4 md:px-10  md:pt-5 md:pb-4">
+            <div className="px-4 md:px-10 md:pt-5 md:pb-4">
               {/* sender info */}{" "}
-              <form class="mt-2 space-y-10">
+              <form className="mt-2 space-y-10">
                 <div>
                   <h1 className="pb-3 text-lg font-medium text-gray-600 dark:text-gray-300">
                     Sender Information
                   </h1>
-                  <div class="flex items-center space-x-9">
+                  <div className="flex items-center space-x-9">
                     <input
                       placeholder="Name"
-                      class="focus:ring-2 focus:ring-gray-400 w-1/2 focus:outline-none placeholder-gray-500 py-3 px-3 
-                        text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  
-                        border rounded border-gray-200 dark:border-gray-700 "
+                      className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
                     />
                     <input
                       placeholder="Phone"
                       type="tell"
-                      class="focus:ring-2 focus:ring-gray-400 w-1/2 focus:outline-none
-                         placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800
-                          bg-white dark:bg-gray-900  border rounded
-                           border-gray-200 dark:border-gray-700 "
+                      className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
                     />
                   </div>
                 </div>
@@ -80,26 +76,21 @@ function SendMoney({ open, setOpen }) {
                       <h1 className="pb-3 mt-6 text-lg font-medium text-gray-600 dark:text-gray-300">
                         Reciever Information
                       </h1>
-                      <div class="flex items-center space-x-9 ">
+                      <div className="flex items-center space-x-9 ">
                         <input
                           placeholder="Name"
-                          class="focus:ring-2 focus:ring-gray-400 w-1/2 focus:outline-none placeholder-gray-500 py-3 px-3 
-                        text-sm leading-none text-gray-800 bg-white dark:bg-gray-900  
-                        border rounded border-gray-200 dark:border-gray-700 "
+                          className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
                         />
                         <input
                           placeholder="Phone"
                           type="tell"
-                          class="focus:ring-2 focus:ring-gray-400 w-1/2 focus:outline-none
-                         placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800
-                          bg-white dark:bg-gray-900  border rounded
-                           border-gray-200 dark:border-gray-700 "
+                          className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
                         />
                       </div>
-                      <div class="mt-6">
+                      <div className="mt-6">
                         <textarea
                           placeholder="Description"
-                          class=" focus:ring-2 focus:ring-gray-400 dark:bg-gray-900 py-3 pl-3 overflow-y-auto h-24 border placeholder-gray-500 rounded border-gray-200 dark:border-gray-700  w-full resize-none focus:outline-none"
+                          className="w-full h-24 py-3 pl-3 overflow-y-auto placeholder-gray-500 border border-gray-200 rounded resize-none  focus:ring-2 focus:ring-gray-400 dark:bg-gray-900 dark:border-gray-700 focus:outline-none"
                         ></textarea>
                       </div>
                     </form>
@@ -107,23 +98,19 @@ function SendMoney({ open, setOpen }) {
                 );
               })}
               {/* actions */}
-              <div class="flex items-center p-3 justify-between mt-2">
-                <button class="focus:ring-2 focus:ring-offset-2 focus:bg-gray-600 focus:ring-gray-600 focus:outline-none px-6 py-3 bg-gray-600 hover:bg-gray-500 shadow rounded text-sm text-white">
+              <div className="flex items-center justify-between p-3 mt-2">
+                <button className="px-6 py-3 text-sm text-white bg-gray-600 rounded shadow focus:ring-2 focus:ring-offset-2 focus:bg-gray-600 focus:ring-gray-600 focus:outline-none hover:bg-gray-500">
                   Cancel
                 </button>
                 <button
-                  class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 
-                  focus:outline-none px-6 py-3 bg-indigo-700 hover:bg-opacity-80 shadow 
-                  rounded text-sm text-white flex "
+                  className="flex px-6 py-3 text-sm text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80 "
                   onClick={addFields}
                 >
                   Send
                   <span className="hidden ml-1 md:flex">New</span>
                 </button>
                 <button
-                  class="focus:ring-2 focus:ring-offset-2 focus:ring-blue-800
-                 focus:outline-none px-6 py-3 bg-blue-700 hover:bg-opacity-80 
-                 shadow rounded text-sm text-white flex"
+                  className="flex px-6 py-3 text-sm text-white bg-blue-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-blue-800 focus:outline-none hover:bg-opacity-80"
                 >
                   Add <span className="hidden ml-1 md:flex">User</span>
                 </button>
