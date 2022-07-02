@@ -50,7 +50,7 @@ function Header({
           </div>
 
           {/* Header: Right side */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 text-gray-600 dark:text-white">
             {/* dark mode toggle  */}
             <div>
               {theme === "dark" ? (

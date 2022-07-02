@@ -129,13 +129,13 @@ function Pagination({
       </div>
       <div className="justify-between flex-1 hidden px-2 sm:flex sm:items-center">
         <div className="flex items-baseline w-96 gap-x-2">
-          <span className="text-sm text-gray-700 dark:text-gray-300">
+          <span className="text-sm text-gray-800 dark:text-gray-300">
             Page <span className="font-medium">{state.pageIndex + 1}</span> of
             <span className="ml-2 font-medium">{pageOptions.length}</span>
           </span>
           <label>
             <select
-              className="flex items-center px-2 py-2 space-x-2 text-sm bg-white border-none rounded-sm outline-none cursor-pointer focus:border-none dark:bg-gray-800 innline-flex"
+              className="flex items-center px-2 py-2 space-x-2 text-sm text-gray-600 border-none rounded-sm outline-none cursor-pointer focus:border-none dark:bg-gray-800 innline-flex"
               value={state.pageSize}
               onChange={(e) => {
                 setPageSize(Number(e.target.value));
