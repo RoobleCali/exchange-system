@@ -6,7 +6,6 @@ export const login = (user) => {
     Router.replace("/dashboard");
   } else {
     const decoded = jwt_decode(user.accessToken);
-    console.log("roles", decoded.roles);
     if (decoded.roles.length === 0) {
       return alert("You are not authorized to access this page");
     }

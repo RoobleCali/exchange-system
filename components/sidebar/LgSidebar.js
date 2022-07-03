@@ -1,18 +1,17 @@
 import Link from "next/link";
-
+import logo from "../../pages/assets/logo.png";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import { sidebarData } from "./SidebarData";
 import { useSelector } from "react-redux";
 import jwt_decode from "jwt-decode";
-import Logo from "./Logo";
+import { getCookie } from "cookies-next";
 
 export default function LgSidebar() {
-  const { accessToken } = useSelector(
-    (state) => state.transactions.transactions
-  );
-  const decoded = jwt_decode(accessToken);
+  const token = getCookie("token");
+  const decoded = jwt_decode(token);
   return (
     <div className="shadow-xl">
       {/* Sidebar */}
@@ -22,19 +21,25 @@ export default function LgSidebar() {
        `}
       >
         {/* Logo */}
-        <Logo />
+        <div className="w-48 overflow-hidden md:ml-10 z-96">
+          <Image
+            src={logo}
+            alt="logo"
+            width={190}
+            height={38}
+            className="cursor-pointer"
+          />
+          <hr className="mt-3 border-gray-200 border-bn dark:border-gray-600" />
+        </div>
         {/* Links */}
         <div className="mt-5 text-gray-600 dark:text-white">
           {sidebarData.map((item, index) => {
-            // check decoded token roles and compare with sidebar data roles and show only allowed pathnames
             {
               decoded.roles.map((access) => {
-                // access tolowercase to compare with sidebar data path
                 const link = access.path.toLowerCase();
                 const path = item.link;
-                // if path is equal to link then show the item and them
-                if (path === link) {
-                  console.log("authorized");
+                if (link == path) {
+                  console.log("can access  " + link);
                 }
               });
             }

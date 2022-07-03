@@ -18,7 +18,6 @@ function FormLogin() {
   } = useForm();
   const [loading, setLoading] = useState(isSubmitSuccessful);
 
-  console.log("errors", isSubmitSuccessful);
   const onSubmit = (data) => {
     setLoading(true);
     const res = axios.post(

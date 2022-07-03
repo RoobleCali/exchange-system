@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 export default function Avatar() {
   // select transAction from redux
   const { FullName } = useSelector((state) => state.transactions.transactions);
-  console.log(FullName);
   return (
     <div className="flex justify-end px-6 py-3 ">
       <Menu as="div" className="relative">
