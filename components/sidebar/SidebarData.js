@@ -12,43 +12,43 @@ export const sidebarData = [
   {
     title: "Dashboard",
     icon: <HomeIcon />,
-    link: "/dashboard",
+    link: "Cash-flow",
   },
   {
     title: "my Wallet",
     icon: <OfficeBuildingIcon />,
-    link: "/wallet",
+    link: "wallet",
   },
   {
     title: "transactions",
     icon: <TranslateIcon />,
-    link: "/transactions",
+    link: "transactions",
   },
 
   {
     title: "Users",
     icon: <UsersIcon />,
-    link: "/users",
+    link: "users",
   },
   {
     title: "Clients",
     icon: <UsersIcon />,
-    link: "/clients",
+    link: "clients",
   },
   {
     title: "Orders",
     icon: <ShoppingCartIcon />,
-    link: "/ecommerce/orders",
+    link: "ecommerce/orders",
   },
   {
     title: "Roles",
     icon: <UsersIcon />,
-    path: "/users",
+    path: "users",
     children: [
       {
         title: "Roles",
         icon: <UsersIcon />,
-        link: "/users",
+        link: "users",
       },
     ],
   },

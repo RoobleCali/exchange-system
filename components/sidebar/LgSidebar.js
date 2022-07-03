@@ -1,15 +1,18 @@
 import Link from "next/link";
-import logo from "../../pages/assets/logo.png";
-import Image from "next/image";
+
 import { useRouter } from "next/router";
 import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import { sidebarData } from "./SidebarData";
-import { SidebarAccess } from "../utils/Sidebar";
+import { useSelector } from "react-redux";
+import jwt_decode from "jwt-decode";
+import Logo from "./Logo";
 
 export default function LgSidebar() {
-  const router = useRouter();
-  const [Dropdown, setDropdown] = useState(false);
+  const { accessToken } = useSelector(
+    (state) => state.transactions.transactions
+  );
+  const decoded = jwt_decode(accessToken);
   return (
     <div className="shadow-xl">
       {/* Sidebar */}
@@ -19,81 +22,49 @@ export default function LgSidebar() {
        `}
       >
         {/* Logo */}
-        <div className="w-48 overflow-hidden md:ml-10 z-96">
-          <Image
-            src={logo}
-            alt="logo"
-            width={190}
-            height={38}
-            className="cursor-pointer"
-          />
-          <hr className="mt-3 border-gray-200 border-bn dark:border-gray-600" />
-        </div>
+        <Logo />
         {/* Links */}
         <div className="mt-5 text-gray-600 dark:text-white">
           {sidebarData.map((item, index) => {
-            const link = item.link;
-            // check user role and pages that are not accessible to user role and hide them
-            SidebarAccess(item);
-            if (item.children) {
-              return (
-                <div key={index}>
-                  <div
-                    className={` flex  py-3 rounded-md space-x-3 ml-2  justify-between transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
-                   ${router.pathname == link ? "bg-blue-700  text-white" : ""}
-                          `}
-                    onClick={() => setDropdown(!Dropdown)}
-                  >
-                    <span className="w-3"> {item.icon}</span>
-                    <span className="flex-1">{item.title}</span>
-                    <ChevronDownIcon className="w-4 h-4 " />
-                  </div>
-                  <ul
-                    className={`mt-1 space-y-1 ${
-                      Dropdown ? "flex " : "hidden"
-                    }`}
-                  >
-                    {item.children.map((child, index) => {
-                      const link = child.link;
-                      return (
-                        <li className="text-gray-500 " key={index}>
-                          <Link href={link}>
-                            <a
-                              className={` flex  px-24 py-3 rounded-md  transition-all duration-100
-                               items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700
-                                hover:text-white  
-                              ${
-                                router.pathname == link
-                                  ? "bg-blue-700  text-white"
-                                  : ""
-                              }
-                                     `}
-                            >
-                              <div className="w-3 text-left">{item.icon}</div>
-                              <span className="text-left">{child.title}</span>
-                            </a>
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              );
+            // check decoded token roles and compare with sidebar data roles and show only allowed pathnames
+            {
+              decoded.roles.map((access) => {
+                // access tolowercase to compare with sidebar data path
+                const link = access.path.toLowerCase();
+                const path = item.link;
+                // if path is equal to link then show the item and them
+                if (path === link) {
+                  return (
+                    <div key={index}>
+                      <Link href={item.link}>
+                        <a className="block hover:bg-gray-100 dark:hover:bg-gray-800">
+                          <div className="flex items-center px-4 py-2">
+                            {item.icon}
+                            <span className="ml-2">{item.title}</span>
+                          </div>
+                        </a>
+                      </Link>
+                      {item.children && (
+                        <div className="mt-1">
+                          {item.children.map((child, index) => {
+                            return (
+                              <Link href={child.link} key={index}>
+                                <a className="block hover:bg-gray-100 dark:hover:bg-gray-800">
+                                  <div className="flex items-center px-4 py-2">
+                                    {child.icon}
+                                    <span className="ml-2">{child.title}</span>
+                                  </div>
+                                </a>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+              });
             }
-            return (
-              <ul className="px-1 mt-3 dark:text-white " key={index}>
-                <Link href={link}>
-                  <a
-                    className={` flex  px-2 py-3 rounded-md space-x-3 transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
-     ${router.pathname == link ? "bg-blue-700  text-white" : ""}
-            `}
-                  >
-                    <div className="w-3"> {item.icon}</div>
-                    <span>{item.title}</span>
-                  </a>
-                </Link>
-              </ul>
-            );
           })}
         </div>
       </div>
