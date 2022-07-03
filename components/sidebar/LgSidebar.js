@@ -34,34 +34,7 @@ export default function LgSidebar() {
                 const path = item.link;
                 // if path is equal to link then show the item and them
                 if (path === link) {
-                  return (
-                    <div key={index}>
-                      <Link href={item.link}>
-                        <a className="block hover:bg-gray-100 dark:hover:bg-gray-800">
-                          <div className="flex items-center px-4 py-2">
-                            {item.icon}
-                            <span className="ml-2">{item.title}</span>
-                          </div>
-                        </a>
-                      </Link>
-                      {item.children && (
-                        <div className="mt-1">
-                          {item.children.map((child, index) => {
-                            return (
-                              <Link href={child.link} key={index}>
-                                <a className="block hover:bg-gray-100 dark:hover:bg-gray-800">
-                                  <div className="flex items-center px-4 py-2">
-                                    {child.icon}
-                                    <span className="ml-2">{child.title}</span>
-                                  </div>
-                                </a>
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  );
+                  console.log("authorized");
                 }
               });
             }
