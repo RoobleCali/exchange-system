@@ -18,12 +18,11 @@ function index({ children }) {
   ) {
     return <div>{children}</div>;
   }
-  // if (!token) {
-  //   if (typeof window !== "undefined") {
-  //     router.push("/login");
-  //   }
-  // }
-  else {
+  if (!token) {
+    if (typeof window !== "undefined") {
+      router.push("/login");
+    }
+  } else {
     return (
       <>
         <div className="flex h-screen overflow-hidden bg-gray-50 font-popins dark:bg-gray-800 ">
