@@ -1,6 +1,5 @@
 import jwt_decode from "jwt-decode";
 import Router from "next/router";
-
 export const login = (user) => {
   if (user.userType === "HQ-ADMIN" || user.userType === "BranchAdmin") {
     Router.replace("/dashboard");

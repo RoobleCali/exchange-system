@@ -3,14 +3,11 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Header from "../../components/header";
 import SampleSidebar from "../../components/sidebar";
-
 function index({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [Mobilesidebar, setMobileSidebar] = useState(false);
   const token = getCookie("token");
   const router = useRouter();
-  // if window typeof window !== 'undefined' check token
-
   if (
     router.pathname === "/" ||
     router.pathname === "/login" ||
