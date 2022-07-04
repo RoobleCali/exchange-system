@@ -8,7 +8,6 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Avatar from "./Avatar";
-
 import jwt_decode from "jwt-decode";
 import { getCookie } from "cookies-next";
 function Header({

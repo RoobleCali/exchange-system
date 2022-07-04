@@ -1,8 +1,7 @@
 import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
-import Link from "next/link";
 import abdishakuur from "../../pages/assets/abdishakuur.jpg";
-import { deleteCookie, removeCookies, setCookies } from "cookies-next";
+import { setCookies } from "cookies-next";
 import Router from "next/router";
 import { useSelector } from "react-redux";
 export default function Avatar() {
