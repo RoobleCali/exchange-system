@@ -43,7 +43,7 @@ export const sidebarData = [
   {
     title: "Roles",
     icon: <UsersIcon />,
-    path: "users",
+
     children: [
       {
         title: "Roles",
