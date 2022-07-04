@@ -18,10 +18,8 @@ function index({ children }) {
   ) {
     return <div>{children}</div>;
   }
-  if (!token) {
-    if (typeof window !== "undefined") {
-      router.push("/login");
-    }
+  if (!token && typeof window !== "undefined") {
+    router.push("/login");
   } else {
     return (
       <>

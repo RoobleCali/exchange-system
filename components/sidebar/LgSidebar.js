@@ -13,7 +13,8 @@ export default function LgSidebar() {
   const [Dropdown, setDropdown] = useState(false);
   const token = getCookie("token");
   const decoded = jwt_decode(token);
-  console.log(decoded.userType);
+  // check if jwt token is invalid or not
+
   return (
     <div className="shadow-xl">
       {/* Sidebar */}
@@ -36,6 +37,7 @@ export default function LgSidebar() {
         {/* Links */}
         <div className="mt-5 text-gray-600 dark:text-white">
           {/* check user typw if user is admin  can access all sidebar links */}
+
           {decoded.userType === "BranchAdmin"
             ? sidebarData.map((item, index) => {
                 const link = item.link;
@@ -120,6 +122,7 @@ export default function LgSidebar() {
                   const path = item.link;
                   if (link == path) {
                     // check if item has children
+
                     if (item.children) {
                       return (
                         <div key={index}>

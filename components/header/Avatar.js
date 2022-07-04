@@ -2,7 +2,7 @@ import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
 import abdishakuur from "../../pages/assets/abdishakuur.jpg";
-import { deleteCookie, removeCookies } from "cookies-next";
+import { deleteCookie, removeCookies, setCookies } from "cookies-next";
 import Router from "next/router";
 import { useSelector } from "react-redux";
 export default function Avatar() {
@@ -63,8 +63,10 @@ export default function Avatar() {
             <Menu.Item
               v-slot="{active}"
               onClick={() => {
-                removeCookies("token");
-                Router.push("/");
+                Router.push("/login");
+                setCookies("token", "", {
+                  maxAge: -1,
+                });
               }}
             >
               <a className="block px-4 py-2 text-sm cursor-pointer ">Log out</a>

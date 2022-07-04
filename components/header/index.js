@@ -7,7 +7,6 @@ import {
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import Avatar from "./Avatar";
 
 import jwt_decode from "jwt-decode";
