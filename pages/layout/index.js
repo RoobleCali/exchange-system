@@ -20,12 +20,6 @@ function index({ children }) {
   }
   // check if user is logged and don't show login page if user is logged in also check if user is not logged in and show login page
 
-  if (!token) {
-    if (typeof window !== "undefined") {
-      router.push("/login");
-    }
-  }
-
   if (token) {
     return (
       <>
@@ -60,11 +54,10 @@ export default index;
 export const getServerSideProps = async ({ req }) => {
   if (!token) {
     req.writeHead("/login");
+    // change the url to login
+    // change the path to login
+    req.path = "/login";
+    console.log(req);
   }
-
-  return {
-    props: {
-      data: null,
-    },
-  };
+  //  else continue to next page
 };
