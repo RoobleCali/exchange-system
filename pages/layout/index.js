@@ -20,9 +20,9 @@ function index({ children }) {
   }
   if (!token) {
     if (typeof window !== "undefined") {
-      router.replace("/login");
+      router.push("/login");
     }
-  } else if (token) {
+  } else {
     return (
       <>
         <div className="flex h-screen overflow-hidden bg-gray-50 font-popins dark:bg-gray-800 ">

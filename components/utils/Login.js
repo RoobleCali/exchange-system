@@ -9,12 +9,6 @@ export const login = (user) => {
     if (decoded.roles.length === 0) {
       return alert("You are not authorized to access this page");
     }
-    //  check user allowed pathnames and show only alowed pathnames
-    // if (decoded.roles.path.indexOf("/clients")) {
-    //   Router.replace("/clients");
-    // }
-    // find user roles and check if user have access
-
     const route = decoded.roles[0].path.toLowerCase();
     Router.replace(route);
   }

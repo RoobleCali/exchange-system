@@ -7,7 +7,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import { useState } from "react";
-
 export default function LgSidebar() {
   const router = useRouter();
   const [Dropdown, setDropdown] = useState(false);

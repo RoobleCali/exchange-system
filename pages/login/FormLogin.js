@@ -6,7 +6,6 @@ import axios from "axios";
 import { addTransaction } from "../../redux/slices/transactionSlice";
 import { useDispatch } from "react-redux";
 import { login } from "../../components/utils/Login";
-import Router from "next/router";
 import { useState } from "react";
 
 function FormLogin() {
