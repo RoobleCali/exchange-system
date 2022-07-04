@@ -1,14 +1,8 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Header from "../../components/header";
-
+import { RouteGuard } from "../../components/Protected";
 import SampleSidebar from "../../components/sidebar";
-import { Suspense } from "react";
-import dynamic from "next/dynamic";
-
-const RouteGuard = dynamic(() => import("../../components/Protected"), {
-  suspense: true,
-});
 function index({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [Mobilesidebar, setMobileSidebar] = useState(false);
@@ -23,32 +17,30 @@ function index({ children }) {
     return <div>{children}</div>;
   } else {
     return (
-      <Suspense fallback={`Loading...`}>
-        <RouteGuard>
-          <div className="flex h-screen overflow-hidden bg-gray-50 font-popins dark:bg-gray-800 ">
-            <SampleSidebar
-              sidebarOpen={sidebarOpen}
-              setSidebarOpen={setSidebarOpen}
-              Mobilesidebar={Mobilesidebar}
-              setMobileSidebar={setMobileSidebar}
-            />
+      // <RouteGuard>
+      <div className="flex h-screen overflow-hidden bg-gray-50 font-popins dark:bg-gray-800 ">
+        <SampleSidebar
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+          Mobilesidebar={Mobilesidebar}
+          setMobileSidebar={setMobileSidebar}
+        />
 
-            <div className="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
-              <Header
-                sidebarOpen={sidebarOpen}
-                setSidebarOpen={setSidebarOpen}
-                Mobilesidebar={Mobilesidebar}
-                setMobileSidebar={setMobileSidebar}
-              />
-              <main>
-                <div className="p-1 px-3 mx-3 mt-3 sm:px-4 lg:px-8">
-                  <div className="h-max">{children}</div>
-                </div>
-              </main>
+        <div className="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
+          <Header
+            sidebarOpen={sidebarOpen}
+            setSidebarOpen={setSidebarOpen}
+            Mobilesidebar={Mobilesidebar}
+            setMobileSidebar={setMobileSidebar}
+          />
+          <main>
+            <div className="p-1 px-3 mx-3 mt-3 sm:px-4 lg:px-8">
+              <div className="h-max">{children}</div>
             </div>
-          </div>
-        </RouteGuard>
-      </Suspense>
+          </main>
+        </div>
+      </div>
+      // </RouteGuard>
     );
   }
 }

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
-import nProgress from "nprogress";
+export { RouteGuard };
 
-export default function RouteGuard({ children }) {
+function RouteGuard({ children }) {
   const router = useRouter();
   const [authorized, setAuthorized] = useState(false);
   const token = getCookie("token");
@@ -13,19 +13,15 @@ export default function RouteGuard({ children }) {
 
     // on route change start - hide page content by setting authorized to false
     const hideContent = () => setAuthorized(false);
-    router.events.on("routeChangeStart", hideContent);
+    router.events.off("routeChangeStart", hideContent);
 
     // on route change complete - run auth check
-    router.events.on("routeChangeComplete", authCheck);
+    router.events.off("routeChangeComplete", authCheck);
 
     // unsubscribe from events in useEffect return function
     return () => {
-      // check the router and show nprogress if route is not protected
-      if (router.pathname.replace("/", "") === "login") {
-        // check the router and show nprogress if route is not protected
-        router.events.off("routeChangeStart", hideContent);
-        router.events.off("routeChangeComplete", authCheck);
-      }
+      router.events.off("routeChangeStart", hideContent);
+      router.events.off("routeChangeComplete", authCheck);
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,23 +32,11 @@ export default function RouteGuard({ children }) {
     const publicPaths = ["/login"] || ["/"];
     const path = url.split("?")[0];
     if (!token && !publicPaths.includes(path)) {
-      // check the router and show nprogress if route is not protected
-      router.push("/login");
       setAuthorized(false);
-      router.push({
-        pathname: "/login",
-        query: { returnUrl: router.asPath },
-      });
+      router.replace("/login");
+    } else {
+      setAuthorized(true);
     }
-    //  show nprogress if route is not protected
-    if (!publicPaths.includes(path)) {
-      nProgress.start();
-    }
-    // hide nprogress if route is protected
-    if (publicPaths.includes(path)) {
-      nProgress.done();
-    }
-    // set authorized to true if logged in
   }
 
   return authorized && children;
