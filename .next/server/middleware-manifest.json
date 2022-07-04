@@ -10,9 +10,7 @@
   ],
   "middleware": {
     "/": {
-      "env": [
-        "NODE_DEBUG"
-      ],
+      "env": [],
       "files": [
         "server/edge-runtime-webpack.js",
         "server/pages/_middleware.js"

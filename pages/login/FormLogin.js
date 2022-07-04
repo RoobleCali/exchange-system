@@ -3,13 +3,15 @@ import { useForm } from "react-hook-form";
 import onlyLogo from "../assets/onlyLogo.png";
 import { setCookies } from "cookies-next";
 import axios from "axios";
-import { Login } from "../../redux/slices/loginSlice";
-import { useDispatch } from "react-redux";
+import { addUserStart, Login } from "../../redux/slices/loginSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../components/utils/Login";
 import { useState } from "react";
 
 function FormLogin() {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.login);
+  console.log(addUserStart());
   const {
     register,
     handleSubmit,
@@ -18,7 +20,6 @@ function FormLogin() {
   const [loading, setLoading] = useState(isSubmitSuccessful);
 
   const onSubmit = (data) => {
-    setLoading(true);
     const res = axios.post(
       "https://tick-account.herokuapp.com/api/auth/login",
       data
