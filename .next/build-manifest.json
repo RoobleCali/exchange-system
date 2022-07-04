@@ -30,20 +30,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/dashboard": [
+    "/clients": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/dashboard.js"
+      "static/chunks/pages/clients.js"
     ],
     "/transactions": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/transactions.js"
     ],
-    "/wallet": [
+    "/users": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/wallet.js"
+      "static/chunks/pages/users.js"
     ]
   },
   "ampFirstPages": []
