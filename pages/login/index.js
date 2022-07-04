@@ -3,7 +3,6 @@ import FormLogin from "./FormLogin";
 import { getCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 export default () => {
   const user = useSelector((state) => state.login.user);
   console.log(user);
@@ -12,7 +11,7 @@ export default () => {
   const token = getCookie("token");
   if (typeof window !== "undefined") {
     if (token) {
-      router.back();
+      router.replace("/clients");
     }
   }
   // redirect to home if already logged in

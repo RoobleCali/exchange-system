@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
-export { RouteGuard };
 
-function RouteGuard({ children }) {
+export default function RouteGuard({ children }) {
   const router = useRouter();
   const [authorized, setAuthorized] = useState(false);
   const token = getCookie("token");
