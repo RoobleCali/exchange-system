@@ -9,6 +9,7 @@ function index({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [Mobilesidebar, setMobileSidebar] = useState(false);
   const token = getCookie("token");
+  console.log(token);
   const router = useRouter();
   // check if there is no user and show only login page also check if user is logged in and not
   if (
@@ -18,16 +19,11 @@ function index({ children }) {
   ) {
     return <div>{children}</div>;
   }
-  // check if user is logged and don't show login page if user is logged in also check if user is not logged in and show login page
-
   if (!token) {
     if (typeof window !== "undefined") {
       router.replace("/login");
     }
-  }
-  // make user can`t access to login page if user already logged in
-
-  if (token) {
+  } else {
     return (
       <>
         <div className="flex h-screen overflow-hidden bg-gray-50 font-popins dark:bg-gray-800 ">
@@ -56,6 +52,8 @@ function index({ children }) {
     );
   }
 }
+
+// make user can`t access to login page if user already logged in
 
 export default index;
 export const getServerSideProps = async ({ req }) => {
