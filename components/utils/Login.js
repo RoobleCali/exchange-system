@@ -16,6 +16,6 @@ export const login = (user) => {
     // find user roles and check if user have access
 
     const route = decoded.roles[0].path.toLowerCase();
-    Router.push(route);
+    Router.replace(route);
   }
 };

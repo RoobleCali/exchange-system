@@ -1,6 +1,6 @@
 import { getCookie } from "cookies-next";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../../components/header";
 import SampleSidebar from "../../components/sidebar";
 
@@ -18,9 +18,11 @@ function index({ children }) {
   ) {
     return <div>{children}</div>;
   }
-  if (!token && typeof window !== "undefined") {
-    router.push("/login");
-  } else {
+  if (!token) {
+    if (typeof window !== "undefined") {
+      router.replace("/login");
+    }
+  } else if (token) {
     return (
       <>
         <div className="flex h-screen overflow-hidden bg-gray-50 font-popins dark:bg-gray-800 ">
