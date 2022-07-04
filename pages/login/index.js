@@ -1,21 +1,21 @@
 import LoginNavbar from "./LoginNavbar";
-import jwt_decode from "jwt-decode";
 import FormLogin from "./FormLogin";
 import { getCookie } from "cookies-next";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 export default () => {
   const user = useSelector((state) => state.login.user);
   console.log(user);
   const router = useRouter();
-  const decoded = jwt_decode(user.accessToken);
 
   const token = getCookie("token");
-  if (token) {
-    if (typeof window !== "undefined") {
-      return router.go(1);
+  if (typeof window !== "undefined") {
+    if (token) {
+      router.back();
     }
   }
+  // redirect to home if already logged in
 
   return (
     <div className="dark:bg-gray-800">

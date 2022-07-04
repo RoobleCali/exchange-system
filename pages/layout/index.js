@@ -1,15 +1,12 @@
-import { getCookie } from "cookies-next";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { useState } from "react";
-import { async } from "regenerator-runtime";
 import Header from "../../components/header";
+import { RouteGuard } from "../../components/Protected";
 import SampleSidebar from "../../components/sidebar";
 function index({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [Mobilesidebar, setMobileSidebar] = useState(false);
-  const token = getCookie("token");
-  console.log(token);
+
   const router = useRouter();
   // check if there is no user and show only login page also check if user is logged in and not
   if (
@@ -18,14 +15,9 @@ function index({ children }) {
     router.pathname === "/404"
   ) {
     return <div>{children}</div>;
-  }
-  if (!token) {
-    if (typeof window !== "undefined") {
-      router.replace("/login");
-    }
   } else {
     return (
-      <>
+      <RouteGuard>
         <div className="flex h-screen overflow-hidden bg-gray-50 font-popins dark:bg-gray-800 ">
           <SampleSidebar
             sidebarOpen={sidebarOpen}
@@ -48,7 +40,7 @@ function index({ children }) {
             </main>
           </div>
         </div>
-      </>
+      </RouteGuard>
     );
   }
 }
@@ -56,18 +48,3 @@ function index({ children }) {
 // make user can`t access to login page if user already logged in
 
 export default index;
-export const getServerSideProps = async ({ req }) => {
-  if (!token) {
-    req.writeHead("/login");
-    // change the url to login
-    req.url = "/login";
-  }
-  //  else continue to next page
-  else {
-    return {
-      props: {
-        token: token,
-      },
-    };
-  }
-};
