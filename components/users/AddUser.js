@@ -1,29 +1,46 @@
+import axios from "axios";
+import { getCookie } from "cookies-next";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import avatar from "../../pages/assets/avatar.png";
-function AddUser({ open, setOpen }) {
+function AddUser({ open, setOpen, users }) {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting, isSubmitSuccessful, submitCount },
   } = useForm();
   const onSubmit = (data) => {
-    const res = axios.post(
-      "https://tick-account.herokuapp.com/api/auth/login",
-      data
-    );
-    setLoading(false);
-    res
+    console.log(data);
+    axios
+      .post("https://tick-account.herokuapp.com/api/users/", data, {
+        headers: { Authorization: `Bearer ${getCookie("token")}` },
+      })
       .then((res) => {
-        setCookies("token", res.data.user.accessToken);
-        dispatch(addUserEnd(res.data.user));
-        login(res.data.user);
+        // set users previusly added
+        setUsers(res.data);
+        setOpen(false);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+  // fetch roles from server using axios with token and then show in select box
+  const [roles, setRoles] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://tick-account.herokuapp.com/api/users/roles/", {
+        headers: { Authorization: `Bearer ${getCookie("token")}` },
+      })
+      .then((res) => {
+        setRoles(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div>
       <div
@@ -88,63 +105,56 @@ function AddUser({ open, setOpen }) {
                       </p>
                     )}
                   </div>
-                  <div className="flex items-center mt-8 space-x-9">
-                    <div>
-                      <input
-                        placeholder="password"
-                        type="password"
-                        className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
-                        {...register("password", { required: true })}
-                      />
-                      {errors.password && (
-                        <p className="text-sm text-red-400">
-                          This field is required
-                        </p>
-                      )}
-                    </div>
-                    <div className="mt-2">
-                      <input
-                        placeholder="UserPhone"
-                        type="tell"
-                        className="w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
-                        {...register("UserPhone", { required: true })}
-                      />
-                      {errors.UserPhone && (
-                        <p className="text-sm text-red-400">
-                          This field is required
-                        </p>
-                      )}
-                    </div>
+                  <div className="flex items-center justify-center mt-3 space-x-9">
+                    <input
+                      placeholder="UserPhone"
+                      className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+                      {...register("UserPhone", { required: true })}
+                    />
+                    {errors.UserPhone && (
+                      <p className="text-sm text-red-400">
+                        This field is required
+                      </p>
+                    )}
+
+                    <input
+                      placeholder="password"
+                      type="password"
+                      className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+                      {...register("password", { required: true })}
+                    />
+                    {errors.password && (
+                      <p className="text-sm text-red-400">
+                        This field is required
+                      </p>
+                    )}
                   </div>
+
                   <div
                     tabindex="0"
-                    className="focus:outline-none focus:ring-2 focus:ring-gray-400 w-1/2 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700  py-2.5 px-3"
+                    className="focus:outline-none mt-3 focus:ring-2 focus:ring-gray-400 w-1/2 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700  py-2.5 px-3"
                   >
-                    <select
-                      {...register("Title", { required: true })}
-                      className="w-1/2 text-sm text-gray-500 dark:bg-gray-900 focus:outline-none"
-                    >
-                      <option value="Mr">Mr</option>
-                      <option value="Mrs">Mrs</option>
-                      <option value="Miss">Miss</option>
-                      <option value="Dr">Dr</option>
-                    </select>
+                    {/* display fetched roles in select box */}
+                    {roles.map((role) => (
+                      <select
+                        {...register("RoleID", { required: true })}
+                        className="w-full text-sm text-gray-500 dark:bg-gray-900 focus:outline-none"
+                      >
+                        <option key={role._id} value={role._id}>
+                          {role.RoleName}
+                        </option>
+                      </select>
+                    ))}
                   </div>
-                  <div className="flex items-center justify-between mt-9">
-                    <button
-                      onclick="popuphandler(false)"
-                      className="px-6 py-3 text-sm text-white bg-gray-600 rounded shadow focus:ring-2 focus:ring-offset-2 focus:bg-gray-600 focus:ring-gray-600 focus:outline-none hover:bg-gray-500"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      aria-label="add user"
-                      role="button"
-                      className="px-6 py-3 text-sm text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80"
-                    >
-                      Add User
-                    </button>
-                  </div>
+
+                  <button
+                    aria-label="add user"
+                    role="button"
+                    type="submit"
+                    className="w-full px-6 py-3 text-sm text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80"
+                  >
+                    Add User
+                  </button>
                 </form>
               </div>
             </div>

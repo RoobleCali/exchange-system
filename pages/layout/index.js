@@ -19,38 +19,37 @@ function index({ children }) {
   ) {
     return <div>{children}</div>;
   }
-  if (!token) {
-    if (typeof window !== "undefined") {
-      router.replace("/login");
-    }
-  } else {
-    return (
-      <>
-        <div className="flex h-screen overflow-hidden bg-gray-50 font-popins dark:bg-gray-800 ">
-          <SampleSidebar
+  // if (!token) {
+  //   if (typeof window !== "undefined") {
+  //     router.replace("/login");
+  //   }
+  // } else {
+  return (
+    <>
+      <div className="flex h-screen overflow-hidden bg-gray-50 font-popins dark:bg-gray-800 ">
+        <SampleSidebar
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+          Mobilesidebar={Mobilesidebar}
+          setMobileSidebar={setMobileSidebar}
+        />
+
+        <div className="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
+          <Header
             sidebarOpen={sidebarOpen}
             setSidebarOpen={setSidebarOpen}
             Mobilesidebar={Mobilesidebar}
             setMobileSidebar={setMobileSidebar}
           />
-
-          <div className="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
-            <Header
-              sidebarOpen={sidebarOpen}
-              setSidebarOpen={setSidebarOpen}
-              Mobilesidebar={Mobilesidebar}
-              setMobileSidebar={setMobileSidebar}
-            />
-            <main>
-              <div className="p-1 px-3 mx-3 mt-3 sm:px-4 lg:px-8">
-                <div className="h-max">{children}</div>
-              </div>
-            </main>
-          </div>
+          <main>
+            <div className="p-1 px-3 mx-3 mt-3 sm:px-4 lg:px-8">
+              <div className="h-max">{children}</div>
+            </div>
+          </main>
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
 }
 
 // make user can`t access to login page if user already logged in

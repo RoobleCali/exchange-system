@@ -65,7 +65,7 @@ function index() {
                 </button>
               </div>
             </div>
-            <AddUser open={open} setOpen={setOpen} />
+            <AddUser open={open} setOpen={setOpen} users={Data} />
 
             {/* table */}
             <Table columns={columns} data={Data} />
