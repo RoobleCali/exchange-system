@@ -60,10 +60,7 @@ export default function Avatar() {
             <Menu.Item
               v-slot="{active}"
               onClick={() => {
-                Router.push("/login");
-                setCookies("token", "", {
-                  maxAge: -1,
-                });
+                Router.replace("/login");
               }}
             >
               <a className="block px-4 py-2 text-sm cursor-pointer ">Log out</a>

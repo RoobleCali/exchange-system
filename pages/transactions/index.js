@@ -2,7 +2,6 @@ import Table from "../../components/table/Table";
 import axios from "axios";
 import regeneratorRuntime from "regenerator-runtime";
 import { wrapper } from "../../redux/store";
-import { addTransaction } from "../../redux/slices/transactionSlice";
 import { StatusPill } from "../../components/table/StatusBill";
 import Actions from "../../components/clients/Actions";
 export default ({ Data }) => {

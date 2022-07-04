@@ -1,6 +1,8 @@
 import { getCookie } from "cookies-next";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { useState } from "react";
+import { async } from "regenerator-runtime";
 import Header from "../../components/header";
 import SampleSidebar from "../../components/sidebar";
 function index({ children }) {
@@ -8,6 +10,7 @@ function index({ children }) {
   const [Mobilesidebar, setMobileSidebar] = useState(false);
   const token = getCookie("token");
   const router = useRouter();
+  // check if there is no user and show only login page also check if user is logged in and not
   if (
     router.pathname === "/" ||
     router.pathname === "/login" ||
@@ -15,11 +18,15 @@ function index({ children }) {
   ) {
     return <div>{children}</div>;
   }
+  // check if user is logged and don't show login page if user is logged in also check if user is not logged in and show login page
+
   if (!token) {
     if (typeof window !== "undefined") {
       router.push("/login");
     }
-  } else {
+  }
+
+  if (token) {
     return (
       <>
         <div className="flex h-screen overflow-hidden bg-gray-50 font-popins dark:bg-gray-800 ">
@@ -51,7 +58,6 @@ function index({ children }) {
 
 export default index;
 export const getServerSideProps = async ({ req }) => {
-  const token = req.cookies.get("token");
   if (!token) {
     req.writeHead("/login");
   }
