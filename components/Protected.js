@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
+import nProgress from "nprogress";
 
 export default function RouteGuard({ children }) {
   const router = useRouter();
@@ -19,8 +20,12 @@ export default function RouteGuard({ children }) {
 
     // unsubscribe from events in useEffect return function
     return () => {
-      router.events.off("routeChangeStart", hideContent);
-      router.events.off("routeChangeComplete", authCheck);
+      // check the router and show nprogress if route is not protected
+      if (router.pathname.replace("/", "") === "login") {
+        // check the router and show nprogress if route is not protected
+        router.events.off("routeChangeStart", hideContent);
+        router.events.off("routeChangeComplete", authCheck);
+      }
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,14 +36,23 @@ export default function RouteGuard({ children }) {
     const publicPaths = ["/login"] || ["/"];
     const path = url.split("?")[0];
     if (!token && !publicPaths.includes(path)) {
+      // check the router and show nprogress if route is not protected
+      router.push("/login");
       setAuthorized(false);
       router.push({
         pathname: "/login",
         query: { returnUrl: router.asPath },
       });
-    } else {
-      setAuthorized(true);
     }
+    //  show nprogress if route is not protected
+    if (!publicPaths.includes(path)) {
+      nProgress.start();
+    }
+    // hide nprogress if route is protected
+    if (publicPaths.includes(path)) {
+      nProgress.done();
+    }
+    // set authorized to true if logged in
   }
 
   return authorized && children;

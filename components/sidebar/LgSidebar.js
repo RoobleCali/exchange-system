@@ -119,9 +119,12 @@ export default function LgSidebar() {
                 return decoded.roles.map((access) => {
                   const link = access.path.toLowerCase();
                   const path = item.link;
+                  // check if link has not access then hide it also redirect to unauthorized page
+                  if (link !== path) {
+                    return null;
+                  }
                   if (link == path) {
                     // check if item has children
-
                     if (item.children) {
                       return (
                         <div key={index}>
@@ -196,6 +199,8 @@ export default function LgSidebar() {
                         </Link>
                       </ul>
                     );
+                  } else {
+                    return null;
                   }
                 });
               })}
