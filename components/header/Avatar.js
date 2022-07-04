@@ -3,10 +3,8 @@ import Image from "next/image";
 import abdishakuur from "../../pages/assets/abdishakuur.jpg";
 import { setCookies } from "cookies-next";
 import Router from "next/router";
-import { useSelector } from "react-redux";
 export default function Avatar() {
   // select transAction from redux
-  const { FullName } = useSelector((state) => state.transactions.transactions);
   return (
     <div className="flex justify-end px-6 py-3 ">
       <Menu as="div" className="relative">
