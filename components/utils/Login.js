@@ -5,9 +5,6 @@ import Router from "next/router";
 export const login = (user) => {
   const token = getCookie("token");
 
-  if (typeof window !== "undefined") {
-    // check if there is token and don`t allow user to access login page
-  }
   if (user.userType === "HQ-ADMIN" || user.userType === "BranchAdmin") {
     if (token) {
       Router.replace("/dashboard");

@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import avatar from "../../pages/assets/avatar.png";
-function AddUser({ open, setOpen, users }) {
+function AddUser({ open, setOpen }) {
   const {
     register,
     handleSubmit,
