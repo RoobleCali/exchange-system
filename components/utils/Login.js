@@ -5,6 +5,9 @@ export const login = (user) => {
   if (user.userType === "HQ-ADMIN" || user.userType === "BranchAdmin") {
     Router.replace("/dashboard");
   } else {
+    if (!token) {
+      Router.push("/login");
+    }
     const decoded = jwt_decode(user.accessToken);
     if (decoded.roles.length === 0) {
       return alert("You are not authorized to access this page");

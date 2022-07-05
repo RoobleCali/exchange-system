@@ -1,7 +1,7 @@
 import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
 import abdishakuur from "../../pages/assets/abdishakuur.jpg";
-import { setCookies } from "cookies-next";
+import { removeCookies } from "cookies-next";
 import Router from "next/router";
 export default function Avatar() {
   // select transAction from redux
@@ -61,9 +61,12 @@ export default function Avatar() {
               v-slot="{active}"
               onClick={() => {
                 // write head login and remove  cookie
-                setCookies(null, "token");
-                // write head login
-                Router.push("/login");
+                Router.replace("/login");
+                new Promise((resolve) => {
+                  removeCookies("token");
+                }).then(() => {
+                  removeCookies();
+                });
               }}
             >
               <a className="block px-4 py-2 text-sm cursor-pointer ">Log out</a>

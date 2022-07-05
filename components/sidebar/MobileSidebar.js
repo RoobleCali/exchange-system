@@ -11,6 +11,9 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
   const router = useRouter();
   const [Dropdown, setDropdown] = useState(false);
   const token = getCookie("token");
+  if (!token) {
+    router.push("/login");
+  }
   const decoded = jwt_decode(token);
   const sidebar = useRef(null);
   // close if the esc key is pressed

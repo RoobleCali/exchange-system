@@ -21,7 +21,12 @@ function Header({
   const { theme, setTheme } = useTheme("light");
   const [DropdownOpen, setDropdownOpen] = useState(false);
   const token = getCookie("token");
-  const decoded = jwt_decode(token);
+  console.log("token", token);
+  let decoded;
+  if (token !== undefined) {
+    decoded = jwt_decode(token);
+  }
+  console.log(decoded);
   return (
     <header
       className={`sticky dark:text-white bg-white dark:bg-slate-800  top-0  border-b border-slate-200 z-30`}
@@ -72,16 +77,17 @@ function Header({
             {/*  Divider */}
             <hr className="border-l border-slate-200" />
             {/* avatar and user role */}
+
             <div
               className="flex items-center h-24 "
               onClick={() => setDropdownOpen(!DropdownOpen)}
             >
-              <div className=" text-[10px] truncate hidden sm:inline-block font-medium text-gray-600 dark:text-white">
+              {/* <div className=" text-[10px] truncate hidden sm:inline-block font-medium text-gray-600 dark:text-white">
                 <div className="w-24 truncate">{decoded.UserName}</div>
                 <div className="w-24 text-gray-500 truncate dark:text-gray-400">
                   {decoded.userType}
                 </div>
-              </div>
+              </div> */}
               <Avatar />
             </div>
             {/* user avator */}

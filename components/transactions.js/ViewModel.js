@@ -178,7 +178,7 @@ function ViewModel({ open, setOpen }) {
                     ))}
                   </div>
                   {/* contact information */}
-                  <div className="flex flex-wrap gap-6 space-x-8 space-y-2 lg:mt-24">
+                  <div className="flex flex-wrap gap-6 mt-10 space-x-8 space-y-2 lg:mt-24">
                     {contactInfo.map((item, index) => (
                       <span className="flex items-center space-x-5">
                         {item.icon}
@@ -266,7 +266,7 @@ function ViewModel({ open, setOpen }) {
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit.
                           </p>
-                          <p className="mt-2 text-xs text-gray-500">
+                          <p className="w-32 mt-2 text-xs text-gray-500 truncate md:w-max">
                             Lorem ipsum dolor sit, amet consectetur adipisicing
                             elit. Quidem iusto possimus qui ipsam maiores
                             deserunt .
