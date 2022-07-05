@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
 export { RouteGuard };
 
-function RouteGuard({ children }) {
+function RouteGuard({ children, link, path }) {
   const router = useRouter();
   const [authorized, setAuthorized] = useState(false);
   const token = getCookie("token");
@@ -26,14 +26,19 @@ function RouteGuard({ children }) {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  console.log(path);
+  console.log(link);
 
   function authCheck(url) {
     // redirect to login page if accessing a private page and not logged in
     const publicPaths = ["/login"] || ["/"];
     const path = url.split("?")[0];
-    if (!token && !publicPaths.includes(path)) {
+    if (!token && !publicPaths.includes(path) && path !== link) {
       setAuthorized(false);
-      router.replace("/login");
+      router.push({
+        pathname: "/login",
+        query: { returnUrl: router.asPath },
+      });
     } else {
       setAuthorized(true);
     }

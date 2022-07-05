@@ -27,11 +27,11 @@ function MyApp({ Component, pageProps }) {
   });
   return (
     <ThemeProvider enableSystem={true} attribute="class">
-      <RouteGuard>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </RouteGuard>
+      {/* <RouteGuard> */}
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+      {/* </RouteGuard> */}
     </ThemeProvider>
   );
 }
