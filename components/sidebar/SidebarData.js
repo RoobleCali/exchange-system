@@ -38,7 +38,7 @@ export const sidebarData = [
   {
     title: "cardcenter",
     icon: <ShoppingCartIcon />,
-    link: "/cardcenter",
+    link: "cardcenter",
   },
   {
     title: "Roles",
