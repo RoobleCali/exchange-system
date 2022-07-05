@@ -200,12 +200,6 @@ function Table({ columns, data }) {
                   )}
                   content={() => componentRef}
                 />
-                {/* add client button */}
-                <div className="flex items-center justify-center px-2 py-2 space-x-2 text-white bg-blue-400 cursor-pointer rounded-xl dark:bg-slate-600 sm:flex innline-flex">
-                  <UserAddIcon className="w-5 h-6 " />
-
-                  <button className="truncate ">Add Client</button>
-                </div>
               </div>
             </div>
           ))}
