@@ -70,7 +70,12 @@ export default function Actions({ link }) {
           </Menu.Items>
         </Transition>
       </Menu>
-      <ManageAccount open={open} setOpen={setOpen} />
+      <ManageAccount
+        id="search-modal"
+        searchId="search"
+        open={open}
+        setOpen={setOpen}
+      />
     </div>
   );
 }

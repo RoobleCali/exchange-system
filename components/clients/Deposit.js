@@ -15,12 +15,11 @@ function DepositModel({ open, setOpen }) {
               open ? " opacity-90" : "opacity-0 pointer-events-none"
             }`}
           ></div>
+
           <div className="container mx-auto">
-            <div className="flex items-center justify-center w-full h-full">
-              <div
-                className="fixed overflow-y-auto bg-white rounded-md shadow dark:bg-gray-800 w-max "
-              >
-                <div className="flex items-center justify-between px-4 bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-8 md:py-4 py-7">
+            <div className="flex items-center justify-center w-full h-full ">
+              <div className="fixed w-[95%] overflow-y-auto bg-white rounded-md shadow dark:bg-gray-800 sm:w-max ">
+                <div className="flex items-center justify-between bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md px-14 md:px-8 md:py-4 py-7">
                   <p className="text-base font-semibold dark:text-white">
                     Deposit Form
                   </p>
