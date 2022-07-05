@@ -64,7 +64,6 @@ function AddUser({ open, setOpen }) {
                 <button
                   role="button"
                   aria-label="close label"
-                  onclick="popuphandler(false)"
                   className="focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
                   onClick={() => setOpen(false)}
                 >
@@ -131,7 +130,7 @@ function AddUser({ open, setOpen }) {
                   </div>
 
                   <div
-                    tabindex="0"
+                    tabIndex="0"
                     className="focus:outline-none mt-3 focus:ring-2 focus:ring-gray-400 w-1/2 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700  py-2.5 px-3"
                   >
                     {/* display fetched roles in select box */}

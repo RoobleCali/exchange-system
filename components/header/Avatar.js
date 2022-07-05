@@ -60,6 +60,9 @@ export default function Avatar() {
             <Menu.Item
               v-slot="{active}"
               onClick={() => {
+                // write head login and remove  cookie
+                setCookies(null, "token");
+                // write head login
                 Router.push("/login");
               }}
             >

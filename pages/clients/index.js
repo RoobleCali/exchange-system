@@ -7,8 +7,8 @@ import Router from "next/router";
 import Actions from "../../components/clients/Actions";
 import { StatusPill } from "../../components/table/StatusBill";
 
-export default ({ data }) => {
-  const [Data, setData] = useState(data);
+export default () => {
+  const [Data, setData] = useState([]);
   const fetcher = (url, token) => {
     token
       ? axios
@@ -57,30 +57,30 @@ export default ({ data }) => {
   );
 };
 
-export const getServerSideProps = async ({ req, res }) => {
-  // get the token in the cookie
-  const token = req.headers.cookie;
-  // get the toke in cookie
+// export const getServerSideProps = async ({ req, res }) => {
+//   // get the token in the cookie
+//   const token = req.headers.cookie;
+//   // get the toke in cookie
 
-  if (!token) {
-    res.writeHead(302, {
-      Location: "/login",
-    });
-    res.end();
-  } else {
-    try {
-      const tokenInCookie = token.split("=")[1];
-      console.log(tokenInCookie);
-      const response = await axios.get(`http://localhost:3000/api/clients`, {
-        headers: {
-          athorization: tokenInCookie,
-        },
-      });
-      const data = response.data;
+//   if (!token) {
+//     res.writeHead(302, {
+//       Location: "/login",
+//     });
+//     res.end();
+//   } else {
+//     try {
+//       const tokenInCookie = token.split("=")[1];
+//       console.log(tokenInCookie);
+//       const response = await axios.get(`http://localhost:3000/api/clients`, {
+//         headers: {
+//           athorization: tokenInCookie,
+//         },
+//       });
+//       const data = response.data;
 
-      return { props: { data: data } };
-    } catch (error) {
-      console.log(error);
-    }
-  }
-};
+//       return { props: { data: data } };
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+// };

@@ -3,19 +3,20 @@ import { getCookie } from "cookies-next";
 import React, { useState } from "react";
 import Table from "../../components/table/Table";
 import AddUser from "../../components/users/addUser";
-import useSWR from "swr";
+import { ajax } from "rxjs/ajax";
 
 function index() {
   const [open, setOpen] = useState(false);
   const [Data, setData] = useState([]);
+  // get the data using ajax rxjs with token
 
-  const fetcher = (url, token) => {
-    token
-      ? axios
-          .get(url, { headers: { Authorization: "Bearer " + token } })
-          .then((res) => setData(res.data))
-      : Router.replace("/login");
-  };
+  console.log(data);
+  // get the data with token and cosole log it using rxjs
+  const token = getCookie("token");
+  const data = ajax
+    .getJSON("https://tick-account.herokuapp.com/api/users/", token)
+    // get ajax with token and console log it
+    .subscribe((res) => console.log(res));
 
   const columns = [
     {
@@ -37,11 +38,6 @@ function index() {
 
     // actions column with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row
   ];
-  const token = getCookie("token");
-  const { error } = useSWR(
-    ["https://tick-account.herokuapp.com/api/users/", token],
-    fetcher
-  );
 
   return (
     <div>
@@ -69,7 +65,7 @@ function index() {
         </div>
       </div>
 
-      <Table columns={columns} data={Data} />
+      {/* <Table columns={columns} data={Data} /> */}
     </div>
   );
 }
