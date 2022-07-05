@@ -2,9 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/wallet": "pages/wallet.js",
+  "/404": "pages/404.js",
   "/users": "pages/users.js",
-  "/clients": "pages/clients.js",
-  "/dashboard": "pages/dashboard.js",
-  "/404": "pages/404.js"
+  "/clients": "pages/clients.js"
 }
