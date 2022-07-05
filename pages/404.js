@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Router from "next/router";
 import sad from "./assets/sad.png";
 function error() {
   return (
@@ -19,14 +19,14 @@ function error() {
           </div>
         </center>
         <center class="mt-9">
-          <Link href="/dashboard">
+          <div onClick={() => Router.back()}>
             <a
               class="bg-blue-500 font-mono text-xl text-gray-200 p-3
-             rounded-md hover:shadow-md"
+             rounded-md hover:shadow-md cursor-pointer"
             >
               Go back
             </a>
-          </Link>
+          </div>
         </center>
       </div>
     </div>

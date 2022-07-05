@@ -4,10 +4,9 @@ import { sidebarData } from "./SidebarData";
 import jwt_decode from "jwt-decode";
 import { getCookie } from "cookies-next";
 import Link from "next/link";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import { useState } from "react";
-import { RouteGuard } from "../Protected";
 export default function LgSidebar() {
   const router = useRouter();
   const [Dropdown, setDropdown] = useState(false);
@@ -120,6 +119,10 @@ export default function LgSidebar() {
                 return decoded.roles.map((access) => {
                   const link = access.path.toLowerCase();
                   const path = item.link;
+                  const route = router.pathname.replace("/", "");
+                  console.log(route, path);
+                  // if user go route that is not exact match with path in sidebar data then go to 404 page
+                  console.log(route, link);
                   if (link !== path) {
                     return null;
                   } else {

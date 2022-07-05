@@ -42,7 +42,7 @@ function Header({
             >
               <MenuAlt2Icon className="w-6 h-6" />
             </button>
-            <p className="text-sm font-medium capitalize">
+            <p className="text-sm font-medium text-gray-600 capitalize dark:text-gray-200">
               {/* router pathname remove / */}
               {router.asPath.replace("/", "")}
             </p>
