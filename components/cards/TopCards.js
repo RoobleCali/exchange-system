@@ -17,7 +17,7 @@ function TopCards() {
       w-[50%] md:w-max pl-2 sm:pl-10 h-72 "
         >
           {/* master card icon */}
-          <div className="  w-16 -mt-5">
+          <div className="w-16 -mt-5 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               enableBackground="new 0 0 48 48"
@@ -39,16 +39,16 @@ c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
           <p className="text-[10px]">Wallet Balance</p>
           <h1 className="text-lg md:text-2xl">$824,571.93</h1>
           <h3 className="text-[10px]">+0,8% than last week</h3>
-          <div className="flex space-x-3 mt-32 justify-around">
-            <div className=" space-y-4">
-              <span className="px-3 py-1 rounded-md flex items-center justify-center    mt-3 bg-white">
-                <SortAscendingIcon className="w-7  text-gray-600 " />
+          <div className="flex justify-around mt-32 space-x-3">
+            <div className="space-y-4 ">
+              <span className="flex items-center justify-center px-3 py-1 mt-3 bg-white rounded-md">
+                <SortAscendingIcon className="text-gray-600 w-7 " />
               </span>
               <span className="text-[10px]">Invoices</span>
             </div>
-            <div className=" space-y-4">
-              <span className="px-3 py-1 rounded-md flex items-center justify-center    mt-3 bg-white">
-                <SwitchHorizontalIcon className="w-7 text-gray-600" />
+            <div className="space-y-4 ">
+              <span className="flex items-center justify-center px-3 py-1 mt-3 bg-white rounded-md">
+                <SwitchHorizontalIcon className="text-gray-600 w-7" />
               </span>
               <span className="text-[10px]">Invoices</span>
             </div>
@@ -59,11 +59,13 @@ c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
           <div className="flex justify-between px-1 pt-5 text-xs">
             <span className="space-y-1">
               <p className="text-gray-500">Main Balance</p>
-              <h1 className="text-md sm:text-2xl">$98,452.44</h1>
+              <h1 className="text-gray-600 text-md sm:text-2xl dark:text-gray-200">
+                $98,452.44
+              </h1>
             </span>
             <DotsVerticalIcon className="w-5 cursor-pointer" />
           </div>
-          <div className="mt-10 mx-2">
+          <div className="mx-2 mt-10">
             <ProgressBar completed={80} />
           </div>
           <div className="text-gray-400 text-[10px] lg:text-sm mt-5 mx-2">
@@ -71,15 +73,15 @@ c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
           </div>
           <div className="mt-5 sm:mt-14 text-[9px]   sm:text-xs flex items-center justify-between sm:px-5">
             <span>
-              <p className="t text-gray-400">VALID THRU</p>
+              <p className="text-gray-400 t">VALID THRU</p>
               <h1>08/21</h1>
             </span>
             <span>
-              <p className=" text-gray-400">VALID THRU</p>
+              <p className="text-gray-400 ">VALID THRU</p>
               <h1>08/21</h1>
             </span>
             <span>
-              <p className=" text-gray-400">VALID THRU</p>
+              <p className="text-gray-400 ">VALID THRU</p>
               <h1>08/21</h1>
             </span>
           </div>

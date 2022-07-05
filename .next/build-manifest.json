@@ -30,25 +30,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/clients": [
+    "/cardcenter": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/clients.js"
+      "static/chunks/pages/cardcenter.js"
     ],
-    "/dashboard": [
+    "/transactions": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/dashboard.js"
+      "static/chunks/pages/transactions.js"
     ],
-    "/login": [
+    "/users": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/login.js"
-    ],
-    "/wallet": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/wallet.js"
+      "static/chunks/pages/users.js"
     ]
   },
   "ampFirstPages": []
