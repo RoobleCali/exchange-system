@@ -34,20 +34,18 @@ function RouteGuard({ children, link, path }) {
         router.push({ pathname: "/login" });
       }
       const decoded = jwt_decode(token);
-
+      const Isadmin = decoded.userType === "BranchAdmin";
       const hasAccess = decoded.roles.some((role) => {
         const route = router.pathname.replace("/", "");
         const link = role.path.toLowerCase();
-        console.log("role", link);
-        console.log("path", route);
         return link === route;
       });
 
-      if (hasAccess) {
+      if (hasAccess || Isadmin) {
         setAuthorized(true);
       } else {
         setAuthorized(false);
-        router.push({ pathname: "/404" });
+        router.push("/unauthorized");
       }
     }
   }
