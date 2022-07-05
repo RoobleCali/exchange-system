@@ -30,6 +30,7 @@
     "react-circular-progressbar": "^2.0.4",
     "react-date-range": "^1.4.0",
     "react-dom": "18.1.0",
+    "react-flatpickr": "^3.10.13",
     "react-hook-form": "^7.32.2",
     "react-minimal-pie-chart": "^8.3.0",
     "react-redux": "^8.0.1",

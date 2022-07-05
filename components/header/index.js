@@ -10,6 +10,7 @@ import { useState } from "react";
 import Avatar from "./Avatar";
 import jwt_decode from "jwt-decode";
 import { getCookie } from "cookies-next";
+import Notifications from "./Notification";
 function Header({
   sidebarOpen,
   setSidebarOpen,
@@ -65,7 +66,7 @@ function Header({
               )}
             </div>
             <div>
-              <BellIcon className="cursor-pointer w-7" />
+              <Notifications />
             </div>
 
             {/*  Divider */}
