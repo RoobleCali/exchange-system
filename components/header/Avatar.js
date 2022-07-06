@@ -36,7 +36,7 @@ export default function Avatar() {
         <Transition
           enter-active-classname="transition duration-100 ease-out transform"
           enter-from-classname="scale-90 opacity-0"
-          enter-to-classname="scale-100 opacity-100"
+          enter-to-classname="scale-100 opacity-75 opacity-100 "
           leave-active-classname="transition duration-100 ease-in transform"
           leave-from-classname="scale-100 opacity-100"
           leave-to-classname="scale-90 opacity-0"

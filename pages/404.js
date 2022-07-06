@@ -1,9 +1,22 @@
+import { getCookie } from "cookies-next";
 import Image from "next/image";
 import Router from "next/router";
+import { useEffect, useState } from "react";
 import sad from "./assets/sad.png";
 function error() {
+  // only show 404 page if user is logged in
+  const [authorized, setAuthorized] = useState(false);
+  const token = getCookie("token");
+
+  useEffect(() => {
+    if (!token) {
+      Router.replace({ pathname: "/login" });
+    }
+  }, []);
+
   return (
     <div>
+      {/* check if router pathname is Accessdenied */}
       <div class="  h-screen justify-center">
         <center class="mt-14 m-auto space-y-6">
           <div className=" animate-pulse">

@@ -67,7 +67,6 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
           {decoded.userType === "BranchAdmin"
             ? sidebarData.map((item, index) => {
                 const link = item.link;
-                console.log(link);
                 if (item.children) {
                   return (
                     <div key={index}>

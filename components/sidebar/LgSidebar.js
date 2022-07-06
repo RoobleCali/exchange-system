@@ -40,7 +40,6 @@ export default function LgSidebar() {
           {decoded.userType === "BranchAdmin"
             ? sidebarData.map((item, index) => {
                 const link = item.link;
-                console.log(link);
                 if (item.children) {
                   return (
                     <div key={index}>

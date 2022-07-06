@@ -4,10 +4,9 @@ import { getCookie } from "cookies-next";
 export { RouteGuard };
 import jwt_decode from "jwt-decode";
 
-function RouteGuard({ children, link, path }) {
+function RouteGuard({ children }) {
   const router = useRouter();
   const [authorized, setAuthorized] = useState(false);
-  const [loading, setloading] = useState(false);
 
   const token = getCookie("token");
   useEffect(() => {
@@ -22,17 +21,10 @@ function RouteGuard({ children, link, path }) {
     };
   }, []);
   function authCheck(url) {
-    // redirect to login page if accessing a private page and not logged in
-    const publicPaths = ["/login"];
-    const path = url.split("?")[0];
-    if (!token && !publicPaths.includes(path) && path !== link) {
+    if (!token) {
       setAuthorized(false);
-      router.push({ pathname: "/login" });
+      router.replace({ pathname: "/login" });
     } else {
-      if (!token) {
-        setAuthorized(false);
-        router.push({ pathname: "/login" });
-      }
       const decoded = jwt_decode(token);
       const Isadmin = decoded.userType === "BranchAdmin";
       const hasAccess = decoded.roles.some((role) => {
@@ -44,8 +36,7 @@ function RouteGuard({ children, link, path }) {
       if (hasAccess || Isadmin) {
         setAuthorized(true);
       } else {
-        setAuthorized(false);
-        router.push("/unauthorized");
+        return router.replace({ pathname: "/unauthorized" });
       }
     }
   }
