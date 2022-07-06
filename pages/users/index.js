@@ -10,13 +10,8 @@ function index() {
   const [Data, setData] = useState([]);
   // get the data using ajax rxjs with token
 
-  console.log(data);
   // get the data with token and cosole log it using rxjs
   const token = getCookie("token");
-  const data = ajax
-    .getJSON("https://tick-account.herokuapp.com/api/users/", token)
-    // get ajax with token and console log it
-    .subscribe((res) => console.log(res));
 
   const columns = [
     {

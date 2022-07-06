@@ -1,19 +1,7 @@
 import LoginNavbar from "./LoginNavbar";
 import FormLogin from "./FormLogin";
-import { getCookie } from "cookies-next";
-import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 export default () => {
-  const user = useSelector((state) => state.login.user);
-  console.log(user);
-  const router = useRouter();
-
-  const token = getCookie("token");
-  if (typeof window !== "undefined") {
-    if (token) {
-      router.replace("/clients");
-    }
-  }
   // redirect to home if already logged in
 
   return (

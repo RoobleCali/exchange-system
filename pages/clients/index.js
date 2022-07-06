@@ -52,7 +52,7 @@ export default () => {
   if (error) console.log(error);
   return (
     <div className="w-full">
-      <Table columns={columns} data={Data} />
+      {/* <Table columns={columns} data={Data} /> */}
     </div>
   );
 };

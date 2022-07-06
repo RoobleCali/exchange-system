@@ -1,11 +1,10 @@
 import { getCookie } from "cookies-next";
 import Image from "next/image";
 import Router from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import sad from "./assets/sad.png";
 function error() {
   // only show 404 page if user is logged in
-  const [authorized, setAuthorized] = useState(false);
   const token = getCookie("token");
 
   useEffect(() => {

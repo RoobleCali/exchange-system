@@ -11,6 +11,7 @@ import Avatar from "./Avatar";
 import jwt_decode from "jwt-decode";
 import { getCookie } from "cookies-next";
 import Notifications from "./Notification";
+import { useEffect } from "react";
 function Header({
   sidebarOpen,
   setSidebarOpen,
@@ -21,12 +22,13 @@ function Header({
   const { theme, setTheme } = useTheme("light");
   const [DropdownOpen, setDropdownOpen] = useState(false);
   const token = getCookie("token");
-  console.log("token", token);
-  let decoded;
-  if (token !== undefined) {
-    decoded = jwt_decode(token);
-  }
-  console.log(decoded);
+  useEffect(() => {
+    if (!token || token == null) {
+      router.push("/login");
+    }
+  }, []);
+  // use let to avoid re-rendering
+
   return (
     <header
       className={`sticky dark:text-white bg-white dark:bg-slate-800  top-0  border-b border-slate-200 z-30`}
@@ -70,24 +72,20 @@ function Header({
                 />
               )}
             </div>
-            <div>
-              <Notifications />
-            </div>
 
             {/*  Divider */}
             <hr className="border-l border-slate-200" />
             {/* avatar and user role */}
-
             <div
               className="flex items-center h-24 "
               onClick={() => setDropdownOpen(!DropdownOpen)}
             >
-              {/* <div className=" text-[10px] truncate hidden sm:inline-block font-medium text-gray-600 dark:text-white">
-                <div className="w-24 truncate">{decoded.UserName}</div>
+              <div className=" text-[10px] truncate hidden sm:inline-block font-medium text-gray-600 dark:text-white">
+                <div className="w-24 truncate">mohamed ahmed</div>
                 <div className="w-24 text-gray-500 truncate dark:text-gray-400">
-                  {decoded.userType}
+                  abdishakuur ally
                 </div>
-              </div> */}
+              </div>
               <Avatar />
             </div>
             {/* user avator */}

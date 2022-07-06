@@ -5,7 +5,6 @@ import { wrapper } from "../redux/store";
 import Router from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import { RouteGuard } from "../components/Protected";
 function MyApp({ Component, pageProps }) {
   NProgress.configure({
     showSpinner: false,

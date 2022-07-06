@@ -11,9 +11,11 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
   const router = useRouter();
   const [Dropdown, setDropdown] = useState(false);
   const token = getCookie("token");
-  if (!token) {
-    router.push("/login");
-  }
+  useEffect(() => {
+    if (!token) {
+      router.replace({ pathname: "/login" });
+    }
+  }, []);
   const decoded = jwt_decode(token);
   const sidebar = useRef(null);
   // close if the esc key is pressed
@@ -41,6 +43,7 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
       document.removeEventListener("touchstart", handleClickOutside);
     }
   }, [sidebarOpen]);
+
   return (
     <div className="shadow-xl">
       {/* Sidebar backdrop (mobile only) */}
