@@ -40,6 +40,11 @@ export const sidebarData = [
     icon: <TranslateIcon />,
     link: "branches",
   },
+  {
+    title: "invoices",
+    icon: <TranslateIcon />,
+    link: "invoices",
+  },
 
   {
     title: "cardcenter",

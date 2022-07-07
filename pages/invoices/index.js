@@ -6,8 +6,6 @@ import { useSelector } from "react-redux";
 import { StatusPill } from "../../components/table/StatusBill";
 
 export default ({ data }) => {
-  const user = useSelector((state) => state.transactions.transactions);
-
   // colums for the transactions table (id, date, amount, description, category, actions)  with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row
   const columns = [
     {

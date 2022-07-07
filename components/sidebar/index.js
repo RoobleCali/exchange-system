@@ -22,10 +22,10 @@ function SampleSidebar({
         />
       </div>
       <div className="inline-flex lg:hidden">
-        {/* <MobileSidebar
+        <MobileSidebar
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
-        /> */}
+        />
       </div>
     </div>
   );

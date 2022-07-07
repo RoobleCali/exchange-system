@@ -5,6 +5,8 @@ import { useState } from "react";
 import { getCookie } from "cookies-next";
 import Router from "next/router";
 import Actions from "../../components/clients/Actions";
+import regeneratorRuntime from "regenerator-runtime";
+
 import { StatusPill } from "../../components/table/StatusBill";
 
 export default () => {
@@ -23,16 +25,16 @@ export default () => {
       accessor: "_id",
     },
     {
-      Header: "phone",
-      accessor: "phone",
+      Header: "FullName",
+      accessor: "FullName",
     },
     {
-      Header: "CustFullName",
-      accessor: "CustFullName",
+      Header: "RoleName",
+      accessor: "RoleName",
     },
     {
-      Header: "AccountNumber",
-      accessor: "AccountNumber",
+      Header: "UserPhone",
+      accessor: "UserPhone",
     },
     {
       Header: "Actions",
@@ -45,42 +47,24 @@ export default () => {
     // actions column with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row
   ];
   const token = getCookie("token");
-  const { error } = useSWR(
+  const { data } = useSWR(
     ["https://tick-account.herokuapp.com/api/users/", token],
     fetcher
   );
-  if (error) console.log(error);
+
   return (
     <div className="w-full">
-      {/* <Table columns={columns} data={Data} /> */}
+      <Table columns={columns} data={Data} />
     </div>
   );
 };
 
-// export const getServerSideProps = async ({ req, res }) => {
-//   // get the token in the cookie
-//   const token = req.headers.cookie;
-//   // get the toke in cookie
+export const getServerSideProps = async (ctx) => {
+  const resp = await axios.get(`https://jsonplaceholder.typicode.com/users`);
 
-//   if (!token) {
-//     res.writeHead(302, {
-//       Location: "/login",
-//     });
-//     res.end();
-//   } else {
-//     try {
-//       const tokenInCookie = token.split("=")[1];
-//       console.log(tokenInCookie);
-//       const response = await axios.get(`http://localhost:3000/api/clients`, {
-//         headers: {
-//           athorization: tokenInCookie,
-//         },
-//       });
-//       const data = response.data;
-
-//       return { props: { data: data } };
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-// };
+  return {
+    props: {
+      Data: resp.data,
+    },
+  };
+};

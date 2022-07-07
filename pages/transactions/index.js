@@ -4,30 +4,31 @@ import regeneratorRuntime from "regenerator-runtime";
 import { StatusPill } from "../../components/table/StatusBill";
 import Actions from "../../components/clients/Actions";
 export default ({ Data }) => {
+  console.log(Data);
   const columns = [
     {
-      Header: "ID",
+      Header: "id",
       accessor: "id",
     },
     {
-      Header: "Date",
-      accessor: "date",
+      Header: "name",
+      accessor: "name",
     },
     {
-      Header: "Amount",
-      accessor: "amount",
+      Header: "username",
+      accessor: "username",
     },
     {
-      Header: "Description",
-      accessor: "description",
+      Header: "email",
+      accessor: "email",
     },
     {
-      Header: "Currency",
-      accessor: "currency",
+      Header: "phone",
+      accessor: "phone",
     },
     {
-      Header: "Status",
-      accessor: "status",
+      Header: "website",
+      accessor: "website",
       Cell: StatusPill,
     },
     // actions column with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row
@@ -47,9 +48,12 @@ export default ({ Data }) => {
   );
 };
 
-export const getServerSideProps = async ({ req, res }) => {
-  const response = await axios.get(`http://localhost:3000/api/transactions`);
-  const data = response.data;
+export const getServerSideProps = async (ctx) => {
+  const resp = await axios.get(`https://jsonplaceholder.typicode.com/users`);
 
-  return { props: { Data: data } };
+  return {
+    props: {
+      Data: resp.data,
+    },
+  };
 };

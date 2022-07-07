@@ -9,6 +9,7 @@ function index({ children }) {
   const router = useRouter();
   if (
     router.pathname === "/" ||
+    router.pathname === "/unauthorised" ||
     router.pathname === "/login" ||
     router.pathname === "/404"
   ) {
