@@ -1,16 +1,9 @@
-import {
-  MoonIcon,
-  SunIcon,
-  MenuAlt2Icon,
-  BellIcon,
-} from "@heroicons/react/outline";
+import { MoonIcon, SunIcon, MenuAlt2Icon } from "@heroicons/react/outline";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Avatar from "./Avatar";
-import jwt_decode from "jwt-decode";
 import { getCookie } from "cookies-next";
-import Notifications from "./Notification";
 import { useEffect } from "react";
 function Header({
   sidebarOpen,
@@ -19,7 +12,7 @@ function Header({
   setMobileSidebar,
 }) {
   const router = useRouter();
-  const { theme, setTheme } = useTheme("light");
+  const { theme, setTheme } = useTheme("");
   const [DropdownOpen, setDropdownOpen] = useState(false);
   const token = getCookie("token");
   useEffect(() => {
