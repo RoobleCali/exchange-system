@@ -141,7 +141,7 @@ function Pagination({
                 setPageSize(Number(e.target.value));
               }}
             >
-              {[50, 100, 150].map((pageSize) => (
+              {[5, 100, 150].map((pageSize) => (
                 <option key={pageSize} value={pageSize}>
                   Show {pageSize}
                 </option>
