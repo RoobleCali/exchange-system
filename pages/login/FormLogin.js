@@ -40,7 +40,7 @@ function FormLogin() {
         if (err.message === "Network Error") {
           setmessage("please check your internet connection");
         }
-        if (err.response.data) {
+        if (err.response) {
           setmessage(err.response.data.message);
         }
 
@@ -79,7 +79,6 @@ function FormLogin() {
             >
               userName
             </label>
-
             <input
               className={`w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border
                border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 

@@ -57,7 +57,7 @@ function AddUser({ open, setOpen }) {
         ></div>
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-center w-full h-full">
-            <div className="fixed w-10/12 overflow-y-auto bg-white rounded-md shadow dark:bg-gray-800 sm:h-auto md:w-8/12 lg:w-1/2 2xl:w-2/5">
+            <div className="fixed overflow-y-auto bg-white rounded-md shadow dark:bg-gray-800 sm:h-auto ">
               <div className="flex items-center justify-between px-4 bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-8 md:py-4 py-7">
                 <p className="text-base font-semibold text-gray-700 dark:text-white">
                   Create New User
@@ -79,12 +79,22 @@ function AddUser({ open, setOpen }) {
                       placeholder="FullName"
                       className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
                     />
+                    {errors.FullName && (
+                      <span className="py-2 text-sm text-red-400">
+                        user name is required
+                      </span>
+                    )}
                     <input
                       placeholder="UserName"
                       type="text"
                       min="0"
                       className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
                     />
+                    {errors.UserName && (
+                      <span className="py-2 text-sm text-red-400">
+                        user name is required
+                      </span>
+                    )}
                   </div>
                   <div className="flex items-center mt-8 space-x-9">
                     <input
@@ -92,6 +102,11 @@ function AddUser({ open, setOpen }) {
                       type="tell"
                       className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
                     />
+                    {errors.UserName && (
+                      <span className="py-2 text-sm text-red-400">
+                        user name is required
+                      </span>
+                    )}
                     <input
                       placeholder="password"
                       type="password"
@@ -105,23 +120,14 @@ function AddUser({ open, setOpen }) {
                     />
                   </div>
                 </form>
-                <div className="flex items-center justify-between mt-9">
-                  <button
-                    role="button"
-                    aria-label="close button"
-                    onclick="popuphandler(false)"
-                    className="px-6 py-3 text-sm text-white bg-gray-600 rounded shadow focus:ring-2 focus:ring-offset-2 focus:bg-gray-600 focus:ring-gray-600 focus:outline-none hover:bg-gray-500"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    aria-label="add Branch"
-                    role="button"
-                    className="px-6 py-3 text-sm text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80"
-                  >
-                    Add Branch
-                  </button>
-                </div>
+
+                <button
+                  aria-label="add Branch"
+                  role="button"
+                  className="w-full px-6 py-3 mt-5 text-sm text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80"
+                >
+                  Add User
+                </button>
               </div>
             </div>
           </div>
