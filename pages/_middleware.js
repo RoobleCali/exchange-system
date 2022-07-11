@@ -5,6 +5,10 @@ import { NextResponse } from "next/server";
 export async function middleware(req) {
   const { pathname } = req.nextUrl;
   const token = await req.cookies.token;
+  // check if token date expired and redirect login
+  if (token && jwtDecode(token).exp < Date.now() / 1000) {
+    return { redirect: "/login" };
+  }
   if (pathname === "/" && !token) {
     return NextResponse.next();
   }
@@ -17,6 +21,7 @@ export async function middleware(req) {
   if (!token) {
     return NextResponse.redirect("/login");
   }
+
   let decoded = null;
   if (token) {
     decoded = jwtDecode(token);

@@ -13,34 +13,7 @@ function AddUser({ open, setOpen }) {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    axios
-      .post("https://tick-account.herokuapp.com/api/users/", data, {
-        headers: { Authorization: `Bearer ${getCookie("token")}` },
-      })
-      .then((res) => {
-        // set users previusly added
-        setUsers(res.data);
-        setOpen(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
-  // fetch roles from server using axios with token and then show in select box
-  const [roles, setRoles] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://tick-account.herokuapp.com/api/users/roles/", {
-        headers: { Authorization: `Bearer ${getCookie("token")}` },
-      })
-      .then((res) => {
-        setRoles(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
   return (
     <div>
@@ -73,22 +46,29 @@ function AddUser({ open, setOpen }) {
                 </button>
               </div>
               <div className="px-4 pt-6 md:px-10 md:pt-12 md:pb-4 pb-7">
-                <form className="mt-5">
-                  <div className="flex items-center space-x-9">
+                <form
+                  className="mt-5 space-y-4"
+                  onSubmit={handleSubmit(onSubmit)}
+                >
+                  <div className="flex flex-col ">
                     <input
                       placeholder="FullName"
-                      className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+                      className="w-full py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded px-14 focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+                      {...register("FullName", { required: true })}
                     />
                     {errors.FullName && (
                       <span className="py-2 text-sm text-red-400">
                         user name is required
                       </span>
                     )}
+                  </div>{" "}
+                  <div className="flex flex-col ">
                     <input
                       placeholder="UserName"
                       type="text"
                       min="0"
-                      className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+                      className="w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+                      {...register("UserName", { required: true })}
                     />
                     {errors.UserName && (
                       <span className="py-2 text-sm text-red-400">
@@ -96,38 +76,53 @@ function AddUser({ open, setOpen }) {
                       </span>
                     )}
                   </div>
-                  <div className="flex items-center mt-8 space-x-9">
+                  <div className="flex flex-col">
                     <input
                       placeholder="UserPhone"
                       type="tell"
-                      className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+                      className="w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+                      {...register("UserPhone", { required: true })}
                     />
-                    {errors.UserName && (
+                    {errors.UserPhone && (
                       <span className="py-2 text-sm text-red-400">
                         user name is required
                       </span>
                     )}
+                  </div>
+                  <div className="flex flex-col">
                     <input
                       placeholder="password"
                       type="password"
-                      className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
-                    />
-                  </div>
-                  <div className="flex items-center space-x-9 mt-11">
-                    <input
-                      placeholder="description"
                       className="w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+                      {...register("password", { required: true })}
                     />
+                    {errors.password && (
+                      <span className="py-2 text-sm text-red-400">
+                        user name is required
+                      </span>
+                    )}
                   </div>
+                  <div className="flex flex-col mt-6">
+                    <textarea
+                      placeholder="Description"
+                      className="w-full h-24 py-3 pl-3 overflow-y-auto placeholder-gray-500 border border-gray-200 rounded resize-none focus:ring-2 focus:ring-gray-400 dark:bg-gray-900 dark:border-gray-700 focus:outline-none"
+                      {...register("Description", { required: true })}
+                    ></textarea>
+                    {errors.Description && (
+                      <span className="py-2 text-sm text-red-400">
+                        Amount must not be empty!
+                      </span>
+                    )}
+                  </div>
+                  <button
+                    aria-label="add Branch"
+                    role="button"
+                    type="submit"
+                    className="w-full px-6 py-3 mt-5 text-sm text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80"
+                  >
+                    Add User
+                  </button>
                 </form>
-
-                <button
-                  aria-label="add Branch"
-                  role="button"
-                  className="w-full px-6 py-3 mt-5 text-sm text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80"
-                >
-                  Add User
-                </button>
               </div>
             </div>
           </div>
