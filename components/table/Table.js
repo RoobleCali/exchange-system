@@ -7,11 +7,6 @@ import {
   useSortBy,
   usePagination,
 } from "react-table";
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  UserAddIcon,
-} from "@heroicons/react/solid";
 import { SortIcon, SortUpIcon, SortDownIcon } from "../shared/Icons";
 import { AdjustmentsIcon, CloudDownloadIcon } from "@heroicons/react/outline";
 import DataPicker from "../models/DataPicker";
@@ -31,9 +26,9 @@ function GlobalFilter({
   const router = useRouter();
   const route = router.pathname;
   return (
-    <div className="relative w-1/2">
-      <div className="relative w-60">
-        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+    <div className="relative w-full">
+      <div className="relative w-full">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none">
           <svg
             className="w-5 h-5 text-gray-500 dark:text-gray-400"
             fill="currentColor"
@@ -50,8 +45,10 @@ function GlobalFilter({
         <input
           type="text"
           id="voice-search"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-         focus:border-blue-500 block w-4xl px-24 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm 
+          rounded-lg focus:ring-blue-500
+         focus:border-blue-500 block w-4xl px-4 lg:px-24 pl-10 p-2.5  dark:bg-gray-700
+          dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
          dark:focus:ring-blue-500 dark:focus:border-blue-500"
           required
           placeholder={`${count} ${
@@ -160,8 +157,8 @@ function Table({ columns, data }) {
       <div>
         {route === "/transactions" ||
           (route === "/clients" && (
-            <div className="flex items-center justify-between w-full space-x-10">
-              <div className="flex items-center justify-center space-x-5 sm:justify-between sm:space-x-3">
+            <div className="flex items-center justify-between w-full space-x-4">
+              <div className="flex items-center justify-center space-x-2 sm:justify-between sm:space-x-3">
                 {/* filter  */}
                 <GlobalFilter
                   preGlobalFilteredRows={preGlobalFilteredRows}
@@ -183,17 +180,17 @@ function Table({ columns, data }) {
                 {/* DateFilter function call here nd show filtered date*/}
                 {/* <DateFilter column={{ id: "date" }} /> */}
                 <div
-                  className="items-center px-2 py-1 space-x-2 bg-white cursor-pointer ml-14 dark:bg-slate-600 sm:flex innline-flex"
+                  className="items-center px-2 py-1 space-x-2 bg-white cursor-pointer md:ml-1 dark:bg-slate-600 sm:flex innline-flex"
                   onClick={() => setOpen(!open)}
                 >
                   <AdjustmentsIcon className="w-5 h-6 text-gray-500 rotate-90 bg-white dark:text-gray-200 dark:bg-slate-600" />
                 </div>
               </div>
               {/* filter  */}
-              <div className="flex items-center justify-center space-x-3">
+              <div className="flex items-center justify-center md:space-x-3">
                 <ReactToPrint
                   trigger={() => (
-                    <div className="flex items-center max-w-md px-2 py-2 space-x-2 text-xs text-center text-white bg-blue-700 rounded-md cursor-pointer w-max innline-flex">
+                    <div className="flex items-center max-w-md py-2 space-x-2 text-xs text-center text-white bg-blue-700 rounded-md cursor-pointer md:px-2 w-max innline-flex">
                       <CloudDownloadIcon className="w-4 h-4" />
                       <button className="truncate ">Print </button>
                     </div>

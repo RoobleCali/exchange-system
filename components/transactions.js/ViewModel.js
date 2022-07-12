@@ -123,7 +123,7 @@ function ViewModel({ open, setOpen }) {
                         <span className="text-xs text-gray-400">
                           ID Payment
                         </span>
-                        <span className="text-xl font-bold">
+                        <span className="text-sm font-bold md:text-xl">
                           <span className="text-gray-600 dark:text-gray-300">
                             #00123521
                           </span>
@@ -166,7 +166,7 @@ function ViewModel({ open, setOpen }) {
                     </div>
                   </div>
                   {/* payment information */}
-                  <div className="flex items-center justify-between mt-8 space-x-5">
+                  <div className="flex flex-wrap items-center justify-between mt-8 md:space-x-5">
                     {/* map the payment json */}
                     {paymentInfo.map((item, index) => (
                       <span className="space-y-2">
@@ -178,7 +178,7 @@ function ViewModel({ open, setOpen }) {
                     ))}
                   </div>
                   {/* contact information */}
-                  <div className="flex flex-wrap gap-6 mt-10 space-x-8 space-y-2 lg:mt-24">
+                  <div className="flex flex-wrap gap-6 mt-10 space-y-2 md:space-x-8 lg:mt-24">
                     {contactInfo.map((item, index) => (
                       <span className="flex items-center space-x-5">
                         {item.icon}
@@ -258,18 +258,17 @@ function ViewModel({ open, setOpen }) {
                   </div>
                   <div className="col-span-2 p-3 mt-5 bg-white rounded-md h-max md:mt-0 dark:bg-gray-800 ">
                     {/* top */}
-                    <div className="flex items-center justify-between space-y-2">
+                    <div className="flex items-center justify-between space-x-3 space-y-2">
                       <div className="">
                         <span>Specifies</span>
                         <span>
                           <p className="text-xs text-gray-400">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit.
+                            Lorem ipsum dolor sit amet, <br /> consectetur
+                            adipiscing elit.
                           </p>
-                          <p className="w-32 mt-2 text-xs text-gray-500 truncate md:w-max">
+                          <p className="hidden mt-2 text-xs text-gray-500 truncate md:flex w-max">
                             Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit. Quidem iusto possimus qui ipsam maiores
-                            deserunt .
+                            elit. Quidem iust
                           </p>
                         </span>
                       </div>

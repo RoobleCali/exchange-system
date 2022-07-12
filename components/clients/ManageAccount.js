@@ -26,7 +26,7 @@ function ManageAccount({ open, setOpen }) {
             }`}
         ></div>
         <Transition
-          className="fixed inset-0 z-50 flex items-start justify-center px-4 mb-4 overflow-hidden transform top-20 sm:px-6"
+          className="fixed inset-0 z-50 flex items-start justify-center px-2 mb-4 overflow-hidden transform top-20 sm:px-6"
           show={open}
           enter="transition ease-in-out duration-200"
           enterStart="opacity-0 translate-y-4"
@@ -51,9 +51,9 @@ function ManageAccount({ open, setOpen }) {
                   />
                 </button>
               </div>
-              <div className="flex flex-wrap items-center justify-center px-10 py-2 mt-5 space-x-5 md:justify-between">
+              <div className="flex flex-wrap items-center justify-center py-2 mt-5 space-x-5 md:justify-between">
                 {/* left */}
-                <div className="hidden px-5 py-3 space-y-5 bg-white shadow max-w- md:inline-block dark:bg-gray-800">
+                <div className="hidden px-5 py-3 space-y-5 bg-white shadow md:inline-block dark:bg-gray-800">
                   <div className="flex items-center justify-between pb-5">
                     <p className="flex items-center space-x-3">
                       <Image src={avatar} alt="" width={50} height={50} />
@@ -93,7 +93,7 @@ function ManageAccount({ open, setOpen }) {
                 </div>
 
                 {/* right */}
-                <div className="grid grid-cols-2 gap-4 md:flex md:flex-col ">
+                <div className="grid grid-cols-2 gap-y-6 gap-x-10 md:gap-x-10 md:flex md:flex-col ">
                   <button
                     type="button"
                     className="px-5 py-3 mb-2 mr-2 text-sm font-medium text-center text-gray-200 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-blue-300 dark:focus:ring-blue-800 w-36"

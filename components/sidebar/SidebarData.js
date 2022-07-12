@@ -30,6 +30,11 @@ export const sidebarData = [
     link: "clients",
   },
   {
+    title: "remittence",
+    icon: <UsersIcon />,
+    link: "remittance",
+  },
+  {
     title: "transactions",
     icon: <TranslateIcon />,
     link: "transactions",
