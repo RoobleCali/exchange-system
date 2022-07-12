@@ -40,9 +40,8 @@ function Pagination({ state, pageOptions, gotoPage, setPageSize }) {
             "pagination flex items-center justify-center py-3 "
           }
           activeClassName={
-            "rounded-l-xl      w-[24px] flex items-center  justify-center text-center transition duration-150 ease-in-out rounded   shadow cursor-pointer text-gray-200 text-white bg-indigo-600   focus:outline-none"
+            "rounded-l-xl w-[24px] flex items-center  justify-center text-center transition duration-150 ease-in-out rounded   shadow cursor-pointer text-gray-200 text-white bg-indigo-600   focus:outline-none"
           }
-          // forcePage={state.pageIndex}
           disabledClassName={"disabled"}
           pageLinkClassName={
             "rounded-l-xl  px-2 py-2 mx-2 text-base font-bold leading-tight   transition duration-150 ease-in-out rounded   shadow cursor-pointer dark:text-gray-200 hover:text-white hover:bg-indigo-600   focus:outline-none"
