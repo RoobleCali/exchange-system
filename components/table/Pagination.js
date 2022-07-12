@@ -1,7 +1,6 @@
 import React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import { AdjustmentsIcon, CloudDownloadIcon } from "@heroicons/react/outline";
-import ReactToPrint from "react-to-print";
 
 function Pagination({
   previousPage,

@@ -9,6 +9,8 @@ export async function middleware(req) {
   if (token && jwtDecode(token).exp < Date.now() / 1000) {
     return { redirect: "/login" };
   }
+  // get now date
+
   if (pathname === "/" && !token) {
     return NextResponse.next();
   }
@@ -25,6 +27,11 @@ export async function middleware(req) {
   let decoded = null;
   if (token) {
     decoded = jwtDecode(token);
+    const exp = (decoded.exp = decoded.exp * 1000);
+    const now = new Date().getTime() / 1000;
+    if (now > exp) {
+      return NextResponse.redirect("/login");
+    }
     const route = pathname.replace("/", "");
     const IsAdmin = decoded.userType === "BranchAdmin";
     if (IsAdmin) {

@@ -50,7 +50,6 @@ function FormLogin() {
 
   return (
     <>
-      é
       <div
         className=" w-full md:ml-5 dark:bg-gray-800 rounded-xl h-[80vh]
   md:h-auto  px-2 md:px-0  md:w-1/2"
