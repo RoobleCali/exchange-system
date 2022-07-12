@@ -12,11 +12,11 @@ export default function Actions() {
     <div>
       <div className="flex items-center space-x-3">
         <UserAddIcon
-          className="w-5 cursor-pointer"
+          className="w-5 text-blue-600 cursor-pointer"
           onClick={() => setOpen(!open)}
         />
         <EyeIcon
-          className="w-5 cursor-pointer"
+          className="w-5 text-red-600 cursor-pointer "
           onClick={() => setView(!View)}
         />
       </div>

@@ -1,44 +1,33 @@
 import Table from "../../components/table/Table";
 import axios from "axios";
-import useSWR from "swr";
 import { useState } from "react";
 import { getCookie } from "cookies-next";
-import Router from "next/router";
 import Actions from "../../components/clients/Actions";
 import regeneratorRuntime from "regenerator-runtime";
+import { useTasksQuery } from "../../redux/api/UserApi";
 
 import { StatusPill } from "../../components/table/StatusBill";
 
 export default () => {
-  const [Data, setData] = useState([]);
-  const fetcher = (url, token) => {
-    token
-      ? axios
-          .get(url, { headers: { Authorization: "Bearer " + token } })
-          .then((res) => setData(res.data))
-      : Router.push("/login");
-  };
-
+  const { data, error, isLoading, isSuccess } = useTasksQuery();
+  console.log(data);
   const columns = [
     {
       Header: "_id",
-      accessor: "_id",
+      accessor: "userId",
     },
     {
-      Header: "FullName",
-      accessor: "FullName",
+      Header: "name",
+      accessor: "title",
     },
     {
-      Header: "RoleName",
-      accessor: "RoleName",
+      Header: "completed",
+      accessor: "completed",
     },
-    {
-      Header: "UserPhone",
-      accessor: "UserPhone",
-    },
+
     {
       Header: "Actions",
-      accessor: "id",
+      accessor: "_id",
       Cell: ({ row }) => (
         <Actions link={`transactions/${row.id}`} StatusPill={StatusPill} />
       ),
@@ -46,25 +35,13 @@ export default () => {
 
     // actions column with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row
   ];
-  const token = getCookie("token");
-  const { data } = useSWR(
-    ["https://tick-account.herokuapp.com/api/users/", token],
-    fetcher
-  );
-
   return (
     <div className="w-full">
-      <Table columns={columns} data={Data} />
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <Table columns={columns} data={data} />
+      )}
     </div>
   );
-};
-
-export const getServerSideProps = async (ctx) => {
-  const resp = await axios.get(`https://jsonplaceholder.typicode.com/users`);
-
-  return {
-    props: {
-      Data: resp.data,
-    },
-  };
 };

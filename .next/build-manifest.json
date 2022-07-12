@@ -36,25 +36,10 @@
       "server/middleware-runtime.js",
       "server/pages/_middleware.js"
     ],
-    "/branches": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/branches.js"
-    ],
-    "/clients": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/clients.js"
-    ],
     "/login": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/login.js"
-    ],
-    "/transactions": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/transactions.js"
     ],
     "/users": [
       "static/chunks/webpack.js",
