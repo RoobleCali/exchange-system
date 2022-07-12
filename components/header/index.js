@@ -31,12 +31,14 @@ function Header({
           {/* Header: Left side */}
           <div className="flex items-center space-x-2">
             {/* Hamburgers button */}
+            {/* mobile menu */}
             <button
               className="text-slate-500 dark:text-gray-200 lg:hidden hover:text-slate-600 "
               onClick={() => setSidebarOpen(!sidebarOpen)}
             >
               <MenuAlt2Icon className="w-6 h-6" />
             </button>
+            {/* desktop menu */}
             <button
               className="hidden text-slate-500 lg:inline-flex hover:text-slate-600 "
               onClick={() => setMobileSidebar(!Mobilesidebar)}

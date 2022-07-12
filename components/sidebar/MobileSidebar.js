@@ -20,7 +20,6 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
   if (token) {
     decoded = jwt_decode(token);
   }
-
   const sidebar = useRef(null);
   // close if the esc key is pressed
   useEffect(() => {
@@ -32,7 +31,6 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
     return () => document.removeEventListener("keydown", keyHandler);
   });
   // close on click outside
-
   const handleClickOutside = (e) => {
     if (sidebar.current && !sidebar.current.contains(e.target)) {
       setSidebarOpen(false);
@@ -47,7 +45,6 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
       document.removeEventListener("touchstart", handleClickOutside);
     }
   }, [sidebarOpen]);
-
   return (
     <div className="shadow-xl">
       {/* Sidebar backdrop (mobile only) */}

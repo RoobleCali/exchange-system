@@ -7,11 +7,10 @@ import { ChevronDownIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import { useEffect } from "react";
 import Logo from "./Logo";
-export default function LgSidebar() {
+export default function LgSidebar({ setSidebarOpen, Mobilesidebar }) {
   const router = useRouter();
   const [Dropdown, setDropdown] = useState(false);
   const token = getCookie("token");
-
   // check if jwt token is invalid or not
   let decoded = null;
   useEffect(() => {
@@ -22,14 +21,14 @@ export default function LgSidebar() {
   if (token) {
     decoded = jwt_decode(token);
   }
-
   return (
     <div className="shadow-xl">
       {/* Sidebar */}
       <div
         className={`flex text-xs	flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto 
           lg:top-auto lg:translate-x-0 transform h-screen  w-72 -translate-x-64  shrink-0  dark:bg-slate-800 bg-white p-4 transition-all duration-200 ease-in-out
-       `}
+          ${Mobilesidebar ? "hidden" : "flex"}
+          `}
       >
         {/* Logo */}
         <Logo />
@@ -48,8 +47,7 @@ export default function LgSidebar() {
                        router.pathname.replace("/", "") == link
                          ? "bg-blue-700  text-white"
                          : ""
-                     }
-                            `}
+                     } `}
                       onClick={() => setDropdown(!Dropdown)}
                     >
                       <span className="w-3"> {item.icon}</span>
@@ -74,9 +72,7 @@ export default function LgSidebar() {
                                     router.pathname == link
                                       ? "bg-blue-700  text-white"
                                       : ""
-                                  }
-
-                                       `}
+                                  } `}
                               >
                                 <div className="w-3 text-left">{item.icon}</div>
                                 <span className="text-left">{child.title}</span>
@@ -113,13 +109,9 @@ export default function LgSidebar() {
             {decoded &&
               sidebarData.map((item, index) => {
                 // check if decoded jwt token is Invalid or not
-
                 return decoded.roles.map((access) => {
                   const link = access.path.toLowerCase();
                   const path = item.link;
-                  if (link !== path) {
-                    console.log("not equal");
-                  }
                   if (link === path && token) {
                     if (item.children) {
                       return (

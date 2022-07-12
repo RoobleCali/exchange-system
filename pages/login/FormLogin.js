@@ -7,7 +7,19 @@ import { addUserEnd } from "../../redux/slices/loginSlice";
 import { useDispatch } from "react-redux";
 import { login } from "../../components/utils/Login";
 import { useState } from "react";
-// import { BarLoader } from "react-css-loaders";
+import {
+  ChasingDots,
+  Circle,
+  CubeGrid,
+  DoubleBounce,
+  FadingCircle,
+  FoldingCube,
+  Pulse,
+  RotatingPlane,
+  ThreeBounce,
+  WanderingCubes,
+  Wave,
+} from "better-react-spinkit";
 
 function FormLogin() {
   const dispatch = useDispatch();
@@ -114,37 +126,17 @@ function FormLogin() {
           </div>
           {loading ? (
             <button
-              class="flex items-center w-full rounded-lg text-center justify-center text-2xl bg-green-700 px-4 py-2 text-white"
+              class="flex space-x-6 items-center w-full rounded-lg bg-[#FD5353] text-center justify-center text-2xl  px-4 py-2 text-white"
               disabled
             >
-              <svg
-                class="mr-3 h-5 w-5 animate-spin text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  class="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  stroke-width="4"
-                ></circle>
-                <path
-                  class="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-              </svg>
-              <span class="font-medium"> Processing... </span>
+              <DoubleBounce color="white" size={30} />
+              <span class="font-medium"> Loading... </span>
             </button>
           ) : (
             <button
               className="w-full px-10 py-2 text-2xl text-white duration-300 ease-in bg-blue-600 rounded-md hover:bg-blue-500 hover:drop-shadow-md"
               type="submit"
             >
-              {loading && <span className="loading">loafing</span>}
               Login
             </button>
           )}
