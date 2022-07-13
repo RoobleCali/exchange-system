@@ -29,16 +29,13 @@ function SendMoney({ open, setOpen }) {
         ></div>
         <div className="flex items-center justify-center w-full h-full overflow-scroll">
           <div className="bg-white  max-h-full  dark:bg-gray-800 justify-center  rounded-md shadow fixed overflow-y-auto sm:h-auto w-[96%] lg:w-[44%] ">
-            <div
-              className="sticky top-0 flex items-center justify-between px-2 bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-4 md:py-4 py-7"
-            >
+            <div className="sticky top-0 flex items-center justify-between px-2 bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-4 md:py-4 py-7">
               <p className="text-base font-semibold dark:text-white">
                 Send Money
               </p>
               <button
                 role="button"
                 aria-label="close label"
-                onclick="popuphandler(false)"
                 className="focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
                 onClick={() => setOpen(false)}
               >
@@ -90,7 +87,7 @@ function SendMoney({ open, setOpen }) {
                       <div className="mt-6">
                         <textarea
                           placeholder="Description"
-                          className="w-full h-24 py-3 pl-3 overflow-y-auto placeholder-gray-500 border border-gray-200 rounded resize-none  focus:ring-2 focus:ring-gray-400 dark:bg-gray-900 dark:border-gray-700 focus:outline-none"
+                          className="w-full h-24 py-3 pl-3 overflow-y-auto placeholder-gray-500 border border-gray-200 rounded resize-none focus:ring-2 focus:ring-gray-400 dark:bg-gray-900 dark:border-gray-700 focus:outline-none"
                         ></textarea>
                       </div>
                     </form>
@@ -109,9 +106,7 @@ function SendMoney({ open, setOpen }) {
                   Send
                   <span className="hidden ml-1 md:flex">New</span>
                 </button>
-                <button
-                  className="flex px-6 py-3 text-sm text-white bg-blue-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-blue-800 focus:outline-none hover:bg-opacity-80"
-                >
+                <button className="flex px-6 py-3 text-sm text-white bg-blue-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-blue-800 focus:outline-none hover:bg-opacity-80">
                   Add <span className="hidden ml-1 md:flex">User</span>
                 </button>
               </div>

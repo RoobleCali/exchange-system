@@ -43,7 +43,10 @@ function StatisCards() {
         {/* map */}
 
         {statisData.map((item, index) => (
-          <div className="grid w-full grid-cols-2 gap-3 mt-4 bg-white rounded-md sm:p-2 dark:bg-gray-700 lg:grid-cols-4 sm:mx-">
+          <div
+            className="grid w-full grid-cols-2 gap-3 mt-4 bg-white rounded-md sm:p-2 dark:bg-gray-700 lg:grid-cols-4 sm:mx-"
+            key={index}
+          >
             {/* card 2 */}
 
             {/* card-1 */}

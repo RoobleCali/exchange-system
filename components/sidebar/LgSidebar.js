@@ -41,19 +41,22 @@ export default function LgSidebar({ setSidebarOpen, Mobilesidebar }) {
               if (item.children) {
                 return (
                   <div key={index}>
-                    <div
-                      className={` flex  py-3 rounded-md space-x-3 ml-2  justify-between transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
+                    <div>
+                      <a
+                        className={` flex  py-3 rounded-md space-x-3 ml-2  justify-between transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
                      ${
                        router.pathname.replace("/", "") == link
                          ? "bg-blue-700  text-white"
                          : ""
                      } `}
-                      onClick={() => setDropdown(!Dropdown)}
-                    >
-                      <span className="w-3"> {item.icon}</span>
-                      <span className="flex-1">{item.title}</span>
-                      <ChevronDownIcon className="w-4 h-4 " />
+                        onClick={() => setDropdown(!Dropdown)}
+                      >
+                        <span className="w-3"> {item.icon}</span>
+                        <span className="flex-1">{item.title}</span>
+                        <ChevronDownIcon className="w-4 h-4 " />
+                      </a>
                     </div>
+
                     <ul
                       className={`mt-1 space-y-1 ${
                         Dropdown ? "flex " : "hidden"
@@ -86,7 +89,7 @@ export default function LgSidebar({ setSidebarOpen, Mobilesidebar }) {
                 );
               }
               return (
-                <ul className="px-1 mt-3 dark:text-white " key={index}>
+                <div className="px-1 mt-3 dark:text-white " key={index}>
                   <Link href={link}>
                     <a
                       className={` flex  px-2 py-3 rounded-md space-x-3 transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
@@ -98,11 +101,11 @@ export default function LgSidebar({ setSidebarOpen, Mobilesidebar }) {
   
               `}
                     >
-                      <div className="w-3"> {item.icon}</div>
+                      <span className="w-3"> {item.icon}</span>
                       <span>{item.title}</span>
                     </a>
                   </Link>
-                </ul>
+                </div>
               );
             })}
           <div>
@@ -116,7 +119,7 @@ export default function LgSidebar({ setSidebarOpen, Mobilesidebar }) {
                     if (item.children) {
                       return (
                         <div key={index}>
-                          <div
+                          <a
                             className={` flex  py-3 rounded-md space-x-3 ml-2  justify-between transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
                              ${
                                router.pathname == link
@@ -129,7 +132,7 @@ export default function LgSidebar({ setSidebarOpen, Mobilesidebar }) {
                             <span className="w-3"> {item.icon}</span>
                             <span className="flex-1">{item.title}</span>
                             <ChevronDownIcon className="w-4 h-4 " />
-                          </div>
+                          </a>
                           <ul
                             className={`mt-1 space-y-1 ${
                               Dropdown ? "flex " : "hidden"
@@ -143,7 +146,7 @@ export default function LgSidebar({ setSidebarOpen, Mobilesidebar }) {
                                     <a
                                       className={` flex  px-24 py-3 rounded-md  transition-all duration-100
                                          items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700
-                                          hover:text-white  
+                                          hover:text-white  w-3 text-left
                                         ${
                                           router.pathname == link
                                             ? "bg-blue-700  text-white"
@@ -152,9 +155,7 @@ export default function LgSidebar({ setSidebarOpen, Mobilesidebar }) {
                                                `}
                                       onClick={() => setSidebarOpen(false)}
                                     >
-                                      <div className="w-3 text-left">
-                                        {item.icon}
-                                      </div>
+                                      {item.icon}
                                       <span className="text-left">
                                         {child.title}
                                       </span>
@@ -181,7 +182,7 @@ export default function LgSidebar({ setSidebarOpen, Mobilesidebar }) {
           
                       `}
                           >
-                            <div className="w-3"> {item.icon}</div>
+                            <span className="w-3"> {item.icon}</span>
                             <span>{item.title}</span>
                           </a>
                         </Link>

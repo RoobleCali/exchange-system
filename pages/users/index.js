@@ -36,19 +36,17 @@ function index() {
 
   return (
     <div>
-      <div class="p-2 mx-auto space-y-10  min- max-w-7xl md:p-4">
-        <div class="px-2 md:px-5 py-2 md:py-3 bg-gray-100 dark:bg-gray-700 ">
-          <div class="flex items-center justify-between">
-            <p class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800 dark:text-white ">
+      <div className="p-2 mx-auto space-y-10 min- max-w-7xl md:p-4">
+        <div className="px-2 py-2 bg-gray-100 md:px-5 md:py-3 dark:bg-gray-700 ">
+          <div className="flex items-center justify-between">
+            <p className="text-base font-bold leading-normal text-gray-800 focus:outline-none sm:text-lg md:text-xl lg:text-2xl dark:text-white ">
               All Users
             </p>
             <button
-              class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 
-                  inline-flex sm:ml-3  items-start justify-start px-6 py-3 
-                  bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded"
+              className="inline-flex items-start justify-start px-6 py-3 bg-indigo-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 sm:ml-3 hover:bg-indigo-600 focus:outline-none"
               onClick={() => setOpen(!open)}
             >
-              <p class="text-sm font-medium leading-none text-white">
+              <p className="text-sm font-medium leading-none text-white">
                 New User
               </p>
             </button>

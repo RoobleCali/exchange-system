@@ -248,8 +248,8 @@ function Table({ columns, data }) {
           ref={(el) => (componentRef = el)}
         >
           <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
+            {headerGroups.map((headerGroup, index) => (
+              <tr {...headerGroup.getHeaderGroupProps()} key={index}>
                 {headerGroup.headers.map((column) => (
                   <th
                     className="w-full px-5 py-3 m-auto text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-200 group dark:bg-gray-600 p-auto dark:text-gray-600"

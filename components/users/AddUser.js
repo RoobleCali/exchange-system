@@ -38,7 +38,6 @@ function AddUser({ open, setOpen }) {
                 <button
                   role="button"
                   aria-label="close label"
-                  onclick="popuphandler(false)"
                   className="text-gray-600 focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
                   onClick={() => setOpen(false)}
                 >

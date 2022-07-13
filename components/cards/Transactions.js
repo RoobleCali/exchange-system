@@ -75,8 +75,11 @@ function Transactions() {
       <div className="z-50 mt-5 space-y-5 overflow-x-scroll">
         {/* transactions data map */}
         {/* transactions json data map */}
-        {transactions.map((transaction) => (
-          <div className="flex items-center justify-between text-xs space-x-14">
+        {transactions.map((transaction, index) => (
+          <div
+            className="flex items-center justify-between text-xs space-x-14"
+            key={index}
+          >
             <p className="text-gray-700 truncate dark:text-gray-300 w-max">
               {transaction.phone}
             </p>

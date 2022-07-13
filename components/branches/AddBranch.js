@@ -26,7 +26,6 @@ function AddBranch({ open, setOpen }) {
                 <button
                   role="button"
                   aria-label="close label"
-                  onclick="popuphandler(false)"
                   className="focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
                   onClick={() => setOpen(false)}
                 >
@@ -34,7 +33,7 @@ function AddBranch({ open, setOpen }) {
                 </button>
               </div>
               <div className="px-4 pt-6 md:px-10 md:pt-12 md:pb-4 pb-7">
-                <div className="items-center justify-center hidden  md:flex">
+                <div className="items-center justify-center hidden md:flex">
                   <div className="flex items-center justify-center p-16 bg-gray-100 rounded-md focus:outline-none">
                     <Image src={avatar} alt="icon" />
                   </div>
@@ -74,8 +73,6 @@ function AddBranch({ open, setOpen }) {
                 <div className="flex items-center justify-between mt-9">
                   <button
                     role="button"
-                    aria-label="close button"
-                    onclick="popuphandler(false)"
                     className="px-6 py-3 text-sm text-white bg-gray-600 rounded shadow focus:ring-2 focus:ring-offset-2 focus:bg-gray-600 focus:ring-gray-600 focus:outline-none hover:bg-gray-500"
                   >
                     Cancel

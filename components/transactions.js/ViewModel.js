@@ -169,7 +169,7 @@ function ViewModel({ open, setOpen }) {
                   <div className="flex flex-wrap items-center justify-between mt-8 md:space-x-5">
                     {/* map the payment json */}
                     {paymentInfo.map((item, index) => (
-                      <span className="space-y-2">
+                      <span className="space-y-2" key={index}>
                         <p className="text-xs text-gray-400"> {item.name}</p>
                         <p className="text-xs text-gray-800 truncate dark:text-gray-300 w-14 md:w-max">
                           {item.value}
@@ -180,7 +180,7 @@ function ViewModel({ open, setOpen }) {
                   {/* contact information */}
                   <div className="flex flex-wrap gap-6 mt-10 space-y-2 md:space-x-8 lg:mt-24">
                     {contactInfo.map((item, index) => (
-                      <span className="flex items-center space-x-5">
+                      <span className="flex items-center space-x-5" key={index}>
                         {item.icon}
                         <p className="flex flex-col space-y-2">
                           <span className="text-xs text-gray-400">
