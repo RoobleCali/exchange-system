@@ -64,60 +64,6 @@ function GlobalFilter({
     </div>
   );
 }
-// filter date range in the table
-// function DateFilter({ preFilteredRows, setFilter, filter, column: { id } }) {
-//   const [min, setMin] = useState(filter.min);
-//   const [max, setMax] = useState(filter.max);
-//   const onMinChange = (e) => {
-//     setMin(e.target.value);
-//   };
-//   const onMaxChange = (e) => {
-//     setMax(e.target.value);
-//   };
-//   const onSubmit = () => {
-//     setFilter((rows) => {
-//       return rows.filter((row) => {
-//         const rowValue = row.values[id];
-//         return rowValue >= min && rowValue <= max;
-//       });
-//     });
-//   };
-//   return (
-//     <div className="flex items-center">
-//       <div className="flex-1">
-//         <input
-//           type="date"
-//           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-//          focus:border-blue-500 block w-4xl pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
-//          dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//           required
-//           value={min}
-//           onChange={onMinChange}
-//         />
-//       </div>
-//       <div className="flex-1">
-//         <input
-//           type="date"
-//           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-//           focus:border-blue-500 block w-4xl pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
-//           dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//           required
-//           value={max}
-//           onChange={onMaxChange}
-//         />
-//       </div>
-//       <div className="flex-1">
-//         <button
-//           className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-//           type="button"
-//           onClick={onSubmit}
-//         >
-//           Filter
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
 function Table({ columns, data }) {
   const [open, setOpen] = useState(false);
   let componentRef = useRef(null);
@@ -144,12 +90,11 @@ function Table({ columns, data }) {
       columns,
       data,
     },
-    useFilters, // useFilters!
+    useFilters,
     useGlobalFilter,
     useSortBy,
-    usePagination // new
+    usePagination
   );
-
   // Render the UI for your table
   return (
     <div className="p-2 mx-auto space-y-10 shadow-xl min- max-w-7xl md:p-4">

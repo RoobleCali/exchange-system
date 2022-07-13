@@ -1,23 +1,8 @@
 {
-  "/404": "pages/404.html",
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/branches": "pages/branches.html",
-  "/cardcenter": "pages/cardcenter.html",
-  "/clients": "pages/clients.html",
-  "/dashboard": "pages/dashboard.html",
-  "/": "pages/index.html",
-  "/invoices/[id]": "pages/invoices/[id].html",
-  "/invoices": "pages/invoices.js",
-  "/layout": "pages/layout.html",
-  "/login/FormLogin": "pages/login/FormLogin.html",
-  "/login/LoginNavbar": "pages/login/LoginNavbar.html",
-  "/login": "pages/login.html",
-  "/remittance": "pages/remittance.html",
-  "/roles": "pages/roles.html",
-  "/transactions": "pages/transactions.js",
-  "/unauthorised": "pages/unauthorised.html",
-  "/users": "pages/users.html",
-  "/wallet": "pages/wallet.html",
-  "/_error": "pages/_error.js"
+  "/_error": "pages/_error.js",
+  "/404": "pages/404.js",
+  "/users": "pages/users.js",
+  "/login": "pages/login.js"
 }

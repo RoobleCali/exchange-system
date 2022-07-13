@@ -1,39 +1,11 @@
-import axios from "axios";
 import { getCookie } from "cookies-next";
 import React, { useState } from "react";
-import Table from "../../components/table/Table";
 import AddUser from "../../components/users/addUser";
-import { ajax } from "rxjs/ajax";
-
+import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
+import { useTasksQuery } from "../../redux/api/UserApi";
 function index() {
   const [open, setOpen] = useState(false);
-  const [Data, setData] = useState([]);
-  // get the data using ajax rxjs with token
-
-  // get the data with token and cosole log it using rxjs
-  const token = getCookie("token");
-
-  const columns = [
-    {
-      Header: "_id",
-      accessor: "_id",
-    },
-    {
-      Header: "FullName",
-      accessor: "FullName",
-    },
-    {
-      Header: "UserPhone",
-      accessor: "UserPhone",
-    },
-    {
-      Header: "RoleName",
-      accessor: "RoleName",
-    },
-
-    // actions column with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row
-  ];
-
+  const { data, error, isLoading, isSuccess } = useTasksQuery();
   return (
     <div>
       <div className="p-2 mx-auto space-y-10 min- max-w-7xl md:p-4">
@@ -52,9 +24,47 @@ function index() {
             </button>
           </div>
 
-          <AddUser open={open} setOpen={setOpen} users={Data} />
+          <AddUser open={open} setOpen={setOpen} />
 
           {/* table */}
+          <table className="w-full text-sm text-left text-gray-500 mt-14 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th className="px-6 py-3">User name</th>
+                <th className="px-6 py-3">FullName</th>
+                <th className="px-6 py-3">UserPhone</th>
+                <th className="px-6 py-3">userType</th>
+                <th className="px-6 py-3">Commision</th>
+                <th className="px-6 py-3">RoleName</th>
+              </tr>
+            </thead>
+            <tbody className="space-y-5">
+              {/* map the data */}
+              {isLoading ? (
+                <div>Loading...</div>
+              ) : (
+                data.map((item) => (
+                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                    >
+                      {item._id}
+                    </th>
+                    <td className="px-6 py-4">{item.FullName}</td>
+                    <td className="px-6 py-4">{item.UserPhone}</td>
+                    <td className="px-6 py-4">{item.userType}</td>
+                    <td className="px-6 py-4">{item.RoleName}</td>
+
+                    <td className="flex items-center px-6 py-4 space-x-5 ">
+                      <PencilAltIcon className="font-medium text-blue-600 cursor-pointer w-7 dark:text-blue-500" />
+                      <TrashIcon className="font-medium text-red-600 cursor-pointer w-7 dark:text-red-500" />
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
 

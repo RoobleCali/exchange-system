@@ -1,8 +1,15 @@
-import Image from "next/image";
-import avatar from "../../pages/assets/avatar.png";
-import { XIcon, PencilAltIcon } from "@heroicons/react/solid";
+import { XIcon } from "@heroicons/react/solid";
+import { useForm } from "react-hook-form";
 
 function AddBranch({ open, setOpen }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <div>
       <div
@@ -19,10 +26,8 @@ function AddBranch({ open, setOpen }) {
         <div className="container mx-auto">
           <div className="flex items-center justify-center w-full h-full">
             <div className="fixed w-10/12 overflow-y-auto bg-white rounded-md shadow dark:bg-gray-800 sm:h-auto md:w-8/12 lg:w-1/2 2xl:w-2/5">
-              <div className="flex items-center justify-between px-4 bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-8 md:py-4 py-7">
-                <p className="text-base font-semibold dark:text-white">
-                  Create New Branch
-                </p>
+              <div className="flex items-center justify-between px-4 text-gray-600 bg-gray-100 dark:text-white dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-8 md:py-4 py-7">
+                <p className="text-base font-semibold ">Create New Branch</p>
                 <button
                   role="button"
                   aria-label="close label"
@@ -32,59 +37,87 @@ function AddBranch({ open, setOpen }) {
                   <XIcon className="w-7" />
                 </button>
               </div>
-              <div className="px-4 pt-6 md:px-10 md:pt-12 md:pb-4 pb-7">
-                <div className="items-center justify-center hidden md:flex">
-                  <div className="flex items-center justify-center p-16 bg-gray-100 rounded-md focus:outline-none">
-                    <Image src={avatar} alt="icon" />
-                  </div>
-                </div>
-                <form className="mt-11">
-                  <div className="flex items-center space-x-9">
-                    <input
-                      placeholder="Branch Name"
-                      className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
-                    />
-                    <input
-                      placeholder="Branch Phone"
-                      type="tell"
-                      min="0"
-                      className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
-                    />
-                  </div>
-                  <div className="flex items-center mt-8 space-x-9">
-                    <input
-                      placeholder="Country"
-                      type="Country"
-                      className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
-                    />
-                    <input
-                      placeholder="City"
-                      type="city"
-                      className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
-                    />
-                  </div>
-                  <div className="flex items-center space-x-9 mt-11">
-                    <input
-                      placeholder="Commiton"
-                      className="w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
-                    />
-                  </div>
-                </form>
-                <div className="flex items-center justify-between mt-9">
+              <div className="px-4 pt-6 pb-1 md:px-10 md:pt-12 md:pb-4">
+                <form className="mt-11" onSubmit={handleSubmit(onSubmit)}>
+                  <div className="space-y-10">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex flex-col w-full">
+                        <input
+                          placeholder="Branch Name"
+                          className="px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
+                          {...register("BranchName", { required: true })}
+                        />
+                        {errors.BranchName && (
+                          <span className="py-2 text-xs text-red-400">
+                            Amount must not be empty!
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex flex-col w-full">
+                        <input
+                          placeholder="Branch Phone"
+                          type="tell"
+                          min="0"
+                          className="px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
+                          {...register("BranchPhone", { required: true })}
+                        />
+
+                        {errors.BranchPhone && (
+                          <span className="py-2 text-xs text-red-400">
+                            Amount must not be empty!
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="flex flex-col w-full">
+                        <input
+                          placeholder="Country"
+                          type="Country"
+                          className="px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
+                          {...register("Country", { required: true })}
+                        />
+                        {errors.Country && (
+                          <span className="py-2 text-xs text-red-400">
+                            Amount must not be empty!
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex flex-col w-full">
+                        <input
+                          placeholder="City"
+                          type="city"
+                          className="px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
+                          {...register("city", { required: true })}
+                        />
+                        {errors.city && (
+                          <span className="py-2 text-sm text-red-400">
+                            Amount cannot be empty!
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex flex-col w-full">
+                      <textarea
+                        placeholder="Commiton"
+                        className="w-full h-24 py-3 pl-3 overflow-y-auto placeholder-gray-500 border border-gray-200 rounded resize-none focus:ring-2 focus:ring-gray-400 dark:bg-gray-900 dark:border-gray-700 focus:outline-none"
+                        {...register("Commiton", { required: true })}
+                      ></textarea>
+
+                      {errors.Commiton && (
+                        <span className="py-2 text-xs text-red-400">
+                          commiton cannot be empty
+                        </span>
+                      )}
+                    </div>
+                  </div>{" "}
                   <button
-                    role="button"
-                    className="px-6 py-3 text-sm text-white bg-gray-600 rounded shadow focus:ring-2 focus:ring-offset-2 focus:bg-gray-600 focus:ring-gray-600 focus:outline-none hover:bg-gray-500"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    aria-label="add Branch"
-                    role="button"
-                    className="px-6 py-3 text-sm text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80"
+                    type="submit"
+                    className="w-full px-6 py-3 mt-2 text-xs text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80"
                   >
                     Add Branch
                   </button>
-                </div>
+                </form>
               </div>
             </div>
           </div>

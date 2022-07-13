@@ -1,20 +1,15 @@
 import { XIcon } from "@heroicons/react/solid";
-import axios from "axios";
-import { getCookie } from "cookies-next";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import avatar from "../../pages/assets/avatar.png";
+
 function AddUser({ open, setOpen }) {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, isSubmitSuccessful, submitCount },
+    formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
   };
-
   return (
     <div>
       <div
@@ -28,64 +23,57 @@ function AddUser({ open, setOpen }) {
             open ? " opacity-90" : "opacity-0 pointer-events-none"
           }`}
         ></div>
-        <div className="max-w-4xl mx-auto">
+        <div className="container mx-auto">
           <div className="flex items-center justify-center w-full h-full">
-            <div className="fixed overflow-y-auto bg-white rounded-md shadow dark:bg-gray-800 sm:h-auto ">
-              <div className="flex items-center justify-between px-4 bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-8 md:py-4 py-7">
-                <p className="text-base font-semibold text-gray-700 dark:text-white">
-                  Create New User
-                </p>
+            <div className="fixed w-10/12 overflow-y-auto bg-white rounded-md shadow dark:bg-gray-800 sm:h-auto md:w-8/12 lg:w-1/2 2xl:w-2/5">
+              <div className="flex items-center justify-between px-4 text-gray-600 bg-gray-100 dark:text-white dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-8 md:py-4 py-7">
+                <p className="text-base font-semibold ">Create New User</p>
                 <button
                   role="button"
                   aria-label="close label"
-                  className="text-gray-600 focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
+                  className="focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
                   onClick={() => setOpen(false)}
                 >
                   <XIcon className="w-7" />
                 </button>
               </div>
-              <div className="px-4 pt-6 md:px-10 md:pt-12 md:pb-4 pb-7">
-                <form
-                  className="mt-5 space-y-4"
-                  onSubmit={handleSubmit(onSubmit)}
-                >
-                  <div className="flex flex-col px-24">
+              <div className="px-4 pt-6 pb-1 md:px-10 md:pt-12 md:pb-4">
+                <form className="mt-11" onSubmit={handleSubmit(onSubmit)}>
+                  <div className="flex flex-col">
                     <input
-                      placeholder="Full Name"
-                      type="tell"
-                      className="w-full py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded px-14 focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+                      placeholder="FullName"
+                      className="w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
                       {...register("FullName", { required: true })}
                     />
                     {errors.FullName && (
                       <span className="py-2 text-sm text-red-400">
-                        user name is required
+                        Amount must not be empty!
                       </span>
                     )}
                   </div>
-                  <div className="flex flex-col ">
+                  <div className="flex flex-col">
                     <input
                       placeholder="UserName"
-                      type="text"
-                      min="0"
-                      className="w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+                      type="UserName"
+                      className="block w-full px-3 py-3 mt-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
                       {...register("UserName", { required: true })}
                     />
                     {errors.UserName && (
                       <span className="py-2 text-sm text-red-400">
-                        user name is required
+                        Amount must not be empty!
                       </span>
                     )}
                   </div>
                   <div className="flex flex-col">
                     <input
                       placeholder="UserPhone"
-                      type="tell"
-                      className="w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+                      type="UserPhone"
+                      className="block w-full px-3 py-3 mt-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
                       {...register("UserPhone", { required: true })}
                     />
                     {errors.UserPhone && (
                       <span className="py-2 text-sm text-red-400">
-                        user name is required
+                        Amount must not be empty!
                       </span>
                     )}
                   </div>
@@ -93,12 +81,12 @@ function AddUser({ open, setOpen }) {
                     <input
                       placeholder="password"
                       type="password"
-                      className="w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+                      className="block w-full px-3 py-3 mt-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
                       {...register("password", { required: true })}
                     />
                     {errors.password && (
                       <span className="py-2 text-sm text-red-400">
-                        user name is required
+                        Amount must not be empty!
                       </span>
                     )}
                   </div>
@@ -115,10 +103,9 @@ function AddUser({ open, setOpen }) {
                     )}
                   </div>
                   <button
-                    aria-label="add Branch"
-                    role="button"
+                    aria-label="add user"
                     type="submit"
-                    className="w-full px-6 py-3 mt-5 text-sm text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80"
+                    className="w-full px-6 py-3 mt-2 text-sm text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80"
                   >
                     Add User
                   </button>

@@ -6,8 +6,7 @@ import { StatusPill } from "../../components/table/StatusBill";
 
 export default () => {
   const { data, error, isLoading, isSuccess } = useTasksQuery();
-  console.log(data);
-  console.log(error);
+
   const columns = [
     {
       Header: "_id",
