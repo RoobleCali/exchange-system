@@ -1,9 +1,4 @@
-import Table from "../../components/table/Table";
-import axios from "axios";
-import { useState } from "react";
-import { getCookie } from "cookies-next";
 import Actions from "../../components/clients/Actions";
-import regeneratorRuntime from "regenerator-runtime";
 import { useTasksQuery } from "../../redux/api/UserApi";
 
 import { StatusPill } from "../../components/table/StatusBill";
@@ -11,6 +6,7 @@ import { StatusPill } from "../../components/table/StatusBill";
 export default () => {
   const { data, error, isLoading, isSuccess } = useTasksQuery();
   console.log(data);
+  console.log(error);
   const columns = [
     {
       Header: "_id",
@@ -37,11 +33,11 @@ export default () => {
   ];
   return (
     <div className="w-full">
-      {isLoading ? (
+      {/* {isLoading ? (
         <div>Loading...</div>
       ) : (
         <Table columns={columns} data={data} />
-      )}
+      )} */}
     </div>
   );
 };

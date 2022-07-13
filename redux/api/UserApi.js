@@ -1,13 +1,21 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { getCookie } from "cookies-next";
 
 export const taskApi = createApi({
   reducerPath: "tasksApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://jsonplaceholder.typicode.com",
+    baseUrl: "https://tick-account.herokuapp.com/api",
+    prepareHeaders(headers) {
+      return headers;
+    },
   }),
+
+  //  import endpoints from different files
+
   endpoints: (builder) => ({
     tasks: builder.query({
-      query: () => "/todos",
+      query: () => "/users",
+      method: "GET",
     }),
     addTask: builder.mutation({
       query: (task) => ({
