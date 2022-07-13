@@ -1,5 +1,6 @@
 import Actions from "../../components/clients/Actions";
 import { useTasksQuery } from "../../redux/api/UserApi";
+import Table from "../../components/table/Table";
 
 import { StatusPill } from "../../components/table/StatusBill";
 
@@ -10,20 +11,24 @@ export default () => {
   const columns = [
     {
       Header: "_id",
-      accessor: "userId",
+      accessor: "_id",
     },
     {
       Header: "name",
-      accessor: "title",
+      accessor: "FullName",
     },
     {
-      Header: "completed",
-      accessor: "completed",
+      Header: "UserPhone",
+      accessor: "UserPhone",
+    },
+    {
+      Header: "userType",
+      accessor: "userType",
     },
 
     {
       Header: "Actions",
-      accessor: "_id",
+      accessor: "id",
       Cell: ({ row }) => (
         <Actions link={`transactions/${row.id}`} StatusPill={StatusPill} />
       ),
@@ -33,11 +38,11 @@ export default () => {
   ];
   return (
     <div className="w-full">
-      {/* {isLoading ? (
+      {isLoading ? (
         <div>Loading...</div>
       ) : (
         <Table columns={columns} data={data} />
-      )} */}
+      )}
     </div>
   );
 };
