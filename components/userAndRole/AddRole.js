@@ -1,27 +1,53 @@
 import { XIcon } from "@heroicons/react/solid";
 import { DoubleBounce } from "better-react-spinkit";
 import { useForm } from "react-hook-form";
-import {
-  useAddUserMutation,
-  useGetRolesQuery,
-  useUsersQuery,
-} from "../../redux/api/UserApi";
-import Swal from "sweetalert2";
+
+import { ChevronDownIcon } from "@heroicons/react/solid";
 import React, { useEffect, useState } from "react";
 
 function AddRole({ open, setOpen }) {
-  const [addUser, { isLoading, isError, isSuccess }] = useAddUserMutation();
-  const { refetch } = useUsersQuery();
   const {
     register,
     handleSubmit,
     formState: { errors },
     resetField,
   } = useForm();
-  const { data } = useGetRolesQuery();
   const onSubmit = async (data) => {
     console.log(data);
   };
+  const rolesJson = [
+    {
+      Roles: [
+        {
+          path: "Clients",
+          access: [
+            "read",
+            "create",
+            "update",
+            "export",
+            "deposit",
+            "withdraw",
+            "transfer",
+            "exchange",
+            "update_client",
+            "change_password",
+            "view_transactions",
+          ],
+        },
+      ],
+    },
+  ];
+  const [showAccess, setShowAccess] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheck = () => {
+    setShowAccess(!showAccess);
+    setIsChecked(!isChecked);
+  };
+  const handleOnChange = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <div>
       <div
@@ -68,23 +94,54 @@ function AddRole({ open, setOpen }) {
                       Role Name
                     </label>
                   </div>
-                  {isLoading ? (
-                    <button
-                      class="flex space-x-6 items-center w-full rounded-lg bg-[#FD5353] text-center justify-center text-2xl  px-4 py-2 text-white"
-                      disabled
-                    >
-                      <DoubleBounce color="white" size={30} />
-                      <span class="font-medium"> Loading... </span>
-                    </button>
-                  ) : (
-                    <button
-                      aria-label="add user"
-                      type="submit"
-                      className="w-full px-6 py-3 mt-2 text-sm text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80"
-                    >
-                      Add User
-                    </button>
-                  )}
+                  <div className="max-h-fit">
+                    {/* map the roles json and display as checkbox */}
+                    {rolesJson.map((role) => (
+                      <div class="form-floating mb-3 xl:w-96">
+                        {role.Roles.map((subRole) => (
+                          <div class="form-floating mb-3 xl:w-96 border border-gray-200 px-4 overflow-scroll">
+                            <div className="flex items-center justify-between mb-2 cursor-pointer">
+                              <div
+                                className="flex items-center space-x-2 cursor-pointer"
+                                onClick={handleCheck}
+                              >
+                                <input
+                                  type="checkbox"
+                                  value=""
+                                  name="bordered-checkbox"
+                                  class="w-5 h-5  "
+                                />
+                                <p className="text-lg text-gray-600 cursor-pointer">
+                                  {subRole.path}
+                                </p>
+                              </div>
+                              <ChevronDownIcon className="w-8 text-gray-600" />
+                            </div>
+
+                            {subRole.access.map((access) => (
+                              <div
+                                class={`form-floating mb-3 xl:w-96 
+                              ${showAccess ? "block" : "hidden"}`}
+                              >
+                                <div className="flex items-center ml-3 space-x-7">
+                                  <input type="checkbox" checked={isChecked} />
+                                  <p className="text-gray-500">{access}</p>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+
+                  <button
+                    aria-label="add user"
+                    type="submit"
+                    className="w-full px-6 py-3 mt-2 text-sm text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80"
+                  >
+                    Add User
+                  </button>
                 </form>
               </div>
             </div>
