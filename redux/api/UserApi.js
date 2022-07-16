@@ -39,7 +39,18 @@ export const taskApi = createApi({
       query: () => "/users/roles",
       invalidatesTags: ["Users"],
     }),
+
+    // clients
+    GetClients: builder.query({
+      query: () => "/bank/clients/all",
+      invalidatesTags: ["Clients"],
+    }),
   }),
 });
 
-export const { useUsersQuery, useAddUserMutation, useGetRolesQuery } = taskApi;
+export const {
+  useUsersQuery,
+  useAddUserMutation,
+  useGetRolesQuery,
+  useGetClientsQuery,
+} = taskApi;

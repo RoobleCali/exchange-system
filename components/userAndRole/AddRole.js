@@ -10,34 +10,6 @@ import Swal from "sweetalert2";
 import React, { useEffect, useState } from "react";
 
 function AddRole({ open, setOpen }) {
-  const userData = [
-    { name: "Jeevan" },
-    { name: "Manish" },
-    { name: "Prince" },
-    { name: "Arti" },
-    { name: "rahul" },
-  ];
-
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    setUsers(userData);
-  }, []);
-
-  const handleChange = (e) => {
-    const { name, checked } = e.target;
-    if (name === "allSelect") {
-      let tempUser = users.map((user) => {
-        return { ...user, isChecked: checked };
-      });
-      setUsers(tempUser);
-    } else {
-      let tempUser = users.map((user) =>
-        user.name === name ? { ...user, isChecked: checked } : user
-      );
-      setUsers(tempUser);
-    }
-  };
   const [addUser, { isLoading, isError, isSuccess }] = useAddUserMutation();
   const { refetch } = useUsersQuery();
   const {
@@ -47,127 +19,9 @@ function AddRole({ open, setOpen }) {
     resetField,
   } = useForm();
   const { data } = useGetRolesQuery();
-  const rolesData = [
-    {
-      _id: "Role01-01-01",
-      RoleName: "CASHIER",
-      Roles: [
-        {
-          path: "Clients",
-          access: [
-            "read",
-            "create",
-            "update",
-            "export",
-            "deposit",
-            "withdraw",
-            "transfer",
-            "exchange",
-            "update_client",
-            "change_password",
-            "view_transactions",
-          ],
-        },
-      ],
-    },
-    {
-      _id: "Role01-01-02",
-      RoleName: "ADMINISTRATOR",
-      Roles: [
-        {
-          path: "Clients",
-          access: [
-            "cash_on_hand",
-            "receivable_cash",
-            "payable_cash",
-            "read",
-            "create",
-            "update",
-            "delete",
-            "export",
-            "deposit",
-            "withdraw",
-            "transfer",
-            "exchange",
-            "close_account",
-            "update_client",
-            "change_password",
-            "view_transactions",
-            "delete_transaction",
-            "update_transaction",
-          ],
-        },
-        {
-          path: "Exchanges",
-          access: ["read", "create", "update", "delete", "export", "rate"],
-        },
-        {
-          path: "Banks",
-          access: [
-            "read",
-            "create",
-            "update",
-            "delete",
-            "export",
-            "deposit",
-            "withdraw",
-            "transfer",
-            "exchange",
-            "close_account",
-            "view_transactions",
-            "delete_transaction",
-            "update_transaction",
-          ],
-        },
-        {
-          path: "Cash-flow",
-          access: ["read", "create", "update", "delete", "export"],
-        },
-        {
-          path: "Expenses",
-          access: ["read", "create", "update", "delete", "export"],
-        },
-        {
-          path: "Capital",
-          access: [
-            "export",
-            "deposit",
-            "withdraw",
-            "delete_transaction",
-            "update_transaction",
-          ],
-        },
-        {
-          path: "Summary",
-          access: ["read", "create", "update", "delete", "export"],
-        },
-        {
-          path: "General",
-          access: ["read", "create", "update", "delete", "export"],
-        },
-        {
-          path: "Users",
-          access: ["read", "create", "update"],
-        },
-        {
-          path: "Roles",
-          access: ["read", "create", "update"],
-        },
-        {
-          path: "Settings",
-          access: ["change_language", "use_dark_mode"],
-        },
-        {
-          path: "inactive-clients",
-          access: ["read", "activate", "export"],
-        },
-      ],
-    },
-  ];
   const onSubmit = async (data) => {
     console.log(data);
   };
-
   return (
     <div>
       <div
@@ -214,11 +68,6 @@ function AddRole({ open, setOpen }) {
                       Role Name
                     </label>
                   </div>
-
-                  <div>
-                    <input type="" />
-                  </div>
-
                   {isLoading ? (
                     <button
                       class="flex space-x-6 items-center w-full rounded-lg bg-[#FD5353] text-center justify-center text-2xl  px-4 py-2 text-white"

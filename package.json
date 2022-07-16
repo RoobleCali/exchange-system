@@ -31,6 +31,7 @@
     "next-themes": "^0.2.0",
     "nprogress": "^0.2.0",
     "react": "^17.0.0",
+    "react-checkbox-tree": "^1.7.3",
     "react-circular-progressbar": "^2.0.4",
     "react-css-loaders": "^0.0.6",
     "react-date-range": "^1.4.0",

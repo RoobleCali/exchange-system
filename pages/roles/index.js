@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import AddRole from "../../components/userAndRole/AddRole";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
-import { useUsersQuery } from "../../redux/api/UserApi";
+import { useGetRolesQuery } from "../../redux/api/UserApi";
 function index() {
   const [open, setOpen] = useState(false);
-  const { data, error, isLoading, isSuccess } = useUsersQuery();
-
+  const { data, error, isLoading, isSuccess } = useGetRolesQuery();
+  console.log(data);
   return (
     <div>
       <div className="p-2 mx-auto space-y-10 min- max-w-7xl ">
@@ -30,36 +30,13 @@ function index() {
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th className="px-6 py-3">User name</th>
-                  <th className="px-6 py-3">FullName</th>
-                  <th className="px-6 py-3">UserPhone</th>
-                  <th className="px-6 py-3">userType</th>
+
                   <th className="px-6 py-3">RoleName</th>
                   <th className="px-6 py-3">Actions</th>
                 </tr>
               </thead>
               {/* map the data */}
-              {isSuccess &&
-                data.map((item) => (
-                  <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th
-                        scope="row"
-                        class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                      >
-                        {item._id}
-                      </th>
-                      <td class="py-4 px-6 truncate">{item.FullName}</td>
-                      <td class="py-4 px-6">{item.UserPhone}</td>
-                      <td class="py-4 px-6">{item.userType}</td>
-                      <td class="py-4 px-6">{item.RoleName}</td>
-
-                      <td className="flex items-center px-6 py-4 space-x-5 ">
-                        <PencilAltIcon className="font-medium text-blue-600 cursor-pointer w-7 dark:text-blue-500" />
-                        <TrashIcon className="font-medium text-red-600 cursor-pointer w-7 dark:text-red-500" />
-                      </td>
-                    </tr>
-                  </tbody>
-                ))}
+              {isSuccess && data.map((item) => console.log(item.Roles))}
             </table>
           </div>
         </div>
