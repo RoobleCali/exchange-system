@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { getCookie } from "cookies-next";
+import { REHYDRATE } from "redux-persist";
+
 export const taskApi = createApi({
   reducerPath: "tasksApi",
   baseQuery: fetchBaseQuery({
@@ -9,43 +11,35 @@ export const taskApi = createApi({
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
       }
-
       return headers;
     },
   }),
-
-  //  import endpoints from different files
-
+  extractRehydrationInfo(action, { reducerPath }) {
+    if (action.type === REHYDRATE) {
+      return action.payload[reducerPath];
+    }
+  },
+  tagTypes: ["Users", "Roles", "/tasks"],
   endpoints: (builder) => ({
-    tasks: builder.query({
+    Users: builder.query({
       query: () => "/users",
+      providesTags: ["Users"],
     }),
-    addTask: builder.mutation({
-      query: (task) => ({
+    addUser: builder.mutation({
+      query: (user) => ({
         url: "/users",
         method: "POST",
-        body: task,
+        body: user,
+        invalidatesTags: ["Users"],
       }),
     }),
-    updateTask: builder.mutation({
-      query: ({ id, ...rest }) => ({
-        url: `/users/${id}`,
-        method: "PUT",
-        body: rest,
-      }),
-    }),
-    deleteTask: builder.mutation({
-      query: (id) => ({
-        url: `/users/${id}`,
-        method: "DELETE",
-      }),
+
+    // role
+    GetRoles: builder.query({
+      query: () => "/users/roles",
+      invalidatesTags: ["Users"],
     }),
   }),
 });
 
-export const {
-  useTasksQuery,
-  useAddTaskMutation,
-  useUpdateTaskMutation,
-  useDeleteTaskMutation,
-} = taskApi;
+export const { useUsersQuery, useAddUserMutation, useGetRolesQuery } = taskApi;

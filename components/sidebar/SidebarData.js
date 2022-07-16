@@ -19,11 +19,7 @@ export const sidebarData = [
     icon: <OfficeBuildingIcon />,
     link: "wallet",
   },
-  {
-    title: "Users",
-    icon: <UsersIcon />,
-    link: "users",
-  },
+
   {
     title: "Clients",
     icon: <UsersIcon />,
@@ -57,14 +53,19 @@ export const sidebarData = [
     link: "cardcenter",
   },
   {
-    title: "Roles",
+    title: "Roles & Users",
     icon: <UsersIcon />,
 
     children: [
       {
-        title: "Roles",
+        title: "Users",
         icon: <UsersIcon />,
         link: "users",
+      },
+      {
+        title: "Roles",
+        icon: <UsersIcon />,
+        link: "roles",
       },
     ],
   },

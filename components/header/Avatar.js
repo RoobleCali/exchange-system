@@ -3,8 +3,11 @@ import Image from "next/image";
 import abdishakuur from "../../pages/assets/abdishakuur.jpg";
 import { removeCookies } from "cookies-next";
 import Router from "next/router";
+import { useState } from "react";
+import ViewProfile from "./ViewProfile";
 export default function Avatar() {
-  // select transAction from redux
+  const [View, setView] = useState(false);
+
   return (
     <div className="flex justify-end px-6 py-3 ">
       <Menu as="div" className="relative">
@@ -42,20 +45,16 @@ export default function Avatar() {
           leave-to-classname="scale-90 opacity-0"
         >
           <Menu.Items className="absolute right-0 w-48 mt-2 overflow-hidden text-gray-700 origin-top-right bg-white border rounded-md shadow-lg focus:outline-none dark:bg-gray-800 dark:text-gray-200">
-            <Menu.Item v-slot="{active}">
-              <a href="#" className="block px-4 py-2 text-sm ">
+            <Menu.Item v-slot="{active}" onClick={() => setView(!View)}>
+              <a className="block px-4 py-2 text-sm cursor-pointer">
                 My Profile
               </a>
             </Menu.Item>
             <Menu.Item v-slot="{active, disabled}" disabled>
-              <a href="#" className="block px-4 py-2 text-sm ">
-                Settings
-              </a>
+              <a className="block px-4 py-2 text-sm ">Settings</a>
             </Menu.Item>
             <Menu.Item v-slot="{active}">
-              <a href="#" className="block px-4 py-2 text-sm ">
-                Help
-              </a>
+              <a className="block px-4 py-2 text-sm ">Help</a>
             </Menu.Item>
             <Menu.Item
               v-slot="{active}"
@@ -74,6 +73,7 @@ export default function Avatar() {
           </Menu.Items>
         </Transition>
       </Menu>
+      <ViewProfile open={View} setOpen={setView} />
     </div>
   );
 }

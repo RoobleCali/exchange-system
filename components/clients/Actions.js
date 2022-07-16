@@ -20,7 +20,6 @@ export default function Actions() {
           onClick={() => setView(!View)}
         />
       </div>
-
       <ManageAccount
         id="search-modal"
         searchId="search"
