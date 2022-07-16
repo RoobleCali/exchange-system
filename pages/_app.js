@@ -6,7 +6,6 @@ import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { Provider } from "react-redux";
 import { store } from "../redux/Store2";
-import "react-checkbox-tree/lib/react-checkbox-tree.css";
 
 function MyApp({ Component, pageProps }) {
   NProgress.configure({

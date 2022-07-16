@@ -8,7 +8,8 @@ import {
   CurrencyDollarIcon,
 } from "@heroicons/react/solid";
 import Transition from "../utils/Transition";
-import BottomTransactions from "../../components/cards/BottomTransactions";
+import Transactions from "../../components/cards/Transactions";
+import StatisCards from "../../components/cards/StatisCards";
 function ViewProfile({ open, setOpen }) {
   // payment information json data
   const paymentInfo = [
@@ -79,11 +80,10 @@ function ViewProfile({ open, setOpen }) {
                 </button>
               </div>
               {/* main */}
-              <div className="grid grid-cols-1 gap-2 px-3 lg:grid-cols-5">
+              <div className="grid grid-cols-1 gap-2 px-3 mt-10 lg:grid-cols-5">
                 {/* left */}
-                <div className="flex flex-col max-h-screen col-span-1 ">
+                <div className="flex flex-col max-h-screen col-span-1 shadow-xs">
                   {/* top */}
-
                   <div className="w-full col-span-1 p-3 bg-white dark:bg-gray-800 ">
                     <div className="flex flex-col space-y-4">
                       <div className="flex items-center justify-between pb-5">
@@ -164,48 +164,12 @@ function ViewProfile({ open, setOpen }) {
                 {/* right */}
                 <div className="col-span-4 px-10 shadow-lg">
                   {/* top */}
-                  <div class="grid grid-cols-1 space-y-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-4 w-full">
-                    <div class="flex items-center relative p-5 w-full bg-white rounded-lg  shadow hover:shadow-md">
-                      <div class="w-12 h-12 rounded-full bg-gray-100"></div>
-                      <div class="ml-3">
-                        <p class="font-medium text-gray-800">123,490</p>
-                        <p class="text-sm text-gray-600">Total Transactions</p>
-                      </div>
-                    </div>
-                    <div class="flex items-center relative p-5 w-full bg-white rounded-lg  shadow hover:shadow-md">
-                      <div class="w-12 h-12 rounded-full bg-gray-100"></div>
-                      <div class="ml-3">
-                        <p class="font-medium text-gray-800">14,490</p>
-                        <p class="text-sm text-gray-600">Total Pending</p>
-                      </div>
-                    </div>
-                    <div class="flex items-center relative p-5 w-full bg-white rounded-lg  shadow hover:shadow-md">
-                      <div class="w-12 h-12 rounded-full bg-gray-100"></div>
-                      <div class="ml-3">
-                        <p class="font-medium text-gray-800">123,490</p>
-                        <p class="text-sm text-gray-600">
-                          {" "}
-                          Incomplete Transactions
-                        </p>
-                      </div>
-                    </div>
-                    <div class="flex items-center relative p-5 w-full bg-white rounded-lg  shadow hover:shadow-md">
-                      <div class="w-12 h-12 rounded-full bg-gray-100"></div>
-                      <div class="ml-3">
-                        <p class="font-medium text-gray-800">123,490</p>
-                        <p class="text-sm text-gray-600">
-                          {" "}
-                          Incomplete Transactions
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  <div></div>
+                  <StatisCards />
                   {/* bottom */}
-                  <div class="grid grid-cols-1 space-y-4 md:grid-cols-2 gap-6 mt-4 w-full">
-                    <div></div>
-                    <div>
-                      <BottomTransactions />
-                    </div>
+
+                  <div className="mt-10">
+                    <Transactions />
                   </div>
                 </div>
               </div>

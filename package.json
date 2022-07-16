@@ -9,8 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.2.4",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
     "@headlessui/react": "^1.6.6",
     "@heroicons/react": "^1.0.6",
+    "@kovalskiy_dmitriy/react-multi-select": "^0.0.0-development",
+    "@material/checkbox": "^14.0.0",
     "@ramonak/react-progress-bar": "^4.4.0",
     "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.27.2",
@@ -41,6 +46,7 @@
     "react-hook-form": "^7.32.2",
     "react-icons": "^4.4.0",
     "react-minimal-pie-chart": "^8.3.0",
+    "react-multi-select-component": "^4.2.9",
     "react-paginate": "^8.1.3",
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",

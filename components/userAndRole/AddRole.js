@@ -11,42 +11,28 @@ function AddRole({ open, setOpen }) {
     handleSubmit,
     formState: { errors },
     resetField,
+    watch,
   } = useForm();
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     console.log(data);
+    alert("submit");
   };
   const rolesJson = [
     {
       Roles: [
         {
           path: "Clients",
-          access: [
-            "read",
-            "create",
-            "update",
-            "export",
-            "deposit",
-            "withdraw",
-            "transfer",
-            "exchange",
-            "update_client",
-            "change_password",
-            "view_transactions",
-          ],
+          access: ["read", "create", "update", "export", "deposit"],
         },
       ],
     },
   ];
   const [showAccess, setShowAccess] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
-
   const handleCheck = () => {
     setShowAccess(!showAccess);
-    setIsChecked(!isChecked);
   };
-  const handleOnChange = () => {
-    setIsChecked(!isChecked);
-  };
+  const selectAll = watch("selectAll");
+  console.log(selectAll);
 
   return (
     <div>
@@ -110,10 +96,23 @@ function AddRole({ open, setOpen }) {
                                   value=""
                                   name="bordered-checkbox"
                                   class="w-5 h-5  "
+                                  {...register("selectAll", {
+                                    required: {
+                                      value: true,
+                                      message:
+                                        "Please select at least one access",
+                                    },
+                                  })}
                                 />
+
                                 <p className="text-lg text-gray-600 cursor-pointer">
                                   {subRole.path}
                                 </p>
+                                {errors.selectAll && (
+                                  <span className="py-2 text-sm text-red-400">
+                                    Amount must not be empty!
+                                  </span>
+                                )}
                               </div>
                               <ChevronDownIcon className="w-8 text-gray-600" />
                             </div>
@@ -124,7 +123,12 @@ function AddRole({ open, setOpen }) {
                               ${showAccess ? "block" : "hidden"}`}
                               >
                                 <div className="flex items-center ml-3 space-x-7">
-                                  <input type="checkbox" checked={isChecked} />
+                                  <input
+                                    type="checkbox"
+                                    checked={selectAll}
+                                    {...register(access, {})}
+                                  />
+
                                   <p className="text-gray-500">{access}</p>
                                 </div>
                               </div>
