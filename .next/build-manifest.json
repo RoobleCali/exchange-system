@@ -15,10 +15,10 @@
     "static/development/_middlewareManifest.js"
   ],
   "pages": {
-    "/": [
+    "/404": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/index.js"
+      "static/chunks/pages/404.js"
     ],
     "/_app": [
       "static/chunks/webpack.js",
@@ -35,11 +35,6 @@
       "static/chunks/main.js",
       "server/middleware-runtime.js",
       "server/pages/_middleware.js"
-    ],
-    "/clients": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/clients.js"
     ],
     "/roles": [
       "static/chunks/webpack.js",
