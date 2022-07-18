@@ -10,7 +10,7 @@ function AddRole({ open, setOpen }) {
     register,
     handleSubmit,
     formState: { errors },
-    resetField,
+
     watch,
   } = useForm();
   const onSubmit = (data) => {
@@ -31,8 +31,8 @@ function AddRole({ open, setOpen }) {
   const handleCheck = () => {
     setShowAccess(!showAccess);
   };
-  const selectAll = watch("selectAll");
-  console.log(selectAll);
+  const path = watch("path");
+  console.log(path);
 
   return (
     <div>
@@ -86,59 +86,80 @@ function AddRole({ open, setOpen }) {
                       <div class="form-floating mb-3 xl:w-96">
                         {role.Roles.map((subRole) => (
                           <div class="form-floating mb-3 xl:w-96 border border-gray-200 px-4 overflow-scroll">
-                            <div className="flex items-center justify-between mb-2 cursor-pointer">
-                              <div
-                                className="flex items-center space-x-2 cursor-pointer"
-                                onClick={handleCheck}
-                              >
-                                <input
-                                  type="checkbox"
-                                  value=""
-                                  name="bordered-checkbox"
-                                  class="w-5 h-5  "
-                                  {...register("selectAll", {
-                                    required: {
-                                      value: true,
-                                      message:
-                                        "Please select at least one access",
-                                    },
-                                  })}
-                                />
+                            <div
+                              class="accordion accordion-flush"
+                              id="accordionFlushExample"
+                            >
+                              <div class="accordion-item border-t-0 border-l-0 border-r-0 rounded-none bg-white border border-gray-200">
+                                <button
+                                  class="accordion-button relative flex items-center w-full  py-4   px-5 text-base text-gray-800 text-left bg-white  border-0 rounded-none transition focus:outline-none"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#flush-collapseOne"
+                                  aria-expanded="false"
+                                  aria-controls="flush-collapseOne"
+                                  onClick={handleCheck}
+                                >
+                                  <div className="flex items-center space-x-2 cursor-pointer">
+                                    <input
+                                      type="checkbox"
+                                      value=""
+                                      name="bordered-checkbox"
+                                      class="w-5 h-5  "
+                                      {...register("path", {
+                                        required: {
+                                          value: true,
+                                          message:
+                                            "Please select at least one access",
+                                        },
+                                      })}
+                                    />
 
-                                <p className="text-lg text-gray-600 cursor-pointer">
-                                  {subRole.path}
-                                </p>
-                                {errors.selectAll && (
-                                  <span className="py-2 text-sm text-red-400">
-                                    Amount must not be empty!
-                                  </span>
-                                )}
-                              </div>
-                              <ChevronDownIcon className="w-8 text-gray-600" />
-                            </div>
+                                    <p className="text-lg text-gray-600 cursor-pointer">
+                                      {subRole.path}
+                                    </p>
+                                    {errors.path && (
+                                      <span className="py-2 text-sm text-red-400">
+                                        Amount must not be empty!
+                                      </span>
+                                    )}
+                                  </div>
+                                </button>
 
-                            {subRole.access.map((access) => (
-                              <div
-                                class={`form-floating mb-3 xl:w-96 
-                              ${showAccess ? "block" : "hidden"}`}
-                              >
-                                <div className="flex items-center ml-3 space-x-7">
-                                  <input
-                                    type="checkbox"
-                                    checked={selectAll}
-                                    {...register(access, {})}
-                                  />
+                                <div
+                                  id="flush-collapseOne"
+                                  class="accordion-collapse border-0 collapse show"
+                                  aria-labelledby="flush-headingOne"
+                                  data-bs-parent="#accordionFlushExample"
+                                >
+                                  <div class="accordion-body py-4 px-5">
+                                    {subRole.access.map((access) => (
+                                      <div
+                                        class={`form-floating mb-3 xl:w-96 
+                              ${showAccess && "block"}`}
+                                      >
+                                        <div className="flex items-center ml-3 space-x-7">
+                                          <input
+                                            type="checkbox"
+                                            checked={path}
+                                            {...register(access, {})}
+                                          />
 
-                                  <p className="text-gray-500">{access}</p>
+                                          <p className="text-gray-500">
+                                            {access}
+                                          </p>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
                                 </div>
                               </div>
-                            ))}
+                            </div>
                           </div>
                         ))}
                       </div>
                     ))}
                   </div>
-
                   <button
                     aria-label="add user"
                     type="submit"
