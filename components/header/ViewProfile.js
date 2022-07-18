@@ -1,8 +1,6 @@
 import {
   PhoneMissedCallIcon,
   LocationMarkerIcon,
-  MailIcon,
-  CashIcon,
   UserIcon,
   PrinterIcon,
   CurrencyDollarIcon,

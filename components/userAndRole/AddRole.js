@@ -1,17 +1,15 @@
 import { XIcon } from "@heroicons/react/solid";
-import { DoubleBounce } from "better-react-spinkit";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray, Controller } from "react-hook-form";
 
-import { ChevronDownIcon } from "@heroicons/react/solid";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function AddRole({ open, setOpen }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-
     watch,
+    control,
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
@@ -27,6 +25,12 @@ function AddRole({ open, setOpen }) {
       ],
     },
   ];
+  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
+    {
+      control,
+      name: "test",
+    }
+  );
   const [showAccess, setShowAccess] = useState(false);
   const handleCheck = () => {
     setShowAccess(!showAccess);
@@ -80,6 +84,26 @@ function AddRole({ open, setOpen }) {
                       Role Name
                     </label>
                   </div>
+                  <ul>
+                    {fields.map((item, index) => {
+                      return (
+                        <li key={item.id}>
+                          <input
+                            name="amazing"
+                            defaultValue="clients" // make sure to set up defaultValue
+                            ref={register()}
+                          />
+
+                          <Controller
+                            as={<input />}
+                            name="mihamed"
+                            control={control}
+                            defaultValue={item.lastName} // make sure to set up defaultValue
+                          />
+                        </li>
+                      );
+                    })}
+                  </ul>
                   <div className="max-h-fit">
                     {/* map the roles json and display as checkbox */}
                     {rolesJson.map((role) => (

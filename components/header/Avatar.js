@@ -5,9 +5,11 @@ import { removeCookies } from "cookies-next";
 import Router from "next/router";
 import { useState } from "react";
 import ViewProfile from "./ViewProfile";
+import ChangePassword from "./ChangePassword";
+
 export default function Avatar() {
   const [View, setView] = useState(false);
-
+  const [open, setOpen] = useState(false);
   return (
     <div className="flex justify-end px-6 py-3 ">
       <Menu as="div" className="relative">
@@ -50,11 +52,16 @@ export default function Avatar() {
                 My Profile
               </a>
             </Menu.Item>
-            <Menu.Item v-slot="{active, disabled}" disabled>
-              <a className="block px-4 py-2 text-sm ">Settings</a>
+            <Menu.Item
+              v-slot="{active, disabled}"
+              onClick={() => setOpen(!open)}
+            >
+              <a className="block px-4 py-2 text-sm cursor-pointer ">
+                Change Password
+              </a>
             </Menu.Item>
             <Menu.Item v-slot="{active}">
-              <a className="block px-4 py-2 text-sm ">Help</a>
+              <a className="block px-4 py-2 text-sm ">Settings</a>
             </Menu.Item>
             <Menu.Item
               v-slot="{active}"
@@ -74,6 +81,7 @@ export default function Avatar() {
         </Transition>
       </Menu>
       <ViewProfile open={View} setOpen={setView} />
+      <ChangePassword open={open} setOpen={setOpen} />
     </div>
   );
 }

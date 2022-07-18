@@ -75,6 +75,16 @@ export const taskApi = createApi({
       query: () => "/bank/clients/all",
       invalidatesTags: ["Clients"],
     }),
+
+    // change password
+    ChangePassword: builder.mutation({
+      query: (user) => ({
+        url: "/auth/change-pass",
+        method: "POST",
+        body: user,
+        invalidatesTags: ["Users"],
+      }),
+    }),
   }),
 });
 
@@ -83,4 +93,5 @@ export const {
   useAddUserMutation,
   useGetRolesQuery,
   useGetClientsQuery,
+  useChangePasswordMutation,
 } = taskApi;

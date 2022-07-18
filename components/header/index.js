@@ -14,14 +14,13 @@ function Header({
   const router = useRouter();
   const { theme, setTheme } = useTheme("");
   const [DropdownOpen, setDropdownOpen] = useState(false);
+
   const token = getCookie("token");
   useEffect(() => {
     if (!token || token == null) {
       router.push("/login");
     }
   }, []);
-  // use let to avoid re-rendering
-
   return (
     <header
       className={`sticky dark:text-white bg-white dark:bg-slate-800  top-0  border-b border-slate-200 z-30`}
