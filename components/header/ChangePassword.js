@@ -14,13 +14,10 @@ function ChangePassword({ open, setOpen }) {
     useChangePasswordMutation();
   const onSubmit = async (data) => {
     if (!data) return {};
-    // try error and success
     const res = await changePassword(data);
-    // check if there is error and console log error message
     if (res.error) {
       setMessage(res.error.data.message);
     }
-    // check if there is success and console log success message
     if (res.error.data == "correct passowr") {
       setOpen(false);
     }
