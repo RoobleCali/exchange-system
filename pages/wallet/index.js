@@ -20,11 +20,11 @@ function index() {
         </div>
       </div>
       {/* right */}
-      <div className="p-0 space-y-10 rounded-md  md:col-span-2 lg:col-span-2 xl:col-span-1">
-        <div className="w-full max-w-full p-4 bg-white  dark:bg-gray-800 dark:text-white">
+      <div className="p-0 space-y-10 rounded-md md:col-span-2 lg:col-span-2 xl:col-span-1">
+        <div className="w-full max-w-full p-4 bg-white dark:bg-gray-800 dark:text-white">
           <PieChart />
         </div>
-        <div className="w-full max-w-full p-3 mt-4 bg-white  dark:bg-gray-800 dark:text-gray-200">
+        <div className="w-full max-w-full p-3 mt-4 bg-white dark:bg-gray-800 dark:text-gray-200">
           <BottomTransactions />
         </div>
       </div>

@@ -131,12 +131,6 @@ function Transactions() {
         <div>
           <ul className="flex items-center mb-3 space-x-4 text-gray-700 dark:text-gray-300">
             <li className="text-[9px] sm:text-xs">
-              <Link href="/wallet">Monthly</Link>
-            </li>
-            <li className=" text-[9px] sm:text-xs ">
-              <Link href="/wallet">Weekly</Link>
-            </li>
-            <li className="text-[9px] sm:text-xs">
               <Link href="/wallet">Today</Link>
               <hr className="border-b rounded-md md:border-b-4 border-b-blue-600" />
             </li>
@@ -152,25 +146,25 @@ function Transactions() {
             className="flex items-center justify-between text-xs space-x-14"
             key={index}
           >
-            <p className="text-gray-700 truncate dark:text-gray-300 w-max">
+            <p className="text-gray-700 dark:text-gray-300 w-max">
               {transaction.phone}
             </p>
 
-            <p className="text-gray-700 truncate dark:text-gray-300 w-max">
+            <p className="text-gray-700 dark:text-gray-300 w-max">
               {transaction.CustFullName}
             </p>
 
-            <p className="text-gray-700 truncate dark:text-gray-300 w-max ">
+            <p className="text-gray-700 dark:text-gray-300 w-max ">
               {transaction.AccountNumber}
             </p>
 
-            <p className="text-gray-700 truncate dark:text-gray-300 w-max ">
+            <p className="text-gray-700 truncate dark:text-gray-300 w-max">
               {transaction.date}
             </p>
-            <p className="text-gray-700 truncate dark:text-gray-300 w-max ">
+            <p className="text-gray-700 dark:text-gray-300 w-max ">
               {transaction.type}
             </p>
-            <p className="px-4 py-2 text-white truncate bg-green-500 rounded-md w-max">
+            <p className="px-4 py-2 text-white bg-green-500 rounded-md w-max">
               {transaction.Status}
             </p>
           </div>

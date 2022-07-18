@@ -1,5 +1,10 @@
 import { XIcon } from "@heroicons/react/solid";
-import { useForm, useFieldArray, Controller } from "react-hook-form";
+import {
+  useForm,
+  useFieldArray,
+  Controller,
+  FormProvider,
+} from "react-hook-form";
 
 import React, { useState } from "react";
 
@@ -10,7 +15,17 @@ function AddRole({ open, setOpen }) {
     formState: { errors },
     watch,
     control,
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      RoleName: "cashier",
+      Roles: [
+        {
+          path: "client",
+          access: ["Deposit", "withdraw"],
+        },
+      ],
+    },
+  });
   const onSubmit = (data) => {
     console.log(data);
     alert("submit");
@@ -67,123 +82,87 @@ function AddRole({ open, setOpen }) {
               </div>
               <div className="px-4 pt-6 pb-1 md:px-10 md:pt-12 md:pb-4">
                 <form className="mt-3" onSubmit={handleSubmit(onSubmit)}>
-                  <div class="form-floating mb-3 xl:w-96">
-                    <input
-                      type="text"
-                      className="block w-full px-3 py-3 mt-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded form-control focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
-                      id="floatingInput"
-                      placeholder="Role Name"
-                      {...register("RoleName", { required: true })}
-                    />
-                    {errors.RoleName && (
-                      <span className="py-2 text-sm text-red-400">
-                        Amount must not be empty!
-                      </span>
-                    )}
-                    <label for="floatingInput" class="text-gray-700 text-sm">
+                  {/* inputs based on default value */}
+                  {/* <div className="flex flex-col space-y-2">
+                    <label
+                      htmlFor="RoleName"
+                      className="text-gray-600 dark:text-white"
+                    >
                       Role Name
                     </label>
-                  </div>
-                  <ul>
-                    {fields.map((item, index) => {
-                      return (
-                        <li key={item.id}>
-                          <input
-                            name="amazing"
-                            defaultValue="clients" // make sure to set up defaultValue
-                            ref={register()}
-                          />
-
+                    <Controller
+                      as={<input type="text" className="w-full" />}
+                      name="RoleName"
+                      control={control}
+                    />
+                    <label
+                      htmlFor="path"
+                      className="text-gray-600 dark:text-white"
+                    >
+                      Path
+                    </label>
+                    <Controller
+                      as={<input type="text" className="w-full" />}
+                      name="path"
+                      control={control}
+                    />
+                    <label
+                      htmlFor="access"
+                      className="text-gray-600 dark:text-white"
+                    >
+                      Access
+                    </label>
+                    <div className="flex flex-col space-y-2">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center">
                           <Controller
-                            as={<input />}
-                            name="mihamed"
+                            as={<input type="checkbox" />}
+                            name="access"
                             control={control}
-                            defaultValue={item.lastName} // make sure to set up defaultValue
                           />
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <div className="max-h-fit">
-                    {/* map the roles json and display as checkbox */}
-                    {rolesJson.map((role) => (
-                      <div class="form-floating mb-3 xl:w-96">
-                        {role.Roles.map((subRole) => (
-                          <div class="form-floating mb-3 xl:w-96 border border-gray-200 px-4 overflow-scroll">
-                            <div
-                              class="accordion accordion-flush"
-                              id="accordionFlushExample"
-                            >
-                              <div class="accordion-item border-t-0 border-l-0 border-r-0 rounded-none bg-white border border-gray-200">
-                                <button
-                                  class="accordion-button relative flex items-center w-full  py-4   px-5 text-base text-gray-800 text-left bg-white  border-0 rounded-none transition focus:outline-none"
-                                  type="button"
-                                  data-bs-toggle="collapse"
-                                  data-bs-target="#flush-collapseOne"
-                                  aria-expanded="false"
-                                  aria-controls="flush-collapseOne"
-                                  onClick={handleCheck}
-                                >
-                                  <div className="flex items-center space-x-2 cursor-pointer">
-                                    <input
-                                      type="checkbox"
-                                      value=""
-                                      name="bordered-checkbox"
-                                      class="w-5 h-5  "
-                                      {...register("path", {
-                                        required: {
-                                          value: true,
-                                          message:
-                                            "Please select at least one access",
-                                        },
-                                      })}
-                                    />
-
-                                    <p className="text-lg text-gray-600 cursor-pointer">
-                                      {subRole.path}
-                                    </p>
-                                    {errors.path && (
-                                      <span className="py-2 text-sm text-red-400">
-                                        Amount must not be empty!
-                                      </span>
-                                    )}
-                                  </div>
-                                </button>
-
-                                <div
-                                  id="flush-collapseOne"
-                                  class="accordion-collapse border-0 collapse show"
-                                  aria-labelledby="flush-headingOne"
-                                  data-bs-parent="#accordionFlushExample"
-                                >
-                                  <div class="accordion-body py-4 px-5">
-                                    {subRole.access.map((access) => (
-                                      <div
-                                        class={`form-floating mb-3 xl:w-96 
-                              ${showAccess && "block"}`}
-                                      >
-                                        <div className="flex items-center ml-3 space-x-7">
-                                          <input
-                                            type="checkbox"
-                                            checked={path}
-                                            {...register(access, {})}
-                                          />
-
-                                          <p className="text-gray-500">
-                                            {access}
-                                          </p>
-                                        </div>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
+                          <p className="text-sm text-gray-600 dark:text-white">
+                            Read
+                          </p>
+                        </div>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  </div> */}
+                  {/* use array field based on default values */}
+                  {/* <div className="flex flex-col space-y-2">
+                    <label
+                      htmlFor="Roles"
+                      className="text-gray-600 dark:text-white"
+                    >
+                      Roles
+                    </label>
+                    <div className="flex flex-col space-y-2">
+                      {fields.map((field, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center justify-between"
+                        >
+                          <div className="flex items-center">
+                            <Controller
+                              as={<input type="checkbox" />}
+                              name={`${field}.access`}
+                              control={control}
+                            />
+                            <p className="text-sm text-gray-600 dark:text-white">
+                              {field.access}
+                            </p>
+                          </div>
+                          <div className="flex items-center">
+                            <Controller
+                              as={<input type="text" className="w-full" />}
+                              name={`${field}.path`}
+                              control={control}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div> */}
+
                   <button
                     aria-label="add user"
                     type="submit"

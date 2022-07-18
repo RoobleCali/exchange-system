@@ -1,8 +1,6 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-import React from "react";
-
 function StatisCards() {
   // statis json data
   const statisData = [
@@ -35,16 +33,15 @@ function StatisCards() {
       progress: "100",
     },
   ];
-  const percentage = 300;
   return (
     <div>
       {/* bottom cards */}
-      <div className="grid justify-between grid-cols-2 gap-3 mt-4 bg-white rounded-md sm:p-2 dark:bg-gray-700 lg:grid-cols-4 sm:mx-">
+      <div className="grid justify-between grid-cols-2 gap-3 mt-4 bg-white rounded-md sm:p-2 dark:bg-gray-700 lg:grid-cols-4 ">
         {/* map */}
 
         {statisData.map((item, index) => (
           <div
-            className="grid w-full grid-cols-2 gap-3 mt-4 bg-white rounded-md sm:p-2 dark:bg-gray-700 lg:grid-cols-4 sm:mx-"
+            className="grid w-full grid-cols-2 gap-3 mt-4 bg-white rounded-md sm:p-2 dark:bg-gray-700 lg:grid-cols-4 "
             key={index}
           >
             {/* card 2 */}
@@ -60,8 +57,8 @@ function StatisCards() {
                 />
               </div>
               <div>
-                <div className="text-sm">
-                  <p className="text-gray-600 dark:text-gray-200">
+                <div className="text-xs truncate md:text-sm">
+                  <p className="text-gray-600 truncate dark:text-gray-200">
                     {item.title}
                   </p>
                   <span className="text-gray-500 dark:text-gray-400 text-[10px]">

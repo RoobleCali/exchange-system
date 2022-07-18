@@ -192,8 +192,8 @@ c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
                           </div>
                         </div>
                       </div>
-                    </div>{" "}
-                    {/* contact information */}{" "}
+                    </div>
+                    {/* contact information */}
                     <div className="flex flex-wrap gap-6 mt-10 space-y-2 md:space-x-8 lg:mt-14">
                       {contactInfo.map((item, index) => (
                         <span
@@ -215,11 +215,11 @@ c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
                   </div>
                 </div>
                 {/* right */}
-                <div className="col-span-5 px-10 shadow-lg">
+                <div className="col-span-5 px-2 shadow-lg md:px-10">
                   <StatisCards />
                   {/* bottom */}
 
-                  <div className="mt-10">
+                  <div className="px-10 mt-10">
                     <Transactions />
                   </div>
                 </div>
