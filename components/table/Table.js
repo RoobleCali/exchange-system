@@ -47,7 +47,7 @@ function GlobalFilter({
           id="voice-search"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm 
           rounded-lg focus:ring-blue-500
-         focus:border-blue-500 block w-4xl px-4  pl-10 p-2.5  dark:bg-gray-700
+         focus:border-blue-500 block   px-4  pl-10 p-2.5  dark:bg-gray-700
           dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
          dark:focus:ring-blue-500 dark:focus:border-blue-500"
           required
@@ -148,7 +148,7 @@ function Table({ columns, data }) {
         {route === "/invoices" && (
           <div className="flex items-center justify-between w-full">
             {/* left */}
-            <div className="flex items-center max-w-md py-2 space-x-2 text-xs text-white bg-blue-700 rounded-md w-max innline-flex md:px-2">
+            <div className="flex items-center max-w-md px-2 py-2 space-x-2 text-xs text-white bg-blue-700 rounded-md w-max innline-flex md:px-2">
               <CloudDownloadIcon className="w-4 h-4" />
               <button className="truncate w-14 sm:w-max">download PDF </button>
             </div>
@@ -172,13 +172,6 @@ function Table({ columns, data }) {
                   ) : null
                 )
               )}
-              {/* filter  */}
-              <select className="items-center hidden py-2 space-x-2 text-xs bg-white border-none rounded-sm outline-none cursor-pointer sm:inline-block focus:border-none dark:bg-gray-800 md:px-2 innline-flex">
-                <option value="">Pending</option>
-                <option value="">All</option>
-                <option value="">Completed</option>
-                <option value="">Cancelled</option>
-              </select>
             </div>
           </div>
         )}

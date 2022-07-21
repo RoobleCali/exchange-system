@@ -1,11 +1,6 @@
 import { XIcon } from "@heroicons/react/solid";
-import {
-  useForm,
-  useFieldArray,
-  Controller,
-  FormProvider,
-} from "react-hook-form";
-
+import { useForm } from "react-hook-form";
+import { RolesData } from "./RoleData";
 import React, { useState } from "react";
 
 function AddRole({ open, setOpen }) {
@@ -13,45 +8,10 @@ function AddRole({ open, setOpen }) {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
-    control,
-  } = useForm({
-    defaultValues: {
-      RoleName: "cashier",
-      Roles: [
-        {
-          path: "client",
-          access: ["Deposit", "withdraw"],
-        },
-      ],
-    },
-  });
+  } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    alert("submit");
   };
-  const rolesJson = [
-    {
-      Roles: [
-        {
-          path: "Clients",
-          access: ["read", "create", "update", "export", "deposit"],
-        },
-      ],
-    },
-  ];
-  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
-    {
-      control,
-      name: "test",
-    }
-  );
-  const [showAccess, setShowAccess] = useState(false);
-  const handleCheck = () => {
-    setShowAccess(!showAccess);
-  };
-  const path = watch("path");
-  console.log(path);
 
   return (
     <div>
@@ -82,86 +42,23 @@ function AddRole({ open, setOpen }) {
               </div>
               <div className="px-4 pt-6 pb-1 md:px-10 md:pt-12 md:pb-4">
                 <form className="mt-3" onSubmit={handleSubmit(onSubmit)}>
-                  {/* inputs based on default value */}
-                  {/* <div className="flex flex-col space-y-2">
-                    <label
-                      htmlFor="RoleName"
-                      className="text-gray-600 dark:text-white"
-                    >
+                  <div class="form-floating mb-3 xl:w-96">
+                    <input
+                      type="text"
+                      className="block w-full px-3 py-3 mt-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded form-control focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
+                      id="floatingInput"
+                      placeholder="Role Name"
+                      {...register("RoleName", { required: true })}
+                    />
+                    {errors.RoleName && (
+                      <span className="py-2 text-red-400 text- sm">
+                        Role Name is required
+                      </span>
+                    )}
+                    <label for="floatingInput" class="text-gray-700 text-sm">
                       Role Name
                     </label>
-                    <Controller
-                      as={<input type="text" className="w-full" />}
-                      name="RoleName"
-                      control={control}
-                    />
-                    <label
-                      htmlFor="path"
-                      className="text-gray-600 dark:text-white"
-                    >
-                      Path
-                    </label>
-                    <Controller
-                      as={<input type="text" className="w-full" />}
-                      name="path"
-                      control={control}
-                    />
-                    <label
-                      htmlFor="access"
-                      className="text-gray-600 dark:text-white"
-                    >
-                      Access
-                    </label>
-                    <div className="flex flex-col space-y-2">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                          <Controller
-                            as={<input type="checkbox" />}
-                            name="access"
-                            control={control}
-                          />
-                          <p className="text-sm text-gray-600 dark:text-white">
-                            Read
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
-                  {/* use array field based on default values */}
-                  {/* <div className="flex flex-col space-y-2">
-                    <label
-                      htmlFor="Roles"
-                      className="text-gray-600 dark:text-white"
-                    >
-                      Roles
-                    </label>
-                    <div className="flex flex-col space-y-2">
-                      {fields.map((field, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center justify-between"
-                        >
-                          <div className="flex items-center">
-                            <Controller
-                              as={<input type="checkbox" />}
-                              name={`${field}.access`}
-                              control={control}
-                            />
-                            <p className="text-sm text-gray-600 dark:text-white">
-                              {field.access}
-                            </p>
-                          </div>
-                          <div className="flex items-center">
-                            <Controller
-                              as={<input type="text" className="w-full" />}
-                              name={`${field}.path`}
-                              control={control}
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div> */}
+                  </div>
 
                   <button
                     aria-label="add user"
