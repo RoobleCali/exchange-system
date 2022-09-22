@@ -189,11 +189,12 @@ function Table({ columns, data }) {
             {headerGroups.map((headerGroup, index) => (
               <tr {...headerGroup.getHeaderGroupProps()} key={index}>
                 {headerGroup.headers.map((column) => (
+                  // eslint-disable-next-line react/jsx-key
                   <th
                     className="w-full px-5 py-3 m-auto text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-200 group dark:bg-gray-600 p-auto dark:text-gray-600"
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                   >
-                    <div className="flex justify-between w-full items-cente dark:text-gray-300">
+                    <div className="flex items-center justify-between w-full dark:text-gray-300">
                       {column.render("Header")}
                       {/* Add a sort direction indicator */}
                       <span>
