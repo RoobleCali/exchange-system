@@ -28,8 +28,10 @@ const data = [
     color: "red",
   },
 ];
-export default () => {
+
+function Single() {
   let componentRef = useRef(null);
+
   return (
     <div>
       {/* top profile */}
@@ -162,12 +164,12 @@ export default () => {
                         <path
                           fill="#f44336"
                           d="M18,24c0-4.903,2.363-9.243,6-11.98C21.491,10.132,18.382,9,15,9C6.716,9,0,15.716,0,24
-      c0,8.284,6.716,15,15,15c3.382,0,6.491-1.133,9-3.02C20.363,33.242,18,28.903,18,24z"
+    c0,8.284,6.716,15,15,15c3.382,0,6.491-1.133,9-3.02C20.363,33.242,18,28.903,18,24z"
                         />
                         <path
                           fill="#ff9800"
                           d="M33,9c-3.382,0-6.491,1.132-9,3.02c3.637,2.737,6,7.077,6,11.98s-2.363,9.242-6,11.98
-      c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
+    c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
                         />
                         <ellipse
                           cx="24"
@@ -217,7 +219,7 @@ export default () => {
                 </span>
               </div>
               {/* pie chart */}
-              <div className="w-auto  md:w-44 lg:40">
+              <div className="w-auto md:w-44 lg:40">
                 <PieChart
                   data={data}
                   animate={true}
@@ -263,7 +265,7 @@ export default () => {
             <DotsVerticalIcon className="w-4 cursor-pointer " />
           </span>
           {/* chart */}
-          <div className="flex items-center justify-center w-auto  md:w-44 lg:40">
+          <div className="flex items-center justify-center w-auto md:w-44 lg:40">
             <PieChart
               data={data}
               animate={true}
@@ -302,4 +304,6 @@ export default () => {
       </div>
     </div>
   );
-};
+}
+
+export default Single;

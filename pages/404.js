@@ -1,11 +1,9 @@
 import { getCookie } from "cookies-next";
-import Image from "next/image";
 import Router from "next/router";
 import { useEffect } from "react";
-import sad from "./assets/sad.png";
 import lottie from "lottie-web";
 import notfound from "./assets/not-found.json";
-function error() {
+function Error() {
   // only show 404 page if user is logged in
   const token = getCookie("token");
 
@@ -31,4 +29,4 @@ function error() {
   );
 }
 
-export default error;
+export default Error;

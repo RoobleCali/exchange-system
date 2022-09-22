@@ -70,7 +70,7 @@ function AddUser({ open, setOpen }) {
               </div>
               <div className="px-4 pt-6 pb-1 md:px-10 md:pt-12 md:pb-4">
                 <form className="mt-3" onSubmit={handleSubmit(onSubmit)}>
-                  <div class="form-floating mb-3 xl:w-96">
+                  <div className="mb-3 form-floating xl:w-96">
                     <input
                       type="text"
                       className="block w-full px-3 py-3 mt-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded form-control focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
@@ -83,11 +83,14 @@ function AddUser({ open, setOpen }) {
                         Amount must not be empty!
                       </span>
                     )}
-                    <label for="floatingInput" class="text-gray-700 text-sm">
+                    <label
+                      htmlFor="floatingInput"
+                      className="text-sm text-gray-700"
+                    >
                       FullName
                     </label>
                   </div>
-                  <div class="form-floating mb-3 xl:w-96">
+                  <div className="mb-3 form-floating xl:w-96">
                     <input
                       type="text"
                       className="block w-full px-3 py-3 mt-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded form-control focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
@@ -100,11 +103,14 @@ function AddUser({ open, setOpen }) {
                         Amount must not be empty!
                       </span>
                     )}
-                    <label for="floatingInput" class="text-gray-700 text-sm">
+                    <label
+                      htmlFor="floatingInput"
+                      className="text-sm text-gray-700"
+                    >
                       UserName
                     </label>
                   </div>
-                  <div class="form-floating mb-3 xl:w-96">
+                  <div className="mb-3 form-floating xl:w-96">
                     <input
                       type="text"
                       className="block w-full px-3 py-3 mt-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded form-control focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
@@ -117,11 +123,14 @@ function AddUser({ open, setOpen }) {
                         Amount must not be empty!
                       </span>
                     )}
-                    <label for="floatingInput" class="text-gray-700 text-sm">
+                    <label
+                      htmlFor="floatingInput"
+                      className="text-sm text-gray-700"
+                    >
                       UserPhone
                     </label>
                   </div>
-                  <div class="form-floating mb-3 xl:w-96">
+                  <div className="mb-3 form-floating xl:w-96">
                     <select
                       className="block w-full px-3 py-3 mt-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
                       {...register("RoleID", { required: true })}
@@ -141,7 +150,7 @@ function AddUser({ open, setOpen }) {
                     )}
                   </div>
 
-                  <div class="form-floating mb-3 xl:w-96">
+                  <div className="mb-3 form-floating xl:w-96">
                     <input
                       type="text"
                       className="block w-full px-3 py-24 pl-3 mt-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded form-control focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
@@ -155,17 +164,20 @@ function AddUser({ open, setOpen }) {
                         Amount must not be empty!
                       </span>
                     )}
-                    <label for="floatingInput" class="text-gray-700 text-sm">
+                    <label
+                      htmlFor="floatingInput"
+                      className="text-sm text-gray-700"
+                    >
                       password
                     </label>
                   </div>
                   {isLoading ? (
                     <button
-                      class="flex space-x-6 items-center w-full rounded-lg bg-[#FD5353] text-center justify-center text-2xl  px-4 py-2 text-white"
+                      className="flex space-x-6 items-center w-full rounded-lg bg-[#FD5353] text-center justify-center text-2xl  px-4 py-2 text-white"
                       disabled
                     >
                       <DoubleBounce color="white" size={30} />
-                      <span class="font-medium"> Loading... </span>
+                      <span className="font-medium"> Loading... </span>
                     </button>
                   ) : (
                     <button

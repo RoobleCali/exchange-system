@@ -12,6 +12,7 @@ import { useRef } from "react";
 import Transition from "../utils/Transition";
 import Transactions from "../cards/Transactions";
 import { PieChart } from "react-minimal-pie-chart";
+import { XIcon } from "@heroicons/react/outline";
 function ViewModel({ open, setOpen }) {
   // payment information json data
   const paymentInfo = [
@@ -107,10 +108,7 @@ function ViewModel({ open, setOpen }) {
                   className="focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
                   onClick={() => setOpen(false)}
                 >
-                  <img
-                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/add_user-svg1.svg"
-                    alt="icon"
-                  />
+                  <XIcon className="h-6 w-7" />
                 </button>
               </div>
               {/* bottom */}

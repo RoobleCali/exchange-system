@@ -1,6 +1,7 @@
 import Image from "next/image";
 import avatar from "../../pages/assets/avatar.png";
 import { useForm } from "react-hook-form";
+import { XIcon } from "@heroicons/react/outline";
 
 function WithdrawModel({ open, setOpen }) {
   const {
@@ -36,10 +37,7 @@ function WithdrawModel({ open, setOpen }) {
                     className="focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
                     onClick={() => setOpen(false)}
                   >
-                    <img
-                      src="https://tuk-cdn.s3.amazonaws.com/can-uploader/add_user-svg1.svg"
-                      alt="icon"
-                    />
+                    <XIcon className="h-6 w-7" />
                   </button>
                 </div>
                 {/*   Withdraw section */}

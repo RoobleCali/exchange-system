@@ -1,3 +1,4 @@
+import { XIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 
 function SendMoney({ open, setOpen }) {
@@ -39,10 +40,7 @@ function SendMoney({ open, setOpen }) {
                 className="focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
                 onClick={() => setOpen(false)}
               >
-                <img
-                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/add_user-svg1.svg"
-                  alt="icon"
-                />
+                <XIcon className="h-6 w-7" />
               </button>
             </div>
             <div className="px-4 md:px-10 md:pt-5 md:pb-4">

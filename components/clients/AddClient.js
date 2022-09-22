@@ -1,3 +1,4 @@
+import { XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import React from "react";
 import avatar from "../../pages/assets/avatar.png";
@@ -25,14 +26,10 @@ function AddClient({ open, setOpen }) {
                 <button
                   role="button"
                   aria-label="close label"
-                  onclick="popuphandler(false)"
                   className="focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
                   onClick={() => setOpen(false)}
                 >
-                  <img
-                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/add_Client-svg1.svg"
-                    alt="icon"
-                  />
+                  <XIcon className="h-6 w-7" />
                 </button>
               </div>
               <div className="px-4 pt-6 md:px-10 md:pt-12 md:pb-4 pb-7">
@@ -60,7 +57,7 @@ function AddClient({ open, setOpen }) {
                       className="w-1/2 px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
                     />
                     <div
-                      tabindex="0"
+                      tabIndex="0"
                       className="focus:outline-none focus:ring-2 focus:ring-gray-400 w-1/2 bg-white dark:bg-gray-900  border rounded border-gray-200 dark:border-gray-700  py-2.5 px-3"
                     >
                       <select
@@ -78,10 +75,7 @@ function AddClient({ open, setOpen }) {
                   </div>
                 </form>
                 <div className="flex items-center justify-between mt-9">
-                  <button
-                    onclick="popuphandler(false)"
-                    className="px-6 py-3 text-sm text-white bg-gray-600 rounded shadow focus:ring-2 focus:ring-offset-2 focus:bg-gray-600 focus:ring-gray-600 focus:outline-none hover:bg-gray-500"
-                  >
+                  <button className="px-6 py-3 text-sm text-white bg-gray-600 rounded shadow focus:ring-2 focus:ring-offset-2 focus:bg-gray-600 focus:ring-gray-600 focus:outline-none hover:bg-gray-500">
                     Cancel
                   </button>
                   <button

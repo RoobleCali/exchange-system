@@ -1,9 +1,9 @@
 import LoginNavbar from "./LoginNavbar";
 import FormLogin from "./FormLogin";
 import { useSelector } from "react-redux";
-export default () => {
-  // redirect to home if already logged in
+import React from "react";
 
+function Index() {
   return (
     <div className="dark:bg-gray-800">
       <LoginNavbar />
@@ -16,4 +16,6 @@ export default () => {
       </div>
     </div>
   );
-};
+}
+
+export default Index;

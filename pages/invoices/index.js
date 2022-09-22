@@ -5,7 +5,7 @@ import regeneratorRuntime from "regenerator-runtime";
 import { useSelector } from "react-redux";
 import { StatusPill } from "../../components/table/StatusBill";
 
-export default ({ data }) => {
+function Index({ data }) {
   // colums for the transactions table (id, date, amount, description, category, actions)  with crud operations (create, update, delete) for each row (edit, delete) and a link to the transaction details page (/transactions/:id) for each row
   const columns = [
     {
@@ -46,8 +46,8 @@ export default ({ data }) => {
       <Table data={data} columns={columns} />
     </div>
   );
-};
-
+}
+export default Index;
 export const getServerSideProps = async ({ req, res }) => {
   const token = req.cookies;
   if (!token) {

@@ -55,7 +55,7 @@ const data = [
   },
 ];
 
-function BarChart() {
+function BarCHart() {
   return (
     <ResponsiveContainer width="10%" height="10%">
       <BarChart
@@ -81,4 +81,4 @@ function BarChart() {
   );
 }
 
-export default BarChart;
+export default BarCHart;

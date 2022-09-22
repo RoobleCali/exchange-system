@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Header from "../../components/header";
-import SampleSidebar from "../../components/sidebar";
-function index({ children }) {
+import Header from "../../components/layout/header";
+import SampleSidebar from "../../components/layout/sidebar";
+function Index({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [Mobilesidebar, setMobileSidebar] = useState(false);
 
@@ -41,4 +41,4 @@ function index({ children }) {
   );
 }
 
-export default index;
+export default Index;

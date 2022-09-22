@@ -3,8 +3,9 @@ import axios from "axios";
 import regeneratorRuntime from "regenerator-runtime";
 import { StatusPill } from "../../components/table/StatusBill";
 import Actions from "../../components/clients/Actions";
-export default ({ Data }) => {
-  console.log(Data);
+import React from "react";
+
+function index({ Data }) {
   const columns = [
     {
       Header: "id",
@@ -40,13 +41,14 @@ export default ({ Data }) => {
       ),
     },
   ];
-
   return (
     <div className="w-full">
       <Table columns={columns} data={Data} />
     </div>
   );
-};
+}
+
+export default index;
 
 export const getServerSideProps = async (ctx) => {
   const resp = await axios.get(`https://jsonplaceholder.typicode.com/users`);

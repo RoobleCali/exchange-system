@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AddBranch from "../../components/branches/AddBranch";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
 
-function index() {
+function Index() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -62,4 +62,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;

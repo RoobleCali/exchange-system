@@ -3,8 +3,11 @@ import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon } from "@heroicons/react/outline";
 import logo from "../assets/logo.png";
 import Image from "next/image";
-export default () => {
+import React from "react";
+
+function LoginNavbar() {
   const { theme, setTheme } = useTheme();
+
   return (
     <div className="sticky top-0 z-30 overflow-hidden text-gray-700 shadow-md dark:text-gray-100 ">
       <div className="flex flex-wrap items-center justify-between p-2 px-2 text-center shadow-lg md:p-4 md:px-24 ">
@@ -42,4 +45,6 @@ export default () => {
       </div>
     </div>
   );
-};
+}
+
+export default LoginNavbar;

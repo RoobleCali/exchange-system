@@ -1,24 +1,26 @@
 import { useState } from "react";
 import Transactions from "../../components/cards/Transactions";
 import SendMoney from "../../components/remittence/SendMoney";
+import React from "react";
 
-export default () => {
+function Index() {
   const [open, setOpen] = useState(false);
+
   return (
-    <div className="space-y-5 mt-3">
+    <div className="mt-3 space-y-5">
       <div>
         <div className="flex items-center justify-between">
-          <h1 className="text-md font-semibold text-gray-600 dark:text-gray-400">
+          <h1 className="font-semibold text-gray-600 text-md dark:text-gray-400">
             Transactions
           </h1>
           <button
-            className="bg-blue-500 text-white font-semibold py-1 px-4 rounded-md"
+            className="px-4 py-1 font-semibold text-white bg-blue-500 rounded-md"
             onClick={() => setOpen(!open)}
           >
             Send Money
           </button>
         </div>
-        <hr className="border-b-1 mt-5 border-gray-100" />
+        <hr className="mt-5 border-gray-100 border-b-1" />
         <div>
           <SendMoney open={open} setOpen={setOpen} />
         </div>
@@ -28,4 +30,6 @@ export default () => {
       </div>
     </div>
   );
-};
+}
+
+export default Index;

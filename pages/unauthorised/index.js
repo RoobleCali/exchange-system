@@ -3,7 +3,7 @@ import Image from "next/image";
 import Router from "next/router";
 import { useEffect, useState } from "react";
 import sad from "../assets/sad.png";
-function index() {
+function Index() {
   // only show 404 page if user is logged in
   const token = getCookie("token");
 
@@ -11,31 +11,28 @@ function index() {
     if (!token) {
       Router.replace({ pathname: "/login" });
     }
-  }, []);
+  }, [token]);
 
   return (
     <div>
       {/* check if router pathname is Accessdenied */}
-      <div class="  h-screen justify-center">
-        <center class="mt-14 m-auto space-y-6">
+      <div className="justify-center h-screen ">
+        <center className="m-auto space-y-6 mt-14">
           <div className=" animate-pulse">
             <Image src={sad} alt="image" />
           </div>
-          <div class=" tracking-widest space-y-3 mt-4">
-            <span class="text-gray-500 text-6xl block">
+          <div className="mt-4 space-y-3 tracking-widest ">
+            <span className="block text-6xl text-gray-500">
               <span>4 0 4</span>
             </span>
-            <span class="text-gray-500 text-xl">
+            <span className="text-xl text-gray-500">
               you are not authorized pro
             </span>
           </div>
         </center>
-        <center class="mt-9">
+        <center className="mt-9">
           <div onClick={() => Router.back()}>
-            <a
-              class="bg-blue-500 font-mono text-xl text-gray-200 p-3
-             rounded-md hover:shadow-md cursor-pointer"
-            >
+            <a className="p-3 font-mono text-xl text-gray-200 bg-blue-500 rounded-md cursor-pointer hover:shadow-md">
               Go back
             </a>
           </div>
@@ -45,4 +42,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;

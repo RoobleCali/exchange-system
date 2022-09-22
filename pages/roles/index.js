@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AddRole from "../../components/userAndRole/AddRole";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
 import { useGetRolesQuery } from "../../redux/api/UserApi";
-function index() {
+function Index() {
   const [open, setOpen] = useState(false);
   const { data, error, isLoading, isSuccess } = useGetRolesQuery();
   console.log(data);
@@ -25,7 +25,7 @@ function index() {
           </div>
           <AddRole open={open} setOpen={setOpen} />
           {/* table */}
-          <div class="overflow-x-auto relative  sm:rounded-lg">
+          <div className="relative overflow-x-auto sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 mt-14 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -45,4 +45,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;

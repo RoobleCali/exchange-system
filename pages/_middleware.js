@@ -1,5 +1,5 @@
 import jwtDecode from "jwt-decode";
-import { sidebarData } from "../components/sidebar/SidebarData";
+import { sidebarData } from "../components/layout/sidebar/SidebarData";
 import { NextResponse } from "next/server";
 
 export async function middleware(req) {

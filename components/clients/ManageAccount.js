@@ -1,6 +1,6 @@
 import avatar from "../../pages/assets/avatar.png";
 import Image from "next/image";
-import { PencilAltIcon } from "@heroicons/react/outline";
+import { PencilAltIcon, XIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import DepositModel from "./Deposit";
 import WithdrawModel from "./Withdraw";
@@ -45,10 +45,7 @@ function ManageAccount({ open, setOpen }) {
                   className="focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:outline-none"
                   onClick={() => setOpen(false)}
                 >
-                  <img
-                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/add_user-svg1.svg"
-                    alt="icon"
-                  />
+                  <XIcon className="h-6 w-7" />
                 </button>
               </div>
               <div className="flex flex-wrap items-center justify-center py-2 mt-5 space-x-5 md:justify-between">
