@@ -2,17 +2,17 @@ import React from "react";
 
 function Cards() {
   return (
-    <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
       {/* left card crd 1 */}
-      <div className="bg-blue-400 rounded-xl text-white">
-        <div className="p-4  space-y-4">
+      <div className="text-white bg-blue-400 rounded-xl">
+        <div className="p-4 space-y-4">
           <div className="flex items-center justify-between">
-            <p className="flex space-y-3 flex-col">
+            <p className="flex flex-col space-y-3">
               <span>Main Balance</span>
               <span className="text-xl font-bold">$88,455.12</span>
             </p>
             {/* master card icon */}
-            <div className="  w-16 -mt-5">
+            <div className="w-16 -mt-5 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 enableBackground="new 0 0 48 48"
@@ -36,11 +36,11 @@ c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
           <div>
             <div className="flex justify-between mt-10">
               <p className="flex flex-col">
-                <span className="text-gray-200 text-sm">VALID THRU</span>
+                <span className="text-sm text-gray-200">VALID THRU</span>
                 <span className="text-sm">12/20</span>
               </p>
               <p className="flex flex-col">
-                <span className="text-gray-200 text-sm">VALID THRU</span>
+                <span className="text-sm text-gray-200">VALID THRU</span>
                 <span className="text-sm">12/20</span>
               </p>
             </div>
@@ -49,14 +49,14 @@ c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
       </div>
       {/* left card crd 1 */}
       <div className="bg-[#FF9220] rounded-xl text-white">
-        <div className="p-4  space-y-4">
+        <div className="p-4 space-y-4">
           <div className="flex items-center justify-between">
-            <p className="flex space-y-3 flex-col">
+            <p className="flex flex-col space-y-3">
               <span>Main Balance</span>
               <span className="text-xl font-bold">$88,455.12</span>
             </p>
             {/* master card icon */}
-            <div className="  w-16 -mt-5">
+            <div className="w-16 -mt-5 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 enableBackground="new 0 0 48 48"
@@ -80,13 +80,13 @@ c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
           <div>
             <div className="flex justify-between mt-10">
               <p className="flex flex-col">
-                <span className="text-gray-200 text-sm xl:w-auto w-auto lg:w-14 truncate">
+                <span className="w-auto text-sm text-gray-200 truncate xl:w-auto lg:w-14">
                   VALID THRU
                 </span>
                 <span className="text-sm">12/20</span>
               </p>
               <p className="flex flex-col">
-                <span className="text-gray-200 text-sm">VALID THRU</span>
+                <span className="text-sm text-gray-200">VALID THRU</span>
                 <span className="text-sm">12/20</span>
               </p>
             </div>
@@ -95,14 +95,14 @@ c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
       </div>
       {/* left card crd 1 */}
       <div className="bg-[#BC1EE3] rounded-xl text-white">
-        <div className="p-4  space-y-4">
+        <div className="p-4 space-y-4">
           <div className="flex items-center justify-between">
-            <p className="flex space-y-3 flex-col">
+            <p className="flex flex-col space-y-3">
               <span>Main Balance</span>
               <span className="text-xl font-bold">$88,455.12</span>
             </p>
             {/* master card icon */}
-            <div className="  w-16 -mt-5">
+            <div className="w-16 -mt-5 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 enableBackground="new 0 0 48 48"
@@ -126,11 +126,11 @@ c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
           <div>
             <div className="flex justify-between mt-10">
               <p className="flex flex-col">
-                <span className="text-gray-200 text-sm">VALID THRU</span>
+                <span className="text-sm text-gray-200">VALID THRU</span>
                 <span className="text-sm">12/20</span>
               </p>
               <p className="flex flex-col">
-                <span className="text-gray-200 text-sm">VALID THRU</span>
+                <span className="text-sm text-gray-200">VALID THRU</span>
                 <span className="text-sm">12/2021</span>
               </p>
             </div>
@@ -139,14 +139,14 @@ c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
       </div>
       {/* left card crd 1 */}
       <div className="bg-[#1EC090]  rounded-xl text-white">
-        <div className="p-4  space-y-4">
+        <div className="p-4 space-y-4">
           <div className="flex items-center justify-between">
-            <p className="flex space-y-3 flex-col">
+            <p className="flex flex-col space-y-3">
               <span>Main Balance</span>
               <span className="text-xl font-bold">$88,455.12</span>
             </p>
             {/* master card icon */}
-            <div className="  w-16 -mt-5">
+            <div className="w-16 -mt-5 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 enableBackground="new 0 0 48 48"
@@ -168,13 +168,13 @@ c2.509,1.888,5.618,3.02,9,3.02c8.284,0,15-6.716,15-15C48,15.716,41.284,9,33,9z"
           </div>
 
           <div>
-            <div className="flex justify-between  mt-10">
+            <div className="flex justify-between mt-10">
               <p className="flex flex-col">
-                <span className="text-gray-200 text-sm">VALID THRU</span>
+                <span className="text-sm text-gray-200">VALID THRU</span>
                 <span className="text-sm">12/20</span>
               </p>
               <p className="flex flex-col">
-                <span className="text-gray-200 text-sm">VALID THRU</span>
+                <span className="text-sm text-gray-200">VALID THRU</span>
                 <span className="text-sm">12/20</span>
               </p>
             </div>

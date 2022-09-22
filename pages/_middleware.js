@@ -33,7 +33,7 @@ export async function middleware(req) {
       return NextResponse.redirect("/login");
     }
     const route = pathname.replace("/", "");
-    const IsAdmin = decoded.userType === "BranchAdmin";
+    const IsAdmin = decoded.userType === "HQ-ADMIN";
     if (IsAdmin) {
       return NextResponse.next();
     }

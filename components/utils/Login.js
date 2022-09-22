@@ -12,7 +12,7 @@ export const login = (user) => {
   }
   const decoded = jwt_decode(token);
 
-  if (user.userType !== "BranchAdmin" && decoded.roles.length == 0) {
+  if (user.userType !== "HQ-ADMIN" && decoded.roles.length == 0) {
     return alert("You are not authorized to access this page");
   }
   const route = decoded.roles[0].path.toLowerCase();

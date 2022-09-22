@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "../redux/Store2";
 
 function MyApp({ Component, pageProps }) {
+  // Loading
   NProgress.configure({
     showSpinner: false,
     trickleRate: 2,

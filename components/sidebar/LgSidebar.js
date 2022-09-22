@@ -35,7 +35,7 @@ export default function LgSidebar({ setSidebarOpen, Mobilesidebar }) {
         {/* Links */}
         <div className="mt-5 text-gray-600 dark:text-white">
           {decoded &&
-            decoded.userType === "BranchAdmin" &&
+            decoded.userType === "HQ-ADMIN" &&
             sidebarData.map((item, index) => {
               const link = item.link;
               if (item.children) {

@@ -5,8 +5,6 @@ import LoginNavbar from "./login/LoginNavbar";
 import Link from "next/link";
 
 export default function Home() {
-  const router = useRouter();
-
   return (
     <div className="h-screen text-gray-600 bg-gray-100 dark:text-gray-200 dark:bg-slate-800">
       <LoginNavbar />
