@@ -1,6 +1,6 @@
 import { ThemeProvider } from "next-themes";
 import "../styles/globals.css";
-import Layout from "./Layout/";
+import Layout from "./Layout";
 import Router from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
