@@ -38,6 +38,7 @@ function Index() {
                 </tr>
               </thead>
               {/* map the data */}
+              {isLoading && <div>Loading</div>}
               {isSuccess &&
                 data.map((item) => (
                   <tbody key={item._id}>

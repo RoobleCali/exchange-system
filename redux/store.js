@@ -1,13 +1,17 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit/query";
-import { setupListeners } from "@reduxjs/toolkit/query";
+import { getCookie } from "cookies-next";
 import { HYDRATE, createWrapper } from "next-redux-wrapper";
 import login from "./slices/loginSlice";
-
+const token = getCookie("token");
+console.log(token);
 const combinedReducer = combineReducers({
   login,
 });
 
 const masterReducer = (state, action) => {
+  if (!token) {
+    state = undefined;
+  }
   if (action.type === HYDRATE) {
     const nextState = {
       ...state, // use previous state

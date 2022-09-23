@@ -6,7 +6,6 @@ import Router from "next/router";
 import { useState } from "react";
 import ViewProfile from "./ViewProfile";
 import ChangePassword from "./ChangePassword";
-
 export default function Avatar() {
   const [View, setView] = useState(false);
   const [open, setOpen] = useState(false);
@@ -66,7 +65,6 @@ export default function Avatar() {
             <Menu.Item
               v-slot="{active}"
               onClick={() => {
-                // write head login and remove  cookie
                 Router.replace("/login");
                 new Promise((resolve) => {
                   removeCookies("token");

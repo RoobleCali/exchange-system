@@ -3,8 +3,6 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Avatar from "./Avatar";
-import { getCookie } from "cookies-next";
-import { useEffect } from "react";
 function Header({
   sidebarOpen,
   setSidebarOpen,
@@ -15,12 +13,6 @@ function Header({
   const { theme, setTheme } = useTheme("");
   const [DropdownOpen, setDropdownOpen] = useState(false);
 
-  const token = getCookie("token");
-  useEffect(() => {
-    if (!token || token == null) {
-      router.push("/login");
-    }
-  }, [token, router]);
   return (
     <header
       className={`sticky dark:text-white bg-white dark:bg-slate-800  top-0  border-b border-slate-200 z-30`}
