@@ -46,10 +46,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/login.js"
     ],
-    "/remittance": [
+    "/transactions": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/remittance.js"
+      "static/chunks/pages/transactions.js"
+    ],
+    "/wallet": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/wallet.js"
     ]
   },
   "ampFirstPages": []

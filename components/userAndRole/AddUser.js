@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 
 function AddUser({ open, setOpen }) {
   const [addUser, { isLoading, isError, isSuccess }] = useAddUserMutation();
+
   const { refetch } = useUsersQuery();
   const {
     register,
