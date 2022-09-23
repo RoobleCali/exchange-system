@@ -2,7 +2,7 @@ import axios from "axios";
 import Actions from "../../components/table/Actions";
 import Table from "../../components/table/Table";
 import regeneratorRuntime from "regenerator-runtime";
-import { useSelector } from "react-redux";
+
 import { StatusPill } from "../../components/table/StatusBill";
 
 function Index({ data }) {

@@ -1,12 +1,8 @@
-import { getCookie } from "cookies-next";
 import Router from "next/router";
 import { useEffect } from "react";
 import lottie from "lottie-web";
 import notfound from "./assets/not-found.json";
 function Error() {
-  // only show 404 page if user is logged in
-  const token = getCookie("token");
-
   useEffect(() => {
     lottie.loadAnimation({
       container: document.querySelector("#react-logo"),
