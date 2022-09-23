@@ -6,7 +6,6 @@ export const taskApi = createApi({
   reducerPath: "tasksApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://tick-account.herokuapp.com/api",
-    refetchOnFocus: true,
     prepareHeaders: (headers) => {
       const token = getCookie("token");
       if (token) {
