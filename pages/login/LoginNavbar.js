@@ -6,8 +6,8 @@ import Image from "next/image";
 import React from "react";
 
 function LoginNavbar() {
-  const { theme, setTheme } = useTheme();
-
+  const { theme, setTheme } = useTheme("light");
+  console.log(theme);
   return (
     <div className="sticky top-0 z-30 overflow-hidden text-gray-700 shadow-md dark:text-gray-100 ">
       <div className="flex flex-wrap items-center justify-between p-2 px-2 text-center shadow-lg md:p-4 md:px-24 ">

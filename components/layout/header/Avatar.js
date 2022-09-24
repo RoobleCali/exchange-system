@@ -6,6 +6,7 @@ import Router from "next/router";
 import { useState } from "react";
 import ViewProfile from "./ViewProfile";
 import ChangePassword from "./ChangePassword";
+import { logout } from "../../utils/utils";
 export default function Avatar() {
   const [View, setView] = useState(false);
   const [open, setOpen] = useState(false);
@@ -65,12 +66,7 @@ export default function Avatar() {
             <Menu.Item
               v-slot="{active}"
               onClick={() => {
-                Router.replace("/login");
-                new Promise((resolve) => {
-                  removeCookies("token");
-                }).then(() => {
-                  removeCookies();
-                });
+                logout();
               }}
             >
               <a className="block px-4 py-2 text-sm cursor-pointer ">Log out</a>

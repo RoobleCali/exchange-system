@@ -1,55 +1,61 @@
-import useJwt from "@/auth/jwt/useJwt";
-import { getCookie } from "cookies-next";
-import VueJwtDecode from "vue-jwt-decode";
+// import useJwt from "@/auth/jwt/useJwt";
+import { getCookie, removeCookies } from "cookies-next";
+import jwtDecode from "jwt-decode";
+import Router from "next/router";
 
-export const isUserLoggedIn = () => {
-  return (
-    getCookie.getItem("token") &&
-    localStorage.getItem(useJwt.jwtConfig.storageTokenKeyName)
-  );
-};
-
-export const isSummaryReportCollapsed = () => {
-  const collapsed = localStorage.getItem("hideSummaryReport");
-  return JSON.parse(collapsed || false);
-};
-
-export const clearData = () => {
-  localStorage.removeItem(useJwt.jwtConfig.storageTokenKeyName);
-  localStorage.removeItem(useJwt.jwtConfig.storageRefreshTokenKeyName);
-
-  // Remove userData from localStorage
-  localStorage.removeItem("userData");
-};
-
-export const logout = () => {
-  // Remove userData from localStorage
-  // ? You just removed token from localStorage. If you like, you can also make API call to backend to blacklist used token
-  localStorage.removeItem(useJwt.jwtConfig.storageTokenKeyName);
-  localStorage.removeItem(useJwt.jwtConfig.storageRefreshTokenKeyName);
-
-  // Remove userData from localStorage
-  localStorage.removeItem("userData");
-
-  // Reset ability
-  // ability.update(initialAbility);
-
-  // Redirect to login page
-  this.$router.push({ name: "login" });
-};
-
-export const getUserData = () => {
+export const getToken = () => {
   try {
-    return JSON.parse(localStorage.getItem("userData"));
+    return getCookie("token");
   } catch (error) {
     return null;
   }
 };
 
+export const decodeToken = () => {
+  let decoded = null;
+  try {
+    const token = getToken();
+    decoded = jwtDecode(token);
+    return decoded;
+  } catch (error) {
+    return null;
+  }
+};
+
+export const logout = () => {
+  // write head login and remove  cookie
+  Router.replace("/login");
+  new Promise((resolve) => {
+    removeCookies("token");
+  }).then(() => {
+    removeCookies();
+  });
+};
+
+export const RouteForLoggedInUser = (user) => {
+  const token = getCookie("token");
+  if (
+    user.userType.toLowerCase() === "branchadmin" ||
+    user.userType.toLowerCase() === "admin"
+  ) {
+    return Router.replace("/clients");
+  }
+  if (user.userType.toLowerCase() === "hq-admin") Router.replace("/clients");
+
+  if (token == null) {
+    Router.replace("/login");
+  }
+  const decoded = jwtDecode(token);
+
+  if (user.userType !== "HQ-ADMIN" && decoded.roles.length == 0) {
+    return alert("You are not authorized to access this page");
+  }
+  const route = decoded.roles[0].path.toLowerCase();
+  Router.replace(route);
+};
+
 export const getUserRoles = () => {
   try {
-    let user = JSON.parse(localStorage.getItem("userData"));
-    let data = VueJwtDecode.decode(user.accessToken);
     return data.roles;
   } catch (error) {
     return null;
@@ -72,32 +78,6 @@ export const updateCurrentUser = (user) => {
   } catch (error) {
     return null;
   }
-};
-
-export const getHomeRouteForLoggedInUser = (user) => {
-  if (
-    user.userType.toLowerCase() === "branchadmin" ||
-    user.userType.toLowerCase() === "admin"
-  )
-    return { name: "clients" };
-  if (user.userType.toLowerCase() === "hq-admin") return { name: "home" };
-
-  let data = VueJwtDecode.decode(user.accessToken);
-
-  if (!data.roles.length) {
-    localStorage.removeItem(useJwt.jwtConfig.storageTokenKeyName);
-    localStorage.removeItem(useJwt.jwtConfig.storageRefreshTokenKeyName);
-    localStorage.removeItem("userData");
-    throw new Error("You don't have any permission! Please contact admin.");
-  }
-
-  let route = "";
-
-  route = data.roles[0].path.startsWith("/")
-    ? data.roles[0].path.substring(1).toLowerCase()
-    : data.roles[0].path.toLowerCase();
-
-  return { name: route };
 };
 
 export const canNavigate = (to) => {
@@ -164,14 +144,18 @@ export const canViewVerticalNavMenuLink = (item) => {
 };
 
 export const canView = (item) => {
-  const user = getUserData();
+  const user = decodeToken();
   if (!user) {
-    if (item.route === "login") return true;
+    if (item.link === "login") return true;
     return false;
   }
 
-  if (item.children) return true;
-
+  if (item.children) {
+    const hasChild = item.children;
+    hasChild.some((role) => {
+      return true;
+    });
+  }
   if (
     user.userType.toLowerCase() === "branchadmin" ||
     user.userType.toLowerCase() === "admin"
@@ -182,6 +166,6 @@ export const canView = (item) => {
   const userRoles = getUserRoles();
   if (!userRoles) return false;
   return userRoles.some((role) => {
-    return role.path.toLowerCase() === item.route.toLowerCase();
+    return role.path.toLowerCase() === item.link.toLowerCase();
   });
 };

@@ -1,26 +1,18 @@
 import { sidebarData } from "./SidebarData";
-import jwt_decode from "jwt-decode";
-import { getCookie } from "cookies-next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChevronDownIcon } from "@heroicons/react/outline";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Logo from "./Logo";
+import { canView, decodeToken, getToken } from "../../utils/utils";
+import jwtDecode from "jwt-decode";
 export default function LgSidebar({ setSidebarOpen, Mobilesidebar }) {
   const router = useRouter();
   const [Dropdown, setDropdown] = useState(false);
-  const token = getCookie("token");
-  // check if jwt token is invalid or not
-  let decoded = null;
-  useEffect(() => {
-    if (!token) {
-      router.replace({ pathname: "/login" });
-    }
-  }, [token, router]);
-  if (token) {
-    decoded = jwt_decode(token);
-  }
+  const token = getToken();
+
+  const decoded = decodeToken();
+
   return (
     <div className="shadow-xl">
       {/* Sidebar */}

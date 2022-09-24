@@ -5,9 +5,10 @@ import { setCookies } from "cookies-next";
 import axios from "axios";
 import { addUserEnd } from "../../redux/slices/loginSlice";
 import { useDispatch } from "react-redux";
-import { login } from "../../components/utils/Login";
 import { useEffect, useState } from "react";
 import { DoubleBounce } from "better-react-spinkit";
+import { RouteForLoggedInUser } from "../../components/utils/utils";
+import { XIcon } from "@heroicons/react/outline";
 
 function FormLogin() {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function FormLogin() {
       .then((res) => {
         setCookies("token", res.data.user.accessToken);
         dispatch(addUserEnd(res.data.user));
-        login(res.data.user);
+        RouteForLoggedInUser(res.data.user);
         setLoading(false);
       })
       .catch((err) => {
@@ -43,8 +44,6 @@ function FormLogin() {
         if (err.response) {
           setmessage(err.response.data.message);
         }
-
-        console.log(errorMessage);
       });
   };
   // message set timeout to clear it
@@ -57,7 +56,7 @@ function FormLogin() {
   return (
     <>
       <div
-        className=" w-full md:ml-5 dark:bg-gray-800 rounded-xl h-[80vh]
+        className=" mx-4  md:mx-0 mt-24 md:mt-0 p-10 shadow-lg md:shadow-none w-full md:ml-5 dark:bg-gray-800 rounded-xl h-[80vh]
   md:h-auto  px-2 md:px-0  md:w-1/2"
       >
         <div className="flex justify-center items-container">
@@ -76,41 +75,11 @@ function FormLogin() {
             className="flex p-4 mb-4 bg-red-100 border-red-500 border-t-1 dark:bg-red-200"
             role="alert"
           >
-            <svg
-              className="flex-shrink-0 w-5 h-5 text-red-700"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-Rule="evenodd"
-                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                clip-Rule="evenodd"
-              ></path>
-            </svg>
+            <XIcon className="flex-shrink-0 w-4 h-5 text-red-700" />
+
             <div className="ml-3 text-sm font-medium text-red-700">
               {message}
             </div>
-            <button
-              type="button"
-              className="ml-auto -mx-1.5 -my-1.5 bg-red-100 dark:bg-red-200 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 dark:hover:bg-red-300 inline-flex h-8 w-8"
-              data-dismiss-target="#alert-border-2"
-              aria-label="Close"
-            >
-              <svg
-                aria-hidden="true"
-                className="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-Rule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                  clip-Rule="evenodd"
-                ></path>
-              </svg>
-            </button>
           </div>
         )}
         <form
@@ -126,14 +95,14 @@ function FormLogin() {
             </label>
             <input
               className={`w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border
-               border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 
-                 ${errors.userName ? "ring-2 ring-red-400" : null}`}
+               border-gray-200 rounded dark:text-gray-400 focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 
+                 `}
               placeholder="userName"
               {...register("userName", { required: true })}
             />
 
             {errors.userName && (
-              <span className="py-2 text-sm text-red-400">
+              <span className="-mt-24 text-sm text-red-400">
                 user name is required
               </span>
             )}
@@ -148,14 +117,16 @@ function FormLogin() {
             <input
               type="password"
               {...register("password", { required: true })}
-              className={`w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border
+              className={`w-full px-3 py-3 text-sm leading-none dark:text-gray-400 text-gray-800 placeholder-gray-500 bg-white border
               border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 
-                ${errors.password ? "ring-2 ring-red-400" : null}`}
+           `}
               placeholder="password"
             />
 
             {errors.password && (
-              <p className="text-sm text-red-400">This field is required</p>
+              <p className="-mt-24 text-sm text-red-400">
+                Password is required.
+              </p>
             )}
           </div>
           {loading ? (

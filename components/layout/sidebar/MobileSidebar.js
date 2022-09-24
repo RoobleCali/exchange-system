@@ -5,21 +5,17 @@ import Image from "next/image";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
 import { sidebarData } from "././SidebarData";
-import jwt_decode from "jwt-decode";
-import { getCookie } from "cookies-next";
+import { decodeToken, getToken } from "../../utils/utils";
 export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
   const router = useRouter();
   const [Dropdown, setDropdown] = useState(false);
-  const token = getCookie("token");
-  let decoded = null;
+  const token = getToken();
   useEffect(() => {
     if (!token) {
       router.replace({ pathname: "/login" });
     }
   }, [token, router]);
-  if (token) {
-    decoded = jwt_decode(token);
-  }
+  const decoded = decodeToken();
   const sidebar = useRef(null);
   // close if the esc key is pressed
   useEffect(() => {

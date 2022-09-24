@@ -1,20 +1,18 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { getCookie } from "cookies-next";
-import { REHYDRATE } from "redux-persist";
+import { getToken } from "../../components/utils/utils";
 
 export const taskApi = createApi({
   reducerPath: "tasksApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://tick-account.herokuapp.com/api",
     prepareHeaders: (headers) => {
-      const token = getCookie("token");
+      const token = getToken();
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
       }
       return headers;
     },
   }),
-
   tagTypes: ["Users", "Roles", "/tasks"],
   endpoints: (builder) => ({
     Users: builder.query({
@@ -31,7 +29,6 @@ export const taskApi = createApi({
       try {
         // wait for the initial query to resolve before proceeding
         await cacheDataLoaded;
-
         // when data is received from the socket connection to the server,
         // if it is a message and for the appropriate channel,
         // update our query result with the received message

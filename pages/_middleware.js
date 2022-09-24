@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function middleware(req) {
   const { pathname } = req.nextUrl;
+
   const token = await req.cookies.token;
   // check if token date expired and redirect login
   if (token && jwtDecode(token).exp < Date.now() / 1000) {
