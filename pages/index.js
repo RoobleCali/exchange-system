@@ -3,8 +3,16 @@ import Image from "next/image";
 import HomeImage from "../pages/assets/homeImage.png";
 import LoginNavbar from "./login/LoginNavbar";
 import Link from "next/link";
+import { getCookie } from "cookies-next";
 
 export default function Home() {
+  const clearData = () => {
+    const token = getCookie("token");
+    console.log(token);
+    // Remove userData from localStorage
+    // localStorage.removeItem("userData");
+  };
+  clearData();
   return (
     <div className="h-screen text-gray-600 bg-gray-100 dark:text-gray-200 dark:bg-slate-800">
       <LoginNavbar />
