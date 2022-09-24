@@ -36,7 +36,7 @@ function LoginNavbar() {
           <Link href="/login">
             <button
               type="button"
-              className="px-5 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="px-5 py-2 text-sm font-medium text-white transition duration-500 ease-in-out transform bg-blue-700 rounded-lg hover:-translate-y-1 hover:scale-100 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               login
             </button>

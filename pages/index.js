@@ -22,7 +22,7 @@ export default function Home() {
           <Link href="/login">
             <button
               type="button"
-              className="py-2 text-sm font-medium text-white transition-all duration-200 bg-blue-700 rounded-lg dark:hover:text-gray-800 hover:text-gray-100 focus:ring-4 focus:ring-blue-300 px-9 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="py-2 text-sm font-medium text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-lg hover:bg-blue-700 hover:-translate-y-1 hover:scale-100 hover:text-gray-100 focus:ring-4 focus:ring-blue-300 px-9 dark:bg-blue-600 dark:hover:text-gray-300 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               Get started
             </button>

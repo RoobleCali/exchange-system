@@ -139,7 +139,7 @@ function FormLogin() {
             </button>
           ) : (
             <button
-              className="w-full px-10 py-2 text-2xl text-white duration-300 ease-in bg-blue-600 rounded-md hover:bg-blue-500 hover:drop-shadow-md"
+              className="w-full px-10 py-2 text-2xl text-white transition duration-300 duration-500 ease-in ease-in-out transform bg-blue-600 rounded-md hover:-translate-y-1 hover:scale-100 hover:bg-blue-500 hover:drop-shadow-md "
               type="submit"
             >
               Login
