@@ -7,7 +7,7 @@ function Index() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="mt-3 space-y-5">
+    <div className="p-5 pt-3 space-y-5 shadow-xl">
       <div>
         <div className="flex items-center justify-between">
           <h1 className="font-semibold text-gray-600 text-md dark:text-gray-400">
