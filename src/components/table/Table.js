@@ -13,6 +13,8 @@ import DataPicker from "../models/DataPicker";
 import { useRouter } from "next/router";
 import ReactToPrint from "react-to-print";
 import Pagination from "./Pagination";
+import regeneratorRuntime from "regenerator-runtime";
+
 function GlobalFilter({
   preGlobalFilteredRows,
   globalFilter,

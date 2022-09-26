@@ -1,5 +1,6 @@
 import jwtDecode from "jwt-decode";
 import { sidebarData } from "../components/layout/sidebar/SidebarData";
+// eslint-disable-next-line @next/next/no-server-import-in-page
 import { NextResponse } from "next/server";
 
 export async function middleware(req) {

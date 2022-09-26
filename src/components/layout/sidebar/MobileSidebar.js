@@ -126,22 +126,24 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
                     </div>
                   );
                 }
-                <div className="px-1 mt-3 dark:text-white " key={index}>
-                  <Link href={link}>
-                    <a
-                      className={` flex  px-2 py-3 rounded-md space-x-3 transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
+                return (
+                  <div className="px-1 mt-3 dark:text-white " key={index}>
+                    <Link href={link}>
+                      <a
+                        className={` flex  px-2 py-3 rounded-md space-x-3 transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
        ${
          router.pathname.replace("/", "") == link
            ? "bg-blue-700  text-white"
            : ""
        } `}
-                      onClick={() => setSidebarOpen(false)}
-                    >
-                      <span className="w-3"> {item.icon}</span>
-                      <span>{item.title}</span>
-                    </a>
-                  </Link>
-                </div>;
+                        onClick={() => setSidebarOpen(false)}
+                      >
+                        <span className="w-3"> {item.icon}</span>
+                        <span>{item.title}</span>
+                      </a>
+                    </Link>
+                  </div>
+                );
               })}
           </div>
 

@@ -28,7 +28,7 @@
     "mdb-react-ui-kit": "^4.1.0",
     "mdb-ui-kit": "^4.3.0",
     "moment": "^2.29.4",
-    "next": "^12.0.10",
+    "next": "12.0",
     "next-pwa": "^5.5.4",
     "next-redux-wrapper": "^7.0.5",
     "next-themes": "^0.2.0",

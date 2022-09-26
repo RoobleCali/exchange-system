@@ -3,7 +3,6 @@ import { getCookie } from "cookies-next";
 import { HYDRATE, createWrapper } from "next-redux-wrapper";
 import login from "./slices/loginSlice";
 const token = getCookie("token");
-console.log(token);
 const combinedReducer = combineReducers({
   login,
 });
