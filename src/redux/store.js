@@ -1,33 +1,20 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit/query";
-import { getCookie } from "cookies-next";
-import { HYDRATE, createWrapper } from "next-redux-wrapper";
-import login from "./slices/loginSlice";
-const token = getCookie("token");
-const combinedReducer = combineReducers({
-  login,
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { decodeToken, logout } from "../components/utils/utils";
+import { taskApi } from "./api/UserApi";
+
+const appReducer = combineReducers({
+  [taskApi.reducerPath]: taskApi.reducer,
 });
 
-const masterReducer = (state, action) => {
+const rootReducer = (state, action) => {
+  const token = decodeToken();
   if (!token) {
     state = undefined;
   }
-  if (action.type === HYDRATE) {
-    const nextState = {
-      ...state, // use previous state
-      // login: { ...action.payload.login.login },
-    };
-    return nextState;
-  } else {
-    return combinedReducer(state, action);
-  }
+
+  return appReducer(state, action);
 };
 
-export const makeStore = () => {};
-configureStore({
-  reducer: masterReducer,
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware().concat(reducer.middleware),
+export const store = configureStore({
+  reducer: rootReducer,
 });
-
-export const wrapper = createWrapper(makeStore);
-// setupListeners(wrapper);
