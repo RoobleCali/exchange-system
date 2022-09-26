@@ -1,12 +1,13 @@
 import { XIcon } from "@heroicons/react/solid";
 import { DoubleBounce } from "better-react-spinkit";
 import { useForm } from "react-hook-form";
+
+import Swal from "sweetalert2";
 import {
   useAddUserMutation,
   useGetRolesQuery,
   useUsersQuery,
-} from "../../redux/api/UserApi";
-import Swal from "sweetalert2";
+} from "../../store/user/User";
 
 function AddUser({ open, setOpen }) {
   const [addUser, { isLoading, isError, isSuccess }] = useAddUserMutation();

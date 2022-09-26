@@ -1,3 +1,4 @@
 {
-  "conf.view.odoo.confFile": "/odoo/odoo.conf"
+  "conf.view.odoo.confFile": "/odoo/odoo.conf",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

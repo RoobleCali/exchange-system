@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddUser from "../../components/userAndRole/AddUser";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
-import { useUsersQuery } from "../../redux/api/UserApi";
+import { useUsersQuery } from "../../store/user/User";
 function Index() {
   const [open, setOpen] = useState(false);
   const { data, error, isLoading, isSuccess, refetch } = useUsersQuery();

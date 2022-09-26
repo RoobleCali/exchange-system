@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import AddRole from "../../components/userAndRole/AddRole";
-import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
-import { useGetRolesQuery } from "../../redux/api/UserApi";
+import { useGetRolesQuery } from "../../store/user/User";
 function Index() {
   const [open, setOpen] = useState(false);
   const { data, error, isLoading, isSuccess } = useGetRolesQuery();

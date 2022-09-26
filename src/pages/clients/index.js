@@ -1,8 +1,7 @@
 import Actions from "../../components/clients/Actions";
 import Table from "../../components/table/Table";
-
 import { StatusPill } from "../../components/table/StatusBill";
-import { useGetClientsQuery } from "../../redux/api/UserApi";
+import { useGetClientsQuery } from "../../store/clients";
 function Index() {
   const { data: Clients, isLoading, error } = useGetClientsQuery();
   const columns = [

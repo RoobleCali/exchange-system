@@ -2,7 +2,7 @@ import { XIcon } from "@heroicons/react/solid";
 import { DoubleBounce } from "better-react-spinkit";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useChangePasswordMutation } from "../../../redux/api/UserApi";
+import { useChangePasswordMutation } from "../../../store/user/User";
 function ChangePassword({ open, setOpen }) {
   const [message, setMessage] = useState("");
   const {

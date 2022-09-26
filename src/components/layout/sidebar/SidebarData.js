@@ -38,7 +38,7 @@ export const sidebarData = [
 
   {
     title: "branches",
-    icon: <TranslateIcon />,
+    icon: <OfficeBuildingIcon />,
     link: "branches",
   },
   {

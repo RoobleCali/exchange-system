@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import onlyLogo from "../assets/onlyLogo.png";
 import { setCookies } from "cookies-next";
 import axios from "axios";
-import { addUserEnd } from "../../redux/slices/loginSlice";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { DoubleBounce } from "better-react-spinkit";
@@ -30,7 +29,6 @@ function FormLogin() {
     res
       .then((res) => {
         setCookies("token", res.data.user.accessToken);
-        dispatch(addUserEnd(res.data.user));
         RouteForLoggedInUser(res.data.user);
         setLoading(false);
       })
