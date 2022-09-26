@@ -64,7 +64,7 @@ function ViewProfile({ open, setOpen }) {
         >
           <div className="flex items-center justify-center w-full h-full overflow-scroll">
             <div className="fixed justify-center w-full h-screen max-h-full overflow-y-auto bg-white rounded-md shadow dark:bg-gray-800">
-              <div className="sticky top-0 flex items-center justify-between px-2 bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-4 md:py-4 py-7">
+              <div className="sticky top-0 flex items-center justify-between px-2 bg-gray-100 dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-4 md:py-2 py-7">
                 <p className="text-base font-semibold dark:text-white">
                   Your Account
                 </p>
