@@ -12,7 +12,7 @@ function LoginNavbar() {
   return (
     <div className="sticky top-0 left-0 z-40 flex items-center w-full p-2 scroll-smooth bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
       <div className="container">
-        <div className="relative flex items-center justify-between">
+        <div className="flex items-center justify-between ">
           <div className="w-48 overflow-hidden z-96">
             <Link href="/">
               <Image
@@ -24,7 +24,7 @@ function LoginNavbar() {
               />
             </Link>
           </div>
-          <div className="flex justify-end pr-5 ">
+          <div className="flex justify-end pr-5">
             <Link href="/login">
               <a
                 href="signup.html"
