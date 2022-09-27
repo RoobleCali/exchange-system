@@ -36,6 +36,11 @@
       "server/middleware-runtime.js",
       "server/pages/_middleware.js"
     ],
+    "/clients": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/clients.js"
+    ],
     "/login": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
