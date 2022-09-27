@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { DoubleBounce } from "better-react-spinkit";
 import { RouteForLoggedInUser } from "../../components/utils/utils";
 import { XIcon } from "@heroicons/react/outline";
+import InputField from "../../components/controllers/InputField";
 
 function FormLogin() {
   const dispatch = useDispatch();
@@ -15,11 +16,11 @@ function FormLogin() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+
+    errors,
   } = useForm();
   const [loading, setLoading] = useState(false);
   const [message, setmessage] = useState("");
-
   const onSubmit = (data) => {
     const res = axios.post(
       "https://tick-account.herokuapp.com/api/auth/login",
@@ -44,7 +45,7 @@ function FormLogin() {
         }
       });
   };
-  // message set timeout to clear it
+  console.log(errors.password);
 
   useEffect(() => {
     setTimeout(() => {
@@ -84,49 +85,25 @@ function FormLogin() {
           className="w-full mt-5 space-y-7 "
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="flex flex-col mx-2 space-y-3">
-            <label
-              className="font-medium text-gray-500 text-md"
-              htmlFor="userName"
-            >
-              userName
-            </label>
-            <input
-              className={`w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border
-               border-gray-200 rounded dark:text-gray-400 focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 
-                 `}
-              placeholder="userName"
-              {...register("userName", { required: true })}
+          <div className="w-full">
+            <InputField
+              id="userName"
+              name="userName"
+              type="text"
+              label="userName"
+              register={register}
+              error={errors.userName}
             />
-
-            {errors.userName && (
-              <span className="-mt-24 text-sm text-red-400">
-                user name is required
-              </span>
-            )}
-          </div>
-          <div className="flex flex-col mx-2 space-y-3">
-            <label
-              className="font-medium text-gray-500 text-md"
-              htmlFor="userName"
-            >
-              password
-            </label>
-            <input
+            <InputField
+              id="password"
+              name="password"
               type="password"
-              {...register("password", { required: true })}
-              className={`w-full px-3 py-3 text-sm leading-none dark:text-gray-400 text-gray-800 placeholder-gray-500 bg-white border
-              border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 
-           `}
-              placeholder="password"
+              label="password"
+              register={register}
+              error={errors.password}
             />
-
-            {errors.password && (
-              <p className="-mt-24 text-sm text-red-400">
-                Password is required.
-              </p>
-            )}
           </div>
+
           {loading ? (
             <button
               className="flex space-x-6 items-center w-full rounded-lg bg-[#FD5353] text-center justify-center text-2xl  px-4 py-2 text-white"

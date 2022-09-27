@@ -13,12 +13,7 @@ function AddUser({ open, setOpen }) {
   const [addUser, { isLoading, isError, isSuccess }] = useAddUserMutation();
 
   const { refetch } = useUsersQuery();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    resetField,
-  } = useForm();
+  const { register, handleSubmit, errors, resetField } = useForm();
   const { data: rolesData } = useGetRolesQuery();
   const onSubmit = async (data) => {
     if (!data) return {};

@@ -4,7 +4,7 @@ import Header from "../../components/layout/header";
 import SampleSidebar from "../../components/layout/sidebar";
 function Index({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [Mobilesidebar, setMobileSidebar] = useState(false);
+  const [Collapse, setCollapse] = useState(false);
 
   const router = useRouter();
   if (
@@ -20,16 +20,16 @@ function Index({ children }) {
       <SampleSidebar
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
-        Mobilesidebar={Mobilesidebar}
-        setMobileSidebar={setMobileSidebar}
+        setCollapse={setCollapse}
+        Collapse={Collapse}
       />
 
       <div className="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
         <Header
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
-          Mobilesidebar={Mobilesidebar}
-          setMobileSidebar={setMobileSidebar}
+          Collapse={Collapse}
+          setCollapse={setCollapse}
         />
         <main>
           <div className="p-1 px-3 mx-3 mt-3 sm:px-4 lg:px-8">

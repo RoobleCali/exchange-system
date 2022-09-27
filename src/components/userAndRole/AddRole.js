@@ -4,11 +4,7 @@ import { RolesData } from "./RoleData";
 import React, { useState } from "react";
 
 function AddRole({ open, setOpen }) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     console.log(data);
   };

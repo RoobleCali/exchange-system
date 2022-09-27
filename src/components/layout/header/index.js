@@ -3,12 +3,7 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Avatar from "./Avatar";
-function Header({
-  sidebarOpen,
-  setSidebarOpen,
-  Mobilesidebar,
-  setMobileSidebar,
-}) {
+function Header({ sidebarOpen, setSidebarOpen, Collapse, setCollapse }) {
   const router = useRouter();
   const { theme, setTheme } = useTheme("dark");
   const [DropdownOpen, setDropdownOpen] = useState(false);
@@ -32,7 +27,7 @@ function Header({
             {/* desktop menu */}
             <button
               className="hidden text-slate-500 lg:inline-flex hover:text-slate-600 "
-              onClick={() => setMobileSidebar(!Mobilesidebar)}
+              onClick={() => setCollapse(!Collapse)}
             >
               <MenuAlt2Icon className="w-6 h-6" />
             </button>

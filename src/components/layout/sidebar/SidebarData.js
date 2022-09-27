@@ -54,6 +54,7 @@ export const sidebarData = [
   },
   {
     title: "Roles & Users",
+    submenu: true,
     icon: <UsersIcon />,
 
     children: [

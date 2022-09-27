@@ -4,11 +4,7 @@ import { useForm } from "react-hook-form";
 import { XIcon } from "@heroicons/react/outline";
 
 function WithdrawModel({ open, setOpen }) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     console.log(data);
   };

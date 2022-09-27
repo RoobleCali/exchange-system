@@ -5,11 +5,7 @@ import { useForm } from "react-hook-form";
 import { useChangePasswordMutation } from "../../../store/user/User";
 function ChangePassword({ open, setOpen }) {
   const [message, setMessage] = useState("");
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const [changePassword, { isLoading, isError, isSuccess }] =
     useChangePasswordMutation();
   const onSubmit = async (data) => {

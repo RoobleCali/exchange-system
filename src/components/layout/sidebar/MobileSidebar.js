@@ -8,7 +8,8 @@ import { sidebarData } from "././SidebarData";
 import { decodeToken, getToken } from "../../utils/utils";
 export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
   const router = useRouter();
-  const [Dropdown, setDropdown] = useState(false);
+  const [submenuOpen, setSubmenuOpen] = useState(false);
+
   const token = getToken();
   useEffect(() => {
     if (!token) {
@@ -63,170 +64,147 @@ export default function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
           <hr className="mt-3 border-gray-200 border-bn dark:border-gray-600" />
         </div>
         {/* Links */}
-        <div className="mt-5 text-gray-600 dark:text-white">
-          <div>
-            {decoded &&
-              decoded.userType === "HQ-ADMIN" &&
-              sidebarData.map((item, index) => {
-                const link = item.link;
-                if (item.children) {
-                  return (
-                    <div key={index}>
-                      <div>
-                        <a
-                          className={` flex  py-3 cursor-pointer rounded-md space-x-3 ml-1 justify-between transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
-                     ${
-                       router.pathname.replace("/", "") == "users" ||
-                       router.pathname.replace("/", "") == "roles"
-                         ? "bg-blue-700  text-white"
-                         : ""
-                     } `}
-                          onClick={() => setDropdown(!Dropdown)}
-                        >
-                          <span className="w-3"> {item.icon}</span>
-                          <span className="flex-1">{item.title}</span>
-                          <ChevronDownIcon className="w-4 h-4 " />
-                        </a>
-                      </div>
+        <div className="mt-5 text-gray-600 list-none dark:text-white">
+          {/* Links */}
+          {decoded &&
+            decoded.userType === "HQ-ADMIN" &&
+            sidebarData.map((item, index) => {
+              const link = item.link;
+              const path = router.pathname.replace("/", "");
 
-                      <ul
-                        className={`mt-1 space-y-1 ${
-                          Dropdown ? "block " : "hidden"
-                        }`}
+              // eslint-disable-next-line react/jsx-key
+
+              {
+                if (!item.submenu) {
+                  return (
+                    <li key={index}>
+                      <Link
+                        href={`${item.link}`}
+                        className={`
+                      
+                `}
                       >
-                        {item.children.map((child, index) => {
-                          const link = child.link;
-                          return (
+                        <a
+                          className={`flex items-center p-2 mt-5 text-sm text-gray-400 rounded-md cursor-pointer gap-x-3 first-letter hover:bg-light-white transition-all duration-100
+                      
+                ${link == path && "bg-blue-700  text-white"}
+                      `}
+                          onClick={() => setSidebarOpen(false)}
+                        >
+                          <span className="block w-5 text-xl">{item.icon}</span>
+                          <span className={`   text-sm font-normal flex-1`}>
+                            {item.title}
+                          </span>
+                        </a>
+                      </Link>
+                    </li>
+                  );
+                } else {
+                  return (
+                    <>
+                      <a
+                        className="flex items-center p-2 mt-3 text-sm text-gray-400 rounded-md cursor-pointer text-md gap-x-3 first-letter hover:bg-light-white"
+                        onClick={() => setSubmenuOpen(!submenuOpen)}
+                      >
+                        <span className="block w-5 text-xl">{item.icon}</span>
+                        <span className={`   text-sm font-medium flex-1`}>
+                          {item.title}
+                        </span>
+                        <ChevronDownIcon
+                          className={`w-4   ${submenuOpen && "rotate-180"}`}
+                        />
+                      </a>
+                      <ul>
+                        {submenuOpen &&
+                          item.children.map((item) => (
+                            // eslint-disable-next-line react/jsx-key
                             <li
-                              className="w-full -ml-1 text-gray-500 "
-                              key={index}
-                              onClick={() => {
-                                setSidebarOpen(false);
-                              }}
+                              className="flex items-center p-2 mt-3 text-sm text-gray-300 rounded-md cursor-pointer gap-x-3 first-letter hover:bg-light-white"
+                              onClick={() => setSidebarOpen(false)}
                             >
-                              <Link href={link}>
-                                <a
-                                  className={` flex  py-3 rounded-md space-x-3 ml-2 w-full cursor-pointer  transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
-                    
-                    `}
-                                  onClick={() => setDropdown(false)}
-                                >
-                                  <div className="w-3 text-left">
-                                    {item.icon}
-                                  </div>
-                                  <span className="text-left">
-                                    {child.title}
-                                  </span>
-                                </a>
-                              </Link>
+                              <span className="w-4">{item.icon}</span>
+                              <span className={`text-md  `}>{item.title}</span>
                             </li>
-                          );
-                        })}
+                          ))}
                       </ul>
-                    </div>
+                    </>
                   );
                 }
-                return (
-                  <div className="px-1 mt-3 dark:text-white " key={index}>
-                    <Link href={link}>
-                      <a
-                        className={` flex  px-2 py-3 rounded-md space-x-3 transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
-       ${
-         router.pathname.replace("/", "") == link
-           ? "bg-blue-700  text-white"
-           : ""
-       } `}
-                        onClick={() => setSidebarOpen(false)}
-                      >
-                        <span className="w-3"> {item.icon}</span>
-                        <span>{item.title}</span>
-                      </a>
-                    </Link>
-                  </div>
-                );
-              })}
-          </div>
+              }
+            })}
 
           {decoded &&
             sidebarData.map((item, index) => {
               return decoded.roles.map((access) => {
                 const link = access.path.toLowerCase();
-                const path = item.link;
-                if (item.children) {
-                  if (item.children[0].link === link) {
-                    return (
-                      <div key={index}>
-                        <a
-                          className={` flex  py-3 cursor-pointer rounded-md space-x-3 ml-1 justify-between transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
-                           ${
-                             router.pathname.replace("/", "") == "users" ||
-                             router.pathname.replace("/", "") == "roles"
-                               ? "bg-blue-700  text-white"
-                               : ""
-                           } `}
-                          onClick={() => setDropdown(!Dropdown)}
-                        >
-                          <span className="w-3"> {item.icon}</span>
-                          <span className="flex-1">{item.title}</span>
-                          <ChevronDownIcon className="w-4 h-4 " />
-                        </a>
 
-                        <ul
-                          className={`mt-1 space-y-1 ${
-                            Dropdown ? "block " : "hidden"
-                          }`}
+                const path = item.link;
+                if (link == path) {
+                  console.log(link);
+                }
+                if (link == path) {
+                  if (!item.submenu) {
+                    return (
+                      <li key={index}>
+                        <Link
+                          href={`${item.link}`}
+                          className={`
+                        
+                  `}
                         >
-                          {item.children.map((child, index) => {
-                            const link = child.link;
-                            return (
-                              <li
-                                className="w-full -ml-1 text-gray-500 "
-                                key={index}
-                                onClick={() => setSidebarOpen(false)}
-                              >
-                                <Link href={link}>
-                                  <a
-                                    className={` flex  py-3 rounded-md space-x-3 ml-2 w-full cursor-pointer  transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
-                          
-                          `}
-                                    onClick={() => setDropdown(false)}
-                                  >
-                                    <div className="w-3 text-left">
-                                      {item.icon}
-                                    </div>
-                                    <span className="text-left">
-                                      {child.title}
-                                    </span>
-                                  </a>
-                                </Link>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </div>
+                          <a
+                            className={`flex items-center p-2 mt-1 text-sm text-gray-300 rounded-md cursor-pointer gap-x-3 first-letter hover:bg-light-white transition-all duration-100
+                        
+                  ${link == path && "bg-blue-700  text-white"}
+                        `}
+                          >
+                            <span className="block w-5 text-xl">
+                              {item.icon}
+                            </span>
+                            <span
+                              className={`  
+                              } text-sm font-normal flex-1`}
+                            >
+                              {item.title}
+                            </span>
+                          </a>
+                        </Link>
+                      </li>
                     );
                   }
-                }
-                if (link == path && token) {
                   return (
-                    <div className="px-1 mt-3 dark:text-white " key={index}>
-                      <Link href={link}>
-                        <a
-                          className={` flex  px-2 py-3 rounded-md space-x-3 transition-all duration-100 items-center mt-1 dark:text-white space-y-13 hover:bg-blue-700 hover:text-white
-                              ${
-                                router.pathname.replace("/", "") == link
-                                  ? "bg-blue-700  text-white"
-                                  : ""
-                              }
-                             
-                      `}
-                          onClick={() => setSidebarOpen(false)}
-                        >
-                          <span className="w-3"> {item.icon}</span>
-                          <span>{item.title}</span>
-                        </a>
-                      </Link>
-                    </div>
+                    <>
+                      <a
+                        className="flex items-center p-2 mt-3 text-sm text-gray-300 rounded-md cursor-pointer text-md gap-x-3 first-letter hover:bg-light-white"
+                        onClick={() => setSubmenuOpen(!submenuOpen)}
+                      >
+                        <span className="block w-5 text-xl">{item.icon}</span>
+                        <span className={`     text-sm font-medium flex-1`}>
+                          {item.title}
+                        </span>
+                        <ChevronDownIcon
+                          className={`w-4   ${submenuOpen && "rotate-180"}`}
+                        />
+                      </a>
+                      <ul>
+                        {/* {item.children.map((item) => {
+                      console.log(item);
+                      return (
+                        // eslint-disable-next-line react/jsx-key
+                        <li className="flex items-center p-2 mt-3 text-sm text-gray-300 rounded-md cursor-pointer gap-x-3 first-letter hover:bg-light-white">
+                          <span className="w-4">{item.icon}</span>
+                          <span
+                            className={`text-md ${
+                              Collapse ? "flex" : "hidden"
+                            }`}
+                          >
+                            {link}
+                          </span>
+                        </li>
+                      );
+                    })} */}
+                      </ul>
+                    </>
                   );
                 }
               });

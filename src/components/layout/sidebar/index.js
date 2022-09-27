@@ -3,12 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import LgSidebar from "./LgSidebar";
 import MobileSidebar from "./MobileSidebar";
 
-function SampleSidebar({
-  sidebarOpen,
-  setSidebarOpen,
-  Mobilesidebar,
-  setMobileSidebar,
-}) {
+function SampleSidebar({ sidebarOpen, setSidebarOpen, Collapse, setCollapse }) {
   return (
     <main className="shadow-xl">
       {/* Sidebar */}
@@ -17,8 +12,8 @@ function SampleSidebar({
         <LgSidebar
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
-          Mobilesidebar={Mobilesidebar}
-          setMobileSidebar={setMobileSidebar}
+          Collapse={Collapse}
+          setCollapse={setCollapse}
         />
       </div>
       <div className="inline-flex lg:hidden">

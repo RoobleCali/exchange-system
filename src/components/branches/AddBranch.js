@@ -2,11 +2,7 @@ import { XIcon } from "@heroicons/react/solid";
 import { useForm } from "react-hook-form";
 
 function AddBranch({ open, setOpen }) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     console.log(data);
   };
