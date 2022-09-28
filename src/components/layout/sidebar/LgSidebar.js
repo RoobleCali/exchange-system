@@ -23,9 +23,7 @@ export default function LgSidebar({ Collapse }) {
           `}
       >
         {/* Logo */}
-        <div className="-pl-4 z-96">
-          <h1>Tick Entry</h1>
-        </div>
+        <div className="-pl-4 z-96">{/* <h1>Tick Entry</h1> */}</div>
         {/* Links */}
         {decoded &&
           decoded.userType === "HQ-ADMIN" &&

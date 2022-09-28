@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import AddBranch from "../../components/branches/AddBranch";
-import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
 
 function Index() {
   const [open, setOpen] = useState(false);

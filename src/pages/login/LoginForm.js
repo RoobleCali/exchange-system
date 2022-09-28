@@ -18,10 +18,7 @@ function FormLogin() {
   const [message, setmessage] = useState("");
 
   const onSubmit = (data) => {
-    const res = axios.post(
-      "https://tick-account.herokuapp.com/api/auth/login",
-      data
-    );
+    const res = axios.post("http://192.167.67.107:5000/api/auth/login", data);
     setLoading(true);
     res
       .then((res) => {

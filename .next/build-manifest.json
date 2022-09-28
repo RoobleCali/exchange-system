@@ -41,11 +41,6 @@
       "static/chunks/main.js",
       "static/chunks/pages/branches.js"
     ],
-    "/remittance": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/remittance.js"
-    ],
     "/transactions": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

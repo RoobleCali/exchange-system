@@ -1,5 +1,6 @@
 import { XIcon } from "@heroicons/react/solid";
 import { useForm } from "react-hook-form";
+import InputField from "../controllers/InputField";
 
 function AddBranch({ open, setOpen }) {
   const { register, handleSubmit, errors } = useForm();
@@ -38,73 +39,92 @@ function AddBranch({ open, setOpen }) {
                   <div className="space-y-10">
                     <div className="flex items-center space-x-3">
                       <div className="flex flex-col w-full">
-                        <input
-                          placeholder="Branch Name"
-                          className="px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
-                          {...register("BranchName", { required: true })}
+                        <InputField
+                          id="BrachCity"
+                          type="text"
+                          name="BrachCity"
+                          // label="BrachCity"
+                          register={register}
+                          error={errors.BrachCity}
                         />
-                        {errors.BranchName && (
-                          <span className="py-2 text-xs text-red-400">
-                            Amount must not be empty!
-                          </span>
-                        )}
                       </div>
                       <div className="flex flex-col w-full">
-                        <input
-                          placeholder="Branch Phone"
-                          type="tell"
-                          min="0"
-                          className="px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
-                          {...register("BranchPhone", { required: true })}
+                        <InputField
+                          id="SendCommission"
+                          name="SendCommission"
+                          type="number"
+                          // label="SendCommission"
+                          register={register}
+                          error={errors.SendCommission}
                         />
-
-                        {errors.BranchPhone && (
-                          <span className="py-2 text-xs text-red-400">
-                            Amount must not be empty!
-                          </span>
-                        )}
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
                       <div className="flex flex-col w-full">
-                        <input
-                          placeholder="Country"
-                          type="Country"
-                          className="px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
-                          {...register("Country", { required: true })}
+                        <InputField
+                          id="CanPay"
+                          type="text"
+                          name="CanPay"
+                          // label="CanPay"
+                          register={register}
+                          error={errors.CanPay}
                         />
-                        {errors.Country && (
-                          <span className="py-2 text-xs text-red-400">
-                            Amount must not be empty!
-                          </span>
-                        )}
                       </div>
                       <div className="flex flex-col w-full">
-                        <input
-                          placeholder="City"
-                          type="city"
-                          className="px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
-                          {...register("city", { required: true })}
+                        <InputField
+                          id="CanPay"
+                          type="text"
+                          name="CanPay"
+                          // label="CanPay"
+                          register={register}
+                          error={errors.CanPay}
                         />
-                        {errors.city && (
-                          <span className="py-2 text-sm text-red-400">
-                            Amount cannot be empty!
-                          </span>
-                        )}
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="flex flex-col w-full">
+                        <InputField
+                          id="BranchName"
+                          name="BranchName"
+                          type="BranchName"
+                          // label="BranchName"
+                          register={register}
+                          error={errors.BranchName}
+                        />
+                      </div>
+                      <div className="flex flex-col w-full">
+                        <InputField
+                          id="BranchPhone"
+                          name="BranchPhone"
+                          type="BranchPhone"
+                          // label="BranchPhone"
+                          register={register}
+                          error={errors.BranchPhone}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="flex flex-col w-full">
+                        <InputField
+                          id="Country"
+                          name="Country"
+                          type="country"
+                          // label="Country"
+                          register={register}
+                          error={errors.Country}
+                        />
                       </div>
                     </div>
                     <div className="flex flex-col w-full">
-                      <textarea
-                        placeholder="Commiton"
-                        className="w-full h-24 py-3 pl-3 overflow-y-auto placeholder-gray-500 border border-gray-200 rounded resize-none focus:ring-2 focus:ring-gray-400 dark:bg-gray-900 dark:border-gray-700 focus:outline-none"
-                        {...register("Commiton", { required: true })}
-                      ></textarea>
-
-                      {errors.Commiton && (
-                        <span className="py-2 text-xs text-red-400">
-                          commiton cannot be empty
-                        </span>
-                      )}
+                      <InputField
+                        id="commition"
+                        name="commition"
+                        type="number"
+                        // label="commition"
+                        register={register}
+                        error={errors.commition}
+                        TextArea={true}
+                      />
                     </div>
                   </div>{" "}
                   <button

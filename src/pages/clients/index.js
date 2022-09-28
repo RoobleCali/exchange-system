@@ -35,11 +35,11 @@ function Index() {
   return (
     <div className="w-full">
       <div className="mt-4">
-        {isLoading ? (
+        {/* {isLoading ? (
           <div>Loading...</div>
         ) : (
           <Table columns={columns} data={Clients} />
-        )}
+        )} */}
       </div>
     </div>
   );

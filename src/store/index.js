@@ -4,7 +4,7 @@ import { decodeToken, getToken } from "../components/utils/utils";
 
 export const Rootapi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://tick-account.herokuapp.com/api",
+    baseUrl: "http://192.167.67.107:5000/api/",
     prepareHeaders: (headers) => {
       const token = getToken();
       if (token) {
