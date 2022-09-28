@@ -1,28 +1,18 @@
 import LoginNavbar from "./LoginNavbar";
-import FormLogin from "./FormLogin";
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import HomeImage from "../assets/homeImage.png";
+import FormLogin from "./LoginForm";
 function Index() {
   return (
     <div className="dark:bg-gray-800">
       <LoginNavbar />
-      <div className="h-screen text-gray-600 bg-gray-100 dark:text-gray-200 dark:bg-slate-800">
-        <div className="flex items-center justify-between px-10 py-10 mt-10 ">
-          <div className="hidden md:flex">
-            <Image
-              src={HomeImage}
-              width={600}
-              height={600}
-              alt="image"
-              layout="fixed"
-            />
-          </div>
-          <div className="space-y-3 mt-9">
-            <FormLogin />
-          </div>
+      <div className="flex items-center justify-between w-full max-w-5xl mx-auto bg-white md:p-1 md:px-7 mt-14 md:mt-20 dark:bg-gray-800 rounded-xl md:h-auto md:drop-shadow-xl md:space-x-14">
+        {/* left carousel */}
+        <div className="bg-gray-500 hidden md:inline-block w-1/2 h-[80vh]">
+          {/* <Image src={demo} alt= /> */}
         </div>
+        {/* right form login */}
+
+        <FormLogin />
       </div>
     </div>
   );

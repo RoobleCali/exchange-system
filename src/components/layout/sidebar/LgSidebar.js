@@ -6,7 +6,6 @@ import logo from "../../../pages/assets/logo.png";
 import { decodeToken, getToken } from "../../utils/utils";
 import Image from "next/image";
 import { ChevronDownIcon } from "@heroicons/react/outline";
-import { info } from "autoprefixer";
 export default function LgSidebar({ Collapse }) {
   const router = useRouter();
   const [submenuOpen, setSubmenuOpen] = useState(false);
@@ -17,21 +16,15 @@ export default function LgSidebar({ Collapse }) {
     <div className="shadow-xl">
       {/* Sidebar */}
       <div
-        className={`flex text-xs	flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto 
+        className={`flex text-xs mt-3	flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto 
           lg:top-auto lg:translate-x-0 list-none transform h-screen p-5   -translate-x-64  shrink-0  dark:bg-slate-800 bg-white  transition-all duration-200 ease-in-out
           
           ${Collapse ? "w-72" : "w-20"}
           `}
       >
         {/* Logo */}
-        <div className="w-48 ml-8 overflow-hidden -pl-4 z-96">
-          <Image
-            src={logo}
-            alt="logo"
-            width={190}
-            height={38}
-            className="cursor-pointer"
-          />
+        <div className="-pl-4 z-96">
+          <h1>Tick Entry</h1>
         </div>
         {/* Links */}
         {decoded &&
@@ -42,89 +35,32 @@ export default function LgSidebar({ Collapse }) {
 
             // eslint-disable-next-line react/jsx-key
 
-            {
-              if (!item.submenu) {
-                return (
-                  <li key={index}>
-                    <Link
-                      href={`${item.link}`}
-                      className={`
+            return (
+              <li key={index}>
+                <Link
+                  href={`${item.link}`}
+                  className={`
                       
                 `}
-                    >
-                      <a
-                        className={`flex items-center p-2 mt-5 list-none text-sm text-gray-500 rounded-md cursor-pointer gap-x-3 first-letter hover:bg-light-white transition-all duration-100
+                >
+                  <a
+                    className={`flex items-center p-2 mt-5 list-none text-sm text-gray-500 rounded-md cursor-pointer gap-x-3 first-letter hover:bg-light-white transition-all duration-100
                       
                 ${link == path && "bg-blue-700  text-gray-300"}
                       `}
-                      >
-                        <span className="block w-5 text-xl">{item.icon}</span>
-                        <span
-                          className={`   ${
-                            Collapse ? "flex" : "hidden"
-                          } text-sm font-normal flex-1`}
-                        >
-                          {item.title}
-                        </span>
-                      </a>
-                    </Link>
-                  </li>
-                );
-              } else {
-                return (
-                  <>
-                    <a
-                      className={`flex items-center p-2 mt-3 text-sm text-gray-500 list-none rounded-md cursor-pointer text-md gap-x-3 first-letter hover:bg-light-white
-                      ${
-                        router.pathname.replace("/", "") == "users" ||
-                        router.pathname.replace("/", "") == "roles"
-                          ? "bg-blue-700  text-gray-300"
-                          : ""
-                      } 
-                     onClick={() => setDropdown(!Dropdown)} 
-                      `}
-                      onClick={() => setSubmenuOpen(!submenuOpen)}
+                  >
+                    <span className="block w-5 text-xl">{item.icon}</span>
+                    <span
+                      className={`   ${
+                        Collapse ? "flex" : "hidden"
+                      } text-sm font-normal flex-1`}
                     >
-                      <span className="block w-5 text-xl">{item.icon}</span>
-                      <span
-                        className={`   ${
-                          Collapse ? "flex" : "hidden"
-                        } text-sm font-medium flex-1`}
-                      >
-                        {item.title}
-                      </span>
-                      <ChevronDownIcon
-                        className={`w-4 ${Collapse ? "flex" : "hidden"} ${
-                          submenuOpen && "rotate-180"
-                        }`}
-                      />
-                    </a>
-                    <ul>
-                      {submenuOpen &&
-                        item.children.map((item) => (
-                          // eslint-disable-next-line react/jsx-key
-                          <Link href={`${item.link}`}>
-                            <a
-                              className={`flex items-center p-2 mt-3 text-sm text-gray-500 rounded-md cursor-pointer gap-x-3 first-letter hover:bg-light-white
-                                                     `}
-                              onClick={() => setSubmenuOpen(!submenuOpen)}
-                            >
-                              <span className="w-4">{item.icon}</span>
-                              <span
-                                className={`text-md ${
-                                  Collapse ? "flex" : "hidden"
-                                }`}
-                              >
-                                {item.title}
-                              </span>
-                            </a>
-                          </Link>
-                        ))}
-                    </ul>
-                  </>
-                );
-              }
-            }
+                      {item.title}
+                    </span>
+                  </a>
+                </Link>
+              </li>
+            );
           })}
 
         {decoded &&
