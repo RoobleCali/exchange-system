@@ -30,11 +30,6 @@ export const sidebarData = [
   //   icon: <UsersIcon />,
   //   link: "remittance",
   // },
-  {
-    title: "transactions",
-    icon: <TranslateIcon />,
-    link: "transactions",
-  },
 
   {
     title: "branches",
@@ -56,7 +51,11 @@ export const sidebarData = [
     icon: <TranslateIcon />,
     link: "charge",
   },
-
+  {
+    title: "transactions",
+    icon: <TranslateIcon />,
+    link: "transactions",
+  },
   {
     title: "cardcenter",
     icon: <ShoppingCartIcon />,
