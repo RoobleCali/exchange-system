@@ -96,6 +96,7 @@ function FormLogin() {
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
+                onClick={() => setmessage("")}
               >
                 <path
                   fill-Rule="evenodd"
