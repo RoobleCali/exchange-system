@@ -14,22 +14,22 @@ export const sidebarData = [
     icon: <HomeIcon />,
     link: "Cash-flow",
   },
-  {
-    title: "my Wallet",
-    icon: <OfficeBuildingIcon />,
-    link: "wallet",
-  },
+  // {
+  //   title: "my Wallet",
+  //   icon: <OfficeBuildingIcon />,
+  //   link: "wallet",
+  // },
 
-  {
-    title: "Clients",
-    icon: <UsersIcon />,
-    link: "clients",
-  },
-  {
-    title: "remittence",
-    icon: <UsersIcon />,
-    link: "remittance",
-  },
+  // {
+  //   title: "Clients",
+  //   icon: <UsersIcon />,
+  //   link: "clients",
+  // },
+  // {
+  //   title: "remittence",
+  //   icon: <UsersIcon />,
+  //   link: "remittance",
+  // },
   {
     title: "transactions",
     icon: <TranslateIcon />,
@@ -41,15 +41,20 @@ export const sidebarData = [
     icon: <OfficeBuildingIcon />,
     link: "branches",
   },
-  {
-    title: "invoices",
-    icon: <TranslateIcon />,
-    link: "invoices",
-  },
+  // {
+  //   title: "invoices",
+  //   icon: <TranslateIcon />,
+  //   link: "invoices",
+  // },
   {
     title: "City",
     icon: <TranslateIcon />,
     link: "city",
+  },
+  {
+    title: "Charges",
+    icon: <TranslateIcon />,
+    link: "charge",
   },
 
   {
@@ -57,22 +62,22 @@ export const sidebarData = [
     icon: <ShoppingCartIcon />,
     link: "cardcenter",
   },
-  {
-    title: "Roles & Users",
-    submenu: true,
-    icon: <UsersIcon />,
+  // {
+  //   title: "Roles & Users",
+  //   submenu: true,
+  //   icon: <UsersIcon />,
 
-    children: [
-      {
-        title: "Users",
-        icon: <UsersIcon />,
-        link: "users",
-      },
-      {
-        title: "Roles",
-        icon: <UsersIcon />,
-        link: "roles",
-      },
-    ],
-  },
+  //   children: [
+  //     {
+  //       title: "Users",
+  //       icon: <UsersIcon />,
+  //       link: "users",
+  //     },
+  //     {
+  //       title: "Roles",
+  //       icon: <UsersIcon />,
+  //       link: "roles",
+  //     },
+  //   ],
+  // },
 ];

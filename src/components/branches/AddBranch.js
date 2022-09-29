@@ -1,11 +1,21 @@
 import { XIcon } from "@heroicons/react/solid";
 import { useForm } from "react-hook-form";
+import { useAddBranchMutation, useBranchQuery } from "../../store/branch";
+import Button from "../controllers/Button";
+import Checkbox from "../controllers/Checkbox";
 import InputField from "../controllers/InputField";
+import LoaderButton from "../controllers/LoaderButton";
 
 function AddBranch({ open, setOpen }) {
+  const [addBranch, { isLoading, error, isSuccess }] = useAddBranchMutation();
+  const { refetch } = useBranchQuery();
+  console.log(error);
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+    await addBranch(data);
+    refetch();
+    setOpen(false);
   };
   return (
     <div>
@@ -40,6 +50,28 @@ function AddBranch({ open, setOpen }) {
                     <div className="flex items-center space-x-3">
                       <div className="flex flex-col w-full">
                         <InputField
+                          id="BranchName"
+                          type="text"
+                          name="BranchName"
+                          // label="BranchName"
+                          register={register}
+                          error={errors.BranchName}
+                        />
+                      </div>
+                      <div className="flex flex-col w-full">
+                        <InputField
+                          id="BranchPhone"
+                          name="BranchPhone"
+                          type="number"
+                          // label="BranchPhone"
+                          register={register}
+                          error={errors.BranchPhone}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="flex flex-col w-full">
+                        <InputField
                           id="BrachCity"
                           type="text"
                           name="BrachCity"
@@ -59,80 +91,97 @@ function AddBranch({ open, setOpen }) {
                         />
                       </div>
                     </div>
+
+                    <div className="flex items-center space-x-3">
+                      <div className="flex flex-col w-full">
+                        <input
+                          className={`w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border
+               border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 
+                 ${error ? "ring-2 ring-red-400" : null}
+               
+                 `}
+                          ref={register({
+                            required: true,
+                            message: "Please enter",
+                          })}
+                          id="Limit"
+                          name="Limit"
+                          type="number"
+                        />
+                      </div>
+                      <div className="flex flex-col w-full">
+                        <InputField
+                          id="PayCommission"
+                          name="PayCommission"
+                          type="number"
+                          // label="PayCommission"
+                          register={register}
+                          error={errors.PayCommission}
+                        />
+                      </div>
+                    </div>
                     <div className="flex items-center space-x-3">
                       <div className="flex flex-col w-full">
                         <InputField
-                          id="CanPay"
+                          id="UserName"
+                          name="UserName"
                           type="text"
-                          name="CanPay"
-                          // label="CanPay"
+                          // label="UserName"
                           register={register}
-                          error={errors.CanPay}
+                          error={errors.UserName}
                         />
-                      </div>
+                      </div>{" "}
                       <div className="flex flex-col w-full">
                         <InputField
-                          id="CanPay"
+                          id="Password"
+                          name="Password"
+                          type="password"
+                          // label="Password"
+                          register={register}
+                          error={errors.Password}
+                          // TextArea={true}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="flex flex-col w-full">
+                        <InputField
+                          id="ManagerFullName"
+                          name="ManagerFullName"
                           type="text"
-                          name="CanPay"
-                          // label="CanPay"
+                          // label="ManagerFullName"
                           register={register}
-                          error={errors.CanPay}
+                          error={errors.ManagerFullName}
                         />
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-3">
+                      </div>{" "}
                       <div className="flex flex-col w-full">
                         <InputField
-                          id="BranchName"
-                          name="BranchName"
-                          type="BranchName"
-                          // label="BranchName"
+                          id="ManagerPhone"
+                          name="ManagerPhone"
+                          type="number"
+                          // label="ManagerPhone"
                           register={register}
-                          error={errors.BranchName}
-                        />
-                      </div>
-                      <div className="flex flex-col w-full">
-                        <InputField
-                          id="BranchPhone"
-                          name="BranchPhone"
-                          type="BranchPhone"
-                          // label="BranchPhone"
-                          register={register}
-                          error={errors.BranchPhone}
+                          error={errors.ManagerPhone}
+                          // TextArea={true}
                         />
                       </div>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="flex flex-col w-full">
-                        <InputField
-                          id="Country"
-                          name="Country"
-                          type="country"
-                          // label="Country"
-                          register={register}
-                          error={errors.Country}
-                        />
-                      </div>
-                    </div>
-                    <div className="flex flex-col w-full">
-                      <InputField
-                        id="commition"
-                        name="commition"
-                        type="number"
-                        // label="commition"
-                        register={register}
-                        error={errors.commition}
-                        TextArea={true}
-                      />
-                    </div>
-                  </div>{" "}
-                  <button
-                    type="submit"
-                    className="w-full px-6 py-3 mt-2 text-xs text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80"
-                  >
-                    Add Branch
-                  </button>
+                  </div>
+                  <div className="flex items-center justify-between px-4 mt-4 space-x-3">
+                    <Checkbox
+                      label="Can pay"
+                      register={register}
+                      name="CanPay"
+                      error={errors.CanPay}
+                    />
+                    <Checkbox
+                      label="Can Send"
+                      register={register}
+                      name="CanSend"
+                      error={errors.CanSend}
+                    />
+                  </div>
+                  {isLoading ? <LoaderButton /> : <Button title="Add Branch" />}
                 </form>
               </div>
             </div>
