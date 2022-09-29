@@ -1,19 +1,44 @@
 import { XIcon } from "@heroicons/react/solid";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAddChargeMutation, useChargeQuery } from "../../store/charge";
+import { useCityQuery } from "../../store/city";
 import Button from "../controllers/Button";
 import InputField from "../controllers/InputField";
 import LoaderButton from "../controllers/LoaderButton";
 
 function NewCharge({ open, setOpen }) {
   const [addCharge, { isLoading, error, isSuccess }] = useAddChargeMutation();
+  const { isError, isFetching, data } = useCityQuery();
+
   const { refetch } = useChargeQuery();
-  const { register, handleSubmit, errors } = useForm();
+  console.log(error);
+  const { register, handleSubmit, watch, errors } = useForm();
+  const source = watch("source");
+  console.log(source);
+  const destination = watch("destination");
+
   const onSubmit = async (data) => {
-    await addCharge(data);
+    const real = {
+      charge: [
+        {
+          source: data.source,
+          destination: data.destination,
+          rate: data.rate * 1,
+        },
+        {
+          source: data.source1,
+          destination: data.destination1,
+          rate: data.rate1 * 1,
+        },
+      ],
+    };
+    console.log(real);
+    await addCharge(real);
     refetch();
     setOpen(false);
   };
+
   return (
     <div>
       <div
@@ -46,30 +71,73 @@ function NewCharge({ open, setOpen }) {
                   <div className="space-y-10">
                     <div className="flex items-center space-x-3">
                       <div className="flex flex-col w-full">
-                        <InputField
-                          id="source"
-                          type="text"
-                          name="source"
-                          // label="source"
-                          register={register}
-                          error={errors.source}
-                        />
-                        <InputField
-                          id="destination"
-                          name="destination"
-                          type="text"
-                          // label="destination"
-                          register={register}
-                          error={errors.destination}
-                        />
-                        <InputField
-                          id="rate"
-                          name="rate"
-                          type="number"
-                          // label="rate"
-                          register={register}
-                          error={errors.rate}
-                        />{" "}
+                        <div className="flex items-center justify-center ">
+                          <select
+                            className="w-full px-5 py-2 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 "
+                            name="source"
+                            ref={register({ required: true })}
+                          >
+                            <option value="">Select Source</option>
+                            {data &&
+                              data.map((role) => (
+                                <option key={role._id} value={role._id}>
+                                  {role._id}
+                                </option>
+                              ))}
+                          </select>
+                          <select
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            name="destination"
+                            ref={register({ required: true })}
+                          >
+                            <option value="">Select destination</option>
+                            {data &&
+                              data.map((role) => (
+                                <option key={role._id} value={role._id}>
+                                  {role._id}
+                                </option>
+                              ))}
+                          </select>
+                          <InputField
+                            id="rate"
+                            name="rate"
+                            type="number"
+                            // label="rate"
+                            register={register}
+                            error={errors.rate}
+                          />{" "}
+                        </div>
+                        {source && (
+                          <div className="flex">
+                            <InputField
+                              id="source1"
+                              type="text"
+                              name="source1"
+                              // label="source"
+                              register={register}
+                              error={errors.source1}
+                              value={destination}
+                              disabled={true}
+                            />
+                            <InputField
+                              id="destination1"
+                              name="destination1"
+                              type="text"
+                              disabled={true}
+                              value={source}
+                              register={register}
+                              error={errors.destination1}
+                            />
+                            <InputField
+                              id="rate1"
+                              name="rate1"
+                              type="number"
+                              // label="rate"
+                              register={register}
+                              error={errors.rate1}
+                            />{" "}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>{" "}

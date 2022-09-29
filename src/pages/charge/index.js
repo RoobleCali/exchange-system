@@ -50,6 +50,12 @@ function index() {
                     >
                       rate
                     </th>
+                    <th
+                      scope="col"
+                      className="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5"
+                    >
+                      created At
+                    </th>
                     <th scope="col" className="p-4 lg:p-5"></th>
                   </tr>
                 </thead>
@@ -65,6 +71,9 @@ function index() {
                         </td>
                         <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
                           {d.rate}
+                        </td>
+                        <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
+                          {d.createdAt}
                         </td>
 
                         <td className="p-4 space-x-2 whitespace-nowrap lg:p-5">

@@ -8,13 +8,27 @@ import LoaderButton from "../controllers/LoaderButton";
 
 function AddBranch({ open, setOpen }) {
   const [addBranch, { isLoading, error, isSuccess }] = useAddBranchMutation();
-  const { refetch } = useBranchQuery();
   console.log(error);
-  const { register, handleSubmit, errors } = useForm();
+  const { refetch } = useBranchQuery();
+  const { register, handleSubmit, errors, reset } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
-    await addBranch(data);
+    const branchData = {
+      BranchName: data.BranchName,
+      BranchPhone: data.BranchPhone,
+      BrachCity: data.BrachCity,
+      Limit: data.Limit * 1,
+      CanSend: data.CanSend,
+      SendCommission: data.SendCommission * 1,
+      CanPay: data.CanPay,
+      PayCommission: data.PayCommission * 1,
+      UserName: data.UserName,
+      Password: data.Password,
+      ManagerFullName: data.ManagerFullName,
+      ManagerPhone: data.ManagerPhone,
+    };
+    await addBranch(branchData);
     refetch();
+    reset(branchData);
     setOpen(false);
   };
   return (
@@ -94,19 +108,13 @@ function AddBranch({ open, setOpen }) {
 
                     <div className="flex items-center space-x-3">
                       <div className="flex flex-col w-full">
-                        <input
-                          className={`w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border
-               border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700 
-                 ${error ? "ring-2 ring-red-400" : null}
-               
-                 `}
-                          ref={register({
-                            required: true,
-                            message: "Please enter",
-                          })}
+                        <InputField
                           id="Limit"
                           name="Limit"
                           type="number"
+                          // label="Limit"
+                          register={register}
+                          error={errors.Limit}
                         />
                       </div>
                       <div className="flex flex-col w-full">
