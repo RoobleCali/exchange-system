@@ -1,14 +1,8 @@
 import { XIcon } from "@heroicons/react/solid";
-import { DoubleBounce } from "better-react-spinkit";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-
-import Swal from "sweetalert2";
 import { useAddCityMutation, useCityQuery } from "../../store/city";
 import Button from "../controllers/Button";
-import InputField from "../controllers/InputField";
 import LoaderButton from "../controllers/LoaderButton";
-import TagsInput from "../controllers/TagsInput";
 
 function NewCity({ open, setOpen }) {
   const [addCity, { isLoading, error, isSuccess }] = useAddCityMutation();
@@ -23,18 +17,13 @@ function NewCity({ open, setOpen }) {
   const removeTags = (index) => {
     setTags([...tags.filter((tag) => tags.indexOf(tag) !== index)]);
   };
-  const Cities = (data) => {
-    console.log(data);
-  };
   const { refetch } = useCityQuery();
-  const { register, errors } = useForm();
   const handleSubmit = async (event) => {
     event.preventDefault(); // 👈️ prevent page refresh
     const data = {
       country: cauntry,
       city: tags,
     };
-    console.log(data);
     await addCity(data);
     refetch();
     setOpen(false);
@@ -113,7 +102,7 @@ function NewCity({ open, setOpen }) {
                       type="text"
                       onKeyUp={(event) => addTags(event)}
                       placeholder="Press enter to add tags"
-                      p
+                      className="w-full px-3 py-3 text-sm leading-none text-gray-800 bg-white border rounded focus:ring-2 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
                     />
                   </div>
                   {isLoading ? <LoaderButton /> : <Button title="Add City" />}
