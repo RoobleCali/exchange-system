@@ -7,7 +7,6 @@ function index() {
   const [open, setOpen] = useState(false);
   const [inputText, setInputText] = useState("");
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { error, data } = useCityQuery();
   const inputHandler = (e) => {
     let lowerCase = e.target.value.toLowerCase();
@@ -23,12 +22,11 @@ function index() {
         return city.City.toLowerCase().includes(inputText);
       }
     });
-  console.log(filteredData);
   return (
     <div className="flex flex-col mx-4 my-6 shadow-xl rounded-2xl shadow-gray-200">
       <div className="px-4 py-4 bg-gray-100 rounded-tl-lg rounded-tr-lg md:px-10 md:py-7 dark:bg-gray-700">
-        <div className="flex items-center justify-between space-x-5 md:space-x-80">
-          <div className="relative flex-1">
+        <div className="flex items-center justify-between space-x-5 md:space-x-96">
+          <div className="relative md:w-[520px]">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg
                 aria-hidden="true"
@@ -102,7 +100,7 @@ function index() {
                     <th scope="col" className="p-4 lg:p-5"></th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white divide-y divide-gray-200 ">
                   {data &&
                     filteredData.map((d) => (
                       <tr className="hover:bg-gray-100" key={d._id}>

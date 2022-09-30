@@ -35,7 +35,7 @@ function NewCity({ open, setOpen }) {
     <div>
       <div
         id="popup"
-        className={`z-50 fixed w-full flex justify-center inset-0 ${
+        className={`z-50 fixed w-full flex justify-center inset-0  ${
           open ? "flex" : "hidden"
         }`}
       >
