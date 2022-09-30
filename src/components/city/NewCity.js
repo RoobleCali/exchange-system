@@ -7,7 +7,7 @@ import LoaderButton from "../controllers/LoaderButton";
 function NewCity({ open, setOpen }) {
   const [addCity, { isLoading, error, isSuccess }] = useAddCityMutation();
   const [tags, setTags] = useState([]);
-  const [cauntry, setcauntry] = useState([]);
+  const [cauntry, setcauntry] = useState("");
   const addTags = (event) => {
     if (event.key === "Enter" && event.target.value !== "") {
       setTags([...tags, event.target.value]);
@@ -25,8 +25,10 @@ function NewCity({ open, setOpen }) {
       city: tags,
     };
     await addCity(data);
+    setcauntry("");
     refetch();
     setOpen(false);
+    setTags([]);
   };
 
   return (

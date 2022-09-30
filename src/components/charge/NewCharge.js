@@ -11,10 +11,8 @@ function NewCharge({ open, setOpen }) {
   const [addCharge, { isLoading, error: iserror, isSuccess }] =
     useAddChargeMutation();
   const { error, isFetching, data } = useCityQuery();
-  console.log(iserror);
   const { refetch } = useChargeQuery();
-  console.log(data);
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit, watch, reset, errors } = useForm();
   const source = watch("source");
   console.log(source);
   const destination = watch("destination");
@@ -34,12 +32,11 @@ function NewCharge({ open, setOpen }) {
         },
       ],
     };
-    console.log(real);
     await addCharge(real);
+    reset(real);
     refetch();
     setOpen(false);
   };
-
   return (
     <div>
       <div
@@ -93,6 +90,7 @@ function NewCharge({ open, setOpen }) {
                           >
                             <option value="">Select destination</option>
                             {data &&
+                              source != data.map((role) => role._id) &&
                               data.map((role) => (
                                 <option key={role._id} value={role._id}>
                                   {role._id}
