@@ -7,12 +7,24 @@ const cityApi = Rootapi.injectEndpoints({
       // providesTags: ["city"],
     }),
     addCity: builder.mutation({
-      query: (user) => ({
+      query: (city) => ({
         url: "/city",
         method: "POST",
-        body: user,
+        body: city,
         invalidatesTags: ["city"],
       }),
+    }),
+    updateCity: builder.mutation({
+      query: (city) => {
+        console.log(city);
+        const { id, ...body } = city;
+        return {
+          url: `/posts/${id}`,
+          method: "PUT",
+          body,
+        };
+      },
+      invalidatesTags: ["Post"],
     }),
   }),
 });

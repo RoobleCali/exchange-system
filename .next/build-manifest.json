@@ -51,10 +51,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/city.js"
     ],
-    "/transactions": [
+    "/login": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/transactions.js"
+      "static/chunks/pages/login.js"
     ]
   },
   "ampFirstPages": []

@@ -9,6 +9,7 @@ import LoaderButton from "../controllers/LoaderButton";
 function AddBranch({ open, setOpen }) {
   const [addBranch, { isLoading, error, isSuccess }] = useAddBranchMutation();
   console.log(error);
+  console.log(isSuccess);
   const { refetch } = useBranchQuery();
   const { register, handleSubmit, errors, reset } = useForm();
   const onSubmit = async (data) => {
@@ -28,7 +29,7 @@ function AddBranch({ open, setOpen }) {
     };
     await addBranch(branchData);
     refetch();
-    reset(branchData);
+    reset();
     setOpen(false);
   };
   return (
@@ -67,7 +68,7 @@ function AddBranch({ open, setOpen }) {
                           id="BranchName"
                           type="text"
                           name="BranchName"
-                          // label="BranchName"
+                          label="BranchName"
                           register={register}
                           error={errors.BranchName}
                         />
@@ -77,7 +78,7 @@ function AddBranch({ open, setOpen }) {
                           id="BranchPhone"
                           name="BranchPhone"
                           type="number"
-                          // label="BranchPhone"
+                          label="BranchPhone"
                           register={register}
                           error={errors.BranchPhone}
                         />
@@ -89,7 +90,7 @@ function AddBranch({ open, setOpen }) {
                           id="BrachCity"
                           type="text"
                           name="BrachCity"
-                          // label="BrachCity"
+                          label="BrachCity"
                           register={register}
                           error={errors.BrachCity}
                         />
@@ -99,7 +100,7 @@ function AddBranch({ open, setOpen }) {
                           id="SendCommission"
                           name="SendCommission"
                           type="number"
-                          // label="SendCommission"
+                          label="SendCommission"
                           register={register}
                           error={errors.SendCommission}
                         />
@@ -112,7 +113,7 @@ function AddBranch({ open, setOpen }) {
                           id="Limit"
                           name="Limit"
                           type="number"
-                          // label="Limit"
+                          label="Limit"
                           register={register}
                           error={errors.Limit}
                         />
@@ -122,7 +123,7 @@ function AddBranch({ open, setOpen }) {
                           id="PayCommission"
                           name="PayCommission"
                           type="number"
-                          // label="PayCommission"
+                          label="PayCommission"
                           register={register}
                           error={errors.PayCommission}
                         />
@@ -134,7 +135,7 @@ function AddBranch({ open, setOpen }) {
                           id="UserName"
                           name="UserName"
                           type="text"
-                          // label="UserName"
+                          label="UserName"
                           register={register}
                           error={errors.UserName}
                         />
@@ -144,7 +145,7 @@ function AddBranch({ open, setOpen }) {
                           id="Password"
                           name="Password"
                           type="password"
-                          // label="Password"
+                          label="Password"
                           register={register}
                           error={errors.Password}
                           // TextArea={true}
@@ -154,10 +155,10 @@ function AddBranch({ open, setOpen }) {
                     <div className="flex items-center space-x-3">
                       <div className="flex flex-col w-full">
                         <InputField
-                          id="ManagerFullName"
+                          id="FullName"
                           name="ManagerFullName"
                           type="text"
-                          // label="ManagerFullName"
+                          label="FullName"
                           register={register}
                           error={errors.ManagerFullName}
                         />
@@ -167,7 +168,7 @@ function AddBranch({ open, setOpen }) {
                           id="ManagerPhone"
                           name="ManagerPhone"
                           type="number"
-                          // label="ManagerPhone"
+                          label="ManagerPhone"
                           register={register}
                           error={errors.ManagerPhone}
                           // TextArea={true}

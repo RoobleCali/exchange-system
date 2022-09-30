@@ -5,7 +5,7 @@ import { setCookies } from "cookies-next";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { DoubleBounce } from "better-react-spinkit";
+import { Alert } from "flowbite-react";
 import { RouteForLoggedInUser } from "../../components/utils/utils";
 import InputField from "../../components/controllers/InputField";
 import LoaderButton from "../../components/controllers/LoaderButton";
@@ -119,6 +119,7 @@ function FormLogin() {
             register={register}
             error={errors.userName}
           />
+
           <InputField
             id="password"
             name="password"

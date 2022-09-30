@@ -17,7 +17,7 @@ function index() {
             className="inline-flex items-start justify-start px-6 py-3 bg-indigo-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 sm:ml-3 hover:bg-indigo-600 focus:outline-none"
             onClick={() => setOpen(!open)}
           >
-            <p className="text-sm font-medium leading-none text-white">
+            <p className="text-sm font-normal leading-none text-white">
               Add Charge
             </p>
           </button>
@@ -34,25 +34,25 @@ function index() {
                   <tr>
                     <th
                       scope="col"
-                      className="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5"
+                      className="p-4 text-xs font-normal text-left text-gray-500 uppercase lg:p-5"
                     >
                       source
                     </th>
                     <th
                       scope="col"
-                      className="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5"
+                      className="p-4 text-xs font-normal text-left text-gray-500 uppercase lg:p-5"
                     >
                       destination
                     </th>
                     <th
                       scope="col"
-                      className="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5"
+                      className="p-4 text-xs font-normal text-left text-gray-500 uppercase lg:p-5"
                     >
                       rate
                     </th>
                     <th
                       scope="col"
-                      className="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5"
+                      className="p-4 text-xs font-normal text-left text-gray-500 uppercase lg:p-5"
                     >
                       created At
                     </th>
@@ -63,24 +63,24 @@ function index() {
                   {data &&
                     data.map((d) => (
                       <tr className="hover:bg-gray-100" key={d._id}>
-                        <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
+                        <td className="p-4 text-base font-normal text-gray-900 whitespace-nowrap lg:p-5">
                           {d.source}
                         </td>
-                        <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
+                        <td className="p-4 text-base font-normal text-gray-900 whitespace-nowrap lg:p-5">
                           {d.destination}
                         </td>
-                        <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
+                        <td className="p-4 text-base font-normal text-gray-900 whitespace-nowrap lg:p-5">
                           {d.rate}
                         </td>
-                        <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
+                        <td className="p-4 text-base font-normal text-gray-900 whitespace-nowrap lg:p-5">
                           {d.createdAt}
                         </td>
 
-                        <td className="p-4 space-x-2 whitespace-nowrap lg:p-5">
+                        {/* <td className="p-4 space-x-2 whitespace-nowrap lg:p-5">
                           <button
                             type="button"
                             data-modal-toggle="user-modal"
-                            className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 hover:text-gray-900 hover:scale-[1.02] transition-all"
+                            className="inline-flex items-center py-2 px-3 text-sm font-normal text-center text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 hover:text-gray-900 hover:scale-[1.02] transition-all"
                           >
                             <svg
                               className="w-5 h-5 mr-2"
@@ -99,7 +99,7 @@ function index() {
                           <button
                             type="button"
                             data-modal-toggle="delete-user-modal"
-                            className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-gradient-to-br from-red-400 to-red-600 rounded-lg shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform"
+                            className="inline-flex items-center py-2 px-3 text-sm font-normal text-center text-white bg-gradient-to-br from-red-400 to-red-600 rounded-lg shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform"
                           >
                             <svg
                               className="w-5 h-5 mr-2"
@@ -114,7 +114,7 @@ function index() {
                               ></path>
                             </svg>
                           </button>
-                        </td>
+                        </td> */}
                       </tr>
                     ))}
                 </tbody>

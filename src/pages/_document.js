@@ -20,6 +20,7 @@ class MyDocument extends Document {
           <Script src="../path/to/flowbite/dist/flowbite.js"></Script>
 
           <Script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></Script>
+          <Script src="../path/to/flowbite/dist/flowbite.js"></Script>
 
           <link rel="manifest" href="/manifest.json" />
           <link rel="icon" href="/favicon.ico" />

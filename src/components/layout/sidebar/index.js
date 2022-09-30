@@ -5,7 +5,7 @@ import MobileSidebar from "./MobileSidebar";
 
 function SampleSidebar({ sidebarOpen, setSidebarOpen, Collapse, setCollapse }) {
   return (
-    <main className="shadow-xl">
+    <main>
       {/* Sidebar */}
 
       <div className="hidden lg:inline-flex ">
@@ -13,7 +13,6 @@ function SampleSidebar({ sidebarOpen, setSidebarOpen, Collapse, setCollapse }) {
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
           Collapse={Collapse}
-          setCollapse={setCollapse}
         />
       </div>
       <div className="inline-flex lg:hidden">

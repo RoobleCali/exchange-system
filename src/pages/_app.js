@@ -6,6 +6,7 @@ import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { Provider } from "react-redux";
 import { store } from "../store";
+// import "flowbite";
 
 function MyApp({ Component, pageProps }) {
   // Loading
