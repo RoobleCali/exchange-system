@@ -100,11 +100,6 @@ function index() {
                     <th scope="col" className="p-4 lg:p-5"></th>
                   </tr>
                 </thead>{" "}
-                {error && (
-                  <div className="flex items-center justify-center text-center">
-                    Something went wrong
-                  </div>
-                )}
                 {isFetching && <TableLoader />}
                 <tbody className="bg-white divide-y divide-gray-200">
                   {data &&
@@ -124,10 +119,15 @@ function index() {
                         </td>
                       </tr>
                     ))}
-                </tbody>
+                </tbody>{" "}
               </table>
             </div>
-          </div>
+          </div>{" "}
+          {error && (
+            <div className="flex items-center justify-center pb-24 mt-16 text-center">
+              Something went wrong
+            </div>
+          )}
         </div>
       </div>
     </div>

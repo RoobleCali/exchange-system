@@ -8,14 +8,13 @@ function Index() {
   const [open, setOpen] = useState(false);
   const [openDailog, setopenDailog] = useState(false);
   const [inputText, setInputText] = useState("");
-  const { isError, isFetching, data } = useBranchQuery();
-  const [DeleteBranch, { isLoading, error }] = useDeleteBranchMutation();
+  const { error, isFetching, data } = useBranchQuery();
+  const [DeleteBranch, { isLoading }] = useDeleteBranchMutation();
   const { refetch } = useBranchQuery();
   const inputHandler = (e) => {
     let lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   };
-  console.log(error);
   // delete Branch
   const deleteBranch = (d) => {
     DeleteBranch(d);
@@ -214,9 +213,12 @@ function Index() {
               </a>
             </div>
           ))}
-        {/* card two */}
-        {/* <ComfirmDailog open={openDailog} /> */}
       </div>
+      {error && (
+        <div className="flex items-center justify-center pb-24 mt-16 text-center">
+          Something went wrong
+        </div>
+      )}
     </div>
   );
 }

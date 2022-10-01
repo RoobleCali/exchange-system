@@ -123,6 +123,11 @@ function index() {
                 </tbody>
               </table>
             </div>
+            {error && (
+              <div className="flex items-center justify-center pb-24 mt-16 text-center">
+                Something went wrong
+              </div>
+            )}
           </div>
         </div>
       </div>
