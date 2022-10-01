@@ -25,12 +25,6 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/_middleware": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "server/middleware-runtime.js",
-      "server/pages/_middleware.js"
-    ],
     "/branches": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -40,11 +34,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/clients.js"
-    ],
-    "/login": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/login.js"
     ]
   },
   "ampFirstPages": []
