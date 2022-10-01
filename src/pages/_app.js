@@ -7,11 +7,10 @@ import "nprogress/nprogress.css";
 import { Provider } from "react-redux";
 import { store } from "../store";
 // import "flowbite";
-
+export const config = {
+  unstable_runtimeJS: false,
+};
 function MyApp({ Component, pageProps }) {
-  export const config = {
-    unstable_runtimeJS: false,
-  };
   // Loading
   NProgress.configure({
     showSpinner: false,
