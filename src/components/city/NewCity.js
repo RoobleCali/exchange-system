@@ -73,6 +73,7 @@ function NewCity({ open, setOpen }) {
                       name="Cauntry"
                       className="w-full px-3 py-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
                       onChange={(event) => setcauntry(event.target.value)}
+                      required
                     />
                   </div>
 
@@ -104,6 +105,7 @@ function NewCity({ open, setOpen }) {
                       type="text"
                       onKeyUp={(event) => addTags(event)}
                       placeholder="Press enter to add tags"
+                      required
                       className="w-full px-3 py-3 text-sm leading-none text-gray-800 bg-white border rounded focus:ring-2 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
                     />
                   </div>

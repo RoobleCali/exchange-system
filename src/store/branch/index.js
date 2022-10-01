@@ -4,17 +4,22 @@ const BranchApi = Rootapi.injectEndpoints({
   endpoints: (builder) => ({
     Branch: builder.query({
       query: () => "/branch",
-      // providesTags: ["branch"],
     }),
     addBranch: builder.mutation({
-      query: (user) => ({
+      query: (branch) => ({
         url: "/branch",
         method: "POST",
-        body: user,
-        invalidatesTags: ["branch"],
+        body: branch,
+      }),
+    }),
+    DeleteBranch: builder.mutation({
+      query: (branch) => ({
+        url: `/branch/${branch}`,
+        method: "DELETE",
       }),
     }),
   }),
 });
 
-export const { useAddBranchMutation, useBranchQuery } = BranchApi;
+export const { useAddBranchMutation, useBranchQuery, useDeleteBranchMutation } =
+  BranchApi;

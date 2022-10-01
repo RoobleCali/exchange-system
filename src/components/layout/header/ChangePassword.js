@@ -3,6 +3,9 @@ import { DoubleBounce } from "better-react-spinkit";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useChangePasswordMutation } from "../../../store/user/User";
+import Button from "../../controllers/Button";
+import InputField from "../../controllers/InputField";
+import LoaderButton from "../../controllers/LoaderButton";
 function ChangePassword({ open, setOpen }) {
   const [message, setMessage] = useState("");
   const { register, handleSubmit, errors } = useForm();
@@ -62,63 +65,27 @@ function ChangePassword({ open, setOpen }) {
                   </div>
                 )}
                 <form className="mt-3" onSubmit={handleSubmit(onSubmit)}>
-                  <div className="mb-3 form-floating xl:w-96">
-                    <input
-                      type="text"
-                      className="block w-full px-3 py-3 mt-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded form-control focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
-                      id="floatingInput"
-                      placeholder="Old Password"
-                      {...register("oldPass", { required: true })}
-                    />
-                    {errors.oldPass && (
-                      <span className="py-2 text-xs text-red-400">
-                        old password must not empty
-                      </span>
-                    )}
-                    <label
-                      htmlFor="floatingInput"
-                      className="text-sm text-gray-700"
-                    >
-                      Old password
-                    </label>
-                  </div>
-                  <div className="mb-3 form-floating xl:w-96">
-                    <input
-                      type="text"
-                      className="block w-full px-3 py-3 mt-3 text-sm leading-none text-gray-800 placeholder-gray-500 bg-white border border-gray-200 rounded form-control focus:ring-2 focus:ring-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
-                      id="floatingInput"
-                      placeholder="New Password"
-                      {...register("newPass", { required: true })}
-                    />
-                    {errors.newPass && (
-                      <span className="py-2 text-xs text-red-400">
-                        New Password must not empty
-                      </span>
-                    )}
-                    <label
-                      htmlFor="floatingInput"
-                      className="text-sm text-gray-700"
-                    >
-                      New Password
-                    </label>
-                  </div>
+                  <InputField
+                    id="oldPass"
+                    name="oldPass"
+                    type="text"
+                    label="oldPass"
+                    register={register}
+                    error={errors.oldPass}
+                  />
+                  <InputField
+                    id="newPass"
+                    name="newPass"
+                    type="text"
+                    label="newPass"
+                    register={register}
+                    error={errors.newPass}
+                  />
 
                   {isLoading ? (
-                    <button
-                      className="flex space-x-6 items-center w-full rounded-lg bg-[#FD5353] text-center justify-center text-2xl  px-4 py-2 text-white"
-                      disabled
-                    >
-                      <DoubleBounce color="white" size={30} />
-                      <span className="font-medium"> Loading... </span>
-                    </button>
+                    <LoaderButton />
                   ) : (
-                    <button
-                      aria-label="add user"
-                      type="submit"
-                      className="w-full px-6 py-3 mt-2 text-sm text-white bg-indigo-700 rounded shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 focus:outline-none hover:bg-opacity-80"
-                    >
-                      Add User
-                    </button>
+                    <Button title="Change Password" />
                   )}
                 </form>
               </div>

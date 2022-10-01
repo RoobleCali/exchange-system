@@ -23,7 +23,7 @@ function index() {
       }
     });
   return (
-    <div className="flex flex-col mx-4 my-6 shadow-xl rounded-2xl shadow-gray-200">
+    <div className="flex flex-col mx-4 my-6 shadow-xl rounded-2xl shadow-gray-200 dark:shadow-gray-700">
       <div className="px-4 py-4 bg-gray-100 rounded-tl-lg rounded-tr-lg md:px-10 md:py-7 dark:bg-gray-700">
         <div className="flex items-center justify-between space-x-5 md:space-x-96">
           <div className="relative md:w-[520px]">
@@ -63,36 +63,36 @@ function index() {
       </div>
       <NewCity open={open} setOpen={setOpen} />
 
-      <div className="flex flex-col mx-4 my-6 shadow-xl rounded-2xl shadow-gray-200">
+      <div className="flex flex-col mx-4 my-6 shadow-xl rounded-2xl shadow-gray-200 dark:shadow-none">
         <div className="overflow-x-auto rounded-2xl">
           <div className="inline-block min-w-full align-middle">
             <div className="overflow-hidden shadow-lg">
               <table className="min-w-full divide-y divide-gray-200 table-fixed">
-                <thead className="bg-white">
+                <thead className="bg-white dark:text-gray-100 dark:bg-gray-500 ">
                   <tr>
                     <th
                       scope="col"
-                      className="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5"
+                      className="p-4 text-xs font-medium text-left uppercase lg:p-5"
                     >
                       Name
                     </th>
 
                     <th
                       scope="col"
-                      className="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5"
+                      className="p-4 text-xs font-medium text-left uppercase lg:p-5"
                     >
                       Country
                     </th>
 
                     <th
                       scope="col"
-                      className="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5"
+                      className="p-4 text-xs font-medium text-left uppercase lg:p-5"
                     >
                       Created at
                     </th>
                     <th
                       scope="col"
-                      className="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5"
+                      className="p-4 text-xs font-medium text-left uppercase lg:p-5"
                     >
                       Updated at
                     </th>
@@ -100,20 +100,20 @@ function index() {
                     <th scope="col" className="p-4 lg:p-5"></th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200 ">
+                <tbody className="text-gray-900 bg-white divide-y divide-gray-200 dark:text-gray-100 dark:bg-gray-500 ">
                   {data &&
                     filteredData.map((d) => (
                       <tr className="hover:bg-gray-100" key={d._id}>
-                        <td className="p-4 text-base font-normal text-gray-900 whitespace-nowrap lg:p-5">
+                        <td className="p-4 text-base font-normal whitespace-nowrap lg:p-5">
                           {d.Country}
                         </td>
-                        <td className="p-4 text-base font-normal text-gray-900 whitespace-nowrap lg:p-5">
+                        <td className="p-4 text-base font-normal whitespace-nowrap lg:p-5">
                           {d.City}
                         </td>
-                        <td className="p-4 text-base font-normal text-gray-900 whitespace-nowrap lg:p-5">
+                        <td className="p-4 text-base font-normal whitespace-nowrap lg:p-5">
                           {d.createdAt}
                         </td>
-                        <td className="p-4 text-base font-normal text-gray-900 whitespace-nowrap lg:p-5">
+                        <td className="p-4 text-base font-normal whitespace-nowrap lg:p-5">
                           {d.updatedAt}
                         </td>
                       </tr>
