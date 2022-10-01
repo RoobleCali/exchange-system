@@ -47,8 +47,8 @@ function AddBranch({ open, setOpen }) {
         ></div>
         <div className="container mx-auto">
           <div className="flex items-center justify-center w-full h-full">
-            <div className="fixed w-10/12 overflow-y-auto bg-white rounded-md shadow dark:bg-gray-800 sm:h-auto md:w-8/12 lg:w-1/2 2xl:w-2/5">
-              <div className="flex items-center justify-between px-4 text-gray-600 bg-gray-100 dark:text-white dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-8 md:py-4 py-7">
+            <div className="fixed w-10/12 overflow-y-scroll bg-white rounded-md shadow dark:bg-gray-800 sm:h-auto md:w-8/12 lg:w-1/2 2xl:w-2/5">
+              <div className="flex items-center justify-between px-4 py-5 text-gray-600 bg-gray-100 dark:text-white dark:bg-gray-600 rounded-tl-md rounded-tr-md md:px-8 md:py-4">
                 <p className="text-base font-semibold ">Create New Branch</p>
                 <button
                   role="button"
@@ -60,8 +60,8 @@ function AddBranch({ open, setOpen }) {
                 </button>
               </div>
               <div className="px-4 pt-6 pb-1 md:px-10 md:pt-12 md:pb-4">
-                <form className="mt-11" onSubmit={handleSubmit(onSubmit)}>
-                  <div className="space-y-10">
+                <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
+                  <div className="space-y-5">
                     <div className="flex items-center space-x-3">
                       <div className="flex flex-col w-full">
                         <InputField
