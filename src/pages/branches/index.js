@@ -37,7 +37,7 @@ function Index() {
                 key={e._id}
               >
                 <div className="p-4 bg-white rounded-lg shadow">
-                  <div className="relative flex justify-center overflow-hidden rounded-lg h-52">
+                  <div className="relative flex justify-center h-40 overflow-hidden rounded-lg">
                     <div className="w-full transition-transform duration-500 ease-in-out transform hover:scale-110">
                       <div className="absolute inset-0 bg-black opacity-10" />
                     </div>
@@ -45,7 +45,7 @@ function Index() {
                     <div className="absolute bottom-0 flex justify-center mb-3" />
 
                     <span className="absolute top-0 left-0 z-10 inline-flex px-3 py-2 mt-3 ml-3 text-sm font-medium text-white bg-red-500 rounded-lg select-none">
-                      {e.BranchName}
+                      {/* {e.Balance} */}
                     </span>
                   </div>
 
@@ -54,7 +54,7 @@ function Index() {
                       className="text-base font-medium text-gray-800 md:text-lg line-clamp-1"
                       title="New York"
                     >
-                      {e.BrachCity}
+                      {e.BranchName}
                     </h2>
                     <p
                       className="mt-2 text-sm text-gray-800 line-clamp-1"
