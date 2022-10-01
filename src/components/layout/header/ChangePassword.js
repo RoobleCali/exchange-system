@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useChangePasswordMutation } from "../../../store/user/User";
 import Button from "../../controllers/Button";
+import Error from "../../controllers/Error";
 import InputField from "../../controllers/InputField";
 import LoaderButton from "../../controllers/LoaderButton";
 function ChangePassword({ open, setOpen }) {
   const [message, setMessage] = useState("");
   const { register, handleSubmit, errors } = useForm();
-  const [changePassword, { isLoading, isError, isSuccess }] =
+  const [changePassword, { isLoading, error, isSuccess }] =
     useChangePasswordMutation();
   const onSubmit = async (data) => {
     if (!data) return {};
@@ -55,15 +56,8 @@ function ChangePassword({ open, setOpen }) {
                 </button>
               </div>
               <div className="px-4 pt-6 pb-1 md:px-10 md:pt-12 md:pb-4">
-                {/* meesage here */}
-                {message && (
-                  <div
-                    className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-                    role="alert"
-                  >
-                    <span className="font-medium">{message}</span>
-                  </div>
-                )}
+                <Error error={error} />
+
                 <form className="mt-3" onSubmit={handleSubmit(onSubmit)}>
                   <InputField
                     id="oldPass"

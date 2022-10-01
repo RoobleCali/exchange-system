@@ -4,13 +4,13 @@ import { useForm } from "react-hook-form";
 import { useAddChargeMutation, useChargeQuery } from "../../store/charge";
 import { useCityQuery } from "../../store/city";
 import Button from "../controllers/Button";
+import Error from "../controllers/Error";
 import InputField from "../controllers/InputField";
 import LoaderButton from "../controllers/LoaderButton";
 
 function NewCharge({ open, setOpen }) {
-  const [addCharge, { isLoading, error: iserror, isSuccess }] =
-    useAddChargeMutation();
-  const { error, isFetching, data } = useCityQuery();
+  const [addCharge, { isLoading, error, isSuccess }] = useAddChargeMutation();
+  const { isFetching, data } = useCityQuery();
   const { refetch } = useChargeQuery();
   const { register, handleSubmit, watch, reset, errors } = useForm();
   const source = watch("source");
@@ -35,7 +35,9 @@ function NewCharge({ open, setOpen }) {
     await addCharge(real);
     reset(real);
     refetch();
-    setOpen(false);
+    if (isSuccess) {
+      setOpen(false);
+    }
   };
   return (
     <div>
@@ -65,6 +67,7 @@ function NewCharge({ open, setOpen }) {
                 </button>
               </div>
               <div className="px-4 pt-6 pb-1 md:px-10 md:pt-12 md:pb-4">
+                <Error error={error} />
                 <form className="mt-11" onSubmit={handleSubmit(onSubmit)}>
                   <div className="space-y-10">
                     <div className="flex items-center space-x-3">

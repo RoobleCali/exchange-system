@@ -50,8 +50,8 @@ function FormLogin() {
   return (
     <>
       <div
-        className=" w-full md:ml-5 dark:bg-gray-800 rounded-xl h-[80vh]
-  md:h-auto  px-2 md:px-0  md:w-1/2"
+        className=" flex items-center justify-center flex-col w-full px-14 md:ml-5 dark:bg-gray-800 rounded-xl h-[80vh]
+  md:h-auto  md:px-2   md:w-1/2"
       >
         <div className="flex justify-center items-container">
           <Image src={onlyLogo} alt="" />

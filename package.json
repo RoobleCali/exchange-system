@@ -59,6 +59,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@gradin/tailwindcss-skeleton-screen": "^1.0.2",
     "autoprefixer": "^10.4.7",
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",

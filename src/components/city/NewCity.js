@@ -2,6 +2,7 @@ import { XIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import { useAddCityMutation, useCityQuery } from "../../store/city";
 import Button from "../controllers/Button";
+import Error from "../controllers/Error";
 import LoaderButton from "../controllers/LoaderButton";
 
 function NewCity({ open, setOpen }) {
@@ -27,7 +28,10 @@ function NewCity({ open, setOpen }) {
     await addCity(data);
     setcauntry("");
     refetch();
-    setOpen(false);
+    if (isSuccess) {
+      setOpen(false);
+    }
+
     setTags([]);
   };
 
@@ -58,6 +62,8 @@ function NewCity({ open, setOpen }) {
                   <XIcon className="w-7" />
                 </button>
               </div>
+              <Error error={error} />
+
               <div className="px-4 pt-6 pb-1 md:px-10 md:pt-12 md:pb-4">
                 <form
                   className="mt-3"
@@ -105,7 +111,6 @@ function NewCity({ open, setOpen }) {
                       type="text"
                       onKeyUp={(event) => addTags(event)}
                       placeholder="Press enter to add tags"
-                      required
                       className="w-full px-3 py-3 text-sm leading-none text-gray-800 bg-white border rounded focus:ring-2 focus:outline-none dark:bg-gray-900 dark:border-gray-700"
                     />
                   </div>

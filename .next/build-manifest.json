@@ -25,31 +25,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/_middleware": [
+    "/clients": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "server/middleware-runtime.js",
-      "server/pages/_middleware.js"
+      "static/chunks/pages/clients.js"
     ],
-    "/branches": [
+    "/login": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/branches.js"
-    ],
-    "/charge": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/charge.js"
-    ],
-    "/city": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/city.js"
-    ],
-    "/transactions": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/transactions.js"
+      "static/chunks/pages/login.js"
     ]
   },
   "ampFirstPages": []

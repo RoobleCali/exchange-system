@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import NewCharge from "../../components/charge/NewCharge";
 import NewCity from "../../components/city/NewCity";
+import TableLoader from "../../components/Loaders/TableLoader";
 import { useChargeQuery } from "../../store/charge";
 
 function index() {
   const [open, setOpen] = useState(false);
-  const { isError, isFetching, data } = useChargeQuery();
+  const { error, isFetching, data } = useChargeQuery();
   const [inputText, setInputText] = useState("");
-
+  console.log(error);
   const inputHandler = (e) => {
     let lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
@@ -54,7 +55,7 @@ function index() {
             </div>
           </p>
           <button
-            className="inline-flex items-start justify-start px-6 py-3 bg-indigo-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 sm:ml-3 hover:bg-indigo-600 focus:outline-none"
+            className="inline-flex items-start justify-start px-6 py-3 truncate bg-indigo-700 rounded w-max focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 sm:ml-3 hover:bg-indigo-600 focus:outline-none"
             onClick={() => setOpen(!open)}
           >
             <p className="text-sm font-normal leading-none text-white">
@@ -98,7 +99,13 @@ function index() {
                     </th>
                     <th scope="col" className="p-4 lg:p-5"></th>
                   </tr>
-                </thead>
+                </thead>{" "}
+                {error && (
+                  <div className="flex items-center justify-center text-center">
+                    Something went wrong
+                  </div>
+                )}
+                {isFetching && <TableLoader />}
                 <tbody className="bg-white divide-y divide-gray-200">
                   {data &&
                     filteredData.map((d) => (

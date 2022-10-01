@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NewCity from "../../components/city/NewCity";
+import TableLoader from "../../components/Loaders/TableLoader";
 import { useCityQuery, useDeleteCityMutation } from "../../store/city";
 
 function index() {
@@ -7,7 +8,7 @@ function index() {
   const [open, setOpen] = useState(false);
   const [inputText, setInputText] = useState("");
 
-  const { error, data } = useCityQuery();
+  const { error, data, isFetching } = useCityQuery();
   const inputHandler = (e) => {
     let lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
@@ -100,6 +101,7 @@ function index() {
                     <th scope="col" className="p-4 lg:p-5"></th>
                   </tr>
                 </thead>
+                {isFetching && <TableLoader />}
                 <tbody className="text-gray-900 bg-white divide-y divide-gray-200 dark:text-gray-100 dark:bg-gray-500 ">
                   {data &&
                     filteredData.map((d) => (

@@ -4,13 +4,15 @@ import { useForm } from "react-hook-form";
 import { useAddBranchMutation, useBranchQuery } from "../../store/branch";
 import Button from "../controllers/Button";
 import Checkbox from "../controllers/Checkbox";
+import Error from "../controllers/Error";
 import InputField from "../controllers/InputField";
 import LoaderButton from "../controllers/LoaderButton";
 
 function AddBranch({ open, setOpen }) {
   const [message, setMessage] = useState("");
 
-  const [addBranch, { isLoading, error, isSuccess }] = useAddBranchMutation();
+  const [addBranch, { isLoading, error, isError, isSuccess }] =
+    useAddBranchMutation();
   const { refetch } = useBranchQuery();
   const { register, handleSubmit, errors, reset } = useForm();
   const onSubmit = async (data) => {
@@ -29,10 +31,11 @@ function AddBranch({ open, setOpen }) {
       ManagerPhone: data.ManagerPhone,
     };
     await addBranch(branchData);
-    console.log(error.status);
     refetch();
     reset();
-    setOpen(false);
+    if (isSuccess) {
+      setOpen(false);
+    }
   };
   return (
     <div>
@@ -62,7 +65,8 @@ function AddBranch({ open, setOpen }) {
                 </button>
               </div>
               <div className="px-4 pt-6 pb-1 md:px-10 md:pt-12 md:pb-4">
-                {error && JSON.stringify(error.data)}
+                <Error error={error} />
+
                 <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
                   <div className="space-y-5">
                     <div className="flex items-center space-x-3">

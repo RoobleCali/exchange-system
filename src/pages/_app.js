@@ -9,6 +9,9 @@ import { store } from "../store";
 // import "flowbite";
 
 function MyApp({ Component, pageProps }) {
+  export const config = {
+    unstable_runtimeJS: false,
+  };
   // Loading
   NProgress.configure({
     showSpinner: false,

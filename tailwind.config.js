@@ -7,6 +7,25 @@ module.exports = {
   darkMode: "class",
 
   theme: {
+    skeletonScreen: {
+      DEFAULT: {
+        // .loading
+        baseColor: "#c7c7c7",
+        movingColor:
+          "linear-gradient(to right, transparent 0%, #E8E8E8 50%, transparent 100%)",
+        duration: "1s",
+        timing: "cubic-bezier(0.4, 0.0, 0.2, 1)",
+      },
+      // specify another color to have multiple loading colors.
+      blue: {
+        // .loading-blue
+        baseColor: "blue",
+        movingColor:
+          "linear-gradient(to right, transparent 0%, lightblue 50%, transparent 100%)",
+        duration: ".3s",
+        timing: "ease",
+      },
+    },
     screens: {
       sm: "540px",
       // => @media (min-width: 576px) { ... }
@@ -48,5 +67,9 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tw-elements/dist/plugin"), require("flowbite/plugin")],
+  plugins: [
+    require("tw-elements/dist/plugin"),
+    require("flowbite/plugin"),
+    require("@gradin/tailwindcss-skeleton-screen"),
+  ],
 };

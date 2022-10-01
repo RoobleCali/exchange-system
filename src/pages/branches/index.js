@@ -1,6 +1,7 @@
 import { PencilIcon } from "@heroicons/react/solid";
 import React, { useState } from "react";
 import AddBranch from "../../components/branches/AddBranch";
+import Grid from "../../components/Loaders/Grid";
 import { useBranchQuery, useDeleteBranchMutation } from "../../store/branch";
 
 function Index() {
@@ -72,9 +73,9 @@ function Index() {
         </div>
       </div>
       <AddBranch open={open} setOpen={setOpen} />
-      {/* cards */}
+      {/* cards */} {isFetching && <Grid />}
       <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {/* card one */}{" "}
+        {/* card one */}
         {data &&
           filteredData.map((e) => (
             // eslint-disable-next-line react/jsx-key
