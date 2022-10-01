@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { decodeToken, getToken } from "../components/utils/utils";
+import { REHYDRATE } from "redux-persist";
 
 export const Rootapi = createApi({
   baseQuery: fetchBaseQuery({
@@ -13,6 +14,11 @@ export const Rootapi = createApi({
       return headers;
     },
   }),
+  extractRehydrationInfo(action, { reducerPath }) {
+    if (action.type === REHYDRATE) {
+      return action.payload[reducerPath];
+    }
+  },
   endpoints: () => ({}),
 });
 
