@@ -36,10 +36,20 @@
       "server/middleware-runtime.js",
       "server/pages/_middleware.js"
     ],
+    "/branches": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/branches.js"
+    ],
     "/charge": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/charge.js"
+    ],
+    "/city": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/city.js"
     ],
     "/login": [
       "static/chunks/webpack.js",
