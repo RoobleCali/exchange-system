@@ -1,18 +1,16 @@
 import { XIcon } from "@heroicons/react/solid";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAddBranchMutation, useBranchQuery } from "../../store/branch";
-import Button from "../controllers/Button";
-import Checkbox from "../controllers/Checkbox";
-import Error from "../controllers/Error";
-import InputField from "../controllers/InputField";
-import LoaderButton from "../controllers/LoaderButton";
+import {
+  Button,
+  ErrorMessage,
+  LoaderButton,
+  InputField,
+  Checkbox,
+} from "../controllers";
 
 function AddBranch({ open, setOpen }) {
-  const [message, setMessage] = useState("");
-
-  const [addBranch, { isLoading, error, isError, isSuccess }] =
-    useAddBranchMutation();
+  const [addBranch, { isLoading, error, isSuccess }] = useAddBranchMutation();
   const { refetch } = useBranchQuery();
   const { register, handleSubmit, errors, reset } = useForm();
   const onSubmit = async (data) => {
@@ -65,7 +63,7 @@ function AddBranch({ open, setOpen }) {
                 </button>
               </div>
               <div className="px-4 pt-6 pb-1 md:px-10 md:pt-12 md:pb-4">
-                <Error error={error} />
+                <ErrorMessage error={error} />
 
                 <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
                   <div className="space-y-5">

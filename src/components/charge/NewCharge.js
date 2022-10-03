@@ -1,24 +1,18 @@
 import { XIcon } from "@heroicons/react/solid";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAddChargeMutation, useChargeQuery } from "../../store/charge";
 import { useCityQuery } from "../../store/city";
-import Button from "../controllers/Button";
-import Error from "../controllers/Error";
-import InputField from "../controllers/InputField";
-import LoaderButton from "../controllers/LoaderButton";
-
+import { Button, ErrorMessage, LoaderButton, InputField } from "../controllers";
 function NewCharge({ open, setOpen }) {
   const [addCharge, { isLoading, error, isSuccess }] = useAddChargeMutation();
-  const { isFetching, data } = useCityQuery();
+  const { data } = useCityQuery();
   const { refetch } = useChargeQuery();
   const { register, handleSubmit, watch, reset, errors } = useForm();
   const source = watch("source");
-  console.log(source);
   const destination = watch("destination");
 
   const onSubmit = async (data) => {
-    const real = {
+    const Data = {
       charge: [
         {
           source: data.source,
@@ -32,8 +26,8 @@ function NewCharge({ open, setOpen }) {
         },
       ],
     };
-    await addCharge(real);
-    reset(real);
+    await addCharge(Data);
+    reset(Data);
     refetch();
     if (isSuccess) {
       setOpen(false);
@@ -67,7 +61,7 @@ function NewCharge({ open, setOpen }) {
                 </button>
               </div>
               <div className="px-4 pt-6 pb-1 md:px-10 md:pt-12 md:pb-4">
-                <Error error={error} />
+                <ErrorMessage error={error} />
                 <form className="mt-11" onSubmit={handleSubmit(onSubmit)}>
                   <div className="space-y-10">
                     <div className="flex items-center space-x-3">

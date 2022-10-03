@@ -7,7 +7,6 @@ import { useBranchQuery, useDeleteBranchMutation } from "../../store/branch";
 
 function Index() {
   const [open, setOpen] = useState(false);
-  const [openDailog, setopenDailog] = useState(false);
   const [inputText, setInputText] = useState("");
   const { error, isFetching, data } = useBranchQuery();
   const [DeleteBranch, { isLoading }] = useDeleteBranchMutation();

@@ -9,7 +9,7 @@ function LoginNavbar() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="sticky top-0 z-50 overflow-hidden text-gray-700 bg-white shadow-md dark:text-gray-100 ">
+    <div className="sticky top-0 z-50 overflow-hidden text-gray-700 bg-white dark:bg-gray-400 shadow-md dark:text-gray-100 ">
       <div className="flex flex-wrap items-center justify-between p-2 px-2 text-center shadow-lg md:p-4 md:px-24 ">
         <Link href="/">
           <Image

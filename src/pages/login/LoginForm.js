@@ -5,14 +5,10 @@ import { setCookies } from "cookies-next";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { Alert } from "flowbite-react";
 import { RouteForLoggedInUser } from "../../components/utils/utils";
-import InputField from "../../components/controllers/InputField";
-import LoaderButton from "../../components/controllers/LoaderButton";
+import { Button, LoaderButton, InputField } from "../../components/controllers";
 
 function FormLogin() {
-  const dispatch = useDispatch();
-
   const { register, handleSubmit, errors } = useForm();
   const [loading, setLoading] = useState(false);
   const [message, setmessage] = useState("");
@@ -128,16 +124,7 @@ function FormLogin() {
             register={register}
             error={errors.password}
           />
-          {loading ? (
-            <LoaderButton />
-          ) : (
-            <button
-              className="w-full px-10 py-2 text-2xl text-white duration-300 ease-in bg-blue-600 rounded-md hover:bg-blue-500 hover:drop-shadow-md"
-              type="submit"
-            >
-              Login
-            </button>
-          )}
+          {loading ? <LoaderButton /> : <Button title="Login " />}
         </form>
       </div>
     </>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NewCity from "../../components/city/NewCity";
 import SearchFilter from "../../components/common/SearchFilter";
 import TableLoader from "../../components/Loaders/TableLoader";
-import { useCityQuery, useDeleteCityMutation } from "../../store/city";
+import { useCityQuery } from "../../store/city";
 
 function index() {
   // eslint-disable-next-line react-hooks/rules-of-hooks

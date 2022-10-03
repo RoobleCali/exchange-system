@@ -1,32 +1,24 @@
 import { XIcon } from "@heroicons/react/solid";
-import { DoubleBounce } from "better-react-spinkit";
-import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useChangePasswordMutation } from "../../../store/user/User";
-import Button from "../../controllers/Button";
-import Error from "../../controllers/Error";
-import InputField from "../../controllers/InputField";
-import LoaderButton from "../../controllers/LoaderButton";
+import {
+  Button,
+  ErrorMessage,
+  LoaderButton,
+  InputField,
+} from "../../controllers";
+
 function ChangePassword({ open, setOpen }) {
-  const [message, setMessage] = useState("");
   const { register, handleSubmit, errors } = useForm();
   const [changePassword, { isLoading, error, isSuccess }] =
     useChangePasswordMutation();
   const onSubmit = async (data) => {
     if (!data) return {};
-    const res = await changePassword(data);
-    if (res.error) {
-      setMessage(res.error.data.message);
-    }
-    if (res.error.data == "correct passowr") {
+    changePassword(data);
+    if (isSuccess) {
       setOpen(false);
     }
   };
-  useEffect(() => {
-    setTimeout(() => {
-      setMessage("");
-    }, 10000);
-  }, [message]);
 
   return (
     <div>
@@ -56,7 +48,7 @@ function ChangePassword({ open, setOpen }) {
                 </button>
               </div>
               <div className="px-4 pt-6 pb-1 md:px-10 md:pt-12 md:pb-4">
-                <Error error={error} />
+                <ErrorMessage error={error} />
 
                 <form className="mt-3" onSubmit={handleSubmit(onSubmit)}>
                   <InputField

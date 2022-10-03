@@ -7,7 +7,6 @@ import {
   useSortBy,
   usePagination,
 } from "react-table";
-import { SortIcon, SortUpIcon, SortDownIcon } from "../shared/Icons";
 import { AdjustmentsIcon, CloudDownloadIcon } from "@heroicons/react/outline";
 import DataPicker from "../models/DataPicker";
 import { useRouter } from "next/router";
@@ -199,7 +198,7 @@ function Table({ columns, data }) {
                     <div className="flex items-center justify-between w-full dark:text-gray-300">
                       {column.render("Header")}
                       {/* Add a sort direction indicator */}
-                      <span>
+                      {/* <span>
                         {column.isSorted ? (
                           column.isSortedDesc ? (
                             <SortDownIcon className="w-4 h-4 text-gray-400" />
@@ -209,7 +208,7 @@ function Table({ columns, data }) {
                         ) : (
                           <SortIcon className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100" />
                         )}
-                      </span>
+                      </span> */}
                     </div>
                   </th>
                 ))}

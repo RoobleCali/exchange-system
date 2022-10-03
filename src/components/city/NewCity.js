@@ -1,9 +1,8 @@
 import { XIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import { useAddCityMutation, useCityQuery } from "../../store/city";
-import Button from "../controllers/Button";
-import Error from "../controllers/Error";
-import LoaderButton from "../controllers/LoaderButton";
+
+import { Button, ErrorMessage, LoaderButton, InputField } from "../controllers";
 
 function NewCity({ open, setOpen }) {
   const [addCity, { isLoading, error, isSuccess }] = useAddCityMutation();
@@ -62,7 +61,7 @@ function NewCity({ open, setOpen }) {
                   <XIcon className="w-7" />
                 </button>
               </div>
-              <Error error={error} />
+              <ErrorMessage error={error} />
 
               <div className="px-4 pt-6 pb-1 md:px-10 md:pt-12 md:pb-4">
                 <form

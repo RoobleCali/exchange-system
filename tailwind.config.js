@@ -26,22 +26,7 @@ module.exports = {
         timing: "ease",
       },
     },
-    screens: {
-      sm: "540px",
-      // => @media (min-width: 576px) { ... }
 
-      md: "720px",
-      // => @media (min-width: 768px) { ... }
-
-      lg: "960px",
-      // => @media (min-width: 992px) { ... }
-
-      xl: "1140px",
-      // => @media (min-width: 1200px) { ... }
-
-      "2xl": "1320px",
-      // => @media (min-width: 1400px) { ... }
-    },
     container: {
       center: true,
       padding: "16px",
@@ -68,7 +53,6 @@ module.exports = {
     },
   },
   plugins: [
-    require("tw-elements/dist/plugin"),
     require("flowbite/plugin"),
     require("@gradin/tailwindcss-skeleton-screen"),
   ],
