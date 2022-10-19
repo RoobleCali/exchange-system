@@ -2,7 +2,6 @@ import { XIcon } from "@heroicons/react/solid";
 import { DoubleBounce } from "better-react-spinkit";
 import { useForm } from "react-hook-form";
 
-import Swal from "sweetalert2";
 import {
   useAddUserMutation,
   useGetRolesQuery,
@@ -29,14 +28,6 @@ function AddUser({ open, setOpen }) {
       "RoleID"
     );
   };
-
-  if (isSuccess) {
-    Swal.fire({
-      icon: "success",
-      title: "Success",
-      text: "User added successfully!",
-    });
-  }
 
   return (
     <div>

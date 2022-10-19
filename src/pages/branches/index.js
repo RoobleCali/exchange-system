@@ -15,6 +15,7 @@ function Index() {
     let lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   };
+  console.log(data);
   // delete Branch
   const deleteBranch = (d) => {
     DeleteBranch(d);
